@@ -168,7 +168,21 @@ Route::middleware('installAgora')->group(function () {
     Route::get('get-social-media', [Common\SocialMediaController::class, 'getSocials'])->name('get-social-media');
     Route::delete('social-delete', [Common\SocialMediaController::class, 'destroy'])->name('social-delete');
 
-    Route::auth();
+    // Authentication routes (manually expanded from Route::auth())
+    // Login Routes
+    Route::get('login', [Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [Auth\LoginController::class, 'login']);
+    // Logout Routes
+    Route::post('logout', [Auth\LoginController::class, 'logout'])->name('logout');
+    // Registration Routes  
+    Route::get('register', [Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('register', [Auth\RegisterController::class, 'register']);
+    // Password Reset Routes
+    Route::get('password/reset', [Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('password/email', [Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('password/reset/{token}', [Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/reset', [Auth\ResetPasswordController::class, 'reset'])->name('password.update');
+    
     Route::post('auth/register', [Auth\RegisterController::class, 'postRegister'])->name('auth/register');
     Route::get('auth/logout', [Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('/', [DashboardController::class, 'index']);

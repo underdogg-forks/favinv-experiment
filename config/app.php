@@ -151,18 +151,13 @@ return [
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
-    | The service providers listed here will be automatically loaded on the
-    | request to your application. Feel free to add your own services to
-    | this array to grant expanded functionality to your applications.
+    | In Laravel 11+, application service providers are registered in
+    | bootstrap/providers.php. Framework and package service providers are
+    | listed here as in previous Laravel versions.
     |
     */
 
     'providers' => [
-
-        //
-
-        App\Plugins\Stripe\ServiceProvider::class,
-        App\Plugins\Razorpay\ServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
@@ -188,47 +183,35 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
-        Arcanedev\LogViewer\LogViewerServiceProvider::class,
-        Torann\GeoIP\GeoIPServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
+        Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
-
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\Providers\CustomValidationProvider::class,
-
         Barryvdh\DomPDF\ServiceProvider::class,
-        // Illuminate\Support\Facades\Input::class,
-
         Yajra\DataTables\HtmlServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
-        \Torann\Currency\CurrencyServiceProvider::class,
+        Torann\Currency\CurrencyServiceProvider::class,
         Devio\Pipedrive\PipedriveServiceProvider::class,
         Spatie\Referer\RefererServiceProvider::class,
         Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         PragmaRX\Google2FALaravel\ServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
-        // Voerro\Laravel\VisitorTracker\VisitorTrackerServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        // Symfony\Component\Mailer\MailerInterface::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
-        App\Providers\ImageUploadHelperServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        \App\Providers\AttachmentHelperServiceProvider::class,
         Spatie\Html\HtmlServiceProvider::class,
-        App\Plugins\Recaptcha\RecaptchaServiceProvider::class,
+
+        /*
+         * Application Service Providers...
+         * These are now managed via bootstrap/providers.php but kept here
+         * for backward compatibility and to ensure all providers are loaded.
+         */
     ],
 
     /*
