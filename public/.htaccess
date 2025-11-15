@@ -18,5 +18,43 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+    # Block access to sensitive files
+    <FilesMatch "(^\.env|^\.git|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|\.md$|\.sql$)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    # Prevent execution of scripts in upload directories
+    <IfModule mod_php7.c>
+        php_flag engine off
+    </IfModule>
+    <IfModule mod_php8.c>
+        php_flag engine off
+    </IfModule>
 
 </IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Disable server signature
+ServerSignature Off
+
+# Block access to backup and SQL files
+<FilesMatch "\.(bak|backup|swp|old|tmp|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Additional security headers (if not set by application)
+<IfModule mod_headers.c>
+    # Prevent MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
