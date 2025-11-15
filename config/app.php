@@ -100,23 +100,23 @@ return [
     |--------------------------------------------------------------------------
     | Encryption Key
     |--------------------------------------------------------------------------
-
-'App\Plugins\Razorpay\ServiceProvider',
-'App\Plugins\Stripe\ServiceProvider',//
+    |
     | This key is used by the Illuminate encrypter service and should be set
-//
-
+    | to a random, 32 character string, otherwise these encrypted strings
+    | will not be safe. Please do this before deploying an application!
+    | Use "php artisan key:generate" to generate a secure key.
+    |
     */
 
-    'key' => env('APP_KEY', 'base64:G4WSQduFNvk9rYtoLS1ozg=='),
+    'key' => env('APP_KEY'),
 
     'previous_keys' => [
         ...array_filter(
-            explode(',', env('APP_PREVIOUS_KEYS', 'base64:G4WSQduFNvk9rYtoLS1ozg=='))
+            explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
     ],
 
-    'cipher' => 'AES-128-CBC',
+    'cipher' => 'AES-256-CBC',
 
     /*
       |---------------------------------------------------------------------------------

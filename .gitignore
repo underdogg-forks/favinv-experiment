@@ -34,6 +34,7 @@ storage/products
 # Logs and databases #
 ######################
 *.log
+error_log
 *.sql
 *.sqlite
 
@@ -47,4 +48,12 @@ storage/products
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Security sensitive files #
+############################
+public/info.php
+phpinfo.php
+test.php
+debug.php
+
 app/Http/Controllers/Front/GetPageTemplateController.php

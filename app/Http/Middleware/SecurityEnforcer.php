@@ -28,13 +28,30 @@ class SecurityEnforcer
         $response = $next($request);
 
         if (method_exists($response, 'header')) {
-            // tells browser that faveo cannot be used within in i-frame. ( XFS vulnerability )
+            // Prevent clickjacking attacks - tells browser that faveo cannot be used within an iframe
             $response->header('X-Frame-Options', 'SAMEORIGIN');
+            
+            // Prevent MIME-sniffing attacks
             $response->header('X-Content-Type-Options', 'nosniff');
+            
+            // Enable XSS protection in browsers
+            $response->header('X-XSS-Protection', '1; mode=block');
+            
+            // Referrer policy - control how much referrer information is passed
+            $response->header('Referrer-Policy', 'strict-origin-when-cross-origin');
+            
+            // Permissions policy - restrict access to browser features
+            $response->header('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
 
             // redirecting to https if configured to open in https
             if ($this->urlScheme(config('app.url')) == 'https' && $this->urlScheme($request->url()) == 'http') {
                 return redirect()->secure($request->getPathInfo());
+            }
+
+            // Add HSTS header if using HTTPS
+            if ($request->secure() || $this->urlScheme(config('app.url')) == 'https') {
+                // max-age of 1 year (31536000 seconds), include subdomains
+                $response->header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
             }
         }
 
