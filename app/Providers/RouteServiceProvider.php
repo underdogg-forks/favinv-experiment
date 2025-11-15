@@ -19,58 +19,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        $this->routes(function () {
-            $this->mapApiRoutes();
-
-            $this->mapWebRoutes();
-
-            $this->mapThirdPartyRoutes();
-
-            $this->installer();
-
-            //
-        });
+        // Routes are now registered in bootstrap/app.php
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-             ->group(base_path('routes/web.php'));
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-             ->middleware('api')
-             ->group(base_path('routes/api.php'));
-    }
-
-    /**
-     * Define the "third party" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapThirdPartyRoutes()
-    {
-        Route::middleware('validateThirdParty')
-             ->group(base_path('routes/thirdparty.php'));
-    }
 
     /**
      * Configure the rate limiters for the application.
@@ -115,12 +66,5 @@ class RouteServiceProvider extends ServiceProvider
 
             return $limits;
         });
-    }
-
-    protected function installer()
-    {
-        Route::middleware('isInstalled')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/installer.php'));
     }
 }
