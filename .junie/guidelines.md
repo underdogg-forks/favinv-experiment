@@ -154,3 +154,259 @@ public function process($data)
 - Keep PRs focused and reviewable
 - Address review feedback promptly
 - Ensure CI passes before requesting review
+
+## Service Layer Pattern
+
+### Overview
+The Service Layer pattern separates business logic from controllers, making code more maintainable, testable, and reusable.
+
+### Structure
+```
+app/
+├── Services/
+│   ├── UserService.php
+│   ├── ProductService.php
+│   └── OrderService.php
+└── Http/Controllers/
+    ├── UserController.php
+    ├── ProductController.php
+    └── OrderController.php
+```
+
+### Service Class Template
+```php
+<?php
+
+namespace App\Services;
+
+use App\Models\YourModel;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
+
+class YourModelService
+{
+    /**
+     * Get all records with optional filtering.
+     *
+     * @param array $filters
+     * @param int $perPage
+     * @return mixed
+     */
+    public function getAll(array $filters = [], int $perPage = 15)
+    {
+        $query = YourModel::query();
+
+        // Apply filters with early returns
+        if (isset($filters['status'])) {
+            $query->where('status', $filters['status']);
+        }
+
+        return $perPage > 0 ? $query->paginate($perPage) : $query->get();
+    }
+
+    /**
+     * Find a record by ID.
+     *
+     * @param int $id
+     * @return YourModel|null
+     */
+    public function find(int $id): ?YourModel
+    {
+        return YourModel::find($id);
+    }
+
+    /**
+     * Create a new record.
+     *
+     * @param array $data
+     * @return YourModel
+     * @throws \Exception
+     */
+    public function create(array $data): YourModel
+    {
+        DB::beginTransaction();
+
+        try {
+            $model = YourModel::create($data);
+            DB::commit();
+            return $model;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    /**
+     * Update an existing record.
+     *
+     * @param int $id
+     * @param array $data
+     * @return YourModel
+     * @throws \Exception
+     */
+    public function update(int $id, array $data): YourModel
+    {
+        $model = $this->find($id);
+
+        if (!$model) {
+            throw new \Exception("Record not found with ID: {$id}");
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $model->update($data);
+            DB::commit();
+            return $model->fresh();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
+    }
+
+    /**
+     * Delete a record.
+     *
+     * @param int $id
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(int $id): bool
+    {
+        $model = $this->find($id);
+
+        if (!$model) {
+            throw new \Exception("Record not found with ID: {$id}");
+        }
+
+        return $model->delete();
+    }
+}
+```
+
+### Controller Using Service
+```php
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Services\YourModelService;
+use Illuminate\Http\Request;
+
+class YourModelController extends Controller
+{
+    protected YourModelService $service;
+
+    public function __construct(YourModelService $service)
+    {
+        $this->service = $service;
+    }
+
+    public function index(Request $request)
+    {
+        $filters = $request->only(['status', 'search']);
+        $data = $this->service->getAll($filters);
+
+        return view('your-view', compact('data'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            // ... other validation rules
+        ]);
+
+        try {
+            $model = $this->service->create($validated);
+            return redirect()->route('your.route')->with('success', 'Created successfully');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            // ... other validation rules
+        ]);
+
+        try {
+            $model = $this->service->update($id, $validated);
+            return redirect()->route('your.route')->with('success', 'Updated successfully');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function destroy(int $id)
+    {
+        try {
+            $this->service->delete($id);
+            return redirect()->route('your.route')->with('success', 'Deleted successfully');
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+}
+```
+
+### Benefits of Service Layer
+- **Separation of Concerns**: Business logic separated from HTTP layer
+- **Reusability**: Services can be used across multiple controllers, commands, jobs
+- **Testability**: Easy to unit test business logic independently
+- **Maintainability**: Changes to business logic don't affect controllers
+- **SOLID Compliance**: Follows Single Responsibility and Dependency Inversion principles
+
+### Testing Services
+```php
+<?php
+
+namespace Tests\Unit\Services;
+
+use App\Services\YourModelService;
+use App\Models\YourModel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class YourModelServiceTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected YourModelService $service;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->service = new YourModelService();
+    }
+
+    /** @test */
+    public function it_can_create_a_record()
+    {
+        $data = ['name' => 'Test'];
+        $model = $this->service->create($data);
+
+        $this->assertInstanceOf(YourModel::class, $model);
+        $this->assertEquals('Test', $model->name);
+    }
+
+    /** @test */
+    public function it_throws_exception_when_updating_non_existent_record()
+    {
+        $this->expectException(\Exception::class);
+        $this->service->update(99999, ['name' => 'Test']);
+    }
+}
+```
+
+### Best Practices
+1. **Keep services focused**: One service per model or domain
+2. **Use dependency injection**: Inject services into controllers
+3. **Handle transactions**: Wrap database operations in transactions
+4. **Throw meaningful exceptions**: Provide clear error messages
+5. **Return appropriate types**: Use type hints for return values
+6. **Validate early**: Check for null/invalid data at method start
+7. **Document thoroughly**: Add PHPDoc blocks for all public methods
+
