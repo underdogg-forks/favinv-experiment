@@ -19,7 +19,7 @@
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     # Block access to sensitive files
-    <FilesMatch "(^\.env|^\.git|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|\.md$)">
+    <FilesMatch "(^\.env|^\.git|composer\.(json|lock)|package(-lock)?\.json|phpunit\.xml|\.md$|\.sql$)">
         Order allow,deny
         Deny from all
     </FilesMatch>
@@ -39,6 +39,12 @@ Options -Indexes
 
 # Disable server signature
 ServerSignature Off
+
+# Block access to backup and SQL files
+<FilesMatch "\.(bak|backup|swp|old|tmp|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
 
 # Additional security headers (if not set by application)
 <IfModule mod_headers.c>

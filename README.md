@@ -48,12 +48,19 @@ You can still report any issues or share your customizations via our [GitHub Iss
 
 ## Security Policy
 
+### Security Documentation
+
+For comprehensive security guidelines and best practices:
+- **[Security Audit Report](SECURITY-AUDIT.md)** - Latest security audit findings and fixes
+- **[Security Best Practices Guide](SECURITY-GUIDE.md)** - Deployment and maintenance security guide
+
 ### Supported Versions
 
 The following versions are actively supported and receive security patches:
 
 | Version     | Supported          |
 |-------------|--------------------|
+| 4.0.2.4     | :white_check_mark: |
 | 4.0.2.3     | :white_check_mark: |
 | < 4.0.2.2.1 | :x:                |
 
@@ -61,9 +68,22 @@ The following versions are actively supported and receive security patches:
 
 - **Security updates** are released monthly. In case of critical vulnerabilities, updates may be released twice a month.
 
+### Security Highlights
+
+This version includes important security enhancements:
+- ✅ Removed hardcoded encryption keys
+- ✅ Enhanced security headers (HSTS, CSP, XSS Protection)
+- ✅ Session encryption enabled
+- ✅ Path traversal protection
+- ✅ AES-256-CBC encryption (upgraded from AES-128-CBC)
+- ✅ Comprehensive security configuration
+
 ### Reporting a Vulnerability
 
 If you suspect a security vulnerability, please report it to [support@faveohelpdesk.com](mailto:support@faveohelpdesk.com). You will receive a response within 48 hours. If the issue is confirmed, we will aim to release a patch as quickly as possible—usually within a few days, depending on the complexity of the issue.
+
+**Please DO NOT** create public GitHub issues for security vulnerabilities. Use responsible disclosure.
+
 
 ## User Manual
 
