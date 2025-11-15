@@ -50,8 +50,12 @@ class SecurityEnforcer
 
             // Add HSTS header if using HTTPS
             if ($request->secure() || $this->urlScheme(config('app.url')) == 'https') {
-                // max-age of 1 year (31536000 seconds), include subdomains
-                $response->header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+                // max-age of 1 year, include subdomains, preload-eligible
+                $hstsValue = 'max-age=31536000; includeSubDomains';
+                if (config('security.headers.hsts_preload', false)) {
+                    $hstsValue .= '; preload';
+                }
+                $response->header('Strict-Transport-Security', $hstsValue);
             }
         }
 
