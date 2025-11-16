@@ -370,3 +370,51 @@ This project uses **Tailwind CSS v4** - the latest version of the utility-first 
 - `TAILWIND-QUICKSTART.md` - Getting started
 - `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Migration guide
 - `TAILWIND-AI-AGENT-GUIDE.md` - AI agent instructions
+
+
+## Build System: Vite
+
+This project uses **Vite 6.0** as the build system for compiling CSS and JavaScript assets.
+
+### Development
+
+Start the Vite development server with Hot Module Replacement:
+
+```bash
+npm run dev
+```
+
+This starts the Vite dev server on `http://localhost:5173` with instant HMR.
+
+### Production Build
+
+Build optimized assets for production:
+
+```bash
+npm run build
+```
+
+Output: `public/build/` directory with versioned, optimized assets.
+
+### Asset Loading
+
+Use the `@vite` directive in blade templates:
+
+```blade
+@vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
+```
+
+This automatically:
+- Loads from dev server in development (with HMR)
+- Loads versioned assets in production
+- Handles cache busting
+
+### Benefits
+
+- ⚡ **10-100x faster** builds than webpack
+- 🔥 **Instant HMR** - See changes in milliseconds
+- 📦 **Smaller bundles** - Better tree-shaking
+- 🎯 **Better DX** - Clear errors, fast feedback
+
+See `VITE-MIGRATION-GUIDE.md` for complete documentation.
+

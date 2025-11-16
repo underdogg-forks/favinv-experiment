@@ -762,4 +762,134 @@ Comprehensive guides available:
 - `TAILWIND-QUICKSTART.md` - Quick start guide
 - `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Complete migration guide
 - `TAILWIND-AI-AGENT-GUIDE.md` - Instructions for AI agents to migrate Bootstrap/CoreUI to Tailwind
+- `VITE-MIGRATION-GUIDE.md` - Laravel Mix to Vite migration guide
+
+## Build System: Vite
+
+### Overview
+
+The project uses **Vite 6.0** as the build system for compiling CSS and JavaScript assets. Vite provides:
+- ⚡ 10-100x faster builds than webpack
+- 🔥 Instant Hot Module Replacement (HMR)
+- 📦 Optimized production bundles
+- 🎯 Better developer experience
+
+### Development
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+This starts:
+- Vite dev server on `http://localhost:5173`
+- Hot Module Replacement enabled
+- Instant CSS/JS updates on file save
+
+### Production Build
+
+Build optimized assets for production:
+
+```bash
+npm run build
+```
+
+Output:
+- `public/build/.vite/manifest.json` - Asset manifest
+- `public/build/assets/app-[hash].css` - Versioned CSS (104KB, 17.7KB gzipped)
+- `public/build/assets/app-[hash].js` - Versioned JS
+- Automatic code splitting and tree-shaking
+
+### Asset Loading in Blade
+
+Use the `@vite` directive to load assets:
+
+```blade
+@vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
+```
+
+This automatically:
+- Loads assets from dev server in development (with HMR)
+- Loads versioned assets from manifest in production
+- Handles cache busting
+
+### Configuration
+
+**`vite.config.js`:**
+```javascript
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/assets/css/app.css',
+                'resources/assets/js/app.js'
+            ],
+            refresh: true,
+        }),
+    ],
+    css: {
+        postcss: './postcss.config.js',
+    },
+});
+```
+
+**`postcss.config.js`:**
+```javascript
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+}
+```
+
+### Adding New Assets
+
+1. Create your CSS/JS file in `resources/assets/`
+2. Add it to the `input` array in `vite.config.js`
+3. Reference it with `@vite` in your blade template
+
+Example:
+```javascript
+// vite.config.js
+laravel({
+    input: [
+        'resources/assets/css/app.css',
+        'resources/assets/css/admin.css',  // New file
+        'resources/assets/js/app.js'
+    ],
+    refresh: true,
+}),
+```
+
+```blade
+<!-- In blade template -->
+@vite(['resources/assets/css/admin.css'])
+```
+
+### Benefits
+
+- **Faster Development**: Instant HMR, no waiting for rebuilds
+- **Faster Production Builds**: 10-100x faster than webpack
+- **Smaller Bundles**: Better tree-shaking and code splitting
+- **Modern Tooling**: Built on native ESM
+- **Better DX**: Clear error messages, fast feedback
+
+### Troubleshooting
+
+**HMR not working?**
+- Ensure `npm run dev` is running
+- Check browser console for Vite connection messages
+
+**Assets not loading in production?**
+- Run `npm run build` before deploying
+- Verify `public/build/` directory exists
+
+**Port 5173 in use?**
+- Change port in `vite.config.js` server config
+
+See `VITE-MIGRATION-GUIDE.md` for complete documentation.
 

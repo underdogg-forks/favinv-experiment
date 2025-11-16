@@ -16,9 +16,8 @@
     
     <title>@yield('title') | {{$set->favicon_title}}</title>
     
-    <!-- CoreUI 2.16 CSS with Custom Variables -->
-    <link rel="stylesheet" href="{{asset('css/coreui/coreui-custom.css')}}">
-    <link rel="stylesheet" href="{{asset('css/coreui/perfect-scrollbar.css')}}">
+    <!-- Tailwind CSS v4 with Vite -->
+    @vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('admin/css-1/all.min.css')}}">
