@@ -47,19 +47,19 @@ class BasePromotionController extends Controller
         $relation = $promo->relation()->get();
         //check the relation between code and product
         if (count($relation) == 0) {
-            throw new \Exception(\Lang::get('message.no-product-related-to-this-code'));
+            throw new \Exception(\trans('message.no-product-related-to-this-code'));
         }
         //check the usess
         $cont = new \App\Http\Controllers\Payment\PromotionController();
         $uses = $cont->checkNumberOfUses($code);
 
         if ($uses != 'success') {
-            throw new \Exception(\Lang::get('message.usage-of-code-completed'));
+            throw new \Exception(\trans('message.usage-of-code-completed'));
         }
         //check for the expiry date
         $expiry = $this->checkExpiry($code);
         if ($expiry != 'success') {
-            throw new \Exception(\Lang::get('message.usage-of-code-expired'));
+            throw new \Exception(\trans('message.usage-of-code-expired'));
         }
 
         return $promo;

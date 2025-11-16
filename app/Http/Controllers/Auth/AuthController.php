@@ -237,7 +237,7 @@ class AuthController extends BaseAuthController
             $user = User::where('email', $email)->firstOrFail();
 
             if (AccountActivate::where('email', $email)->first() && $method !== 'GET') {
-                return successResponse(\Lang::get('message.email_verification.already_sent'));
+                return successResponse(\trans('message.email_verification.already_sent'));
             }
 
             $this->sendActivation($email, $method);

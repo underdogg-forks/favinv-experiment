@@ -251,7 +251,7 @@ class TaxController extends Controller
                 ->update(['tax_classes_id' => $taxId, 'country' => $country, 'state' => $state, 'rate' => $rate]);
             }
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -281,40 +281,40 @@ class TaxController extends Controller
                         echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
 
-                        <b>"./* @scrutinizer ignore-type */ \Lang::get('message.alert').'!
-                        </b> './* @scrutinizer ignore-type */ \Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */ \trans('message.alert').'!
+                        </b> './* @scrutinizer ignore-type */ \trans('message.failed').'
 
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            '.\Lang::get('message.no-record').'
+                            '.\trans('message.no-record').'
                     </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                         <i class='fa fa-ban'></i>
 
-                        <b>".\Lang::get('message.alert').'!</b> '.
-                        /* @scrutinizer ignore-type */ \Lang::get('message.success').'
+                        <b>".\trans('message.alert').'!</b> '.
+                        /* @scrutinizer ignore-type */ \trans('message.success').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */\Lang::get('message.deleted-successfully').'
+                            './* @scrutinizer ignore-type */\trans('message.deleted-successfully').'
 
                     </div>';
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
 
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                        /* @scrutinizer ignore-type */ \Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                        /* @scrutinizer ignore-type */ \trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */ \Lang::get('message.select-a-row').'
+                            './* @scrutinizer ignore-type */ \trans('message.select-a-row').'
 
                     </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>".\Lang::get('message.alert').'!</b> '.\Lang::get('message.failed').'
+                        <b>".\trans('message.alert').'!</b> '.\trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                             '.$e->getMessage().'
                     </div>';
@@ -389,7 +389,7 @@ class TaxController extends Controller
             $this->tax->tax_classes_id = $this->tax_class->id;
             $this->tax->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.created-successfully'));
+            return redirect()->back()->with('success', \trans('message.created-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

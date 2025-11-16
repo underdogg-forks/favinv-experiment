@@ -17,7 +17,7 @@
                 <div class="form-group {{ $errors->has('domain') ? 'has-error' : '' }}">
                     <!-- name -->
                     <b>{{$name}}</b>
-                    {!! html()->label(Lang::get('message.domain'), 'domain['.$product.']')
+                    {!! html()->label(trans('message.domain'), 'domain['.$product.']')
     ->class('required') !!}
                     {!! html()->text('domain['.$product.']')
                         ->id('validDomain')
@@ -34,7 +34,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close')}}</button>
-                <input type="submit" class="btn btn-primary" value="{{Lang::get('message.save')}}">
+                <input type="submit" class="btn btn-primary" value="{{trans('message.save')}}">
             </div>
              {!! html()->form()->close()  !!}
 

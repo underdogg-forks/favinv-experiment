@@ -424,7 +424,7 @@ class CronController extends BaseCronController
                 $item = $this->getInvoiceItemByInvoiceId($invoice->id);
                 $product = $item->product_name;
                 if (emailSendingStatus()) {
-                    $this->Auto_renewalMail($user, $end, $product, $order, $value->id);
+                    $this->autoRenewalMail($user, $end, $product, $order, $value->id);
                 }
             }
         }

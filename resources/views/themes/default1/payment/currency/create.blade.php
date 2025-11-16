@@ -10,32 +10,32 @@
                 {!! html()->form('POST', url('currency'))->id('currency')->open() !!}
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                    {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                     {!! html()->text('name')->class('form-control')->id('name') !!}
                     <h6 id="namecheck"></h6>
                 </div>
 
                 <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.code'), 'code')->class('required') !!}
+                    {!! html()->label(trans('message.code'), 'code')->class('required') !!}
                     {!! html()->text('code')->class('form-control')->id('code') !!}
                     <h6 id="codecheck"></h6>
                 </div>
 
                 <div class="form-group {{ $errors->has('symbol') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.symbol'), 'symbol') !!}
+                    {!! html()->label(trans('message.symbol'), 'symbol') !!}
                     {!! html()->text('symbol')->class('form-control')->id('symbol') !!}
                     <h6 id="symbolcheck"></h6>
                 </div>
 
                 <div class="form-group {{ $errors->has('base_conversion') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.base_conversion_rate'), 'base_conversion')->class('required') !!}
+                    {!! html()->label(trans('message.base_conversion_rate'), 'base_conversion')->class('required') !!}
                     {!! html()->text('base_conversion')->class('form-control')->id('conversion') !!}
                     <h6 id="conversioncheck"></h6>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
             {!! html()->form()->close() !!}
             <!-- /Form -->

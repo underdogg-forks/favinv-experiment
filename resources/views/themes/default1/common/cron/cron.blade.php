@@ -14,13 +14,13 @@
     }
 </style>
     <div class="col-sm-6">
-        <h1>{!! Lang::get('message.cron-setting') !!}</h1>
+        <h1>{!! trans('message.cron-setting') !!}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
             <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{!! Lang::get('message.cron-setting') !!}</li>
+            <li class="breadcrumb-item active">{!! trans('message.cron-setting') !!}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -70,7 +70,7 @@
                    $msg91Status = \App\Model\Common\StatusSetting::pluck('msg91_report_delete_status')->first();
                   ?>
          <div class="card-header">
-             <h3 class="card-title">{{Lang::get('message.set_cron_period')}}  </h3>
+             <h3 class="card-title">{{trans('message.set_cron_period')}}  </h3>
 
 
          </div>
@@ -83,7 +83,7 @@
              
               <!-- /.form-group -->
               <div class="form-group select2">
-                <label >{{Lang::get('message.expiry_mail_sent')}}</label> 
+                <label >{{trans('message.expiry_mail_sent')}}</label> 
                 <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger') }}"></i>
 
                 <?php 
@@ -107,7 +107,7 @@
                   
                    @if ($mailStatus == 0)
                     <select id ="days" name="expiryday[]" class="form-control selectpicker"   style="width: 100%; color:black;" disabled>
-                      <option value="">{{Lang::get('message.enable_mail_cron')}}</option>
+                      <option value="">{{trans('message.enable_mail_cron')}}</option>
                     </select>
                       @else
                 <select id ="days" name="expiryday[]" class="form-control selectpicker"  data-live-search="true" data-live-search-placeholder="Search" multiple="true" style="width: 100%; color:black;">
@@ -127,10 +127,10 @@
 
              <div class="col-md-6">
               <div class="form-group">
-                <label>{{Lang::get('message.log_del_days')}}</label>
+                <label>{{trans('message.log_del_days')}}</label>
                   @if ($activityStatus == 0)
                     <select id ="days" name="expiryday" class="form-control selectpicker"   style="width: 100%; color:black;" disabled>
-                      <option value="">{{Lang::get('message.enable_activityLog_cron')}}</option>
+                      <option value="">{{trans('message.enable_activityLog_cron')}}</option>
                     </select>
                       @else
                 <select name="logdelday" class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" style="width: 100%;">
@@ -148,12 +148,12 @@
 
            <div class="col-md-6">
           <div class="form-group select2">
-              <label>{{ Lang::get('message.subscription_renewal_reminder_autopayment') }}</label>
+              <label>{{ trans('message.subscription_renewal_reminder_autopayment') }}</label>
               <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_enabled') }}"></i>
 
               @if ($Autorenewal_status == 0)
                   <select id="subdays" name="subexpiryday[]" class="form-control selectpicker" style="width: 100%; color: black;" disabled>
-                      <option value="">{{ Lang::get('message.enable_mail_cron') }}</option>
+                      <option value="">{{ trans('message.enable_mail_cron') }}</option>
                   </select>
               @else
                   <select id="subdays" name="subexpiryday[]" class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" multiple="true" style="width: 100%; color: black;">
@@ -169,10 +169,10 @@
 
                 <div class="col-md-6">
               <div class="form-group">
-                <label>{{Lang::get('message.deletion_cloud_subscription')}}</label>  <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_cloud') }}"></i>
+                <label>{{trans('message.deletion_cloud_subscription')}}</label>  <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_cloud') }}"></i>
                   @if ($cloudStatus == 0)
                     <select id ="days" name="cloud_days" class="form-control selectpicker"   style="width: 100%; color:black;" disabled>
-                      <option value="">{{Lang::get('message.enable_faveo_cloud_cron')}}</option>
+                      <option value="">{{trans('message.enable_faveo_cloud_cron')}}</option>
                     </select>
                       @else
                 <select name="cloud_days" class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" style="width: 100%;">
@@ -188,12 +188,12 @@
 
     <div class="col-md-6">
         <div class="form-group select2">
-            <label>{{ Lang::get('message.subscription_expired') }}</label>
+            <label>{{ trans('message.subscription_expired') }}</label>
             <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_cloud_both') }}"></i>
 
             @if ($postExpiry_status == 0)
                 <select id="postdays" name="postsubexpiry_days[]" class="form-control selectpicker" style="width: 100%; color: black;" disabled>
-                    <option value="">{{ Lang::get('message.enable_mail_cron') }}</option>
+                    <option value="">{{ trans('message.enable_mail_cron') }}</option>
                 </select>
             @else
                 <select id="postdays" name="postsubexpiry_days[]" class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" multiple="true" style="width: 100%; color: black;">
@@ -208,10 +208,10 @@
 
        <div class="col-md-6">
               <div class="form-group">
-                <label>{{Lang::get('message.delete_invoice_older')}}</label>  <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_deletion_old') }}"></i>
+                <label>{{trans('message.delete_invoice_older')}}</label>  <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.cron_trigger_deletion_old') }}"></i>
                   @if ($invoiceStatus == 0)
                     <select id ="days" name="invoice_days[]" class="form-control selectpicker"   style="width: 100%; color:black;" disabled>
-                      <option value="">{{Lang::get('message.enable_invoice_deletion_cron')}}</option>
+                      <option value="">{{trans('message.enable_invoice_deletion_cron')}}</option>
                     </select>
                       @else
                 <select name="invoice_days" class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" style="width: 100%;">
@@ -250,9 +250,9 @@
      </div>
          <div class="card-footer">
              @if ( $mailStatus || $activityStatus || $cloudStatus ==1)
-                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> Saving..."><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> Saving..."><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
              @else
-                 <button type="submit" class="btn btn-primary pull-right disabled" id="submit"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                 <button type="submit" class="btn btn-primary pull-right disabled" id="submit"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
              @endif
          </div>
          {!! html()->form()->close() !!}

@@ -74,7 +74,7 @@ class LicenseSettingsController extends LicensePermissionsController
         try {
             $productType = $this->licenseType->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+            return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -86,7 +86,7 @@ class LicenseSettingsController extends LicensePermissionsController
             $type_name = $request->input('name');
             $type = $this->licenseType->where('id', $id)->update(['name' => $type_name]);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -110,39 +110,39 @@ class LicenseSettingsController extends LicensePermissionsController
                     } else {
                         echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                        './* @scrutinizer ignore-type */\trans('message.no-record').'
                 </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
 
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.success').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.success').'
 
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.deleted-successfully').'
+                        './* @scrutinizer ignore-type */\trans('message.deleted-successfully').'
                 </div>';
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.select-a-row').'
+                        './* @scrutinizer ignore-type */\trans('message.select-a-row').'
                 </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
                     /* @scrutinizer ignore-type */
-                    \Lang::get('message.failed').'
+                    \trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                         '.$e->getMessage().'
                 </div>';

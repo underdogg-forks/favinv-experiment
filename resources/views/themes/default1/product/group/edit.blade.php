@@ -28,7 +28,7 @@
                 <table class="table table-condensed">
 
                     <tr>
-                        <td><b>{!! html()->label(Lang::get('message.name'), 'company')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.name'), 'company')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 
@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.headline'), 'type') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.headline'), 'type') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('headline') ? 'has-error' : '' }}">
 
@@ -67,7 +67,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.tagline'), 'tagline') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.tagline'), 'tagline') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('tagline') ? 'has-error' : '' }}">
 
@@ -90,7 +90,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.hidden'), 'hidden') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.hidden'), 'hidden') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('hidden') ? 'has-error' : '' }}">
 
@@ -101,7 +101,7 @@
                                                  $value = 'true';   
                                                 }
                                                 ?>
-                                                <p>{!! html()->checkbox('hidden', $value, 1) !!} {{Lang::get('message.check-this-box-if-this-is-a-hidden-group')}}</p>
+                                                <p>{!! html()->checkbox('hidden', $value, 1) !!} {{trans('message.check-this-box-if-this-is-a-hidden-group')}}</p>
 
                             </div>
                         </td>
@@ -148,7 +148,7 @@
                                                  $value = 'true';   
                                                 }
                                                 ?>
-                                                <p>{!! html()->checkbox('status', $value ,1) !!} {{Lang::get('message.check-this-box_to_toggle_status')}}</p>
+                                                <p>{!! html()->checkbox('status', $value ,1) !!} {{trans('message.check-this-box_to_toggle_status')}}</p>
                             </div>
                         </td>
 
@@ -159,7 +159,7 @@
                     {!! html()->closeModelForm() !!}
                 </table>
 
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
             </div>

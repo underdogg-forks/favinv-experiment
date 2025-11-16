@@ -82,7 +82,7 @@
 
                     <div class="col-md-6 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.sub'))->class('required') !!}
+                        {!! html()->label(trans('message.sub'))->class('required') !!}
                         {!! html()->text('name')->class('form-control') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -93,7 +93,7 @@
 
                     <div class="col-md-6 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.template-types'))->class('required') !!}
+                        {!! html()->label(trans('message.template-types'))->class('required') !!}
                         {!! html()->select('type', ['' => __('message.select'), 'Type' => $type])->class('form-control') !!}
                         @error('type')
                         <span class="error-message"> {{$message}}</span>
@@ -104,7 +104,7 @@
 
                      <div class="col-md-6 form-group {{ $errors->has('reply_to') ? 'has-error' : '' }}">
                         <!-- first name -->
-                         {!! html()->label(Lang::get('message.reply_to')) !!}
+                         {!! html()->label(trans('message.reply_to')) !!}
                          {!! html()->text('reply_to')->class('form-control') !!}
                          @error('reply_to')
                          <span class="error-message"> {{$message}}</span>
@@ -161,7 +161,7 @@
                       });
                         </script>
 
-                        {!! html()->label(Lang::get('message.content'))->class('required') !!}
+                        {!! html()->label(trans('message.content'))->class('required') !!}
                         {!! html()->textarea('data')->class('form-control')->id('textarea') !!}
                         @error('data')
                         <span class="error-message"> {{$message}}</span>
@@ -174,7 +174,7 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
     </div>
 

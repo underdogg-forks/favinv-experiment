@@ -850,10 +850,10 @@ input:checked + .slider:before {
          });
          if(id.length<=0){
              swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.sweet_payment')}}</p>" + "</div>" +
+                     "<p>{{trans('message.sweet_payment')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
                  confirmButtonText: "{{ __('message.ok') }}",
@@ -864,10 +864,10 @@ input:checked + .slider:before {
          }
          else {
              var swl = swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.payment_details_delete')}}</p>" + "</div>" +
+                     "<p>{{trans('message.payment_details_delete')}}</p>" + "</div>" +
                      "</div>",
                  showCancelButton: true,
                  showCloseButton: true,
@@ -900,10 +900,10 @@ input:checked + .slider:before {
                          })
                      } else {
                          swal.fire({
-                             title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                             title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                              html: "<div  class='swal2-html-container custom-content'>" +
                                  "<div class='section-sa'>" +
-                                 "<p>{{Lang::get('message.sweet_checkbox')}}</p>" + "</div>" +
+                                 "<p>{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
                              confirmButtonText: "{{ __('message.ok') }}",

@@ -37,9 +37,9 @@ class TaxRatesAndCodeExpiryController extends BaseInvoiceController
     {
         if ($items) {
             // $this->sendmailClientAgent($user_id, $items->invoice_id);
-            $result = ['success' => \Lang::get('message.invoice-generated-successfully')];
+            $result = ['success' => \trans('message.invoice-generated-successfully')];
         } else {
-            $result = ['fails' => \Lang::get('message.can-not-generate-invoice')];
+            $result = ['fails' => \trans('message.can-not-generate-invoice')];
         }
 
         return $result;

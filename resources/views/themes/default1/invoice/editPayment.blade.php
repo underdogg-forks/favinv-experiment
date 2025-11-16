@@ -4,7 +4,7 @@
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>  {{Lang::get('message.link-extra')}}</h1>
+        <h1>  {{trans('message.link-extra')}}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -60,7 +60,7 @@
                     <div id="error1"></div>
            
           
-            <h5>{{Lang::get('message.new-payment')}} </h5>
+            <h5>{{trans('message.new-payment')}} </h5>
 
         </div>
 
@@ -76,7 +76,7 @@
 
                         <div class="col-md-4 form-group {{ $errors->has('invoice_status') ? 'has-error' : '' }}">
                             <!-- first name -->
-                            {!! html()->label(Lang::get('message.date-of-payment'))->for('payment_date')->class('required') !!}
+                            {!! html()->label(trans('message.date-of-payment'))->for('payment_date')->class('required') !!}
                             <div class="input-group date" id="payment" data-target-input="nearest">
                                 <div class="input-wrapper">
                                     <input type="text" id="payment_date" name="payment_date"
@@ -97,7 +97,7 @@
 
                         <div class="col-md-4 form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
                             <!-- last name -->
-                            {!! html()->label(Lang::get('message.payment-method'))->for('payment_method')->class('required') !!}
+                            {!! html()->label(trans('message.payment-method'))->for('payment_method')->class('required') !!}
                             {!! html()->select('payment_method', [
                                 '' => __('message.choose'),
                                'cash' => 'Cash',
@@ -115,7 +115,7 @@
                         
                         <div class="col-md-4 form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
                             <!-- first name -->
-                            {!! html()->label(Lang::get('message.extra-amount'))->for('amount')->class('required') !!}
+                            {!! html()->label(trans('message.extra-amount'))->for('amount')->class('required') !!}
                             {!! html()->text('amount', $amountReceived)
                                 ->class('form-control')
                                 ->id('amount')
@@ -127,7 +127,7 @@
 
 
                     </div>
-                    <button type="submit" class="form-group btn btn-primary pull-right" onclick="multiplePayment()" id="submit"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary pull-right" onclick="multiplePayment()" id="submit"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
 
@@ -143,7 +143,7 @@
        
                         <div class="card-body">
                             @if(count($invoices)!=0)
-                          <h4>{{Lang::get('message.link')}}</h4>
+                          <h4>{{trans('message.link')}}</h4>
                         <div class="row">
                           
                             <div class="col-md-12">
@@ -151,11 +151,11 @@
                                     <thead>
                                         <tr>
                                           <th></th>
-                                            <th>{{Lang::get('message.date')}}</th>
-                                            <th>{{Lang::get('message.invoice_number')}}</th>
-                                            <th>{{Lang::get('message.total')}}</th>
+                                            <th>{{trans('message.date')}}</th>
+                                            <th>{{trans('message.invoice_number')}}</th>
+                                            <th>{{trans('message.total')}}</th>
                                             <th>{{ __('message.invoice_due') }}</th>
-                                            <th>{{Lang::get('message.pay')}}</th>
+                                            <th>{{trans('message.pay')}}</th>
                                             
                                            
                                         </tr>

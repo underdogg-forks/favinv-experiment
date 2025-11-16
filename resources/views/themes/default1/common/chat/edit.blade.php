@@ -36,7 +36,7 @@
 
                     <div class="col-md-12 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                        {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                         {!! html()->text('name')->class('form-control'. ($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -80,7 +80,7 @@
 
                     </div>
                     <div class="col-md-12 form-group ">
-                        {!! html()->label(Lang::get('message.content'), 'data')->class('required') !!}
+                        {!! html()->label(trans('message.content'), 'data')->class('required') !!}
 
 
     <span class="tooltip-icon" style="color: #007bff;" data-toggle="tooltip" data-placement="top" title="{{ trans('message.tooltip_js_code') }}">

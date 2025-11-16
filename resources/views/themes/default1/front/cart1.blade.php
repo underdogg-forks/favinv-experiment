@@ -38,14 +38,14 @@ if (count($attributes) > 0) {
         @if(Session::has('success'))
         <div class="alert alert-success alert-dismissible">
             <button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button>
-            {{Session::get('success')}}
+            {{session('success')}}
         </div>
         @endif
         <!-- fail message -->
         @if(Session::has('fails'))
         <div class="alert alert-danger alert-dismissible">
             <button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button>
-            {{Session::get('fails')}}
+            {{session('fails')}}
         </div>
         @endif
         
@@ -175,7 +175,7 @@ if (count($attributes) > 0) {
                                 {!! html()->form('POST', url('pricing/update'))->open() !!}
                                 <div class="form-group col-md-8">
 
-                                    <label for="coupon"><b>{{Lang::get('message.coupon-code')}}</b></label>
+                                    <label for="coupon"><b>{{trans('message.coupon-code')}}</b></label>
                                     <input type="text" name="coupon" class="form-control">
 
                                 </div>

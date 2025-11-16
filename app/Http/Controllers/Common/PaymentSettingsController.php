@@ -54,7 +54,7 @@ class PaymentSettingsController extends Controller
                                                        <p>Are you Sure ?</p>
 
                                                         <div class=modal-footer justify-content-between>
-                                                            <button type=button class='btn btn-default pull-left' data-dismiss=modal id=dismis>".\Lang::get('lang.close').'</button>
+                                                            <button type=button class='btn btn-default pull-left' data-dismiss=modal id=dismis>".\trans('lang.close').'</button>
                                                             <form method="delete" action='.url('plugin/delete/'.$model['name']).'>'.'<input type="hidden" name="_token" value='.\Session::token().'>'.'
                                     <button type="submit" class="btn btn-danger">Delete</button></form>
                                                             
@@ -350,7 +350,7 @@ class PaymentSettingsController extends Controller
             file_put_contents($app, implode("\n", $lines));
             $plugs->create(['name' => $name, 'path' => $name, 'status' => 1]);
 
-            return successResponse(\Lang::get('message.status_change'));
+            return successResponse(\trans('message.status_change'));
         }
         if ($status) {
             $plug->status = 1;
@@ -363,6 +363,6 @@ class PaymentSettingsController extends Controller
         }
         $plug->save();
 
-        return successResponse(\Lang::get('message.status_change'));
+        return successResponse(\trans('message.status_change'));
     }
 }

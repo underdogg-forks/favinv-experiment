@@ -31,7 +31,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- name -->
-                        {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                        {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                         {!! html()->text('name')->class('form-control'.($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -42,7 +42,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('publish') ? 'has-error' : '' }}">
                         <!-- publish -->
-                        {!! html()->label(Lang::get('message.publish'), 'publish')->class('required') !!}
+                        {!! html()->label(trans('message.publish'), 'publish')->class('required') !!}
                         {!! html()->select('publish')->options([1 => 'Yes', 0 => 'No'])->class('form-control'.($errors->has('publish') ? ' is-invalid' : '')) !!}
                         @error('publish')
                         <span class="error-message"> {{$message}}</span>
@@ -53,7 +53,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
                         <!-- slug -->
-                        {!! html()->label(Lang::get('message.slug'), 'slug')->class('required') !!}
+                        {!! html()->label(trans('message.slug'), 'slug')->class('required') !!}
                         {!! html()->text('slug')->class('form-control'.($errors->has('slug') ? ' is-invalid' : ''))->id('slug') !!}
                         @error('slug')
                         <span class="error-message"> {{$message}}</span>
@@ -68,7 +68,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('url') ? 'has-error' : '' }}">
                         <!-- url -->
-                        {!! html()->label(Lang::get('message.url'), 'url')->class('required') !!}
+                        {!! html()->label(trans('message.url'), 'url')->class('required') !!}
                         {!! html()->text('url')->class('form-control'.($errors->has('url') ? ' is-invalid' : ''))->id('url')->placeholder('https://example.com') !!}
                         @error('url')
                         <span class="error-message"> {{$message}}</span>
@@ -79,7 +79,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- parent_page_id -->
-                        {!! html()->label(Lang::get('message.parent-page'), 'parent_page_id') !!}
+                        {!! html()->label(trans('message.parent-page'), 'parent_page_id') !!}
                         <select name="parent_page_id"  class="form-control {{$errors->has('') ? ' is-invalid' : ''}}">
                             <option value="0">{{ __('message.choose')}}</option>
                             @foreach($parents as $key=>$parent)
@@ -95,7 +95,7 @@
 
                      <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- type -->
-                         {!! html()->label(Lang::get('message.page_type'), 'type') !!}
+                         {!! html()->label(trans('message.page_type'), 'type') !!}
                          {!! html()->select('type', ['none' => 'None', 'contactus' => 'Contact Us'])->class('form-control'.($errors->has('type') ? ' is-invalid' : '')) !!}
 
                      </div>
@@ -104,7 +104,7 @@
                          ?>
                        <div class="col-md-6 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- default_page_id -->
-                           {!! html()->label(Lang::get('message.default-page'), 'default_page_id')->class('required') !!}
+                           {!! html()->label(trans('message.default-page'), 'default_page_id')->class('required') !!}
                                    <select name="default_page_id"  class="form-control {{$errors->has('default_page_id') ? ' is-invalid' : ''}}" >
                                      <option value="">{{ __('message.my_invoices')}}</option>
                          @foreach($defaults as $key=>$value)
@@ -118,7 +118,7 @@
                     </div>
                     <div class="col-md-6 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- publish_date -->
-                        {!! html()->label(Lang::get('message.publish-date'), 'publish_date')->class('required') !!}
+                        {!! html()->label(trans('message.publish-date'), 'publish_date')->class('required') !!}
 
                         <div class="input-group date" id="publishing_date" data-target-input="nearest">
                         <input type="text" name="created_at" value="{{$publishingDate}}" class="form-control datetimepicker-input {{$errors->has('created_at') ? ' is-invalid' : ''}}" autocomplete="off"  data-target="#publishing_date" id="created_at"/>
@@ -177,7 +177,7 @@
                         </script>
 
 
-                        {!! html()->label(Lang::get('message.content'), 'content')->class('required') !!}
+                        {!! html()->label(trans('message.content'), 'content')->class('required') !!}
                         {!! html()->textarea('content')->class('form-control'.($errors->has('content') ? ' is-invalid' : ''))->id('textarea') !!}
                         @error('content')
                         <span class="error-message"> {{$message}}</span>
@@ -192,7 +192,7 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fa fa-sync-alt">&nbsp;</i>&nbsp;{!!Lang::get('message.update')!!}</button>
+        <button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fa fa-sync-alt">&nbsp;</i>&nbsp;{!!trans('message.update')!!}</button>
     </div>
 
 </div>

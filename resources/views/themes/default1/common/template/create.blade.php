@@ -28,20 +28,20 @@
         @if(Session::has('success'))
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{Session::get('success')}}
+            {{session('success')}}
         </div>
         @endif
         <!-- fail message -->
         @if(Session::has('fails'))
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
-            <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.failed')}}.
+            <b>{{trans('message.alert')}}!</b> {{trans('message.failed')}}.
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{Session::get('fails')}}
+            {{session('fails')}}
         </div>
         @endif
             {!! html()->form('POST', url('template'))->open() !!}
-            <h4>{{Lang::get('message.template')}}	<button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button></h4>
+            <h4>{{trans('message.template')}}	<button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
 
     </div>
 
@@ -55,21 +55,21 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.name'))->class('required') !!}
+                        {!! html()->label(trans('message.name'))->class('required') !!}
                         {!! html()->text('name')->class('form-control') !!}
 
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.template-types'))->class('required') !!}
+                        {!! html()->label(trans('message.template-types'))->class('required') !!}
                         {!! html()->select('type', ['' => __('message.Select'), 'Type' => $type])->class('form-control') !!}
 
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('url') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.url')) !!}
+                        {!! html()->label(trans('message.url')) !!}
                         {!! html()->text('url', $cartUrl)->class('form-control') !!}
 
                     </div>
@@ -109,7 +109,7 @@
                       });
                         </script>
 
-                        {!! html()->label(Lang::get('message.content'))->class('required') !!}
+                        {!! html()->label(trans('message.content'))->class('required') !!}
                         {!! html()->textarea('data')->class('form-control')->id('textarea') !!}
 
                     </div>

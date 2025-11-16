@@ -151,14 +151,14 @@ class RegisterController extends Controller
             if ($emailValidationStatus) {
                 $emailVerifier = $this->emailVerification($request->input('email'));
                 if (! $emailVerifier) {
-                    return errorResponse(\Lang::get('message.email_provided_wrong'));
+                    return errorResponse(\trans('message.email_provided_wrong'));
                 }
             }
 
             if ($mobileValidationStatus) {
                 $mobileVerifier = $this->phoneVerification($request->input('mobile_code').$request->input('mobile'));
                 if (! $mobileVerifier) {
-                    return errorResponse(\Lang::get('message.mobile_provided_wrong'));
+                    return errorResponse(\trans('message.mobile_provided_wrong'));
                 }
             }
 

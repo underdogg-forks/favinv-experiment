@@ -116,7 +116,7 @@
                             ?>
                         <div class="col-md-4 form-group {{ $errors->has('group') ? 'has-error' : '' }}">
                             <!-- last name -->
-                            {!! html()->label(Lang::get('message.group'), 'group')->class('required') !!}
+                            {!! html()->label(trans('message.group'), 'group')->class('required') !!}
                             <select name="group"  class="form-control {{$errors->has('group') ? ' is-invalid' : ''}}" id="groups">
                                 <option value="">{{ __('message.choose') }}</option>
                                 @foreach($groups as $key=>$group)
@@ -140,7 +140,7 @@
 
                         <div class="col-md-6 form-group {{ $errors->has('description') ? 'has-error' : '' }}">
 
-                            {!! html()->label(Lang::get('message.price_description'), 'description')->class('required') !!}
+                            {!! html()->label(trans('message.price_description'), 'description')->class('required') !!}
                             <!-- {!! html()->text('description')->class('form-control'.($errors->has('description') ? ' is-invalid' : ''))->id('textarea1') !!}-->
                             <textarea hidden class="form-control"  name="description" id='textarea1'>{!! $product->description !!}</textarea>
 
@@ -253,7 +253,7 @@
                                         <!-- last name -->
                                         {!! html()->label(trans('message.require_domain'), 'require_domain') !!}
                                         {!! html()->hidden('require_domain', 0) !!}
-                                        <p>{!! html()->checkbox('require_domain', null ,1) !!} {{Lang::get('message.tick-to-show-domain-registration-options')}}</p>
+                                        <p>{!! html()->checkbox('require_domain', null ,1) !!} {{trans('message.tick-to-show-domain-registration-options')}}</p>
 
                                     </div>
                                 </li>
@@ -283,8 +283,8 @@
                                                     $value1=1;
                                                 }
                                                 ?>
-                                            <p>{!! html()->checkbox('hidden', $value, 1) !!}  {{Lang::get('message.tick-to-hide-from-order-form')}}</p>
-                                            <p>{!! html()->checkbox('invoice_hidden', $value1 ,1) !!}  {{Lang::get('message.tick-to-hide-from-invoice')}}</p>
+                                            <p>{!! html()->checkbox('hidden', $value, 1) !!}  {{trans('message.tick-to-hide-from-order-form')}}</p>
+                                            <p>{!! html()->checkbox('invoice_hidden', $value1 ,1) !!}  {{trans('message.tick-to-hide-from-invoice')}}</p>
                                         </div>
 
                                     </div>
@@ -302,7 +302,7 @@
                                                     $value = 'true';
                                                 }
                                                 ?>
-                                            <p>{!! html()->checkbox('highlight', $value) !!}  {{Lang::get('message.tick-to-highlight-product')}}</p>
+                                            <p>{!! html()->checkbox('highlight', $value) !!}  {{trans('message.tick-to-highlight-product')}}</p>
 
                                         </div>
 
@@ -322,7 +322,7 @@
                                                     $value = 'true';
                                                 }
                                                 ?>
-                                            <p>{!! html()->checkbox('add_to_contact', $value, 1) !!} {{Lang::get('message.tick-to-add_to_contact-product')}}</p>
+                                            <p>{!! html()->checkbox('add_to_contact', $value, 1) !!} {{trans('message.tick-to-add_to_contact-product')}}</p>
 
                                         </div>
 
@@ -335,7 +335,7 @@
                     <div class="row">
 
                         <div class="col-md-12 form-group {{ $errors->has('product_description') ? 'has-error' : '' }}">
-                            {!! html()->label(Lang::get('message.product_description'))->class('required') !!}
+                            {!! html()->label(trans('message.product_description'))->class('required') !!}
                             {!! html()->textarea('product_description', $product->product_description)->class('form-control'.($errors->has('product_description') ? ' is-invalid' : ''))->id('product-description') !!}
                             <div class="input-group-append"></div>
                             @error('product_description')
@@ -365,7 +365,7 @@
 
                                     <br/>
                                     <div class="col-md-10" id="allowmulagent" style="display:none">
-                                        <p>{!! html()->checkbox('can_modify_agent', $canModifyAgent)->id('agent_multiple_quantity') !!} {{Lang::get('message.allow_multiple_agents_quantity')}} </p>
+                                        <p>{!! html()->checkbox('can_modify_agent', $canModifyAgent)->id('agent_multiple_quantity') !!} {{trans('message.allow_multiple_agents_quantity')}} </p>
                                     </div>
 
                                 </td>
@@ -381,7 +381,7 @@
                                 </div>
                                 <br/>
                                 <div class="col-md-10" id="allowmulproduct" style="display:none">
-                                    <p>{!! html()->checkbox('can_modify_quantity', $canModifyQuantity)->id('product_multiple_quantity') !!}  {{Lang::get('message.allow_multiple_product_quantity')}} </p>
+                                    <p>{!! html()->checkbox('can_modify_quantity', $canModifyQuantity)->id('product_multiple_quantity') !!}  {{trans('message.allow_multiple_product_quantity')}} </p>
                                 </div>
 
                             </td>
@@ -454,7 +454,7 @@
 
 
             </div>
-            <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fas fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+            <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fas fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
             {!! html()->form()->close() !!}
 
@@ -479,7 +479,7 @@
                     <h3 class="card-title">{{ __('message.upload_files') }}</h3>
 
                     <div class="card-tools">
-                        <a href="#create-upload-option" id="create" class="btn btn-default  btn-sm pull-right" data-toggle="modal" data-target="#create-upload-option"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{Lang::get('message.add-file')}}</a>
+                        <a href="#create-upload-option" id="create" class="btn btn-default  btn-sm pull-right" data-toggle="modal" data-target="#create-upload-option"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{trans('message.add-file')}}</a>
                         @include('themes.default1.product.product.create-upload-option')
 
                     </div>
@@ -491,7 +491,7 @@
                     <div class="row" >
                         <div class="col-md-12" >
                             <table id="upload-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
-                                <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp; {{Lang::get('message.delmultiple')}}</button><br /><br />
+                                <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp; {{trans('message.delmultiple')}}</button><br /><br />
                                 <thead><tr>
                                     <th class="no-sort"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
                                     <th>{{ __('message.title') }}</th>
@@ -575,10 +575,10 @@
             });
             if(id.length<=0){
                 swal.fire({
-                    title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                    title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                     html: "<div class='swal2-html-container custom-content'>" +
                         "<div class='section-sa'>" +
-                        "<p>{{Lang::get('message.sweet_file')}}</p>" + "</div>" +
+                        "<p>{{trans('message.sweet_file')}}</p>" + "</div>" +
                         "</div>",
                     position: 'top',
                     confirmButtonText: "{{ __('message.ok') }}",
@@ -589,10 +589,10 @@
             }
             else {
                 var swl = swal.fire({
-                    title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                    title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                     html: "<div class='swal2-html-container custom-content'>" +
                         "<div class='section-sa'>" +
-                        "<p>{{Lang::get('message.file_delete')}}</p>" + "</div>" +
+                        "<p>{{trans('message.file_delete')}}</p>" + "</div>" +
                         "</div>",
                     showCancelButton: true,
                     showCloseButton: true,
@@ -633,10 +633,10 @@
                             })
                         } else {
                             swal.fire({
-                                title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                                title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                                 html: "<div class='swal2-html-container custom-content'>" +
                                     "<div class='section-sa'>" +
-                                    "<p>{{Lang::get('message.sweet_file')}}</p>" + "</div>" +
+                                    "<p>{{trans('message.sweet_file')}}</p>" + "</div>" +
                                     "</div>",
                                 position: 'top',
                                 confirmButtonText: "{{ __('message.ok') }}",

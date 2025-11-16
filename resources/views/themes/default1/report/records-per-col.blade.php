@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    {!! html()->label(Lang::get('message.records_per_export'), 'records')->class('required') !!}
+                    {!! html()->label(trans('message.records_per_export'), 'records')->class('required') !!}
                     <i class="fas fa-question-circle" data-toggle="tooltip" title="{{ __('message.report_limit') }}"></i>
 
                     {!! html()->select('records', [
@@ -53,7 +53,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i> {!! Lang::get('message.save') !!}
+                        <i class="fa fa-save"></i> {!! trans('message.save') !!}
                     </button>
                 </div>
             </div>

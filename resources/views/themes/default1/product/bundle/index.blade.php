@@ -7,8 +7,8 @@
 
     <div class="card-header">
 
-        <h4>{{Lang::get('message.bundles')}}
-        <a href="{{url('bundles/create')}}" class="btn btn-primary pull-right   ">{{Lang::get('message.create')}}</a></h4>
+        <h4>{{trans('message.bundles')}}
+        <a href="{{url('bundles/create')}}" class="btn btn-primary pull-right   ">{{trans('message.create')}}</a></h4>
     </div>
 
     @if (count($errors) > 0)
@@ -25,18 +25,18 @@
     @if(Session::has('success'))
     <div class="alert alert-success alert-dismissable">
         <i class="fa fa-ban"></i>
-        <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.success')}}.
+        <b>{{trans('message.alert')}}!</b> {{trans('message.success')}}.
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{Session::get('success')}}
+        {{session('success')}}
     </div>
     @endif
     <!-- fail message -->
     @if(Session::has('fails'))
     <div class="alert alert-danger alert-dismissable">
         <i class="fa fa-ban"></i>
-        <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.failed')}}.
+        <b>{{trans('message.alert')}}!</b> {{trans('message.failed')}}.
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{Session::get('fails')}}
+        {{session('fails')}}
     </div>
     @endif
     <div id="response"></div>

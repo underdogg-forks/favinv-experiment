@@ -33,11 +33,11 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.name'))->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.name'))->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 
-                                <p><i> {{Lang::get('message.enter-the-name-of-the-social-media')}}</i> </p>
+                                <p><i> {{trans('message.enter-the-name-of-the-social-media')}}</i> </p>
 
                                 {!! html()->text('name')->class('form-control'. ($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
 
@@ -53,10 +53,10 @@
                    
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.link'))->for('link')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.link'))->for('link')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('link') ? 'has-error' : '' }}">
-                                <p><i> {{Lang::get('message.enter-the-link-of-the-social-media')}}</i> </p>
+                                <p><i> {{trans('message.enter-the-link-of-the-social-media')}}</i> </p>
                                 {!! html()->text('link')->class('form-control'. ($errors->has('link') ? ' is-invalid' : ''))->id('link')->placeholder('https://example.com') !!}
 
                                 <div class="input-group-append">
@@ -74,7 +74,7 @@
                     {!! html()->form()->close() !!}
 
                 </table>
-                <button type="submit" class="btn btn-primary pull-right" style="margin-top:-40px;"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" style="margin-top:-40px;"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
 

@@ -23,7 +23,7 @@
         @include('themes.default1.product.plan.create')
         <h3 class="card-title">{{ __('message.plans') }}</h3>
         <div class="card-tools">
-            <a href="#create-plan-option" data-toggle="modal" data-target="#create-plan-option" class="btn btn-default btn-sm pull-right"><span class="fa fa-plus"></span>&nbsp;{{Lang::get('message.create')}}</a></h4>
+            <a href="#create-plan-option" data-toggle="modal" data-target="#create-plan-option" class="btn btn-default btn-sm pull-right"><span class="fa fa-plus"></span>&nbsp;{{trans('message.create')}}</a></h4>
 
 
         </div>
@@ -161,10 +161,10 @@
          });
          if(id.length<=0){
              swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.sweet_plan')}}</p>" + "</div>" +
+                     "<p>{{trans('message.sweet_plan')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
                  confirmButtonText: "{{ __('message.ok') }}",
@@ -174,10 +174,10 @@
              })
          }else {
              var swl = swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.plan_delete')}}</p>" + "</div>" +
+                     "<p>{{trans('message.plan_delete')}}</p>" + "</div>" +
                      "</div>",
                  showCancelButton: true,
                  showCloseButton: true,
@@ -209,10 +209,10 @@
                          })
                      } else {
                          swal.fire({
-                             title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                             title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                              html: "<div class='swal2-html-container custom-content'>" +
                                  "<div class='section-sa'>" +
-                                 "<p>{{Lang::get('message.sweet_plan')}}</p>" + "</div>" +
+                                 "<p>{{trans('message.sweet_plan')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
                              confirmButtonText: "{{ __('message.ok') }}",

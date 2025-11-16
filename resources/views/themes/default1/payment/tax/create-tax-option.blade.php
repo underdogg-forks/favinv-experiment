@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="defaultModalLabel">{{Lang::get('message.create-tax-class')}}</h4>
+                <h4 class="modal-title" id="defaultModalLabel">{{trans('message.create-tax-class')}}</h4>
                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
             </div>
 
@@ -28,7 +28,7 @@
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     <!-- Tax Type -->
-                    {!! html()->label(Lang::get('message.tax-type'))->for('name')->class('required') !!}
+                    {!! html()->label(trans('message.tax-type'))->for('name')->class('required') !!}
                     <select name="name" id="gst" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
                         <option value="Others">{{ __('message.others') }}</option>
                         <option value="Intra State GST">Intra State GST (Same Indian State)</option>
@@ -42,7 +42,7 @@
 
                 <div class="form-group {{ $errors->has('tax-name') ? 'has-error' : '' }}">
                     <!-- Tax Name -->
-                    {{ html()->label(Lang::get('message.tax_name'))->class('required')->for('tax-name') }}
+                    {{ html()->label(trans('message.tax_name'))->class('required')->for('tax-name') }}
                     {{ html()->text('tax-name')->class('form-control' . ($errors->has('tax-name') ? ' is-invalid' : ''))->id('taxname') }}
                     @error('tax-name')
                     <span class="error-message">{{ $message }}</span>
@@ -51,19 +51,19 @@
                 </div>
 
                 <div class="form-group">
-                    {{ html()->label(Lang::get('message.status'))->for('status') }}
+                    {{ html()->label(trans('message.status'))->for('status') }}
                 </div>
 
                 <div class="row">
                     <div class="col-md-4 form-group {{ $errors->has('active') ? 'has-error' : '' }}">
                         <!-- Active -->
-                        {{ html()->label(Lang::get('message.active'))->for('active') }}
+                        {{ html()->label(trans('message.active'))->for('active') }}
                         {{ html()->radio('active', 1, true) }}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('active') ? 'has-error' : '' }}">
                         <!-- Inactive -->
-                        {{ html()->label(Lang::get('message.inactive'))->for('inactive') }}
+                        {{ html()->label(trans('message.inactive'))->for('inactive') }}
                         {{ html()->radio('active', 0) }}
                     </div>
                     @error('active')
@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group {{ $errors->has('country') ? 'has-error' : '' }}">
                     <!-- Country -->
-                    {{ html()->label(Lang::get('message.country'))->for('countryvisible') }}
+                    {{ html()->label(trans('message.country'))->for('countryvisible') }}
                     <br>
                     {{ html()->select('country', ['' =>  __('message.all_countries')] + $countries)
                         ->class('form-control select2' . ($errors->has('country') ? ' is-invalid' : ''))
@@ -88,7 +88,7 @@
 
                 <div class="form-group showwhengst {{ $errors->has('state') ? 'has-error' : '' }}" style="display:block">
                     <!-- State -->
-                    {{ html()->label(Lang::get('message.state'))->for('state') }}
+                    {{ html()->label(trans('message.state'))->for('state') }}
                     {{ html()->select('state', ['' => __('message.all_states')])
                         ->class('form-control' . ($errors->has('state') ? ' is-invalid' : ''))
                         ->id('statess') }}
@@ -99,7 +99,7 @@
 
                 <div class="form-group showwhengst {{ $errors->has('rate') ? 'has-error' : '' }}" style="display:block">
                     <!-- Tax Rate -->
-                    {{ html()->label(Lang::get('message.rate') . ' (%)')->for('rate')->class('required') }}
+                    {{ html()->label(trans('message.rate') . ' (%)')->for('rate')->class('required') }}
                     {{ html()->number('rate')->class('form-control' . ($errors->has('rate') ? ' is-invalid' : ''))->id('rate') }}
                     @error('rate')
                     <span class="error-message">{{ $message }}</span>

@@ -12,7 +12,7 @@
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                     <!-- name -->
                     {!! html()->hidden('tax_classes_id', $key) !!}
-                    {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                    {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                     <!-- {!! html()->text('name')->class('form-control') !!} -->
                      <select name="name" class="form-control">
                       <option>{{ __('message.caps_others') }}</option>
@@ -24,25 +24,25 @@
                 </div>
                 <div class="form-group {{ $errors->has('level') ? 'has-error' : '' }}">
                     <!-- name -->
-                    {!! html()->label(Lang::get('message.level'))->for('level')->class('required') !!}
+                    {!! html()->label(trans('message.level'))->for('level')->class('required') !!}
                     {!! html()->text('level')->class('form-control'. ($errors->has('level') ? ' is-invalid' : '')) !!}
 
                 </div>
                 <div class="form-group">
                     <!-- name -->
-                    {!! html()->label(Lang::get('message.status'))->for('status') !!}
+                    {!! html()->label(trans('message.status'))->for('status') !!}
 
                 </div>
                 <div class="row">
                     <div class="col-md-3 form-group {{ $errors->has('active') ? 'has-error' : '' }}">
                         <!-- name -->
-                        {!! html()->label(Lang::get('message.active'))->for('active') !!}
+                        {!! html()->label(trans('message.active'))->for('active') !!}
                         {!! html()->radio('active', 1)->checked() !!}
 
                     </div>
                     <div class="col-md-3 form-group {{ $errors->has('active') ? 'has-error' : '' }}">
                         <!-- name -->
-                        {!! html()->label(Lang::get('message.inactive'))->for('inactive') !!}
+                        {!! html()->label(trans('message.inactive'))->for('inactive') !!}
                         {!! html()->radio('active', 0) !!}
 
                     </div>
@@ -50,14 +50,14 @@
                 
                 <div class="form-group {{ $errors->has('country') ? 'has-error' : '' }}">
                     <!-- name -->
-                    {!! html()->label(Lang::get('message.country'))->for('country') !!}
+                    {!! html()->label(trans('message.country'))->for('country') !!}
                     <?php $countries = \App\Model\Common\Country::pluck('country_name', 'country_code_char2')->toArray(); ?>
                     {!! html()->select('country', ['' => __('message.select_a_country'), 'Countries' => $countries])->class('form-control'. ($errors->has('country') ? ' is-invalid' : ''))->attribute('onChange', 'getState(this.value);') !!}
 
                 </div>
                  <div class="form-group {{ $errors->has('state') ? 'has-error' : '' }}">
                     <!-- name -->
-                     {!! html()->label(Lang::get('message.state'))->for('state') !!}
+                     {!! html()->label(trans('message.state'))->for('state') !!}
 
                     <select name="state"  class="form-control {{$errors->has('state') ? ' is-invalid' : ''}}" id="statess">
                         <option name="state">{{ __('message.error_select_country') }}</option>
@@ -67,7 +67,7 @@
 
                 <div class="form-group {{ $errors->has('rate') ? 'has-error' : '' }}">
                     <!-- name -->
-                    {!! html()->label(Lang::get('message.rate') . ' (%)')->for('rate')->class('required') !!}
+                    {!! html()->label(trans('message.rate') . ' (%)')->for('rate')->class('required') !!}
                     {!! html()->text('rate')->class('form-control'. ($errors->has('rate') ? ' is-invalid' : '')) !!}
 
                 </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close') }}</button>
-                <input type="submit" class="btn btn-primary" value="{{Lang::get('message.save')}}">
+                <input type="submit" class="btn btn-primary" value="{{trans('message.save')}}">
             </div>
             {!! html()->form()->close() !!}
             <!-- /Form -->

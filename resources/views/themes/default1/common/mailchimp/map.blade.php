@@ -84,7 +84,7 @@ input:checked + .slider:before {
         <div class="card card-secondary card-outline">
 
             <div class="card-header">
-                <h3 class="card-title">{{Lang::get('message.list-fields')}}</h3>
+                <h3 class="card-title">{{trans('message.list-fields')}}</h3>
                 {!! html()->modelForm($model, 'PATCH', url('mail-chimp/mapping'))
     ->attribute('enctype', 'multipart/form-data')->open() !!}
 
@@ -109,7 +109,7 @@ input:checked + .slider:before {
                         </tr>
                     @endforeach
                 </table>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" ><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" ><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
                 {!! html()->closeModelForm() !!}
 
@@ -133,7 +133,7 @@ input:checked + .slider:before {
 
                    <div id="alertMessage"></div>
                 <div class="card-header">
-                    <h3 class="card-title" >{{Lang::get('message.group-fields')}}</h3><br>
+                    <h3 class="card-title" >{{trans('message.group-fields')}}</h3><br>
 {{--                    <h4>Map Products</h4>--}}
             <div class="form-group">
             <span style="color:red;">*&nbsp {{ __('message.map_mailchimp_products') }} </span>
@@ -162,9 +162,9 @@ input:checked + .slider:before {
             </select>
                 <table class="table table-hover">
                     <tr>
-                        <th>{{Lang::get('message.products')}}</th>
-                        <th>{{Lang::get('message.mapped_with')}}</th>
-                        <th>{{Lang::get('message.mailchimp-product')}}</th>
+                        <th>{{trans('message.products')}}</th>
+                        <th>{{trans('message.mapped_with')}}</th>
+                        <th>{{trans('message.mailchimp-product')}}</th>
                     </tr>
 
                     <tr>
@@ -454,7 +454,7 @@ input:checked + .slider:before {
                     </tr>
 
                  </table>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" ><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" ><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
                 {!! html()->closeModelForm() !!}
 
@@ -511,7 +511,7 @@ input:checked + .slider:before {
 
 
                  <br>
-                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i>  {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i>  {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
                  {!! html()->closeModelForm() !!}
 
             </div>

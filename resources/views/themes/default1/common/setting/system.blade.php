@@ -103,7 +103,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.company-name'), 'company')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.company-name'), 'company')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('company') ? 'has-error' : '' }}">
 
@@ -123,7 +123,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.company-email'), 'company_email')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.company-email'), 'company_email')->class('required') !!}</b></td>
 
                         <td>
                             <div class="form-group {{ $errors->has('company_email') ? 'has-error' : '' }}">
@@ -144,7 +144,7 @@
                     </tr>
                       <tr>
 
-                          <td><b>{!! html()->label(Lang::get('message.app-title'), 'title') !!}</b></td>
+                          <td><b>{!! html()->label(trans('message.app-title'), 'title') !!}</b></td>
                           <td>
                             <div class="form-group {{ $errors->has('company') ? 'has-error' : '' }}">
 
@@ -160,7 +160,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.website'), 'website')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.website'), 'website')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('website') ? 'has-error' : '' }}">
 
@@ -177,7 +177,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.phone'), 'phone')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.phone'), 'phone')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
 
@@ -201,7 +201,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.address'), 'address')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.address'), 'address')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
 
@@ -217,7 +217,7 @@
                     </tr>
                      <tr>
 
-                         <td><b>{!! html()->label(Lang::get('message.city'), 'City') !!}</b></td>
+                         <td><b>{!! html()->label(trans('message.city'), 'City') !!}</b></td>
                          <td>
                             <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
 
@@ -253,7 +253,7 @@
                     <tr>
 
                         <td><b>{!! html()->label( __('message.knowledge_base_url'), 'knowledge_base_url') !!}</b></td>
-                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{Lang::get('message.url_tooltip')}}"></i>
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{trans('message.url_tooltip')}}"></i>
                         <td>
                             <div class="form-group {{ $errors->has('knowledge_base_url') ? 'has-error' : '' }}">
 
@@ -295,13 +295,13 @@
             
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.country'), 'country')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.country'), 'country')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
 
 
                                 <!-- {!! html()->text('country')->class('form-control') !!} -->
-                                <!-- <p><i> {{Lang::get('message.country')}}</i> </p> -->
+                                <!-- <p><i> {{trans('message.country')}}</i> </p> -->
                                   <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
 
                       <select name="country" value= "Choose" id="country" onChange="getCountryAttr(this.value)" class="form-control selectpicker {{$errors->has('country') ? ' is-invalid' : ''}}" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false" data-size="10">
@@ -329,7 +329,7 @@
 
                              <div class="form-group cin">
                                   <td>
-                                      {!! html()->label(Lang::get('message.cin'), 'CIN No.') !!}
+                                      {!! html()->label(trans('message.cin'), 'CIN No.') !!}
                                   </td>
 
                                  <td>
@@ -346,7 +346,7 @@
                      <tr class="form-group ">
                               <div class="form-group gstin">
                                  <td>
-                                     {!! html()->label(Lang::get('message.gstin'), 'GSTIN') !!}
+                                     {!! html()->label(trans('message.gstin'), 'GSTIN') !!}
                                  </td>
 
                                  <td>
@@ -365,7 +365,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.state'), 'state')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.state'), 'state')->class('required') !!}</b></td>
                         <td>
                         <select name="state" id="state-list" class="form-control {{$errors->has('state') ? ' is-invalid' : ''}}">
                                 @if($set->state)
@@ -385,7 +385,7 @@
                     <br>
                         <tr>
 
-                            <td><b>{!! html()->label(Lang::get('message.default-currency'), 'default_currency')->class('required') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.default-currency'), 'default_currency')->class('required') !!}</b></td>
                             <td>
                              <?php $currencies = \App\Model\Payment\Currency::where('status',1)->pluck('name','code')->toArray(); 
                              ?>
@@ -406,7 +406,7 @@
                     <br>
                       <tr>
 
-                          <td><b>{!! html()->label(Lang::get('message.admin-logo'), 'logo') !!}</b></td>
+                          <td><b>{!! html()->label(trans('message.admin-logo'), 'logo') !!}</b></td>
                           <td>
                             <div class="form-group {{ $errors->has('admin-logo') ? 'has-error' : '' }}">
                                    {{ __('message.upload_application_logo') }}
@@ -437,7 +437,7 @@
 
                      <tr>
 
-                         <td><b>{!! html()->label(Lang::get('message.fav-icon'), 'icon') !!}</b></td
+                         <td><b>{!! html()->label(trans('message.fav-icon'), 'icon') !!}</b></td
 
                          <td>
                             <div class="form-group {{ $errors->has('fav-icon') ? 'has-error' : '' }}">
@@ -466,7 +466,7 @@
 
                      <tr>
 
-                         <td><b>{!! html()->label(Lang::get('message.fav-title-admin'), 'favicon_title') !!}</b></td>
+                         <td><b>{!! html()->label(trans('message.fav-title-admin'), 'favicon_title') !!}</b></td>
                          <td>
                             <div class="form-group {{ $errors->has('favicon_title') ? 'has-error' : '' }}">
 
@@ -484,7 +484,7 @@
 
                      <tr>
 
-                         <td><b>{!! html()->label(Lang::get('message.fav-title-client'), 'favicon_title_client') !!}</b></td>
+                         <td><b>{!! html()->label(trans('message.fav-title-client'), 'favicon_title_client') !!}</b></td>
                          <td>
                             <div class="form-group {{ $errors->has('favicon_title_client') ? 'has-error' : '' }}">
 
@@ -503,7 +503,7 @@
 
                 <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.client-logo'), 'logo') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.client-logo'), 'logo') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
                                 {{ __('message.upload_company_logo') }}
@@ -534,7 +534,7 @@
                 </tr>
 
                 <tr>
-                    <td><b>{!! html()->label(Lang::get('message.auto_renewal'), 'company_email')!!}</b> <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{Lang::get('message.auto_renewal_tooltip')}}"></i>
+                    <td><b>{!! html()->label(trans('message.auto_renewal'), 'company_email')!!}</b> <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{trans('message.auto_renewal_tooltip')}}"></i>
                     </td>
 
                             <div class="form-group">
@@ -552,7 +552,7 @@
             </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit" name="submit" value="save" ><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary" id="submit" name="submit" value="save" ><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
 
@@ -945,7 +945,7 @@
         
 
         
-            if (confirm("{{Lang::get('message.confirm') }}")) 
+            if (confirm("{{trans('message.confirm') }}")) 
         {
                 $.ajax({
                

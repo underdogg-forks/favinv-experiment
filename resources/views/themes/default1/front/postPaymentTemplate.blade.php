@@ -56,7 +56,7 @@
                         <div class="text-center mt-4 mt-md-0">
                             <span><strong class="text-color-dark">
                                 {{ __('message.payment-method')}}</strong> <br>
-                                {{Session::get('payment_method')}}
+                                {{session('payment_method')}}
                             </span>
                         </div>
                         @if($downloadPermission['downloadPermission'] == 1 && !in_array($product->id,cloudPopupProducts()))

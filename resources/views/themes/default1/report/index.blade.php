@@ -28,7 +28,7 @@
             <div class="col-md-12">
                
                  <table id="reports-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
-                     <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;{{Lang::get('message.delmultiple')}}</button><br /><br />
+                     <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;{{trans('message.delmultiple')}}</button><br /><br />
                     <thead><tr>
                         <th class="no-sort" style="width:20px"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
                             <th>{{ __('message.file_name') }}</th>
@@ -131,10 +131,10 @@
           });
           if(id.length<=0){
               swal.fire({
-                  title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                  title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                   html: "<div class='swal2-html-container custom-content'>" +
                       "<div class='section-sa'>" +
-                      "<p>{{Lang::get('message.sweet_report')}}</p>" + "</div>" +
+                      "<p>{{trans('message.sweet_report')}}</p>" + "</div>" +
                       "</div>",
                   position: 'top',
                   confirmButtonText: "{{ __('message.ok') }}",
@@ -144,10 +144,10 @@
               })
           }else {
               var swl = swal.fire({
-                  title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                  title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                   html: "<div class='swal2-html-container custom-content'>" +
                       "<div class='section-sa'>" +
-                      "<p>{{Lang::get('message.report_delete')}}</p>" + "</div>" +
+                      "<p>{{trans('message.report_delete')}}</p>" + "</div>" +
                       "</div>",
                   showCancelButton: true,
                   showCloseButton: true,
@@ -180,10 +180,10 @@
                           })
                       } else {
                           swal.fire({
-                              title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                              title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                               html: "<div class='swal2-html-container custom-content'>" +
                                   "<div class='section-sa'>" +
-                                  "<p>{{Lang::get('message.sweet_report')}}</p>" + "</div>" +
+                                  "<p>{{trans('message.sweet_report')}}</p>" + "</div>" +
                                   "</div>",
                               position: 'top',
                               confirmButtonText: "{{ __('message.ok') }}",

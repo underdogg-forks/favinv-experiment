@@ -27,7 +27,7 @@
                 <div id="response">
 
                     </div>
-                      <button type="submit" class="form-group btn btn-primary pull-right"  id="submitButton"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                      <button type="submit" class="form-group btn btn-primary pull-right"  id="submitButton"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
                     <!-- {!! html()->submit('save')->class('btn btn-primary')->id('submitButton')->disabled() !!} -->
                     {!! html()->form()->close() !!}
              

@@ -63,7 +63,7 @@ class ResetPasswordController extends Controller
                 return view('themes.default1.front.auth.reset')
                     ->with(['reset_token' => $token, 'email' => $reset->email]);
             } else {
-                return redirect('login')->with('fails', \Lang::get('message.reset_link_expired'));
+                return redirect('login')->with('fails', \trans('message.reset_link_expired'));
             }
         } catch (\Exception $ex) {
             return redirect('login')->with('fails', $ex->getMessage());

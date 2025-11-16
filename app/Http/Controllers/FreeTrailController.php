@@ -59,7 +59,7 @@ class FreeTrailController extends Controller
         ]);
         try {
             if (! Auth::check()) {
-                return redirect('login')->back()->with('fails', \Lang::get('message.free-login'));
+                return redirect('login')->back()->with('fails', \trans('message.free-login'));
             }
 
             $userId = $request->get('id');

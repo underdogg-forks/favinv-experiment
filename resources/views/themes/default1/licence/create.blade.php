@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{Lang::get('message.create-license-type')}}</h4>
+                <h4 class="modal-title">{{trans('message.create-license-type')}}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('message.close') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,7 +11,7 @@
             <div class="modal-body">
                 
                 <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.license-type'), 'name')->class('required'.($errors->has('name') ? ' is-invalid' : '')) !!}
+                    {!! html()->label(trans('message.license-type'), 'name')->class('required'.($errors->has('name') ? ' is-invalid' : '')) !!}
                     <input type="text" name="name" class="form-control" id="name">
                     <div class="input-group-append">
                     </div>
@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                  <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

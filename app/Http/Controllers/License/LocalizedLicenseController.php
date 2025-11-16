@@ -149,14 +149,14 @@ class LocalizedLicenseController extends Controller
             $encrypt->generateKeys($orderNo);
             Order::where('number', $orderNo)->update(['license_mode' => 'File']);
 
-            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success', Lang::get('Private and Public Keys generated for this order number: '.$orderNo));
+            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success', trans('Private and Public Keys generated for this order number: '.$orderNo));
         } else {
             Order::where('number', $orderNo)->update(['license_mode' => 'Database']);
             Storage::disk('public')->delete('publicKey-'.$orderNo.'.txt');
             Storage::disk('public')->delete('privateKey-'.$orderNo.'.txt');
             Storage::disk('public')->delete('faveo-license-{'.$orderNo.'}.txt');
 
-            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success',Lang::get('Reverted back to database license mode' .$orderNo));
+            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success',trans('Reverted back to database license mode' .$orderNo));
         }
     }
 
@@ -284,7 +284,7 @@ class LocalizedLicenseController extends Controller
        $data=$encrypt->encrypt($fileName,$orderNo);
        Storage::disk('public')->put($fileName,$data);
        @fclose($handle);
-       return redirect()->back()->with('success', Lang::get('License data is updated'.$orderNo));
+       return redirect()->back()->with('success', trans('License data is updated'.$orderNo));
     }*/
 
     /**
@@ -294,7 +294,7 @@ class LocalizedLicenseController extends Controller
     {
         Storage::disk('public')->delete($fileName);
 
-        return redirect()->back()->with('success', Lang::get('message.license_file_deleted', ['file' => $fileName]));
+        return redirect()->back()->with('success', trans('message.license_file_deleted', ['file' => $fileName]));
     }
 
     //return an array with license data

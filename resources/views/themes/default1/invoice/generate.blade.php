@@ -50,8 +50,8 @@
                     </style>
 
                 <div class="col-sm-4 form-group">
-                    {!! html()->label(Lang::get('message.clients'))->class('required') !!}
-{{--                    {!! html()->select('user', [Lang::get('message.user') => $users])->multiple()->class("form-control select2". ($errors->has('user') ? ' is-invalid' : ''))->id('users')->attribute('name', 'user') !!}--}}
+                    {!! html()->label(trans('message.clients'))->class('required') !!}
+{{--                    {!! html()->select('user', [trans('message.user') => $users])->multiple()->class("form-control select2". ($errors->has('user') ? ' is-invalid' : ''))->id('users')->attribute('name', 'user') !!}--}}
                     <select name="user[]" id="users" class="form-control select2" multiple>
                         @if($user)
                             <option value="{{ $user->id }}" selected>
@@ -67,7 +67,7 @@
 {{--                @endif--}}
                 <div class="col-md-4 lg-4 form-group {{ $errors->has('invoice_status') ? 'has-error' : '' }}">
                             <!-- first name -->
-                    {!! html()->label(Lang::get('message.date'))->class('required') !!}
+                    {!! html()->label(trans('message.date'))->class('required') !!}
 
 
                          <div class="input-group date" id="invoice_date" data-target-input="nearest" >
@@ -85,7 +85,7 @@
                     </div>
 
                 <div class="col-md-4 lg-4 form-group">
-                    {!! html()->label(Lang::get('message.product'))->for('product')->class('required') !!}
+                    {!! html()->label(trans('message.product'))->for('product')->class('required') !!}
                      <select name="product" value= "Choose" id="product" class="form-control {{$errors->has('product') ? ' is-invalid' : ''}}">
                              <option value="">{{ __('message.choose') }}</option>
                            @foreach($products as $key=>$product)
@@ -104,7 +104,7 @@
                 <div id="fields1" class="col-md-4">
                 </div>
                 <div class="col-md-4 form-group">
-                    {!! html()->label(Lang::get('message.price'))->for('price')->class('required') !!}
+                    {!! html()->label(trans('message.price'))->for('price')->class('required') !!}
                     {!! html()->text('price')->class('form-control'. ($errors->has('price') ? ' is-invalid' : ''))->id('price') !!}
                     <span class="error-message" id="price-msg"></span>
                       <h6 id ="pricecheck"></h6>
@@ -126,7 +126,7 @@
 
             </div>
             <br>
-             <h4> <button name="generate" type="submit" id="generate" class="btn btn-primary pull-right" ><i class="fas fa-sync-alt">&nbsp;</i>{!!Lang::get('message.generate')!!}</button></h4>
+             <h4> <button name="generate" type="submit" id="generate" class="btn btn-primary pull-right" ><i class="fas fa-sync-alt">&nbsp;</i>{!!trans('message.generate')!!}</button></h4>
              
             {!! html()->form()->close() !!}
 

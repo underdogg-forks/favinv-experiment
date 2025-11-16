@@ -41,14 +41,14 @@ trait ApiKeySettings
             $response = json_decode($response);
             $token = $response->access_token;
         } catch(\Exception $e) {
-            return errorResponse(\Lang::get('message.license_invalid'));
+            return errorResponse(\trans('message.license_invalid'));
         }
         StatusSetting::where('id', 1)->update(['license_status' => $status]);
         ApiKey::where('id', 1)->update(['license_api_secret' => $licenseApiSecret, 'license_api_url' => $licenseApiUrl,
             'license_client_id' => $licenseApiClientId, 'license_client_secret' => $licenseApiClientSecret,
             'license_grant_type' => $licenseApiGrantType, ]);
 
-        return successResponse(\Lang::get('message.license_setting'));
+        return successResponse(\trans('message.license_setting'));
     }
 
     public function licenseStatus(Request $request)
@@ -74,7 +74,7 @@ trait ApiKeySettings
             });
 
             if (! $statusEntry) {
-                return errorResponse(\Lang::get('message.invalid_key'));
+                return errorResponse(\trans('message.invalid_key'));
             }
 
             $inputKey = array_key_first(array_intersect_key($input, $statusData->toArray()));
@@ -86,7 +86,7 @@ trait ApiKeySettings
 
             return successResponse($statusEntry['lang']);
         } catch (\Exception $e) {
-            return errorResponse(\Lang::get('message.invalid_key'));
+            return errorResponse(\trans('message.invalid_key'));
         }
     }
 
@@ -121,7 +121,7 @@ trait ApiKeySettings
 
         ApiKey::find(1)->update(['msg91_auth_key' => $key, 'msg91_sender' => $request->input('msg91_sender'), 'msg91_template_id' => $request->input('msg91_template_id'), 'msg91_third_party_id' => $thirdPartyId]);
 
-        return successResponse(\Lang::get('message.mobile_setting'));
+        return successResponse(\trans('message.mobile_setting'));
     }
 
     /*
@@ -134,7 +134,7 @@ trait ApiKeySettings
         StatusSetting::find(1)->update(['zoho_status' => $status]);
         ApiKey::find(1)->update(['zoho_api_key' => $key]);
 
-        return ['message' => 'success', 'update' => \Lang::get('message.zoho_status')];
+        return ['message' => 'success', 'update' => \trans('message.zoho_status')];
     }
 
     /*
@@ -145,7 +145,7 @@ trait ApiKeySettings
         $status = $request->input('status');
         StatusSetting::find(1)->update(['emailverification_status' => $status]);
 
-        return ['message' => 'success', 'update' => \Lang::get('message.email_setting')];
+        return ['message' => 'success', 'update' => \trans('message.email_setting')];
     }
 
     /*
@@ -172,7 +172,7 @@ trait ApiKeySettings
         StatusSetting::find(1)->update(['twitter_status' => $status]);
         ApiKey::find(1)->update(['twitter_consumer_key' => $consumer_key, 'twitter_consumer_secret' => $consumer_secret, 'twitter_access_token' => $access_token, 'access_tooken_secret' => $token_secret]);
 
-        return ['message' => 'success', 'update' => \Lang::get('message.twitter_setting')];
+        return ['message' => 'success', 'update' => \trans('message.twitter_setting')];
     }
 
     public function updatepipedriveDetails(Request $request)
@@ -186,20 +186,20 @@ trait ApiKeySettings
                 'api_token' => $pipedriveKey,
             ]);
             if (! $response->successful()) {
-                return errorResponse(\Lang::get('message.pipedrive_error'));
+                return errorResponse(\trans('message.pipedrive_error'));
             }
 
             $result = json_decode($response, true);
             if (isset($result['success']) && $result['success'] !== true) {
-                return errorResponse(\Lang::get('message.pipedrive_error'));
+                return errorResponse(\trans('message.pipedrive_error'));
             }
             StatusSetting::find(1)->update(['pipedrive_status' => $status]);
             ApiKey::find(1)->update(['pipedrive_api_key' => $pipedriveKey]);
             ApiKey::find(1)->update(['require_pipedrive_user_verification' => $verificationStatus]);
 
-            return successResponse(\Lang::get('message.pipedrive_setting'));
+            return successResponse(\trans('message.pipedrive_setting'));
         } catch (\Exception $exception) {
-            return errorResponse(\Lang::get('message.pipedrive_error'));
+            return errorResponse(\trans('message.pipedrive_error'));
         }
     }
 
@@ -246,12 +246,12 @@ trait ApiKeySettings
                     'selectedList' => $selectedList,
                     'subscribe_status' => $subscribe_status, ];
 
-                return successResponse(\Lang::get('message.mailchimp_setting'), $data);
+                return successResponse(\trans('message.mailchimp_setting'), $data);
             }
 
-            return errorResponse(\Lang::get('message.mailchimp_apikey_error'));
+            return errorResponse(\trans('message.mailchimp_apikey_error'));
         } catch(\Exception $e) {
-            return errorResponse(\Lang::get('message.mailchimp_apikey_error'));
+            return errorResponse(\trans('message.mailchimp_apikey_error'));
         }
     }
 
@@ -262,15 +262,15 @@ trait ApiKeySettings
             $response = Http::get($terms_url);
 
             if ($response == false) {
-                return errorResponse(\Lang::get('message.terms_error'));
+                return errorResponse(\trans('message.terms_error'));
             }
             $status = (int) $request->input('status');
             StatusSetting::find(1)->update(['terms' => $status]);
             ApiKey::find(1)->update(['terms_url' => $terms_url]);
 
-            return successResponse(\Lang::get('message.terms_setting'));
+            return successResponse(\trans('message.terms_setting'));
         } catch (\Exception $e) {
-            return errorResponse(\Lang::get('message.terms_error'));
+            return errorResponse(\trans('message.terms_error'));
         }
     }
 

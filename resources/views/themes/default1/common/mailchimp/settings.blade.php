@@ -35,13 +35,13 @@
                      
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.api_key'), 'api_key')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.api_key'), 'api_key')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('api_key') ? 'has-error' : '' }}">
 
 
                                 {!! html()->text('api_key')->class('form-control')->disabled() !!}
-                                <p><i> {{ Lang::get('message.enter-the-mailchimp-api-key-setting') }}</i></p>
+                                <p><i> {{ trans('message.enter-the-mailchimp-api-key-setting') }}</i></p>
 
 
                             </div>
@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.list_id'), 'list_id')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.list_id'), 'list_id')->class('required') !!}</b></td>
                         <td>
                             <div class="row">
                                 <div class="col-md-6 form-group {{ $errors->has('list_id') ? 'has-error' : '' }}">
@@ -61,7 +61,7 @@
                         { echo "selected";} ?>>{{$list->name}}</option>
                                    
                                     @endforeach
-                                    <p><i> {{Lang::get('message.enter-the-mailchimp-list-id')}}</i> </p>
+                                    <p><i> {{trans('message.enter-the-mailchimp-list-id')}}</i> </p>
 
 
                                 </div>
@@ -72,7 +72,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.subscribe_status'), 'subscribe_status')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.subscribe_status'), 'subscribe_status')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('subscribe_status') ? 'has-error' : '' }}">
 
@@ -83,7 +83,7 @@
     'cleaned' => 'Cleaned',
     'pending' => 'Pending'
 ])->class('form-control') !!}
-                                <p><i> {{Lang::get('message.enter-the-mailchimp-subscribe-status')}}</i> </p>
+                                <p><i> {{trans('message.enter-the-mailchimp-subscribe-status')}}</i> </p>
 
 
                             </div>
@@ -94,14 +94,14 @@
                     @if($set->api_key&&$set->list_id)
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.mapping'), 'mapping')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.mapping'), 'mapping')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group">
 
 
                                 <div class="col-md-6">
-                                    <a href="{{url('mail-chimp/mapping')}}" class="btn btn-secondary btn-sm">{{Lang::get('message.mapping')}}</a>
-                                    <p><i> {{Lang::get('message.map-the-mailchimp-field-with-agora')}}</i> </p>
+                                    <a href="{{url('mail-chimp/mapping')}}" class="btn btn-secondary btn-sm">{{trans('message.mapping')}}</a>
+                                    <p><i> {{trans('message.map-the-mailchimp-field-with-agora')}}</i> </p>
                                 </div>
 
 
@@ -117,7 +117,7 @@
                 </table>
 
 
-                <button type="submit" class="btn btn-primary pull-right" id="submit" style="margin-top:-40px;"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" style="margin-top:-40px;"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
             </div>
 

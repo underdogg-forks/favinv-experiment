@@ -244,7 +244,7 @@ $json = json_encode($data);
                         <strong>{{ __('message.discount')}}</strong>
                     </th>
                     <td>
-                         {{currencyFormat(\Session::get('codevalue'),$code = $item->attributes->currency)}}
+                         {{currencyFormat(\session('codevalue'),$code = $item->attributes->currency)}}
                     </td>
                 </tr>
                 @endif

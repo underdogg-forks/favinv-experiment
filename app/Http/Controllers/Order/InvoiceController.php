@@ -546,7 +546,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
         try {
             $id = $request->input('invoiceid');
             if (! $id) {
-                return redirect()->back()->with('fails', \Lang::get('message.no-invoice-id'));
+                return redirect()->back()->with('fails', \trans('message.no-invoice-id'));
             }
             $invoice = $this->invoice->where('id', $id)->first();
 
@@ -557,11 +557,11 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
             }
 
             if (! $invoice) {
-                return redirect()->back()->with('fails', \Lang::get('message.invalid-invoice-id'));
+                return redirect()->back()->with('fails', \trans('message.invalid-invoice-id'));
             }
             $invoiceItems = $this->invoiceItem->where('invoice_id', $id)->get();
             if ($invoiceItems->count() == 0) {
-                return redirect()->back()->with('fails', \Lang::get('message.invalid-invoice-id'));
+                return redirect()->back()->with('fails', \trans('message.invalid-invoice-id'));
             }
 
             $order = $this->order->getOrderLink($invoice->orderRelation()->value('order_id'), 'my-order');

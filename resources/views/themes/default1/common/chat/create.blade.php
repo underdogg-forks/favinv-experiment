@@ -34,7 +34,7 @@
 
                     <div class="col-md-12 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                        {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                         {!! html()->text('name')->class('form-control'. ($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -90,7 +90,7 @@
                     <div class="col-md-12 form-group">
 
 
-                        {!! html()->label(Lang::get('message.content'), 'data')->class('required') !!}
+                        {!! html()->label(trans('message.content'), 'data')->class('required') !!}
                         {!! html()->textarea('script')->class('form-control'. ($errors->has('script') ? ' is-invalid' : ''))->id('textarea') !!}
                         @error('script')
                         <span class="error-message"> {{$message}}</span>
@@ -105,7 +105,7 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
     </div>
 

@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{Lang::get('message.edit-license-type')}}</h4>
+                <h4 class="modal-title">{{trans('message.edit-license-type')}}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('message.close') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,7 +12,7 @@
             <div class="modal-body">
                 
                 <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.license-type-name'), 'name')->class('required'.($errors->has('name') ? ' is-invalid' : '')) !!}
+                    {!! html()->label(trans('message.license-type-name'), 'name')->class('required'.($errors->has('name') ? ' is-invalid' : '')) !!}
                     <input type="text" name="name" id="tname" class="form-control">
                     <div class="input-group-append">
                     </div>
@@ -20,7 +20,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                  <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

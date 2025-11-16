@@ -210,7 +210,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submit3"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submit3"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
             </div>
@@ -228,14 +228,14 @@
                 <div class="modal-body">
                     <div id="alertMessage1"></div>
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.username'))->class('required')->for('git_username') !!}
+                        {!! html()->label(trans('message.username'))->class('required')->for('git_username') !!}
                         {!! html()->text('username')->class('form-control git_username'. ($errors->has('username') ? ' is-invalid' : ''))->id('git_username') !!}
                         <h6 id="user"></h6>
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.pat'))->class('required')->for('password') !!}
+                        {!! html()->label(trans('message.pat'))->class('required')->for('password') !!}
 
                         <div class="input-group">
                             <input type= "password" name="password" id="git_password" class="form-control git_password">
@@ -251,14 +251,14 @@
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}" style="display:none">
-                        {!! html()->label(Lang::get('message.client_id'))->class('required')->for('client_id') !!}
+                        {!! html()->label(trans('message.client_id'))->class('required')->for('client_id') !!}
                         {!! html()->text('client_id')->class('form-control git_client'. ($errors->has('client_id') ? ' is-invalid' : ''))->id('git_client') !!}
                         <h6 id="c_id"></h6>
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}" style="display:none" >
 
-                        {!! html()->label(Lang::get('message.client_secret'))->class('required')->for('client_secret') !!}
+                        {!! html()->label(trans('message.client_secret'))->class('required')->for('client_secret') !!}
                         <div class="input-group">
                             <input type= "password" name="client_secret" id="git_secret" class="form-control git_secret">
 
@@ -275,7 +275,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" id="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" id="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
             </div>
@@ -294,7 +294,7 @@
                     <div id="alertMessage"></div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.lic_api_secret'))->class('required') !!}
+                        {!! html()->label(trans('message.lic_api_secret'))->class('required') !!}
                         <div class="input-group">
                             {!! html()->password('license_api_secret', $licenseSecret)->class('form-control')->id('license_api_secret') !!}
 
@@ -309,19 +309,19 @@
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.lic_api_url'))->class('required') !!}
+                        {!! html()->label(trans('message.lic_api_url'))->class('required') !!}
                         {!! html()->text('license_api_url', $licenseUrl)->class('form-control')->id('license_api_url') !!}
                         <h6 id="license_urlCheck"></h6>
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.lic_client_id'))->class('required') !!}
+                        {!! html()->label(trans('message.lic_client_id'))->class('required') !!}
                         {!! html()->text('license_client_id', $licenseClientId)->class('form-control')->id('license_client_id') !!}
                         <h6 id="license_clientIdCheck"></h6>
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.lic_client_secret'))->class('required') !!}
+                        {!! html()->label(trans('message.lic_client_secret'))->class('required') !!}
                         <div class="input-group">
                             {!! html()->password('license_client_secret', $licenseClientSecret)->class('form-control')->id('license_client_secret') !!}
 
@@ -335,7 +335,7 @@
                     </div>
 
                     <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.lic_grant_type'))->class('required') !!}
+                        {!! html()->label(trans('message.lic_grant_type'))->class('required') !!}
                         {!! html()->select('license_grant_type',['' => __('message.Select'), 'client_credentials' => 'Client_credentials'])
                                     ->class('form-control')->id('license_grant_type') !!}
 
@@ -347,7 +347,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  onclick="licenseDetails()" id="submit"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  onclick="licenseDetails()" id="submit"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
                 </div>
             </div>
         </div>
@@ -380,7 +380,7 @@
 
                         <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 
-                            {!! html()->label(Lang::get('message.list_id'), 'list_id')->class('required') !!}
+                            {!! html()->label(trans('message.list_id'), 'list_id')->class('required') !!}
                             <select name="list_id" class="form-control" id="list_id" style="width:100%">
                             <option value="">{{ __('message.choose') }}</option>
                             @foreach($allists as $list)
@@ -389,27 +389,27 @@
 
                             @endforeach
                             </select>
-                            <span><i> {{Lang::get('message.enter-the-mailchimp-list-id')}}</i> </span>
+                            <span><i> {{trans('message.enter-the-mailchimp-list-id')}}</i> </span>
 
                         </div>
 
                         <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            {!! html()->label(Lang::get('message.subscribe_status'), 'subscribe_status')->class('required') !!}
+                            {!! html()->label(trans('message.subscribe_status'), 'subscribe_status')->class('required') !!}
                             {!! html()->select('subscribe_status', [
                                 'subscribed' => 'Subscribed',
                                 'unsubscribed' => 'Unsubscribed',
                                 'cleaned' => 'Cleaned',
                                 'pending' => 'Pending'
                             ])->class('form-control') !!}
-                            <span><i> {{Lang::get('message.enter-the-mailchimp-subscribe-status')}}</i> </span>
+                            <span><i> {{trans('message.enter-the-mailchimp-subscribe-status')}}</i> </span>
                         </div>
 
                             <div id="extraInput9" style="display: none;">
 
                             <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                                {!! html()->label(Lang::get('message.mapping'), 'mapping')->class('required') !!}
-                                <a href="{{url('mail-chimp/mapping')}}" class="btn btn-secondary btn-sm">{{Lang::get('message.mapping')}}</a>
-                                <p><i> {{Lang::get('message.map-the-mailchimp-field-with-agora')}}</i> </p>
+                                {!! html()->label(trans('message.mapping'), 'mapping')->class('required') !!}
+                                <a href="{{url('mail-chimp/mapping')}}" class="btn btn-secondary btn-sm">{{trans('message.mapping')}}</a>
+                                <p><i> {{trans('message.map-the-mailchimp-field-with-agora')}}</i> </p>
                             </div>
                             </div>
                         </div>
@@ -417,18 +417,17 @@
                 <div id="extraInput1" style="display: none;">
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close1" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                        <button type="submit" class="btn btn-primary pull-right" id="submit-chimp" ><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                        <button type="submit" class="btn btn-primary pull-right" id="submit-chimp" ><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
                     </div>
 
                 </div>
-{{--                {!! Form::close() !!}--}}
 
                 <div id="extraInput5" style="display: block;">
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close1" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
 
                     <button type="submit" class="btn btn-primary" id="submit9">
-                        <i class="fa fa-save"></i>&nbsp;&nbsp;{!! Lang::get('message.save') !!}
+                        <i class="fa fa-save"></i>&nbsp;&nbsp;{!! trans('message.save') !!}
                     </button>
                     </div>
                 </div>
@@ -456,7 +455,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submit10"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submit10"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
         </div>
@@ -526,7 +525,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submit5"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submit5"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
             </div>
@@ -555,7 +554,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submit7"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submit7"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
             </div>
@@ -590,7 +589,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submit13"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submit13"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
 
                 </div>
             </div>
@@ -606,9 +605,9 @@
                 <div class="modal-body">
                     <div id="alertMessage22"></div>
                     <div class="form-group" id="emailToDisp">
-                        {!! html()->label(Lang::get('message.validation-provider'), 'user')->class('required') !!}
+                        {!! html()->label(trans('message.validation-provider'), 'user')->class('required') !!}
                         <select name="manager" id="provider" class="form-control">
-                            <option value="reoon">{{Lang::get('message.reoon')}}</option>
+                            <option value="reoon">{{trans('message.reoon')}}</option>
                         </select>
                         <div class="input-group-append"></div>
                     </div>
@@ -619,7 +618,7 @@
 
             <div class="modal-footer justify-content-between">
                 <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="form-group btn btn-primary"  id="submitEmail"><i class="fa fa-save">&nbsp;</i>{!!Lang::get("message.save")!!}</button>
+                <button type="submit" class="form-group btn btn-primary"  id="submitEmail"><i class="fa fa-save">&nbsp;</i>{!!trans("message.save")!!}</button>
             </div>
             </div>
         </div>
@@ -634,11 +633,11 @@
                 <div class="modal-body">
                     <div id="alertMessage34"></div>
                     <div class="form-group" id="mobileToDisp">
-                        {!! html()->label(Lang::get('message.validation-provider'), 'user')->class('required') !!}
+                        {!! html()->label(trans('message.validation-provider'), 'user')->class('required') !!}
                         <select name="manager"  id="mobileProvider" class="form-control">
-                            <option value="">{!! \Lang::get('message.choose') !!}</option>
-                            <option value="vonage"{{$selectedProvider=='vonage'?'selected':''}}>{!! \Lang::get('message.vonage') !!}</option>
-                            <option value="abstract"{{$selectedProvider=='abstract'?'selected':''}}>{!! \Lang::get('message.abstract') !!}</option>
+                            <option value="">{!! \trans('message.choose') !!}</option>
+                            <option value="vonage"{{$selectedProvider=='vonage'?'selected':''}}>{!! \trans('message.vonage') !!}</option>
+                            <option value="abstract"{{$selectedProvider=='abstract'?'selected':''}}>{!! \trans('message.abstract') !!}</option>
                         </select>
                         <div class="input-group-append"></div>
                     </div>
@@ -649,12 +648,11 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                    <button type="submit" class="form-group btn btn-primary"  id="submitMobile"><i class="fa fa-save">&nbsp;</i>{!!Lang::get("message.save")!!}</button>
+                    <button type="submit" class="form-group btn btn-primary"  id="submitMobile"><i class="fa fa-save">&nbsp;</i>{!!trans("message.save")!!}</button>
                 </div>
             </div>
         </div>
     </div>
-    {{--    {!! Form::close() !!}--}}
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">

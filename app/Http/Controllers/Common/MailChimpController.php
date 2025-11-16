@@ -170,7 +170,7 @@ class MailChimpController extends BaseMailChimpController
 
             $mailchimpProducts = $this->mailchimp->get("lists/$this->list_id/interest-categories");
             if (empty($mailchimpProducts['categories'])) {
-                return redirect()->back()->with('fails', \Lang::get('message.mailchimp_group_error'));
+                return redirect()->back()->with('fails', \trans('message.mailchimp_group_error'));
             }
             $selectedProducts = MailchimpGroupAgoraRelation::select('agora_product_id', 'mailchimp_group_cat_id')->orderBy('id', 'asc')->get()->toArray();
             $allGroups = $this->mailchimp->get("lists/$this->list_id/interest-categories"); //Get all the groups(interest-categories for a list)
@@ -285,7 +285,7 @@ class MailChimpController extends BaseMailChimpController
         try {
             $this->relation->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -300,7 +300,7 @@ class MailChimpController extends BaseMailChimpController
                     'mailchimp_group_cat_id' => $value[1], ]);
             }
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

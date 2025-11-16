@@ -32,22 +32,22 @@
                 @if(Session::has('success'))
                 <div class="alert alert-success alert-dismissable">
                      <i class="fa fa-check"></i>
-                     <b>{{Lang::get('message.success')}}!</b> {{Lang::get('message.success')}}.
+                     <b>{{trans('message.success')}}!</b> {{trans('message.success')}}.
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{Session::get('success')}}
+                    {{session('success')}}
                 </div>
                 @endif
                 <!-- fail message -->
                 @if(Session::has('fails'))
                 <div class="alert alert-danger alert-dismissable">
                     <i class="fa fa-ban"></i>
-                    <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.failed')}}.
+                    <b>{{trans('message.alert')}}!</b> {{trans('message.failed')}}.
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    {{Session::get('fails')}}
+                    {{session('fails')}}
                 </div>
                 @endif
             {!! html()->form('post', url('payment/receive/' . $invoice_id))->open() !!}
-            <h4>{{Lang::get('message.payment')}}  ({{ __('message.invoice_number') }}: {{$invoice->number}})	 <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button></h4>
+            <h4>{{trans('message.payment')}}  ({{ __('message.invoice_number') }}: {{$invoice->number}})	 <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
 
     </div>
 
@@ -63,13 +63,13 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('invoice_status') ? 'has-error' : '' }}">
                         <!-- payment date -->
-                        {!! html()->label(Lang::get('message.date-of-payment'), 'payment_date')->class('required') !!}
+                        {!! html()->label(trans('message.date-of-payment'), 'payment_date')->class('required') !!}
                         {!! html()->text('payment_date', null)->class('form-control') !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
                         <!-- payment method -->
-                        {!! html()->label(Lang::get('message.payment-method'), 'payment_method') !!}
+                        {!! html()->label(trans('message.payment-method'), 'payment_method') !!}
                         {!! html()->select('payment_method', [
                             '' => __('message.choose'),
                             'cash' => 'Cash',
@@ -81,7 +81,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
                         <!-- amount -->
-                        {!! html()->label(Lang::get('message.amount'), 'amount') !!}
+                        {!! html()->label(trans('message.amount'), 'amount') !!}
                         {!! html()->text('amount', null)->class('form-control') !!}
                     </div>
 

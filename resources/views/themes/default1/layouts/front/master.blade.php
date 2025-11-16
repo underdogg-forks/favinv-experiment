@@ -610,7 +610,7 @@ $days = $pay->where('product','117')->value('days');
 
                 <div class="alert alert-warning alert-dismissible">
                     <button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button>
-                    {{Session::get('warning')}}
+                    {{session('warning')}}
                 </div>
             @endif
 
@@ -618,7 +618,7 @@ $days = $pay->where('product','117')->value('days');
 
                 <div class="container">
 
-                    {!!Session::get('Success')!!}
+                    {!!session('Success')!!}
                 </div>
 
             @endif
@@ -629,7 +629,7 @@ $days = $pay->where('product','117')->value('days');
                         <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"> <span aria-hidden="true"></span></button>
                         <strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }}</strong>
 
-                        {!!Session::get('success')!!}
+                        {!!session('success')!!}
                     </div>
                 @endif
             @endif
@@ -639,7 +639,7 @@ $days = $pay->where('product','117')->value('days');
 
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button>
-                    {{Session::get('fails')}}
+                    {{session('fails')}}
                 </div>
 
             @endif

@@ -192,7 +192,7 @@
             <li class="sidebar-nav nav-item">
                 <a href="{{url('/')}}" class="sidebar-nav nav-link" id="dashboard">
                     <i class="sidebar-nav nav-icon fas fa-tachometer-alt"></i>
-                    {{Lang::get('message.dashboard')}}
+                    {{trans('message.dashboard')}}
                 </a>
             </li>
             
@@ -234,7 +234,7 @@
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('orders')}}" class="sidebar-nav nav-link" id="all_order">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.all-orders')}}</span>
+                            <span>{{trans('message.all-orders')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -244,19 +244,19 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-paperclip"></i>
-                    {{Lang::get('message.invoices')}}
+                    {{trans('message.invoices')}}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('invoices')}}" class="sidebar-nav nav-link" id="all_invoice">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.all-invoices')}}</span>
+                            <span>{{trans('message.all-invoices')}}</span>
                         </a>
                     </li>
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('invoice/generate')}}" class="sidebar-nav nav-link" id="add_invoice">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.add-new')}}</span>
+                            <span>{{trans('message.add-new')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -266,27 +266,27 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-sticky-note"></i>
-                    {{Lang::get('message.pages')}}
+                    {{trans('message.pages')}}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('pages')}}" class="sidebar-nav nav-link" id="all_page">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.all-pages')}}</span>
+                            <span>{{trans('message.all-pages')}}</span>
                         </a>
                     </li>
                     @if($page_count <= 2)
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('pages/create')}}" class="sidebar-nav nav-link" id="all_new_page">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.add-new')}}</span>
+                            <span>{{trans('message.add-new')}}</span>
                         </a>
                     </li>
                     @endif
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('demo/page')}}" class="sidebar-nav nav-link" id="demo_page">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.add-demo')}}</span>
+                            <span>{{trans('message.add-demo')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -296,19 +296,19 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-briefcase"></i>
-                    {{Lang::get('message.products')}}
+                    {{trans('message.products')}}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('products')}}" class="sidebar-nav nav-link" id="all_product">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.all-products')}}</span>
+                            <span>{{trans('message.all-products')}}</span>
                         </a>
                     </li>
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('products/create')}}" class="sidebar-nav nav-link" id="add_product">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.add-new')}}</span>
+                            <span>{{trans('message.add-new')}}</span>
                         </a>
                     </li>
                 </ul>
@@ -318,13 +318,13 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-cog"></i>
-                    {{Lang::get('message.settings')}}
+                    {{trans('message.settings')}}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('settings')}}" class="sidebar-nav nav-link" id="system_setting">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{Lang::get('message.system')}}</span>
+                            <span>{{trans('message.system')}}</span>
                         </a>
                     </li>
                 </ul>

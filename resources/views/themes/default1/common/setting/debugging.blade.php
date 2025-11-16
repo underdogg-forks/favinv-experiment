@@ -31,17 +31,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.debugging'), 'debug')->class('form-label fw-bold') !!}
+                        {!! html()->label(trans('message.debugging'), 'debug')->class('form-label fw-bold') !!}
                         <div class="mt-2">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="debug" value="true" id="debug-enable"
                                        @if($de == true) checked @endif>
-                                <label class="form-check-label" for="debug-enable">{{Lang::get('message.enable')}}</label>
+                                <label class="form-check-label" for="debug-enable">{{trans('message.enable')}}</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="debug" value="false" id="debug-disable"
                                        @if($de == false) checked @endif>
-                                <label class="form-check-label" for="debug-disable">{{Lang::get('message.disable')}}</label>
+                                <label class="form-check-label" for="debug-disable">{{trans('message.disable')}}</label>
                             </div>
                         </div>
                     </div>

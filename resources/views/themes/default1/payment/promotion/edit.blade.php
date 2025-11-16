@@ -38,7 +38,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.code'), 'code')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.code'), 'code')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
 
@@ -63,7 +63,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.type'), 'type')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.type'), 'type')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group col-lg-6 {{ $errors->has('type') ? 'has-error' : '' }}">
 
@@ -80,7 +80,7 @@
 
                     </tr>
                     <tr>
-                        <td><b>{!! html()->label(Lang::get('message.value'), 'value')->class('required') !!}&nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.enter_discount_amount') }}"></i></b></td>
+                        <td><b>{!! html()->label(trans('message.value'), 'value')->class('required') !!}&nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.enter_discount_amount') }}"></i></b></td>
                         <td>
                             <div class="form-group col-lg-6 {{ $errors->has('value') ? 'has-error' : '' }}">
 
@@ -96,7 +96,7 @@
 
                     </tr>
                     <tr>
-                        <td><b>{!! html()->label(Lang::get('message.uses'), 'uses')->class('required') !!}&nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.enter_times_coupon') }}"></i></b></td>
+                        <td><b>{!! html()->label(trans('message.uses'), 'uses')->class('required') !!}&nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.enter_times_coupon') }}"></i></b></td>
                         <td>
                             <div class="form-group col-lg-6{{ $errors->has('uses') ? 'has-error' : '' }}">
                                 {!! html()->text('uses')->class('form-control'.($errors->has('uses') ? ' is-invalid' : '')) !!}
@@ -112,7 +112,7 @@
                     </tr>
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.applied'), 'applied')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.applied'), 'applied')->class('required') !!}</b></td>
                         <td>
 
                             <div class="form-group col-lg-6{{ $errors->has('applied') ? 'has-error' : '' }}">
@@ -136,7 +136,7 @@
                     </tr>
                     <tr>    
 
-                        <td><b>{!! html()->label(Lang::get('message.start'), 'start')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.start'), 'start')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('start') ? 'has-error' : '' }}">
                                 <div class="input-group date col-lg-6" id="startDate" data-target-input="nearest">
@@ -165,7 +165,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label(Lang::get('message.expiry'), 'expiry')->class('required') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.expiry'), 'expiry')->class('required') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('expiry') ? 'has-error' : '' }}">
 

@@ -124,7 +124,7 @@ class BaseMailChimpController extends Controller
 
             return view('themes.default1.common.mailchimp.settings', compact('set', 'allists', 'selectedList'));
         } catch (\Exception $ex) {
-            return errorResponse(\Lang::get('message.mailchimp_apikey_error'));
+            return errorResponse(\trans('message.mailchimp_apikey_error'));
         }
     }
 
@@ -140,9 +140,9 @@ class BaseMailChimpController extends Controller
             $this->addListsToAgora();
             $data = ['list_id' => 1];
 
-            return successResponse(\Lang::get('message.mailchimp_setting_successfully_saved'), $data);
+            return successResponse(\trans('message.mailchimp_setting_successfully_saved'), $data);
         } catch (\Exception $ex) {
-            return errorResponse(\Lang::get('message.mailchimp_apikey_error'));
+            return errorResponse(\trans('message.mailchimp_apikey_error'));
         }
     }
 
@@ -164,7 +164,7 @@ class BaseMailChimpController extends Controller
                     'list_id' => $list_id,
                 ]);
             }
-            //return redirect()->back()->with('success', \Lang::get('message.mailchimp-list-added-to-agora'));
+            //return redirect()->back()->with('success', \trans('message.mailchimp-list-added-to-agora'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

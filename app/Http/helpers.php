@@ -294,7 +294,7 @@ function userCurrencyAndPrice($userid, $plan, $productid = '')
         $country = getCountry($userid);
 
         if (! $country) {
-            throw new \Exception(Lang::get('message.country_notfound'));
+            throw new \Exception(trans('message.country_notfound'));
         }
 
         $currencyAndSymbol = getCurrencySymbolAndPriceForPlans($country, $plan);

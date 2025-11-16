@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            @if($message = Session::get('error'))
+            @if($message = session('error'))
                 <div class="alert alert-danger alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -13,7 +13,7 @@
                 </div>
             @endif
             {!! Session::forget('error') !!}
-            @if($message = Session::get('success'))
+            @if($message = session('success'))
                 <div class="alert alert-info alert-dismissible fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}">
                         <span aria-hidden="true">×</span>

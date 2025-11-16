@@ -306,9 +306,9 @@
                         </div>
                     </div>
                 <!-- /.card-body -->
-                    <button name="Search" type="submit" id="search"  class="btn btn-secondary"><i class="fa fa-search"></i>&nbsp;{!!Lang::get('message.search')!!}</button>
+                    <button name="Search" type="submit" id="search"  class="btn btn-secondary"><i class="fa fa-search"></i>&nbsp;{!!trans('message.search')!!}</button>
                     &nbsp;
-                    <!-- <a href="{!! url('clients') !!}" id="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i>&nbsp;{!!Lang::get('Reset')!!}</a> -->
+                    <!-- <a href="{!! url('clients') !!}" id="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i>&nbsp;{!!trans('Reset')!!}</a> -->
                     {!! html()->submit( __('message.reset'))
     ->class('btn btn-secondary')
     ->id('reset') !!}
@@ -651,10 +651,10 @@ $(document).ready(function() {
       if(id.length<=0){
           e.preventDefault();
           swal.fire({
-              title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+              title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
               html: "<div  class='swal2-html-container custom-content'>" +
                   "<div class='section-sa'>" +
-                  "<p >{{Lang::get('message.sweet_checkbox')}}</p>" + "</div>" +
+                  "<p >{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                   "</div>",
               position: 'top',
               confirmButtonText: "{{ __('message.ok') }}",
@@ -665,10 +665,10 @@ $(document).ready(function() {
       }
       else {
           var swl = swal.fire({
-              title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Suspend')}}</h2>",
+              title: "<h2 class='swal2-title custom-title'>{{trans('message.Suspend')}}</h2>",
               html: "<div  class='swal2-html-container custom-content'>" +
                   "<div class='section-sa'>" +
-                  "<p >{{Lang::get('message.user_sweet_suspend')}}</p>" + "</div>" +
+                  "<p >{{trans('message.user_sweet_suspend')}}</p>" + "</div>" +
                   "</div>",
               showCancelButton: true,
               cancelButtonText: "{{ __('message.cancel') }}",
@@ -701,10 +701,10 @@ $(document).ready(function() {
                       })
                   } else {
                       swal.fire({
-                          title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                          title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                           html: "<div  class='swal2-html-container custom-content'>" +
                               "<div class='section-sa'>" +
-                              "<p >{{Lang::get('message.sweet_checkbox')}}</p>" + "</div>" +
+                              "<p >{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                               "</div>",
                           position: 'top',
                           confirmButtonText: "{{ __('message.ok') }}",

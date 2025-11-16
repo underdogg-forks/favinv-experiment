@@ -54,7 +54,7 @@ class ProfileController extends Controller
             }
             $user->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }
@@ -76,7 +76,7 @@ class ProfileController extends Controller
 
                 \DB::table('password_resets')->where('email', $user->email)->delete();
 
-                return redirect()->back()->with('success1', \Lang::get('message.updated-successfully'));
+                return redirect()->back()->with('success1', \trans('message.updated-successfully'));
             } else {
                 return redirect()->back()->with('fails1', __('message.incorrect_old_password'));
             }

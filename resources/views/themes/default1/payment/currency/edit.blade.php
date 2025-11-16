@@ -10,29 +10,29 @@
                 {!! html()->form('POST', url('currenc'))->open() !!}
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                    {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                     {!! html()->text('name')->class('form-control') !!}
                 </div>
 
                 <div class="form-group {{ $errors->has('code') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.code'), 'code')->class('required') !!}
+                    {!! html()->label(trans('message.code'), 'code')->class('required') !!}
                     {!! html()->text('code')->class('form-control') !!}
                 </div>
 
                 <div class="form-group {{ $errors->has('symbol') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.symbol'), 'symbol') !!}
+                    {!! html()->label(trans('message.symbol'), 'symbol') !!}
                     {!! html()->text('symbol')->class('form-control') !!}
                 </div>
 
                 <div class="form-group {{ $errors->has('base_conversion') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.base_conversion_rate'), 'base_conversion')->class('required') !!}
+                    {!! html()->label(trans('message.base_conversion_rate'), 'base_conversion')->class('required') !!}
                     {!! html()->text('base_conversion')->class('form-control') !!}
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close') }}</button>
-                <input type="submit" class="btn btn-primary" value="{{Lang::get('message.save')}}">
+                <input type="submit" class="btn btn-primary" value="{{trans('message.save')}}">
             </div>
             {!! html()->form()->close() !!}
             <!-- /Form -->

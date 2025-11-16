@@ -162,11 +162,11 @@ $cartSubtotalWithoutCondition = 0;
                                     $productId = \DB::table('products')->where('name', $item->name)->value('id');
                                     $planid = null;
                                     if(\Session::has('priceToBePaid')){
-                                        $price=\Session::get('priceToBePaid');
+                                        $price=\session('priceToBePaid');
                                     }
                                     else {
-                                        if (\Session::has('toggleState') || \Session::get('toggleState') == null) {
-                                            $toggleState = \Session::get('toggleState');
+                                        if (\Session::has('toggleState') || \session('toggleState') == null) {
+                                            $toggleState = \session('toggleState');
                                             $price = $item->price;
                                         } else {
                                             $planid = \DB::table('plans')->where('product', $item->id)->value('id');
@@ -264,12 +264,12 @@ $cartSubtotalWithoutCondition = 0;
                                              <div class="d-flex align-items-center justify-content-end">
                                             <span class="amount font-weight-medium text-color-grey">
                                                  <?php
-                                            if (strpos(\Session::get('codevalue'), '%') == true) {
+                                            if (strpos(\session('codevalue'), '%') == true) {
                                                     $discountValue = currencyFormat($discountPrice,$code = $item->attributes->currency);
-                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\Session::get('code')) . '</strong>)';
+                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\session('code')) . '</strong>)';
                                                 } else {
-                                                    $discountValue = currencyFormat(\Session::get('codevalue'),$code = $item->attributes->currency);
-                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\Session::get('code')) . '</strong>)';
+                                                    $discountValue = currencyFormat(\session('codevalue'),$code = $item->attributes->currency);
+                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\session('code')) . '</strong>)';
                                                 }
                                             ?>
                                             </span>
@@ -400,17 +400,17 @@ $cartSubtotalWithoutCondition = 0;
                                     </tr>
                                     {!! html()->form('POST', url('checkout-and-pay'))->id('checkoutsubmitform')->open() !!}
                                 @if(\Session::has('priceRemaining'))
-                                 @if(\Session::get('discount')>0 )
+                                 @if(\session('discount')>0 )
                                     <tr>
                                         <td class="border-top-0">
                                         <strong class="d-block text-color-dark line-height-0 font-weight-semibold">
                                     <input type="checkbox" id="billing-temp-balance" class="checkbox" checked disabled>
                                             {{ __('message.total_credits_remaining')}}
-                                    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{Lang::get('message.remainingAmount')}}"></i></strong></td>
+                                    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{trans('message.remainingAmount')}}"></i></strong></td>
 
                                      <td class=" align-top border-top-0 text-end">
-                                            <span class="amount font-weight-medium text-color-grey">{{currencyFormat(\Session::get('priceRemaining'),$code = $item->attributes->currency)}}-{{currencyFormat(Cart::getTotal(),$code = $item->attributes->currency)}}
-                                                ={{currencyFormat(\Session::get('discount'),$code = $item->attributes->currency)}}
+                                            <span class="amount font-weight-medium text-color-grey">{{currencyFormat(\session('priceRemaining'),$code = $item->attributes->currency)}}-{{currencyFormat(Cart::getTotal(),$code = $item->attributes->currency)}}
+                                                ={{currencyFormat(\session('discount'),$code = $item->attributes->currency)}}
                                             </span></td></tr>
                                     <tr class="totaltopay">
 
@@ -432,11 +432,11 @@ $cartSubtotalWithoutCondition = 0;
 
                                          <td class=" align-top border-top-0 text-end">
                                             <span class="amount font-weight-medium text-color-grey">
-                                                {{currencyFormat(\Session::get('discount'),$code = $item->attributes->currency)}}
+                                                {{currencyFormat(\session('discount'),$code = $item->attributes->currency)}}
                                             </span></td></tr>
                                 @endif
                                 @endif
-                                    @if(Cart::getTotal()>0 && \Session::get('discount')<=0)
+                                    @if(Cart::getTotal()>0 && \session('discount')<=0)
                                     <?php
                                     $gateways = \App\Http\Controllers\Common\SettingsController::checkPaymentGateway($item->attributes['currency']);
                                      ?>

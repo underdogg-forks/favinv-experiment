@@ -131,7 +131,7 @@ class EmailSettingsController extends Controller
             });
 
             if (count(\Mail::failures()) > 0) {
-                $this->error = Lang::get('message.unknown_error_occured');
+                $this->error = trans('message.unknown_error_occured');
 
                 return false;
             }
