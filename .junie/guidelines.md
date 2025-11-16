@@ -652,12 +652,139 @@ Breakpoints:
 
 #### Dark Mode Support
 
+The application includes comprehensive dark mode support using CSS custom properties and Tailwind's dark mode utilities.
+
+**Enabling Dark Mode:**
+
+The application includes a dark mode toggle button in the navbar (moon/sun icon). User preference is automatically saved to localStorage.
+
+**For Users:**
+1. Click the moon/sun icon in the navbar
+2. Theme switches instantly
+3. Preference persists across sessions
+
+**Dark Mode in Templates:**
+
 ```html
-<!-- Light background, dark in dark mode -->
-<div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-  Adapts to dark mode
+<!-- Background colors -->
+<div class="bg-white dark:bg-gray-800">
+  Content adapts to theme
+</div>
+
+<!-- Text colors -->
+<p class="text-gray-900 dark:text-gray-100">
+  Text with dark mode support
+</p>
+
+<!-- Borders -->
+<div class="border border-gray-200 dark:border-gray-700">
+  Border adapts to theme
+</div>
+
+<!-- Hover states in dark mode -->
+<button class="bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700">
+  Button with dark mode hover
+</button>
+
+<!-- Multiple states combined -->
+<div class="bg-white dark:bg-gray-800 
+            text-gray-900 dark:text-white
+            border-gray-200 dark:border-gray-700
+            hover:shadow-lg dark:hover:shadow-2xl">
+  Comprehensive dark mode support
 </div>
 ```
+
+**CSS Variables for Dark Mode:**
+
+The application uses 70+ CSS custom properties that automatically change with the theme. You can customize the dark theme in `resources/assets/css/app.css`:
+
+```css
+[data-theme="dark"] {
+  /* Layout Colors */
+  --color-body-bg: #0f172a;
+  --color-body-text: #cbd5e1;
+  
+  /* Sidebar */
+  --color-sidebar-bg: #1e293b;
+  --color-sidebar-text: #e2e8f0;
+  
+  /* Cards & Components */
+  --color-card-bg: #1e293b;
+  --color-border: #334155;
+  --color-input-bg: #0f172a;
+  
+  /* Customize any variable for your dark theme */
+}
+```
+
+**Pre-built Components with Dark Mode:**
+
+All component classes automatically support dark mode:
+
+```html
+<!-- Cards -->
+<div class="card">
+  <!-- Automatically uses dark background in dark mode -->
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
+</div>
+
+<!-- Alerts -->
+<div class="alert alert-success">
+  <!-- Maintains semantic colors in dark mode -->
+  Success message
+</div>
+
+<!-- Buttons -->
+<button class="btn btn-primary">
+  <!-- Adjusts contrast for dark backgrounds -->
+  Primary Action
+</button>
+
+<!-- Forms -->
+<input type="text" class="form-control" placeholder="Auto-adapts to dark mode">
+
+<!-- Tables -->
+<table class="table table-striped">
+  <!-- Dark-friendly striping and borders -->
+</table>
+```
+
+**JavaScript Access:**
+
+```javascript
+// Get current theme
+const theme = document.documentElement.getAttribute('data-theme');
+
+// Set theme programmatically
+document.documentElement.setAttribute('data-theme', 'dark');
+localStorage.setItem('theme', 'dark');
+
+// Toggle theme
+const newTheme = theme === 'dark' ? 'light' : 'dark';
+document.documentElement.setAttribute('data-theme', newTheme);
+localStorage.setItem('theme', newTheme);
+```
+
+**Dark Mode Color Palette:**
+
+- **Light Mode**: Clean, bright, professional
+  - Background: `#e4e5e6` (light gray)
+  - Text: `#2c384a` (dark blue-gray)
+  - Cards: `#ffffff` (white)
+  
+- **Dark Mode**: Easy on eyes, modern
+  - Background: `#0f172a` (slate-900)
+  - Text: `#cbd5e1` (slate-300)
+  - Cards: `#1e293b` (slate-800)
+
+**Accessibility:**
+
+- WCAG AA compliant contrast ratios
+- Minimum 7:1 contrast for interactive elements
+- Semantic colors maintain meaning in dark mode
+- Reduced eye strain in low-light environments
 
 #### RTL Support
 

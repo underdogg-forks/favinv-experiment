@@ -112,15 +112,100 @@
   --transition-sidebar: margin-left 0.3s ease-in-out, margin-right 0.3s ease-in-out;
 }
 
-/* Dark mode CSS variables (optional) */
+/* Dark mode CSS variables - Complete theme */
 [data-theme="dark"] {
-  --color-body-bg: #181924;
-  --color-body-text: #c8ced3;
-  --color-sidebar-bg: #0f1116;
-  --color-navbar-bg: #0f1116;
-  --color-card-bg: #252836;
-  --color-border: #2f3346;
-  --color-input-bg: #252836;
+  /* Brand Colors - Dark Mode (slightly adjusted for better dark contrast) */
+  --color-primary: #4f46e5;
+  --color-primary-50: #1e1b4b;
+  --color-primary-100: #2e1065;
+  --color-primary-200: #3730a3;
+  --color-primary-300: #4338ca;
+  --color-primary-400: #4f46e5;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  
+  --color-secondary: #64748b;
+  --color-success: #10b981;
+  --color-info: #3b82f6;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-light: #475569;
+  --color-dark: #e2e8f0;
+  
+  /* Layout Colors - Dark Mode */
+  --color-body-bg: #0f172a;
+  --color-body-text: #cbd5e1;
+  
+  /* Sidebar - Dark Mode */
+  --color-sidebar-bg: #1e293b;
+  --color-sidebar-text: #e2e8f0;
+  --color-sidebar-nav-link-color: #cbd5e1;
+  --color-sidebar-nav-link-hover-bg: #334155;
+  --color-sidebar-nav-link-hover-color: #f1f5f9;
+  --color-sidebar-nav-link-active-bg: #475569;
+  --color-sidebar-nav-link-active-color: #f8fafc;
+  --color-sidebar-nav-link-icon-color: rgba(226, 232, 240, 0.6);
+  
+  /* Navbar/Header - Dark Mode */
+  --color-navbar-bg: #1e293b;
+  --color-navbar-text: #cbd5e1;
+  --color-navbar-hover-color: #f1f5f9;
+  --color-navbar-active-color: #f8fafc;
+  
+  /* Border & Effects - Dark Mode */
+  --color-border: #334155;
+  
+  /* Card - Dark Mode */
+  --color-card-border: #334155;
+  --color-card-cap-bg: #1e293b;
+  --color-card-bg: #1e293b;
+  
+  /* Form Controls - Dark Mode */
+  --color-input-bg: #0f172a;
+  --color-input-border: #334155;
+  --color-input-focus-border: #3b82f6;
+  --color-input-text: #cbd5e1;
+  
+  /* Tables - Dark Mode */
+  --color-table-border: #334155;
+  --color-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --color-table-hover-bg: rgba(255, 255, 255, 0.05);
+  
+  /* Dropdown - Dark Mode */
+  --color-dropdown-bg: #1e293b;
+  --color-dropdown-border: #334155;
+  --color-dropdown-link-color: #cbd5e1;
+  --color-dropdown-link-hover-bg: #334155;
+  
+  /* Modal - Dark Mode */
+  --color-modal-content-bg: #1e293b;
+  --color-modal-content-border: #334155;
+  --color-modal-backdrop-bg: #000;
+  
+  /* Footer - Dark Mode */
+  --color-footer-bg: #1e293b;
+  --color-footer-text: #94a3b8;
+  
+  /* Breadcrumb - Dark Mode */
+  --color-breadcrumb-bg: transparent;
+  --color-breadcrumb-divider: #94a3b8;
+  --color-breadcrumb-active: #cbd5e1;
+  
+  /* Progress - Dark Mode */
+  --color-progress-bg: #334155;
+  
+  /* Shadows - Dark Mode (softer for dark backgrounds) */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  --shadow: 0 0 1px rgba(0,0,0,.3), 0 1px 3px rgba(0,0,0,.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Custom components for admin dashboard */

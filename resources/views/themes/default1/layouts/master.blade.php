@@ -352,6 +352,13 @@
             </ul>
             
             <ul class="navbar-nav ml-auto mr-4">
+                <!-- Dark Mode Toggle -->
+                <li class="nav-item">
+                    <button id="theme-toggle" class="nav-link border-0 bg-transparent" style="cursor: pointer; background: none; border: none; color: inherit;" title="Toggle dark mode">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </button>
+                </li>
+                
                 <!-- Language Dropdown -->
                 <li class="navbar-nav-item dropdown">
                     <a class="navbar-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -438,6 +445,39 @@
     <script src="{{asset('admin/plugins-1/summernote-bs4.min.js')}}"></script>
     
     <script>
+        // Dark Mode Toggle
+        (function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to 'light' mode
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            html.setAttribute('data-theme', currentTheme);
+            updateIcon(currentTheme);
+            
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    updateIcon(theme);
+                });
+            }
+            
+            function updateIcon(theme) {
+                if (themeIcon) {
+                    if (theme === 'dark') {
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    } else {
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
+                }
+            }
+        })();
+        
         // Initialize CoreUI components
         $(document).ready(function() {
             // Initialize Perfect Scrollbar for sidebar
