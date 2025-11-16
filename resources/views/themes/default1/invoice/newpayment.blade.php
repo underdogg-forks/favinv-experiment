@@ -74,7 +74,7 @@
 
 
                        <div class="col-md-4 form-group {{ $errors->has('invoice_status') ? 'has-error' : '' }}">
-                           {!! html()->label(Lang::get('message.date-of-payment'), 'payment_date')->class('required') !!}
+                           {!! html()->label(trans('message.date-of-payment'), 'payment_date')->class('required') !!}
                            <div class="input-group date" id="payment" data-target-input="nearest">
                                <div class="input-wrapper">
                                    <input type="text" id="payment_date" name="payment_date"
@@ -95,7 +95,7 @@
 
 
                        <div class="col-md-4 form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
-                           {!! html()->label(Lang::get('message.payment-method'), 'payment_method')->class('required') !!}
+                           {!! html()->label(trans('message.payment-method'), 'payment_method')->class('required') !!}
                            {!! html()->select('payment_method', [
                                '' => __('message.choose'),
                                'cash' => 'Cash',
@@ -110,7 +110,7 @@
 
 
                        <div class="col-md-4 form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
-                           {!! html()->label(Lang::get('message.amount'), 'amount')->class('required') !!}
+                           {!! html()->label(trans('message.amount'), 'amount')->class('required') !!}
                            {!! html()->text('amount')->class('form-control')->id('amount') !!}
                            {!! html()->hidden('hidden')->id('amount1') !!}
                        </div>
@@ -122,7 +122,7 @@
 
            <div class="card-footer">
                <button type="submit" class="btn btn-primary" onclick="multiplePayment()" id="submit">
-                   <i class="fas fa-save">&nbsp;</i>{!! Lang::get('message.save') !!}
+                   <i class="fas fa-save">&nbsp;</i>{!! trans('message.save') !!}
                </button>
            </div>
        </div>
@@ -136,11 +136,11 @@
                                    <thead>
                                        <tr>
                                             <th></th>
-                                           <th>{{Lang::get('message.date')}}</th>
-                                           <th>{{Lang::get('message.invoice_number')}}</th>
-                                           <th>{{Lang::get('message.total')}}</th>
+                                           <th>{{trans('message.date')}}</th>
+                                           <th>{{trans('message.invoice_number')}}</th>
+                                           <th>{{trans('message.total')}}</th>
                                            <th>{{ __('message.invoice_due') }}</th>
-                                           <th>{{Lang::get('message.pay')}}</th>
+                                           <th>{{trans('message.pay')}}</th>
                                           
                                          
                                        </tr>

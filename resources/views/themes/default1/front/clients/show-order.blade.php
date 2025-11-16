@@ -1298,10 +1298,10 @@
                     cardUpdate();
                 }else{
                     swal.fire({
-                        title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.info')}}</h2>",
+                        title: "<h2 class='swal2-title custom-title'>{{trans('message.info')}}</h2>",
                         html: "<div  class='swal2-html-container custom-content'>" +
                             "<div class='section-sa'>" +
-                            "<p>{{Lang::get('message.auto_renewal_disable')}}</p>" + "</div>" +
+                            "<p>{{trans('message.auto_renewal_disable')}}</p>" + "</div>" +
                             "</div>",
                         position: 'top',
                         confirmButtonText: "{{ __('message.ok') }}",

@@ -56,10 +56,10 @@
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="{{url('profile')}}" class="btn btn-default btn-flat">{{Lang::get('message.profile')}}</a>
+                                            <a href="{{url('profile')}}" class="btn btn-default btn-flat">{{trans('message.profile')}}</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="{{url('auth/logout')}}" class="btn btn-default btn-flat">{{Lang::get('message.signout')}}</a>
+                                            <a href="{{url('auth/logout')}}" class="btn btn-default btn-flat">{{trans('message.signout')}}</a>
                                         </div>
                                     </li>
                                 </ul>

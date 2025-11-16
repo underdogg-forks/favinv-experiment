@@ -400,7 +400,7 @@ class CartController extends BaseCartController
             $promo_controller = new \App\Http\Controllers\Payment\PromotionController();
             $result = $promo_controller->checkCode($code);
             if ($result == 'success') {
-                return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+                return redirect()->back()->with('success', \trans('message.updated-successfully'));
             }
 
             return redirect()->back();
@@ -431,12 +431,12 @@ class CartController extends BaseCartController
                 Session::forget('oldprice');
                 Session::forget('usage');
 
-                return redirect()->back()->with('success', \Lang::get('message.remove_coupon'));
+                return redirect()->back()->with('success', \trans('message.remove_coupon'));
             } else {
-                return redirect()->back()->with('fails', \Lang::get('message.no_product'));
+                return redirect()->back()->with('fails', \trans('message.no_product'));
             }
         } catch (\Exception $ex) {
-            return redirect()->back()->with('fails', \Lang::get('message.oops'));
+            return redirect()->back()->with('fails', \trans('message.oops'));
         }
     }
 }

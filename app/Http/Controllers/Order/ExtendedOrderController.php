@@ -35,9 +35,9 @@ class ExtendedOrderController extends Controller
             }
 
             if ($execute == 'success') {
-                return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+                return redirect()->back()->with('success', \trans('message.saved-successfully'));
             } else {
-                return redirect()->back()->with('fails', \Lang::get('message.not-saved-successfully'));
+                return redirect()->back()->with('fails', \trans('message.not-saved-successfully'));
             }
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());

@@ -27,14 +27,14 @@
         {{-- alert block end --}}
         @if(!$execEnabled)
         <div class="alert alert-warning">
-            {{Lang::get('message.please_enable_php_exec_for_cronjob_check')}}
+            {{trans('message.please_enable_php_exec_for_cronjob_check')}}
         </div>
         @endif
 
 
 {!! html()->modelForm($status, 'PATCH', url('post-scheduler'))->id('Form')->open() !!}
 <div class="card-header">
-        <h4 class="card-title">{{Lang::get('message.cron')}} </h4>
+        <h4 class="card-title">{{trans('message.cron')}} </h4>
 
 
     </div>
@@ -42,7 +42,7 @@
     <div class="card-body table-responsive"style="overflow:hidden;">
   <div class="row">
                 <div class="col-md-12">
-                   <p>{{ Lang::get('message.copy-cron-command-description')}} </p>
+                   <p>{{ trans('message.copy-cron-command-description')}} </p>
                 </div>
         </div>
 
@@ -54,7 +54,7 @@
             </div>
             <div class="col-md-4">
                 <select class="form-control" id="phpExecutableList" onchange="checksome()">
-                    <option value="0">{{ Lang::get('message.specify-php-executable')}}</option>
+                    <option value="0">{{ trans('message.specify-php-executable')}}</option>
                     @foreach($paths as $path)
                         <option>{{$path}}</option>
                     @endforeach
@@ -62,7 +62,7 @@
                 </select>
                 <div class="has-feedback" id='phpExecutableTextArea' style="display: none;">
                     <div class="has-feedback">
-                        <input type="text" class="form-control input-sm" style=" padding:5px;height:34px" name="phpExecutableText" id="phpExecutableText" placeholder="{{Lang::get('message.specify-php-executable')}}">
+                        <input type="text" class="form-control input-sm" style=" padding:5px;height:34px" name="phpExecutableText" id="phpExecutableText" placeholder="{{trans('message.specify-php-executable')}}">
                         <span class="fa fa-close form-control-feedback" style="pointer-events: initial; cursor: pointer; color: #74777a" onclick="checksome(false)"></span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 <span style="font-size: 15px">-q {{$cronPath}} schedule:run 2>&1 </span>
             </div>
             <div class="col-md-1">
-                <span style="font-size: 20px" id="copyBtn" title="{{Lang::get('message.verify-and-copy-command')}}" onclick="verifyPHPExecutableAndCopyCommand()"><i class="fa fa-clipboard"></i></span>
+                <span style="font-size: 20px" id="copyBtn" title="{{trans('message.verify-and-copy-command')}}" onclick="verifyPHPExecutableAndCopyCommand()"><i class="fa fa-clipboard"></i></span>
                 <span style="font-size: 20px; display:none;" id="loader"><i class="fas fa-circle-notch fa-spin"></i></span>
             </div>
         </div>
@@ -89,13 +89,13 @@
                         <div class="form-group">
 
                             {!! html()->label()->for('email_fetching')->html(
-    Lang::get('message.expiry_mail') .
+    trans('message.expiry_mail') .
     ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top"
-    title="' . Lang::get('message.expiry_mail_tooltip') . '"></i>'
+    title="' . trans('message.expiry_mail_tooltip') . '"></i>'
 ) !!}
                             <br>
                             {!! html()->checkbox('expiry_cron', $condition->checkActiveJob()['expiryMail'], 1)->id('email_fetching') !!}
-                            &nbsp;{{ Lang::get('message.enable_expiry-cron') }}
+                            &nbsp;{{ trans('message.enable_expiry-cron') }}
 
                         </div>
 
@@ -126,10 +126,10 @@
                 <div class="info-box-content" style="display: block;">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! html()->label(Lang::get('message.delete_activity'))->for('auto_close') !!}
+                            {!! html()->label(trans('message.delete_activity'))->for('auto_close') !!}
                             <br>
                             {!! html()->checkbox('activity', $condition->checkActiveJob()['deleteLogs'], 1)->id('auto_close') !!}
-                            {{ Lang::get('message.enable_activity_clean') }}
+                            {{ trans('message.enable_activity_clean') }}
                         </div>
                     </div>
                     <div class="col-md-6" id="workflow">
@@ -163,16 +163,16 @@
                             {!! html()->label()
      ->for('sub_fetching')
      ->html(
-         Lang::get('message.subscription_renewal_reminder_autopayment') .
+         trans('message.subscription_renewal_reminder_autopayment') .
          ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top"
-         title="' . Lang::get('message.auto_renewal_reminder_tooltip') . '"></i>'
+         title="' . trans('message.auto_renewal_reminder_tooltip') . '"></i>'
      )
  !!}
                             <br>
                             {!! html()->checkbox('subs_expirymail', $condition->checkActiveJob()['subsExpirymail'] ,1)
                                 ->id('sub_fetching')
                             !!}
-                            &nbsp; {{ Lang::get('message.enable_expiry-cron') }}
+                            &nbsp; {{ trans('message.enable_expiry-cron') }}
                             <!-- <input type="checkbox" name="subs_expirymail" value="1"> -->
                         </div>
 
@@ -209,16 +209,16 @@
 
                         <div class="form-group">
                             {!! html()->label()->for('postsub_fetching')->html(
-        Lang::get('message.subscription_expired') .
+        trans('message.subscription_expired') .
         ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top"
-        title="' . Lang::get('message.auto_renewal_reminder_tooltip') . '"></i>'
+        title="' . trans('message.auto_renewal_reminder_tooltip') . '"></i>'
     )
 !!}
                             <br>
                             {!! html()->checkbox('postsubs_expirymail', $condition->checkActiveJob()['postExpirymail'], 1)
                                 ->id('postsub_fetching')
                             !!}
-                            &nbsp;{{ Lang::get('message.enable_expiry-cron') }}
+                            &nbsp;{{ trans('message.enable_expiry-cron') }}
                         </div>
 
 
@@ -251,9 +251,9 @@
 
                         <div class="form-group">
                             {!! html()->label()->for('cloud_fetching')->class('form-label')->html(
-        Lang::get('message.cloud_subscription_deletion') .
+        trans('message.cloud_subscription_deletion') .
         ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top"
-        title="' . Lang::get('message.cron_trigger_cloud_new') . '"></i>'
+        title="' . trans('message.cron_trigger_cloud_new') . '"></i>'
     )
 !!}
 
@@ -262,7 +262,7 @@
                             {!! html()->checkbox('cloud_cron', $condition->checkActiveJob()['cloud'] ,1)
                                 ->id('cloud_fetching')
                             !!}
-                            &nbsp;{{ Lang::get('message.enable_faveo_cloud') }}
+                            &nbsp;{{ trans('message.enable_faveo_cloud') }}
                         </div>
 
 
@@ -300,8 +300,8 @@
 
                             <div class="form-group">
                                 {!! html()->label(
-                                    Lang::get('message.invoice_deletion') .
-                                    ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . Lang::get('message.cron_trigger_deletion_old') . '"></i>'
+                                    trans('message.invoice_deletion') .
+                                    ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . trans('message.cron_trigger_deletion_old') . '"></i>'
                                 )->for('invoice_fetching')->class('required') !!}
 
                                 <br>
@@ -309,7 +309,7 @@
                                 {!! html()->checkbox('invoice_cron', $condition->checkActiveJob()['invoice'], 1)
                                     ->id('invoice_fetching')
                                 !!}
-                                &nbsp; {{ Lang::get('message.enable_invoice_deletion') }}
+                                &nbsp; {{ trans('message.enable_invoice_deletion') }}
                             </div>
                         </div>
 
@@ -342,7 +342,7 @@
                         <div class="form-group">
                             {!! html()
                                 ->label(
-                                    __('message.msg91_reports_deletion').'<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . Lang::get('message.cron_trigger_deletion_msg91_reports') . '"></i>'
+                                    __('message.msg91_reports_deletion').'<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . trans('message.cron_trigger_deletion_msg91_reports') . '"></i>'
                                 )
                                 ->for('msg91_fetching')
                                 ->toHtml()
@@ -355,7 +355,7 @@
                                 ->id('msg91_fetching')
                                 ->toHtml()
                             !!}
-                            &nbsp;{{ Lang::get('message.enable_msg_cron') }}
+                            &nbsp;{{ trans('message.enable_msg_cron') }}
                         </div>
                     </div>
 
@@ -384,7 +384,7 @@
     </div>
 </div>
 <div class="card-footer">
-    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 </div>
 
 {!! html()->form()->close() !!}
@@ -473,7 +473,7 @@
                     $(".alert-danger, .alert-success, #copyBtn").hide();
                 },
                 success: function (result) {
-                    $(".alert-success-message").html("{{ Lang::get('message.cron-command-copied') }} " + result.message);
+                    $(".alert-success-message").html("{{ trans('message.cron-command-copied') }} " + result.message);
                     $(".cron-success, #copyBtn").show();
                     $("#loader").hide();
                 },
@@ -481,7 +481,7 @@
                     $('#clearClipBoard').click();
                     $(".cron-danger, #copyBtn").show();
                     $("#loader").hide();
-                    $(".alert-danger-message").html("{{ Lang::get('message.cron-command-not-copied') }} " + xhr.responseJSON.message);
+                    $(".alert-danger-message").html("{{ trans('message.cron-command-not-copied') }} " + xhr.responseJSON.message);
                 }
             });
         });

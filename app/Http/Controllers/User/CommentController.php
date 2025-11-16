@@ -52,7 +52,7 @@ class CommentController extends Controller
         try {
             $comments = $this->comment->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+            return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (Exception $ex) {
             app('log')->error($ex->getMessage());
 
@@ -73,7 +73,7 @@ class CommentController extends Controller
             $comment = $this->comment->where('id', $id)->update(['user_id' => $request->input('user_id'),
                 'updated_by_user_id' => $request->input('updated_by_user_id'), 'description' => $request->input('description'), ]);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (Exception $ex) {
             app('log')->error($ex->getMessage());
 
@@ -93,7 +93,7 @@ class CommentController extends Controller
             $delComment = $this->comment->where('id', $request->input('data-comment-id'))->delete();
 
             return successResponse(__('message.comment_deleted_successfully'));
-            // return redirect()->back()->with('success', \Lang::get('message.deleted-successfully'));
+            // return redirect()->back()->with('success', \trans('message.deleted-successfully'));
         } catch (Exception $ex) {
             app('log')->error($ex->getMessage());
 

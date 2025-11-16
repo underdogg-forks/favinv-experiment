@@ -41,7 +41,7 @@ class BaseProductController extends ExtendedBaseProductController
 
                 return "<div>
 	                        <label class='required'>"./* @scrutinizer ignore-type */
-                            \Lang::get('message.quantity')."</label>
+                            \trans('message.quantity')."</label>
 	                        <input type='text' name='quantity' class='form-control' id='quantity' value='$value'>
 	                        <span class='error-message' id='quantity-msg'></span>
 	                </div>";
@@ -80,7 +80,7 @@ class BaseProductController extends ExtendedBaseProductController
 
                 return "<div>
                             <label class='required'>"./* @scrutinizer ignore-type */
-                            \Lang::get('message.agent')."</label>
+                            \trans('message.agent')."</label>
                             <input type='text' name='agents' class='form-control' id='agents' value='$value'>
                             <span class='error-message' id='agents-msg'></span>
                     </div>";
@@ -185,13 +185,13 @@ class BaseProductController extends ExtendedBaseProductController
                     } else {
                         if (isS3Enabled()) {
                             if (! Attach::exists('products/'.explode('?', urldecode(basename($release)))[0])) {
-                                return redirect()->back()->with('fails', \Lang::get('message.file_not_exist'));
+                                return redirect()->back()->with('fails', \trans('message.file_not_exist'));
                             }
 
                             return downloadExternalFile($release, $name);
                         } else {
                             if (! $release instanceof \Symfony\Component\HttpFoundation\StreamedResponse) {
-                                return redirect()->back()->with('fails', \Lang::get('message.file_not_exist'));
+                                return redirect()->back()->with('fails', \trans('message.file_not_exist'));
                             }
                             $customFileName = "{$name}.zip";
 
@@ -207,10 +207,10 @@ class BaseProductController extends ExtendedBaseProductController
                         }
                     }
                 } else {
-                    return redirect()->back()->with('fails', \Lang::get('activate-your-account'));
+                    return redirect()->back()->with('fails', \trans('activate-your-account'));
                 }
             } else {
-                throw new \Exception(\Lang::get('message.no_permission_for_action'));
+                throw new \Exception(\trans('message.no_permission_for_action'));
             }
         } catch (\Exception $ex) {
             app('log')->error($ex->getMessage());
@@ -360,14 +360,14 @@ class BaseProductController extends ExtendedBaseProductController
     public function productDownload(Request $request)
     {
         if (! $this->validateLicenseManagerAppKey($request->input('app_key'), $request->input('app_secret'))) {
-            return errorResponse(\Lang::get('message.invalid_app_key'));
+            return errorResponse(\trans('message.invalid_app_key'));
         }
 
         $fileName = $request->input('file_name');
         $filePath = 'products/'.$fileName;
 
         if (! $this->fileExists($filePath)) {
-            return errorResponse(\Lang::get('message.file_not_exist'));
+            return errorResponse(\trans('message.file_not_exist'));
         }
 
         return $this->streamProduct($filePath);
@@ -376,16 +376,16 @@ class BaseProductController extends ExtendedBaseProductController
     public function productFileExist(Request $request)
     {
         if (! $this->validateLicenseManagerAppKey($request->input('app_key'), $request->input('app_secret'))) {
-            return errorResponse(\Lang::get('message.invalid_app_key'));
+            return errorResponse(\trans('message.invalid_app_key'));
         }
         $fileName = $request->input('file_name');
         $filePath = 'products/'.$fileName;
 
         if (! $this->fileExists($filePath)) {
-            return errorResponse(\Lang::get('message.file_not_exist'));
+            return errorResponse(\trans('message.file_not_exist'));
         }
 
-        return successResponse(\Lang::get('message.file_exist'));
+        return successResponse(\trans('message.file_exist'));
     }
 
     private function fileExists($filePath): bool
@@ -410,7 +410,7 @@ class BaseProductController extends ExtendedBaseProductController
 
             return $response;
         } catch (\Exception $e) {
-            return errorResponse(\Lang::get('message.error_occured_while_downloading'));
+            return errorResponse(\trans('message.error_occured_while_downloading'));
         }
     }
 
@@ -434,7 +434,7 @@ class BaseProductController extends ExtendedBaseProductController
             ->value('version');
 
         if (! $version) {
-            return errorResponse(\Lang::get('message.file_not_exist'));
+            return errorResponse(\trans('message.file_not_exist'));
         }
 
         $product = ProductUpload::where('product_id', $product_id)
@@ -445,7 +445,7 @@ class BaseProductController extends ExtendedBaseProductController
         $filePath = 'products/'.$product->file;
 
         if (! $product || ! $this->fileExists($filePath)) {
-            return errorResponse(\Lang::get('message.file_not_exist'));
+            return errorResponse(\trans('message.file_not_exist'));
         }
 
         return $this->streamProduct($filePath);
@@ -460,7 +460,7 @@ class BaseProductController extends ExtendedBaseProductController
         $product = $license->searchProductUsingLicense($license_code);
 
         if (! $product) {
-            return errorResponse(\Lang::get('message.product_not_found'));
+            return errorResponse(\trans('message.product_not_found'));
         }
 
         $data = [

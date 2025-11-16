@@ -110,7 +110,7 @@
 
                     <div class="col-md-3 form-group {{ $errors->has('active') ? 'has-error' : '' }}">
                         <!-- email active -->
-                        {!! html()->label(Lang::get('message.email'))->for('active') !!}
+                        {!! html()->label(trans('message.email'))->for('active') !!}
                         <p>{!! html()->radio('email_verified', true, 1) !!}&nbsp;{{ __('message.active') }}&nbsp;&nbsp;{!! html()->radio('email_verified', false, 0) !!}&nbsp;{{ __('message.inactive') }}</p>
 
                         @error('email_verified')
@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-md-3 form-group {{ $errors->has('mobile_verified') ? 'has-error' : '' }}">
                         <!-- mobile active -->
-                        {!! html()->label(Lang::get('message.mobile'))->for('mobile_verified') !!}
+                        {!! html()->label(trans('message.mobile'))->for('mobile_verified') !!}
                         <p>{!! html()->radio('mobile_verified', true, 1)->checked() !!}&nbsp;{{ __('message.active') }}&nbsp;&nbsp;{!! html()->radio('mobile_verified', false, 0) !!}{{ __('message.inactive') }}</p>
                         @error('mobile_verified')
                         <span class="error-message"> {{$message}}</span>
@@ -129,7 +129,7 @@
                 <div class="row">
                     <div class="col-md-3 form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                         <!-- role -->
-                        {!! html()->label(Lang::get('message.role'))->for('role') !!}
+                        {!! html()->label(trans('message.role'))->for('role') !!}
                         {!! html()->select('role')->options(['user' => 'User', 'admin' => 'Admin'])->class('form-control'. ($errors->has('role') ? ' is-invalid' : '')) !!}
                         @error('role')
                         <span class="error-message"> {{$message}}</span>
@@ -172,7 +172,7 @@
                 </div>
                 <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
                     <!-- address -->
-                    {!! html()->label(Lang::get('message.address'), 'address')->class('required') !!}
+                    {!! html()->label(trans('message.address'), 'address')->class('required') !!}
                     {!! html()->textarea('address')->class('form-control'. ($errors->has('address') ? ' is-invalid' : '')) !!}
                     @error('address')
                     <span class="error-message"> {{$message}}</span>
@@ -185,7 +185,7 @@
 
                     <div class="col-md-3 form-group {{ $errors->has('town') ? 'has-error' : '' }}">
                         <!-- town -->
-                        {!! html()->label(Lang::get('message.town'), 'town') !!}
+                        {!! html()->label(trans('message.town'), 'town') !!}
                         {!! html()->text('town')->class('form-control'. ($errors->has('town') ? ' is-invalid' : '')) !!}
                         @error('town')
                         <span class="error-message"> {{$message}}</span>
@@ -194,10 +194,10 @@
 
                     <div class="col-md-3 form-group {{ $errors->has('country') ? 'has-error' : '' }}">
                         <!-- country -->
-                        {!! html()->label(Lang::get('message.country'), 'country')->class('required') !!}
+                        {!! html()->label(trans('message.country'), 'country')->class('required') !!}
                         <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
 
-                        {!! html()->select('country')->options([Lang::get('message.choose') => $countries])
+                        {!! html()->select('country')->options([trans('message.choose') => $countries])
     ->class('form-control select2'. ($errors->has('country') ? ' is-invalid' : ''))
     ->id('country')
     ->attribute('onChange', 'getCountryAttr(this.value)')
@@ -213,7 +213,7 @@
                     </div>
                     <div class="col-md-3 form-group {{ $errors->has('state') ? 'has-error' : '' }}">
                         <!-- state -->
-                        {!! html()->label(Lang::get('message.state'))->for('state') !!}
+                        {!! html()->label(trans('message.state'))->for('state') !!}
                         <select name="state" id="state-list" class="form-control {{$errors->has('') ? ' is-invalid' : ''}}">
                             @if(count($state)>0)
                             <option value="{{$state['id']}}">{{$state['name']}}</option>
@@ -230,7 +230,7 @@
 
                     <div class="col-md-3 form-group {{ $errors->has('zip') ? 'has-error' : '' }}">
                         <!-- postal -->
-                        {!! html()->label(Lang::get('message.zip'))->for('zip') !!}
+                        {!! html()->label(trans('message.zip'))->for('zip') !!}
                         {!! html()->text('zip')->class('form-control'. ($errors->has('zip') ? ' is-invalid' : ''))->id('zip1') !!}
                         <span id="zip-error-msg"></span>
                         @error('zip')
@@ -239,7 +239,7 @@
                     </div>
                     <div class="col-md-3 form-group {{ $errors->has('timezone_id') ? 'has-error' : '' }}">
                         <!-- timezone -->
-                        {!! html()->label(Lang::get('message.timezone'))->for('timezone_id')->class('required') !!}
+                        {!! html()->label(trans('message.timezone'))->for('timezone_id')->class('required') !!}
                         {!! html()->select('timezone_id', ['Timezones' => $timezones])->class('form-control chosen-select select2'. ($errors->has('timezone_id') ? ' is-invalid' : ''))->attribute('data-live-search', 'true')->attribute('required', true)->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false') !!}
                         @error('timezone_id')
                         <span class="error-message"> {{$message}}</span>
@@ -248,7 +248,7 @@
                     
 
                     <div class="col-md-3 form-group {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.mobile'))->for('mobile')->class('required') !!}
+                        {!! html()->label(trans('message.mobile'))->for('mobile')->class('required') !!}
                         {!! html()->hidden('mobile_code')->id('mobile_code_hidden') !!}
                         {!! html()->input('tel', 'mobile', $user->mobile)->class('form-control selected-dial-code'. ($errors->has('mobile') ? ' is-invalid' : ''))->id('mobile_code') !!}
                         {!! html()->hidden('mobile_country_iso')->id('mobile_country_iso') !!}
@@ -295,7 +295,7 @@
               
             </div>
         </div>
-        <h4><button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fas fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button></h4>
+        <h4><button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fas fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button></h4>
 
         {!! html()->form()->close() !!}
     </div>

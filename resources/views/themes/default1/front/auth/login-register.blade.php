@@ -395,9 +395,9 @@ foreach($scripts as $script) {
                         </div>
 
                         <small class="text-sm text-muted" id="pswd_info" style="display: none;">
-                            <span class="font-weight-bold">{{ \Lang::get('message.password_requirements') }}</span>
+                            <span class="font-weight-bold">{{ \trans('message.password_requirements') }}</span>
                             <ul class="pl-4">
-                                @foreach (\Lang::get('message.password_requirements_list') as $requirement)
+                                @foreach (\trans('message.password_requirements_list') as $requirement)
                                     <li id="{{ $requirement['id'] }}" class="text-danger">{{ $requirement['text'] }}</li>
                                 @endforeach
                             </ul>

@@ -124,8 +124,8 @@
             <h3 class="card-title">
 
                 <h3 class="widget-user-username">
-                    <a class="btn btn-sm btn-secondary" href="{{url('invoice/generate?clientid='.$client->id)}}"> <i class="fa fa-credit-card"></i> &nbsp;{{Lang::get('message.create-invoice')}}</a>
-                    <a class="btn btn-sm btn-secondary" href="{{url('newPayment/receive?clientid='.$client->id)}}"> <i class="fa fa-bars"></i> &nbsp;{{Lang::get('message.create-payment')}}</a>
+                    <a class="btn btn-sm btn-secondary" href="{{url('invoice/generate?clientid='.$client->id)}}"> <i class="fa fa-credit-card"></i> &nbsp;{{trans('message.create-invoice')}}</a>
+                    <a class="btn btn-sm btn-secondary" href="{{url('newPayment/receive?clientid='.$client->id)}}"> <i class="fa fa-bars"></i> &nbsp;{{trans('message.create-payment')}}</a>
                      <a class="btn btn-sm btn-secondary" href="{{url('clients/'.$client->id.'/edit')}}"> <i class="fas fa-edit"></i> {{ __('message.edit_details') }}</a>
                     @if($is2faEnabled)
                         <button id="disable2fa" value="{{$client->id}}" class="btn btn-sm btn-secondary"><i class="fa fa-ban"></i>&nbsp;
@@ -141,10 +141,10 @@
                 <div class="col-md-2 col-lg-2 col-sm-2">
                     <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab myTab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="invoice" data-toggle="pill" href="#activity" role="tab"  aria-selected="true">{{ __('message.invoice_detail') }}</a>
-                        <a class="nav-link" id="customer_detail" data-toggle="pill" href="#settings" role="tab"  aria-selected="false">{{Lang::get('message.customer_detail')}}</a>
-                        <a class="nav-link" id="payment" data-toggle="pill" href="#timeline" role="tab"  aria-selected="false">{{Lang::get('message.payment_detail')}}</a>
-                        <a class="nav-link" id="orderdetail" data-toggle="pill" href="#order" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">{{Lang::get('message.order_detail')}}</a>
-                        <a class="nav-link" id="vert-tabs-comment-tab" data-toggle="pill" href="#comments" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">{{Lang::get('message.comment')}}&nbsp;<span class="badge bg-green">{{count($comments)}}</span></a>
+                        <a class="nav-link" id="customer_detail" data-toggle="pill" href="#settings" role="tab"  aria-selected="false">{{trans('message.customer_detail')}}</a>
+                        <a class="nav-link" id="payment" data-toggle="pill" href="#timeline" role="tab"  aria-selected="false">{{trans('message.payment_detail')}}</a>
+                        <a class="nav-link" id="orderdetail" data-toggle="pill" href="#order" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">{{trans('message.order_detail')}}</a>
+                        <a class="nav-link" id="vert-tabs-comment-tab" data-toggle="pill" href="#comments" role="tab" aria-controls="vert-tabs-settings" aria-selected="false">{{trans('message.comment')}}&nbsp;<span class="badge bg-green">{{count($comments)}}</span></a>
 
                     </div>
                 </div>
@@ -292,10 +292,10 @@
                              });
                              if(id.length<=0){
                                  swal.fire({
-                                     title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                                     title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                                      html: "<div class='swal2-html-container custom-content'>" +
                                          "<div class='section-sa'>" +
-                                         "<p>{{Lang::get('message.sweet_invoice')}}</p>" + "</div>" +
+                                         "<p>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                                          "</div>",
                                      position: 'top',
                                      confirmButtonText: "{{ __('message.ok') }}",
@@ -305,10 +305,10 @@
                                  });
                              }else {
                                  var swl = swal.fire({
-                                     title: "<h2  class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                                     title: "<h2  class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                                      html: "<div  class='swal2-html-container custom-content'>" +
                                          "<div class='section-sa'>" +
-                                         "<p>{{Lang::get('message.invoice_delete')}}</p>" + "</div>" +
+                                         "<p>{{trans('message.invoice_delete')}}</p>" + "</div>" +
                                          "</div>",
                                      showCancelButton: true,
                                      cancelButtonText: "{{ __('message.cancel') }}",
@@ -342,10 +342,10 @@
                                              })
                                          } else {
                                              swal.fire({
-                                                 title: "<h2  class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                                                 title: "<h2  class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                                                  html: "<div  class='swal2-html-container custom-content'>" +
                                                      "<div class='section-sa'>" +
-                                                     "<p>{{Lang::get('message.sweet_invoice')}}</p>" + "</div>" +
+                                                     "<p>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                                                      "</div>",
                                                  position: 'top',
                                                  confirmButtonText: "{{ __('message.ok') }}",
@@ -386,10 +386,10 @@
                                     <div id="response"></div>
                                     <ul class="list-group list-group-unbordered mb-3">
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.email')}}</b>: <span class="pull-right clientemail" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.email')}}</b>: <span class="pull-right clientemail" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.company')}}</b>: <span class="pull-right clientcompanyname" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.company')}}</b>: <span class="pull-right clientcompanyname" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
                                         <li class="list-group-item">
                                             <b>{{ __('message.user_name') }}</b>: <span class="pull-right clientuser_name" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
@@ -401,30 +401,30 @@
                                             <b>{{ __('message.business') }}</b>: <span class="pull-right clientbusiness" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.mobile')}}</b>: <span class="clientmobile" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};">  @if($client->mobile_code)<b>+</b>{{$client->mobile_code}}@endif&nbsp;{{$client->mobile}}</span>
+                                            <b>{{trans('message.mobile')}}</b>: <span class="clientmobile" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};">  @if($client->mobile_code)<b>+</b>{{$client->mobile_code}}@endif&nbsp;{{$client->mobile}}</span>
                                         </li>
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.address')}}</b>: <span class="pull-right clientaddress" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
-                                        </li>
-
-                                        <li class="list-group-item">
-                                            <b>{{Lang::get('message.town')}}</b>: <span class="pull-right clienttown" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.address')}}</b>: <span class="pull-right clientaddress" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.state')}}</b>: <span class="pull-right clientstate" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.town')}}</b>: <span class="pull-right clienttown" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.country')}}</b>: <span class="pull-right clientcountry" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.state')}}</b>: <span class="pull-right clientstate" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.zip')}}</b>: <span class="pull-right clientzip" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.country')}}</b>: <span class="pull-right clientcountry" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
 
                                         <li class="list-group-item">
-                                            <b>{{Lang::get('message.role')}}</b>: <span class="pull-right clientrole" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                            <b>{{trans('message.zip')}}</b>: <span class="pull-right clientzip" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
+                                        </li>
+
+                                        <li class="list-group-item">
+                                            <b>{{trans('message.role')}}</b>: <span class="pull-right clientrole" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
                                         <li class="list-group-item">
                                             <b>{{ __('message.company_type') }}</b>: <span class="pull-right clientcompany" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
@@ -459,11 +459,11 @@
                                             <b>{{ __('message.referrer') }}</b>: <span class="pull-right referrer" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};"></span>
                                         </li>
                                         <li class="list-group-item">
-                                         <b>{{Lang::get('message.mail_verify')}}</b>:
+                                         <b>{{trans('message.mail_verify')}}</b>:
                                         <span class="pull-right mailVerify" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};">{{ $email }}</span>
                                     </li>
                                     <li class="list-group-item">
-                                          <b>{{Lang::get('message.mobile_verify')}}</b>:
+                                          <b>{{trans('message.mobile_verify')}}</b>:
                                         <span class="pull-right mobileVerify" style="float: {{ app()->getLocale() === 'ar' ? 'left' : 'right' }};">{{$mobile}}</span>
                                     </li>
 
@@ -583,10 +583,10 @@
                                 });
                                 if(id.length<=0){
                                     swal.fire({
-                                        title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                                        title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                                         html: "<div class='swal2-html-container custom-content'>" +
                                             "<div class='section-sa'>" +
-                                            "<p>{{Lang::get('message.sweet_payment_details')}}</p>" + "</div>" +
+                                            "<p>{{trans('message.sweet_payment_details')}}</p>" + "</div>" +
                                             "</div>",
                                         position: 'top',
                                         confirmButtonText: "{{ __('message.ok') }}",
@@ -597,10 +597,10 @@
                                 }
                                 else {
                                     var swl = swal.fire({
-                                        title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                                        title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                                         html: "<div class='swal2-html-container custom-content'>" +
                                             "<div class='section-sa'>" +
-                                            "<p>{{Lang::get('message.payment_delete')}}</p>" + "</div>" +
+                                            "<p>{{trans('message.payment_delete')}}</p>" + "</div>" +
                                             "</div>",
                                         showCancelButton: true,
                                         cancelButtonText: "{{ __('message.cancel') }}",
@@ -634,10 +634,10 @@
                                                 })
                                             } else {
                                                 swal.fire({
-                                                    title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                                                    title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                                                     html: "<div class='swal2-html-container custom-content'>" +
                                                         "<div class='section-sa'>" +
-                                                        "<p>{{Lang::get('message.sweet_payment_details')}}</p>" + "</div>" +
+                                                        "<p>{{trans('message.sweet_payment_details')}}</p>" + "</div>" +
                                                         "</div>",
                                                     position: 'top',
                                                     confirmButtonText: "{{ __('message.ok') }}",
@@ -771,10 +771,10 @@
                                     });
                                     if(id.length<=0){
                                         swal.fire({
-                                            title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                                            title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                                             html: "<div class='swal2-html-container custom-content'>" +
                                                 "<div class='section-sa'>" +
-                                                "<p>{{Lang::get('message.sweet_order_details')}}</p>"+"</div>" +
+                                                "<p>{{trans('message.sweet_order_details')}}</p>"+"</div>" +
                                                 "</div>",
                                             position: 'top',
                                             confirmButtonText: "{{ __('message.ok') }}",
@@ -784,10 +784,10 @@
                                         })
                                     }else {
                                         var swl = swal.fire({
-                                            title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                                            title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                                             html: "<div class='swal2-html-container custom-content'>" +
                                                 "<div class='section-sa'>" +
-                                                "<p>{{Lang::get('message.order_delete')}}</p>" + "</div>" +
+                                                "<p>{{trans('message.order_delete')}}</p>" + "</div>" +
                                                 "</div>",
                                             showCancelButton: true,
                                             cancelButtonText: "{{ __('message.cancel') }}",
@@ -821,10 +821,10 @@
                                                     })
                                                 } else {
                                                     swal.fire({
-                                                        title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                                                        title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                                                         html: "<div class='swal2-html-container custom-content'>" +
                                                             "<div class='section-sa'>" +
-                                                            "<p>{{Lang::get('message.sweet_order_details')}}</p>" + "</div>" +
+                                                            "<p>{{trans('message.sweet_order_details')}}</p>" + "</div>" +
                                                             "</div>",
                                                         position: 'top',
                                                         confirmButtonText: "{{ __('message.ok') }}",
@@ -848,7 +848,7 @@
                        
                         <div class="tab-pane fade" id="comments" role="tabpanel" aria-labelledby="vert-tabs-settings-tab">
                             <a href="#comment" class="btn btn-default btn-sm pull-right" data-toggle="modal" data-target="#createComment">
-                                <span class="fas fa-plus"></span>&nbsp;&nbsp;{{Lang::get('message.add_comment')}}</a>
+                                <span class="fas fa-plus"></span>&nbsp;&nbsp;{{trans('message.add_comment')}}</a>
                             @include('themes.default1.user.client.createComment')
 
                             <br/> <br/> <br/>
@@ -905,7 +905,7 @@
                                     @empty
                                         <tr>
                                             <td>
-                                                {{Lang::get('message.no-comments')}}
+                                                {{trans('message.no-comments')}}
                                             </td>
                                         </tr>
                                          </div>
@@ -1047,10 +1047,10 @@
             var id=[];
 
         var swl=swal.fire({
-            title:"<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+            title:"<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
             html: "<div class='swal2-html-container custom-content'>" +
                 "<div class='section-sa'>" +
-                "<p>{{Lang::get('message.comment_delete')}}</p>"+"</div>" +
+                "<p>{{trans('message.comment_delete')}}</p>"+"</div>" +
                 "</div>",
             showCancelButton: true,
             cancelButtonText: "{{ __('message.cancel') }}",
@@ -1086,10 +1086,10 @@
                     })
                 } else {
                     swal.fire({
-                        title: "<h2 class='swal2-title custom-title'>{{ Lang::get('message.Select') }}</h2>",
+                        title: "<h2 class='swal2-title custom-title'>{{ trans('message.Select') }}</h2>",
                         html: "<div class='swal2-html-container custom-content'>" +
                             "<div class='section-sa'>" +
-                            "<p>{{Lang::get('message.sweet_checkbox')}}</p>"+"</div>" +
+                            "<p>{{trans('message.sweet_checkbox')}}</p>"+"</div>" +
                             "</div>",
                         position: 'top',
                         confirmButtonText: "{{ __('message.ok') }}",

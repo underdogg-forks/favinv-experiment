@@ -158,7 +158,7 @@ class ExtendedBaseProductController extends Controller
             if ($product->require_domain == 1) {
                 $field .= '<div>
                         <label>'./* @scrutinizer ignore-type */
-                         \Lang::get('message.domain')."</label>
+                         \trans('message.domain')."</label>
                         <input type='text' name='domain' class='form-control' 
                         id='domain' placeholder='domain.com or sub.domain.com'>
                 </div>";
@@ -166,7 +166,7 @@ class ExtendedBaseProductController extends Controller
             if (in_array($product->id, cloudPopupProducts())) {
                 $field .= '<div>
     <div class="form-group">
-        <label class="required">'./* @scrutinizer ignore-type */ \Lang::get('message.cloud_domain').'</label>
+        <label class="required">'./* @scrutinizer ignore-type */ \trans('message.cloud_domain').'</label>
         <div class="input-group">
             <input type="text" name="cloud_domain" class="form-control" id="cloud_domain" placeholder="'.__('message.extended_domain').'" required >
             <input type="text" class="form-control" value=".'.cloudSubDomain().'" disabled="true" style="background-color: #4081B5; color:white; border-color: #0088CC">
@@ -227,7 +227,7 @@ class ExtendedBaseProductController extends Controller
                     return downloadExternalFile($release, $name);
                 } else {
                     if (! $release instanceof \Symfony\Component\HttpFoundation\StreamedResponse) {
-                        return redirect('my-orders')->with('fails', \Lang::get('message.file_not_exist'));
+                        return redirect('my-orders')->with('fails', \trans('message.file_not_exist'));
                     }
                     $customFileName = "{$name}.zip";
 
@@ -242,7 +242,7 @@ class ExtendedBaseProductController extends Controller
                     return $release;
                 }
             } else {
-                throw new \Exception(\Lang::get('message.no_permission_for_action'));
+                throw new \Exception(\trans('message.no_permission_for_action'));
             }
         } catch (\Exception $e) {
             return redirect('my-orders')->with('fails', $e->getMessage());

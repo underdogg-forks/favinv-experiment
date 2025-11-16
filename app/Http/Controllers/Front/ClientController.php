@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\ApiKey;
-use App\Auto_renewal;
+use App\AutoRenewal;
 use App\Http\Controllers\Github\GithubApiController;
 use App\Http\Controllers\License\LicensePermissionsController;
 use App\Http\Controllers\Order\RenewController;
@@ -22,7 +22,7 @@ use App\Model\Payment\PlanPrice;
 use App\Model\Product\Product;
 use App\Model\Product\ProductUpload;
 use App\Model\Product\Subscription;
-use App\Payment_log;
+use App\PaymentLog;
 use App\Plugins\Stripe\Controllers\SettingsController;
 use App\User;
 use Exception;
@@ -114,7 +114,7 @@ class ClientController extends BaseClientController
                     'order_id' => $orderid,
                     'payment_intent_id' => $paymentIntent->payment_method,
                 ];
-                Auto_renewal::create($customer_details);
+                AutoRenewal::create($customer_details);
                 Subscription::where('order_id', $orderid)->update(['is_subscribed' => '1', 'autoRenew_status' => '1']);
                 $mail = new \App\Http\Controllers\Common\PhpMailController();
 
@@ -210,7 +210,7 @@ class ClientController extends BaseClientController
                 'payment_method' => 'razorpay',
                 'order_id' => $orderid,
             ];
-            Auto_renewal::create($customer_details);
+            AutoRenewal::create($customer_details);
 
             Subscription::where('order_id', $orderid)->update(['is_subscribed' => '1', 'rzp_subscription' => '1']);
 
@@ -854,7 +854,7 @@ class ClientController extends BaseClientController
             $status = Subscription::where('order_id', $id)->value('autoRenew_status');
             $currency = getCurrencyForClient(\Auth::user()->country);
             $amount = currencyFormat(1, $currency);
-            $payment_log = Payment_log::where('order', $order->number)
+            $payment_log = PaymentLog::where('order', $order->number)
             ->where('amount', $amount)
             ->where('payment_type', 'Payment method updated')
             ->orderBy('id', 'desc')
@@ -937,12 +937,12 @@ class ClientController extends BaseClientController
      */
     private function paymentLogGet($terminatedOrderNumber)
     {
-        $payment_log = \App\Payment_log::where('order', $terminatedOrderNumber)
+        $payment_log = \App\PaymentLog::where('order', $terminatedOrderNumber)
             ->where('payment_type', 'Payment method updated')
             ->orderBy('id', 'desc')
             ->first();
         if (! $payment_log) {
-            $payment_log = \App\Payment_log::where('order', $terminatedOrderNumber)
+            $payment_log = \App\PaymentLog::where('order', $terminatedOrderNumber)
                 ->orderBy('id', 'desc')
                 ->first();
         }
@@ -1321,7 +1321,7 @@ class ClientController extends BaseClientController
             'order_id' => $orderid,
             'payment_intent_id' => $paymentIntent->payment_method,
         ];
-        Auto_renewal::create($customer_details);
+        AutoRenewal::create($customer_details);
         Subscription::where('order_id', $orderid)->update(['is_subscribed' => '1', 'autoRenew_status' => '1']);
         $mail = new \App\Http\Controllers\Common\PhpMailController();
         $mail->payment_log(\Auth::user()->email, 'stripe', 'success', Order::where('id', $orderid)->value('number'), null, $amount, 'Payment method updated');

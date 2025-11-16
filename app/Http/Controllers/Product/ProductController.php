@@ -362,7 +362,7 @@ class ProductController extends BaseProductController
                 }
             }
 
-            return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+            return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (\Exception $e) {
             app('log')->error($e->getMessage());
 
@@ -494,7 +494,7 @@ class ProductController extends BaseProductController
             //add tax class to tax_product_relation table
             $newTax = $this->saveTax($request->input('tax'), $product->id);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }
@@ -522,37 +522,37 @@ class ProductController extends BaseProductController
                     } else {
                         echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                        './* @scrutinizer ignore-type */\trans('message.no-record').'
                 </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                     echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
                     <b>"./* @scrutinizer ignore-type */
-                        \Lang::get('message.alert').'!</b> './* @scrutinizer ignore-type */ \Lang::get('message.success').'
+                        \trans('message.alert').'!</b> './* @scrutinizer ignore-type */ \trans('message.success').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.deleted-successfully').'
+                        './* @scrutinizer ignore-type */\trans('message.deleted-successfully').'
                 </div>';
                 }
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.select-a-row').'
+                        './* @scrutinizer ignore-type */\trans('message.select-a-row').'
                 </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
             $lastActivity = Activity::all()->last();
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').',
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').',
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                         '.__('message.not-found').'
                 </div>';

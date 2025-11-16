@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                 <h4 class="modal-title">{{Lang::get('message.edit-comment')}}</h4>
+                 <h4 class="modal-title">{{trans('message.edit-comment')}}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button>
                
             </div>
@@ -18,7 +18,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                  <button type="button" id="close" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i>{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary " id="edit_submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fas fa-refresh">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary " id="edit_submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fas fa-refresh">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

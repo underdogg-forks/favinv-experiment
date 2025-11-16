@@ -35,7 +35,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.name'))->class('required')->for('name') !!}
+                        {!! html()->label(trans('message.name'))->class('required')->for('name') !!}
                         {!! html()->text('name')->class('form-control'. ($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -46,7 +46,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('publish') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.publish'))->class('required')->for('publish') !!}
+                        {!! html()->label(trans('message.publish'))->class('required')->for('publish') !!}
                         {!! html()->select('publish', [1 => 'Yes', 0 => 'No'])->class('form-control'. ($errors->has('publish') ? ' is-invalid' : ''))->id('publish') !!}
                         @error('publish')
                         <span class="error-message"> {{$message}}</span>
@@ -57,21 +57,13 @@
 
 
                     <?php
-                $mail = ['class' => 'form-control','disabled' => 'true' , 'title' => Lang::get('message.configure_mailchimp')];
-                $twitter = ['class' => 'form-control','disabled' => 'true', 'title' => Lang::get('message.configure_tweet')];
+                $mail = ['class' => 'form-control','disabled' => 'true' , 'title' => trans('message.configure_mailchimp')];
+                $twitter = ['class' => 'form-control','disabled' => 'true', 'title' => trans('message.configure_tweet')];
                 
                 ?>
 
                     
                   
-{{--                    <div class="col-md-4 form-group {{ $errors->has('allow_tweets') ? 'has-error' : '' }}">--}}
-{{--                        <!-- last name -->--}}
-{{--                        {!! Form::label('allow_tweets',Lang::get('message.allow_tweets'),['class'=>'required']) !!}--}}
-{{--                        {!! Form::select('allow_tweets',[1=>'Yes',0=>'No'],null,($twitterStatus) ? ['class' => 'form-control'. ($errors->has('allow_tweets') ? ' is-invalid' : '')] : $twitter) !!}--}}
-{{--                        @error('allow_tweets')--}}
-{{--                        <span class="error-message"> {{$message}}</span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
                   
         
 
@@ -79,7 +71,7 @@
                    
                    <div class="col-md-4 form-group {{ $errors->has('allow_mailchimp') ? 'has-error' : '' }}">
                         <!-- last name -->
-                       {!! html()->label(Lang::get('message.allow_mailchimp'))->class('required')->for('allow_mailchimp') !!}
+                       {!! html()->label(trans('message.allow_mailchimp'))->class('required')->for('allow_mailchimp') !!}
                        {!! html()->select('allow_mailchimp', [1 => 'Yes', 0 => 'No'])->class('form-control'. ($errors->has('allow_mailchimp') ? ' is-invalid' : ''))->attributes(($mailchimpStatus) ? [] : $mail) !!}
                        @error('allow_mailchimp')
                        <span class="error-message"> {{$message}}</span>
@@ -99,7 +91,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.type'))->class('required')->for('type') !!}
+                        {!! html()->label(trans('message.type'))->class('required')->for('type') !!}
                         {!! html()->select('type', ['' => __('message.choose'), 'footer1' => 'Footer 1', 'footer2' => 'Footer 2', 'footer3' => 'Footer 3'])->class('form-control'. ($errors->has('type') ? ' is-invalid' : ''))->id('type') !!}
                         @error('type')
                         <span class="error-message"> {{$message}}</span>
@@ -158,7 +150,7 @@
 </script>
 
 
-                        {!! html()->label(Lang::get('message.content'))->for('content') !!}
+                        {!! html()->label(trans('message.content'))->for('content') !!}
                         {!! html()->textarea('content')->class('form-control'. ($errors->has('content') ? ' is-invalid' : ''))->id('textarea') !!}
                         @error('content')
                         <span class="error-message"> {{$message}}</span>
@@ -171,7 +163,7 @@
             </div>
 
         </div>
-       <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+       <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
     </div>
 

@@ -166,8 +166,8 @@ $set = $set->findOrFail(1);
                                     {{ucfirst(Auth::user()->first_name)}} {{ucfirst(Auth::user()->last_name)}}
                                 </h3>
                                 <p class="text-sm">{{ucfirst(Auth::user()->role)}}</p>
-                                <a href="{{url('profile')}}" class="btn btn-primary btn-sm btn-flat">{{Lang::get('message.profile')}}</a>
-                                <a href="{{url('auth/logout')}}" class="btn btn-danger btn-sm btn-flat">{{Lang::get('message.signout')}}</a>
+                                <a href="{{url('profile')}}" class="btn btn-primary btn-sm btn-flat">{{trans('message.profile')}}</a>
+                                <a href="{{url('auth/logout')}}" class="btn btn-danger btn-sm btn-flat">{{trans('message.signout')}}</a>
 
                             </div>
                         </div>
@@ -219,7 +219,7 @@ $set = $set->findOrFail(1);
                         <a href="{{url('/')}}" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                {{Lang::get('message.dashboard')}}
+                                {{trans('message.dashboard')}}
                             </p>
                         </a>
 
@@ -259,13 +259,13 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('orders')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.all-orders')}}</p>
+                                    <p>{{trans('message.all-orders')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('invoice/generate')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.add-new')}}</p>
+                                    <p>{{trans('message.add-new')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -274,7 +274,7 @@ $set = $set->findOrFail(1);
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-paperclip"></i>
                             <p>
-                                {{Lang::get('message.invoices')}}
+                                {{trans('message.invoices')}}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -282,13 +282,13 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('invoices')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.all-invoices')}}</p>
+                                    <p>{{trans('message.all-invoices')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('invoice/generate')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.add-new')}}</p>
+                                    <p>{{trans('message.add-new')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -297,7 +297,7 @@ $set = $set->findOrFail(1);
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa fa-fw fa-sticky-note"></i>
                             <p>
-                                {{Lang::get('message.pages')}}
+                                {{trans('message.pages')}}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -305,13 +305,13 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('pages')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.all-pages')}}</p>
+                                    <p>{{trans('message.all-pages')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('pages/create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.add-new')}}</p>
+                                    <p>{{trans('message.add-new')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -320,7 +320,7 @@ $set = $set->findOrFail(1);
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa fa-fw fa-briefcase"></i>
                             <p>
-                                {{Lang::get('message.products')}}
+                                {{trans('message.products')}}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -328,20 +328,20 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('products')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.all-products')}}</p>
+                                    <p>{{trans('message.all-products')}}</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a href="{{url('products/create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.add-products')}}</p>
+                                    <p>{{trans('message.add-products')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('category')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.category')}}</p>
+                                    <p>{{trans('message.category')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -353,13 +353,13 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('promotions')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.coupons')}}</p>
+                                    <p>{{trans('message.coupons')}}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('groups')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{Lang::get('message.groups')}}</p>
+                                    <p>{{trans('message.groups')}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -368,7 +368,7 @@ $set = $set->findOrFail(1);
                         <a href="{{url('settings')}}" class="nav-link">
                             <i class="nav-icon fa fa-fw fa-cogs"></i>
                             <p>
-                                {{Lang::get('message.settings')}}
+                                {{trans('message.settings')}}
                             </p>
                         </a>
                     </li>
@@ -416,25 +416,25 @@ $set = $set->findOrFail(1);
                 @if(Session::has('success'))
                     <div class="alert alert-success alert-dismissable">
                         <i class="fa fa-check"></i>
-                        <b>{{Lang::get('message.success')}}!</b>
+                        <b>{{trans('message.success')}}!</b>
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{Session::get('success')}}
+                        {{session('success')}}
                     </div>
                 @endif
 
                 @if(Session::has('warning'))
                     <div class="alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{Session::get('warning')}}
+                        {{session('warning')}}
                     </div>
                 @endif
             <!-- fail message -->
                 @if(Session::has('fails'))
                     <div class="alert alert-danger alert-dismissable">
                         <i class="fa fa-ban"></i>
-                        <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.failed')}}.
+                        <b>{{trans('message.alert')}}!</b> {{trans('message.failed')}}.
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{Session::get('fails')}}
+                        {{session('fails')}}
                     </div>
                 @endif
 
@@ -449,7 +449,7 @@ $set = $set->findOrFail(1);
         <strong>{{ __('message.copyright') }} &copy; {{date('Y')}} <a href="{{$set->website}}">{{$set->company}}</a>.</strong>
         {{ __('message.all_rights') }} <a href="https://ladybirdweb.com" target="_blank"><img src="{{asset('common/images/Ladybird1.png')}}" alt="Ladybird"></a>
         <div class="float-right d-none d-sm-inline-block">
-            <b>{{Lang::get('message.version')}}</b> {{Config::get('app.version')}}
+            <b>{{trans('message.version')}}</b> {{Config::get('app.version')}}
         </div>
     </footer>
 

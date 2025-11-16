@@ -329,7 +329,7 @@ class BaseHomeController extends Controller
                 return '0010';
 
             default:
-                throw new \Exception(\Lang::get('message.product_not_found'));
+                throw new \Exception(\trans('message.product_not_found'));
         }
     }
 

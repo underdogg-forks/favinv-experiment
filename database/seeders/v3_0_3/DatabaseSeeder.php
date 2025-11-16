@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use App\Model\Common\TemplateType;
 use App\Model\Common\StatusSetting;
 use App\Model\Common\Template;
-use App\Demo_page;
+use App\DemoPage;
 use Illuminate\Support\Facades\DB;
 use App\SocialLogin;
 use App\Model\Common\PricingTemplate;
@@ -78,7 +78,7 @@ class Demo_pageTableSeeder extends Seeder
     public function run()
     {
       DB::table('demo_pages')->truncate();
-      Demo_page::create(['id' => 1, 'status' => 0]);
+      DemoPage::create(['id' => 1, 'status' => 0]);
     }
 }
 

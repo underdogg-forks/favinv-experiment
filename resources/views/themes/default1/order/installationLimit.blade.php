@@ -12,7 +12,7 @@
 			   <input type="hidden" name="orderId" value="" id="order5">
 		        <div class="form-group">
                     <!-- name -->
-					{!! html()->label(Lang::get('message.installation_limit'))->class('required')->for('license') !!}
+					{!! html()->label(trans('message.installation_limit'))->class('required')->for('license') !!}
                     <div id="response3"></div>
                      <input name="install-limit" type="number" value="" class="form-control" id="limitnumber" oninput="this.value = this.value.replace(/-/g, '')">
 					<div class="input-group-append"></div>

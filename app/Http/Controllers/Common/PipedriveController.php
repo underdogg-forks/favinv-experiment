@@ -454,9 +454,9 @@ class PipedriveController extends Controller
         $groups = $this->getGroups();
 
         $title = match ($group_name) {
-            'Person' => Lang::get('message.contact_mapping'),
-            'Organization' => Lang::get('message.organization_mapping'),
-            'Deal' => Lang::get('message.deal_mapping'),
+            'Person' => trans('message.contact_mapping'),
+            'Organization' => trans('message.organization_mapping'),
+            'Deal' => trans('message.deal_mapping'),
             default => '',
         };
 

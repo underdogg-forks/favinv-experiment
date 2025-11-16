@@ -67,17 +67,17 @@ class PHPController extends Controller
             $path = $request->get('path');
             $version = '7.2';
             if (! file_exists($path) || ! is_executable($path)) {
-                return errorResponse(\Lang::get('message.invalid-php-path'));
+                return errorResponse(\trans('message.invalid-php-path'));
             }
 
             if ($this->execEnabled()) {
                 $execScript = $path.' '.public_path('cron-test.php');
                 $version = exec($execScript, $output);
 
-                return (version_compare($version, '7.3', '>=') == 1) ? successResponse(\Lang::get('message.valid-php-path')) : errorResponse(\Lang::get('message.invalid-php-version-or-path'));
+                return (version_compare($version, '7.3', '>=') == 1) ? successResponse(\trans('message.valid-php-path')) : errorResponse(\trans('message.invalid-php-version-or-path'));
             }
 
-            return errorResponse(\Lang::get('message.please_enable_php_exec_for_cronjob_check'));
+            return errorResponse(\trans('message.please_enable_php_exec_for_cronjob_check'));
         } catch (\Exception $e) {
             return errorResponse($e->getMessage());
         }

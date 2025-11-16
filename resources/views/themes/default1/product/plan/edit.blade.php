@@ -27,7 +27,7 @@
           <div class="row">
             <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
               <!-- name -->
-                {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                 {!! html()->text('name')->class('form-control'.($errors->has('name') ? ' is-invalid' : ''))->id('planname') !!}
               @error('name')
               <span class="error-message"> {{$message}}</span>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-4 form-group {{ $errors->has('product') ? 'has-error' : '' }}">
               <!-- product -->
-                {!! html()->label(Lang::get('message.product'), 'product')->class('required') !!}
+                {!! html()->label(trans('message.product'), 'product')->class('required') !!}
               <select name="product" id="planproduct" class="form-control {{$errors->has('product') ? ' is-invalid' : ''}}" onchange="myProduct()">
                 <option value="">{{ __('message.choose') }}</option>
 
@@ -76,14 +76,14 @@
                 <table class="table table-responsive table-bordered table-hover" id="dynamic_table">
                   <thead>
                     <tr>
-                      <th class="col-sm-6" style="width:10%">{{ Lang::get('message.country') }} <span class="text-red">*</span> </th>
-                      <th class="col-sm-6" style="width:10%">{{ Lang::get('message.currency') }} <span class="text-red">*</span> </th>
-                      <th class="col-sm-6" style="width:10%">{{ Lang::get('message.price') }} <span class="text-red">*</span> </th>
+                      <th class="col-sm-6" style="width:10%">{{ trans('message.country') }} <span class="text-red">*</span> </th>
+                      <th class="col-sm-6" style="width:10%">{{ trans('message.currency') }} <span class="text-red">*</span> </th>
+                      <th class="col-sm-6" style="width:10%">{{ trans('message.price') }} <span class="text-red">*</span> </th>
                       <th class="col-sm-3" style="width:10%">
-                        {{ Lang::get('message.offer_price') }} <span class="text-bold">(%)</span>
+                        {{ trans('message.offer_price') }} <span class="text-bold">(%)</span>
                       </th>
                       <th class="col-sm-6" style="width:10%">
-                        {{ Lang::get('message.renew-price') }} <span class="text-red">*</span>
+                        {{ trans('message.renew-price') }} <span class="text-red">*</span>
                       </th>
                     </tr>
                   </thead>
@@ -228,7 +228,7 @@
         </div>
       </div>
       <div class="card-footer">
-      <button type="submit" class="btn btn-primary pull-left" id="planButtons"><i class="fas fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+      <button type="submit" class="btn btn-primary pull-left" id="planButtons"><i class="fas fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
     </div>
 

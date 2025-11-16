@@ -18,10 +18,10 @@
 
     <div class="card card-secondary card-outline">
         <div class="card-header">
-            <h3 class="card-title">{{Lang::get('message.types')}}</h3>
+            <h3 class="card-title">{{trans('message.types')}}</h3>
 
             <div class="card-tools">
-                <a href="#create-type" data-toggle="modal" data-target="#create-type" class="btn btn-default btn-sm"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{Lang::get('message.create')}}</a>
+                <a href="#create-type" data-toggle="modal" data-target="#create-type" class="btn btn-default btn-sm"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{trans('message.create')}}</a>
 
 
             </div>
@@ -37,7 +37,7 @@
             <div class="col-md-12">
                
                  <table id="products-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
-                     <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;{{Lang::get('message.delmultiple')}}</button><br /><br />
+                     <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;{{trans('message.delmultiple')}}</button><br /><br />
                     <thead><tr>
                         <th class="no-sort" style="width:20px"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
                             <th>{{ __('message.name_page') }}</th>
@@ -277,10 +277,10 @@
           });
           if(id.length<=0){
               swal.fire({
-                  title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                  title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                   html: "<div class='swal2-html-container custom-content'>" +
                       "<div class='section-sa'>" +
-                      "<p>{{Lang::get('message.sweet_license')}}</p>" + "</div>" +
+                      "<p>{{trans('message.sweet_license')}}</p>" + "</div>" +
                       "</div>",
                   position: 'top',
                   confirmButtonText: "{{ __('message.ok') }}",
@@ -291,10 +291,10 @@
           }
           else {
               var swl = swal.fire({
-                  title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                  title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                   html: "<div class='swal2-html-container custom-content'>" +
                       "<div class='section-sa'>" +
-                      "<p>{{Lang::get('message.license_type')}}</p>" + "</div>" +
+                      "<p>{{trans('message.license_type')}}</p>" + "</div>" +
                       "</div>",
                   showCancelButton: true,
                   showCloseButton: true,
@@ -325,10 +325,10 @@
                           })
                       } else {
                           swal.fire({
-                              title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                              title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                               html: "<div class='swal2-html-container custom-content'>" +
                                   "<div class='section-sa'>" +
-                                  "<p>{{Lang::get('message.sweet_license')}}</p>" + "</div>" +
+                                  "<p>{{trans('message.sweet_license')}}</p>" + "</div>" +
                                   "</div>",
                               position: 'top',
                               confirmButtonText: "{{ __('message.ok') }}",

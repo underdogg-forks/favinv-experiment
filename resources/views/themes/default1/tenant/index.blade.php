@@ -226,14 +226,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_central_domain'))->for('cloud_central_domain')->class('required') !!}
+                        {!! html()->label(trans('message.cloud_central_domain'))->for('cloud_central_domain')->class('required') !!}
                         {!! html()->text('cloud_central_domain')->class('form-control')->id('cloud_central_domain')->placeholder('https://example.com') !!}
                         <div class="input-group-append"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_cname'))->for('cloud_cname')->class('required') !!}
+                        {!! html()->label(trans('message.cloud_cname'))->for('cloud_cname')->class('required') !!}
                         {!! html()->text('cloud_cname')->class('form-control')->placeholder('example.com') !!}
                         <div class="input-group-append"></div>
                     </div>
@@ -242,7 +242,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i> {!! Lang::get('message.save') !!}
+                        <i class="fa fa-save"></i> {!! trans('message.save') !!}
                     </button>
                 </div>
             </div>
@@ -259,21 +259,21 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_top_message'), 'cloud_top_message')->class('required') !!}
+                        {!! html()->label(trans('message.cloud_top_message'), 'cloud_top_message')->class('required') !!}
                         {!! html()->text('cloud_top_message')->class('form-control')->id('cloud_top_message') !!}
                         <div class="input-group-append"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_label_field'), 'cloud_label_field')->class('required') !!}
+                        {!! html()->label(trans('message.cloud_label_field'), 'cloud_label_field')->class('required') !!}
                         {!! html()->text('cloud_label_field')->class('form-control')->id('cloud_label_field') !!}
                         <div class="input-group-append"></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_label_radio'), 'cloud_label_radio')->class('required') !!}
+                        {!! html()->label(trans('message.cloud_label_radio'), 'cloud_label_radio')->class('required') !!}
                         {!! html()->text('cloud_label_radio')->class('form-control')->id('cloud_label_radio') !!}
                         <div class="input-group-append"></div>
                     </div>
@@ -282,7 +282,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i> {!! Lang::get('message.save') !!}
+                        <i class="fa fa-save"></i> {!! trans('message.save') !!}
                     </button>
                 </div>
             </div>
@@ -300,7 +300,7 @@
             {!! html()->form('POST', route('cloud-product-store'))->id('product-configuration')->open() !!}
             <div class="row original-fields">
                 <div class="col-md-4">
-                    {!! html()->label(Lang::get('message.cloud_product'))->class('required') !!}
+                    {!! html()->label(trans('message.cloud_product'))->class('required') !!}
                     <div class="form-group">
                         <!-- Select Field 1 -->
                         <select name="cloud_product" class="form-control select2" id="saas-product">
@@ -318,7 +318,7 @@
                     <?php
                       $plans = \DB::table('plans')->get();
                     ?>
-                    {!! html()->label(Lang::get('message.cloud_free_plan'))->class('required') !!}
+                    {!! html()->label(trans('message.cloud_free_plan'))->class('required') !!}
                     <div class="form-group">
                         <select name="cloud_free_plan" class="form-control select2" id="saas-free-product">
                             <option value="">{{ __('message.choose') }}</option>
@@ -331,7 +331,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    {!! html()->label(Lang::get('message.cloud_product_key'))->class('required') !!}
+                    {!! html()->label(trans('message.cloud_product_key'))->class('required') !!}
                     <div class="form-group">
                         <input type="text" name="cloud_product_key" class="form-control" id="saas-product-key">
                         <div class="input-group-append"></div>
@@ -362,7 +362,7 @@
                     <th>{{ __('message.free_plan_cloud') }}</th>
                     <th>{{ __('message.cloud_prod_key') }}</th>
                     <th>{{ __('message.action') }}</th>
-                    <th>{{ __('message.trial_status_heading') }}<i class="fas fa-question-circle  custom-tooltip" data-toggle="tooltip" data-placement="top" style="margin-left: 7px" title="{{Lang::get('message.free_trial_status_tooltip')}}"></i></th>
+                    <th>{{ __('message.trial_status_heading') }}<i class="fas fa-question-circle  custom-tooltip" data-toggle="tooltip" data-placement="top" style="margin-left: 7px" title="{{trans('message.free_trial_status_tooltip')}}"></i></th>
                 </tr>
                 </thead>
             </table>
@@ -394,7 +394,7 @@
                   <div class="row">
                       <div class="col-md-4">
                           <?php $countries = \App\Model\Common\Country::cursor(); ?>
-                          {!! html()->label(Lang::get('message.cloud_country'))->class('required') !!}
+                          {!! html()->label(trans('message.cloud_country'))->class('required') !!}
                           <div class="form-group">
                               <!-- Select Field 1 -->
                               <select id="cloud_countries" name="cloud_countries" class="form-control select2">
@@ -411,7 +411,7 @@
                           <?php
                           $states = \App\Model\Common\State::get();
                           ?>
-                          {!! html()->label(Lang::get('message.cloud_state'))->class('required') !!}
+                          {!! html()->label(trans('message.cloud_state'))->class('required') !!}
                           <div class="form-group">
 
                               <select id="cloud_state" name="cloud_state" class="form-control select2">
@@ -422,7 +422,7 @@
                       </div>
 
                       <div class="col-md-4">
-                          {!! html()->label(Lang::get('message.cloud_city')) !!}
+                          {!! html()->label(trans('message.cloud_city')) !!}
                           <div class="form-group">
                               <input type="text" name="cloud_city" class="form-control">
                           </div>
@@ -456,13 +456,13 @@
                 <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        {!! html()->label(Lang::get('message.cloud_free_trial'), 'debug') !!}
+                        {!! html()->label(trans('message.cloud_free_trial'), 'debug') !!}
                         <div class="row">
                             <div class="col-sm-4">
-                                <input type="radio" name="debug" value="true" @if($cloudButton == 1) checked="true" @endif > {{Lang::get('message.enable')}}
+                                <input type="radio" name="debug" value="true" @if($cloudButton == 1) checked="true" @endif > {{trans('message.enable')}}
                             </div>
                             <div class="col-sm-4">
-                                <input type="radio" name="debug" value="false" @if($cloudButton == 0) checked="true" @endif > {{Lang::get('message.disable')}}
+                                <input type="radio" name="debug" value="false" @if($cloudButton == 0) checked="true" @endif > {{trans('message.disable')}}
                             </div>
                         </div>
                     </div>
@@ -813,10 +813,10 @@
             var id = id;
             var orderId = orderId;
             var swl=swal.fire({
-                title:"<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}",
+                title:"<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}",
                 html: "<div class='swal2-html-container custom-content'>" +
                     "<div class='section-sa'>" +
-                    "<p>{{Lang::get('message.tenant_deletion')}}<span class='text-danger'>"+id+"</span>" +"?</p></div>"+
+                    "<p>{{trans('message.tenant_deletion')}}<span class='text-danger'>"+id+"</span>" +"?</p></div>"+
                     "</div>",
                 showCancelButton: true,
                 cancelButtonText: "{{ __('message.cancel') }}",
@@ -1042,10 +1042,10 @@
         function popProduct(id) {
             var id = id;
     var swl=swal.fire({
-        title:"<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+        title:"<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
         html: "<div class='swal2-html-container custom-content'>" +
             "<div class='section-sa'>" +
-            "<p>{{Lang::get('message.cloud_delete')}}</p>"+"</div>" +
+            "<p>{{trans('message.cloud_delete')}}</p>"+"</div>" +
             "</div>",
         showCancelButton: true,
         cancelButtonText: "{{ __('message.cancel') }}",
@@ -1100,10 +1100,10 @@
                 });
             } else {
                 swal.fire({
-                    title:"<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                    title:"<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                     html: "<div class='swal2-html-container custom-content'>" +
                         "<div class='section-sa'>" +
-                        "<p>{{Lang::get('message.sweet_checkbox')}}</p>"+"</div>" +
+                        "<p>{{trans('message.sweet_checkbox')}}</p>"+"</div>" +
                         "</div>",
                     position: 'top',
                     confirmButtonText: "{{ __('message.ok') }}",

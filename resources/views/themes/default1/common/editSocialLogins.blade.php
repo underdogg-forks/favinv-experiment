@@ -30,7 +30,7 @@ $httpOrigin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : null;
 ?>
 <div class="row">
     <div class="col-md-12">
-    @if($message = Session::get('error'))
+    @if($message = session('error'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>{{ __('message.error') }}</strong> {{ $message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}">
@@ -39,7 +39,7 @@ $httpOrigin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : null;
 </div>
 @endif
         {!! Session::forget('error') !!}
-        @if($message = Session::get('success'))
+        @if($message = session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>{{ __('message.success') }}!</strong> {{ $message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}">

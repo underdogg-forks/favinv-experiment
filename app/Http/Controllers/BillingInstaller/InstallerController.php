@@ -46,7 +46,7 @@ class InstallerController extends Controller
 
         $url = url('migrate');
 
-        $result = ['success' => \Lang::get('installer_messages.pre_migration_success'), 'next' => \Lang::get('installer_messages.migrating_tables'), 'api' => $url];
+        $result = ['success' => \trans('installer_messages.pre_migration_success'), 'next' => \trans('installer_messages.migrating_tables'), 'api' => $url];
 
         return response()->json(compact('result'));
     }
@@ -56,7 +56,7 @@ class InstallerController extends Controller
         $db_install_method = '';
         try {
             if (Cache::get('databasename') != env('DB_DATABASE')) {
-                throw new Exception(\Lang::get('installer_messages.db_connection_error'), 500);
+                throw new Exception(\trans('installer_messages.db_connection_error'), 500);
             }
             $tableNames = \Schema::getTableListing();
             //allowing migrations table in db as it does not get removed on "migrate:reset"
@@ -77,7 +77,7 @@ class InstallerController extends Controller
             return response()->json(compact('result'), 500);
         }
 
-        $message = \Lang::get('installer_messages.database_setup_success');
+        $message = \trans('installer_messages.database_setup_success');
         $result = ['success' => $message];
 
         return response()->json(compact('result'));
@@ -119,8 +119,8 @@ class InstallerController extends Controller
             Cache::forever('databasename', $database);
             $url = url('preinstall/check');
             $result = [
-                'success' => \Lang::get('installer_messages.env_file_created'),
-                'next' => \Lang::get('installer_messages.pre_migration_test'),
+                'success' => \trans('installer_messages.env_file_created'),
+                'next' => \trans('installer_messages.pre_migration_test'),
                 'api' => $url,
             ];
 
@@ -258,10 +258,10 @@ class InstallerController extends Controller
             'redis_port' => 'nullable|required_if:cache_driver,redis|numeric',
             'environment' => 'required|string',
         ], [
-            'user_name.regex' => \Lang::get('installer_messages.user_name_regex'),
-            'password.regex' => \Lang::get('installer_messages.password_regex'),
-            'redis_host.required_if' => \Lang::get('installer_messages.redis_host_required'),
-            'redis_port.required_if' => \Lang::get('installer_messages.redis_port_required'),
+            'user_name.regex' => \trans('installer_messages.user_name_regex'),
+            'password.regex' => \trans('installer_messages.password_regex'),
+            'redis_host.required_if' => \trans('installer_messages.redis_host_required'),
+            'redis_port.required_if' => \trans('installer_messages.redis_port_required'),
         ]);
 
         // Return validation errors if any
@@ -336,7 +336,7 @@ class InstallerController extends Controller
             }
 
             // Return success response
-            return successResponse(\Lang::get('installer_messages.setup_completed'), 201);
+            return successResponse(\trans('installer_messages.setup_completed'), 201);
         } catch (\Exception $e) {
             // Return error response in case of exception
             return errorResponse($e->getMessage(), 400);
@@ -364,7 +364,7 @@ class InstallerController extends Controller
     public function getLang()
     {
         $language = Cache::get('language', config('app.locale'));
-        $lang = Lang::get('installer_messages', [], $language);
+        $lang = trans('installer_messages', [], $language);
         $currentLang = $language;
 
         return successResponse('', [

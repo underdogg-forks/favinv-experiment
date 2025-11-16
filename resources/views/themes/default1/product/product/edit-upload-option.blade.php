@@ -34,24 +34,24 @@
                 <div class="row">
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.product'))->class('required')->for('product') !!}
+                        {!! html()->label(trans('message.product'))->class('required')->for('product') !!}
                         {!! html()->text('product', $selectedProduct)->class('form-control')->disabled() !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.title'))->class('required')->for('title') !!}
+                        {!! html()->label(trans('message.title'))->class('required')->for('title') !!}
                         {!! html()->text('title')->class('form-control') !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('version') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.version'))->class('required')->for('version') !!}
+                        {!! html()->label(trans('message.version'))->class('required')->for('version') !!}
                         {!! html()->text('version')->class('form-control')->isReadonly() !!}
                     </div>
 
                     <div class="col-md-12 form-group {{ $errors->has('description') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.description'))->class('required')->for('description') !!}
+                        {!! html()->label(trans('message.description'))->class('required')->for('description') !!}
                         {!! html()->textarea('description')->class('form-control')->id('desc-textarea') !!}
                         <h6 id="descheck"></h6>
                     </div>
@@ -60,7 +60,7 @@
                         <i class="fa fa-info-circle" style="cursor: help; font-size: small; color: rgb(60, 141, 188);">
                             <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.enter_json_format') }}"></label>
                         </i>
-                        {!! html()->label(Lang::get('message.dependencies'))->class('required')->for('dependencies') !!}
+                        {!! html()->label(trans('message.dependencies'))->class('required')->for('dependencies') !!}
                         {!! html()->textarea('dependencies')->class('form-control')->rows(5) !!}
                         <h6 id="descheck"></h6>
                     </div>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
 

@@ -46,7 +46,7 @@ class TenantController extends Controller
                 $cloudPopUp = CloudPopUp::find(1);
                 $keys = ThirdPartyApp::where('app_name', 'faveo_app_key')->select('app_key', 'app_secret')->first();
 
-                throw_if($keys && ! $keys->app_key, new Exception(Lang::get('message.cloud_invalid_message')));
+                throw_if($keys && ! $keys->app_key, new Exception(trans('message.cloud_invalid_message')));
 
                 $app_key = optional($keys)->app_key;
 
@@ -100,7 +100,7 @@ class TenantController extends Controller
 
             $de = null;
 
-            return view('themes.default1.tenant.index', compact('de', 'cloudButton', 'cloud', 'regions', 'cloudPopUp'))->withErrors(Lang::get('message.cloud_error_message'));
+            return view('themes.default1.tenant.index', compact('de', 'cloudButton', 'cloud', 'regions', 'cloudPopUp'))->withErrors(trans('message.cloud_error_message'));
         }
     }
 
@@ -109,7 +109,7 @@ class TenantController extends Controller
         try {
             $request->input('debug') == 'true' ? StatusSetting::where('id', '1')->update(['cloud_button' => '1']) : StatusSetting::where('id', '1')->update(['cloud_button' => '0']);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch(\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -569,7 +569,7 @@ class TenantController extends Controller
             $cloud->updateOrCreate(['id' => 1], ['cloud_central_domain' => $request->input('cloud_central_domain'), 'cloud_cname' => $request->input('cloud_cname')]);
 
             // $cloud->first()->fill($request->all())->save();
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }
@@ -706,7 +706,7 @@ class TenantController extends Controller
                 'cloud_label_field' => $request->input('cloud_label_field'),
                 'cloud_label_radio' => $request->input('cloud_label_radio')]);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }

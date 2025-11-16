@@ -61,7 +61,7 @@ class ExtendedBaseInvoiceController extends Controller
             $payment->invoice_id = '--';
             $paymentReceived = $payment->fill($request->all())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+            return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -101,7 +101,7 @@ class ExtendedBaseInvoiceController extends Controller
                 'date' => \Carbon\Carbon::parse($request->input('date')), ]);
             $order = Order::where('invoice_id', $invoiceid)->update(['price_override' => $total]);
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

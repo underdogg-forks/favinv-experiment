@@ -100,13 +100,13 @@ $country = findCountryByGeoip($location['iso_code']);
                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                        <strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }}</strong>
                    
-                    {!!Session::get('success')!!}
+                    {!!session('success')!!}
                 </div>
                 @endif
                  @if(Session::has('warning'))
                     <div class="alert alert-warning alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {{Session::get('warning')}}
+                        {{session('warning')}}
                     </div>
                     @endif
                     
@@ -114,7 +114,7 @@ $country = findCountryByGeoip($location['iso_code']);
                  <div class="alert alert-danger alert-dismissable" role="alert">
                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button>
                     <strong><i class="fas fa-exclamation-triangle"></i>{{ __('message.oh_snap') }}</strong>
-                    {{Session::get('fails')}}
+                    {{session('fails')}}
                 </div>
                 @endif
                         <div class="box-content">
@@ -145,7 +145,7 @@ $country = findCountryByGeoip($location['iso_code']);
                             <div class="form-row">
                                 <div class="form-group col">
 
-                                    <a class="pull-right" href="{{url('password/reset')}}">({{Lang::get('message.forgot-my-password')}})</a>
+                                    <a class="pull-right" href="{{url('password/reset')}}">({{trans('message.forgot-my-password')}})</a>
                                     <label class="required" >{{ __('message.password') }}</label>
                                     <div class="input-group">
                                         {!! html()->password('password1')->class('form-control input-lg')->id('pass') !!}
@@ -303,7 +303,7 @@ $country = findCountryByGeoip($location['iso_code']);
                             @else
                                 <div class="form-group">
                                     <label>
-                                        <input type="checkbox" value="false" name="terms" id="term" > {{Lang::get('message.i-agree-to-the')}} <a href="{{$apiKeys->terms_url}}" target="_blank">{{Lang::get('message.terms')}}</a>
+                                        <input type="checkbox" value="false" name="terms" id="term" > {{trans('message.i-agree-to-the')}} <a href="{{$apiKeys->terms_url}}" target="_blank">{{trans('message.terms')}}</a>
                                     </label>
                                     <br><span id="termscheck"></span>
                                 </div>

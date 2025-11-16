@@ -233,18 +233,18 @@ class GithubController extends Controller
 
                 $data = json_decode($response->getBody(), true);
                 if ($data['login'] !== $username) {
-                    return errorResponse(\Lang::get('message.github_invalid'));
+                    return errorResponse(\trans('message.github_invalid'));
                 }
             } catch(\Exception $ex) {
-                return errorResponse(\Lang::get('message.github_invalid'));
+                return errorResponse(\trans('message.github_invalid'));
             }
             StatusSetting::find(1)->update(['github_status' => $status]);
             Github::find(1)->update(['username' => $request->input('git_username'),
                 'password' => $request->input('git_password'), ]);
 
-            return successResponse(\Lang::get('message.github_valid'));
+            return successResponse(\trans('message.github_valid'));
         } catch (Exception $ex) {
-            return errorResponse(\Lang::get('message.github_invalid'));
+            return errorResponse(\trans('message.github_invalid'));
         }
     }
 

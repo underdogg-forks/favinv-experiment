@@ -53,7 +53,7 @@
       
        <div class="card card-secondary card-outline">
            <div class="card-header">
-               <h3 class="card-title">{{Lang::get('message.options')}}</h3>
+               <h3 class="card-title">{{trans('message.options')}}</h3>
                {{ html()->modelForm($options, 'POST', url('taxes/option'))->open() }}
            </div>
         <div class="card-body">
@@ -68,7 +68,7 @@
 
                        
                             <td>
-                                {{ html()->label(Lang::get('message.tax-enable'), 'tax_enable') }}
+                                {{ html()->label(trans('message.tax-enable'), 'tax_enable') }}
                             </td>
                             <td>
                                 <label class="switch">
@@ -90,7 +90,7 @@
 
                         <tr>
                             <td>
-                                {{ html()->label(Lang::get('message.prices-entered-with-tax'), 'inclusive') }}
+                                {{ html()->label(trans('message.prices-entered-with-tax'), 'inclusive') }}
                             </td>
                             <td>
                            
@@ -107,7 +107,7 @@
                        
                         <tr>
                             <td>
-                                {{ html()->label(Lang::get('message.rounding'), 'rounding') }}
+                                {{ html()->label(trans('message.rounding'), 'rounding') }}
                             </td>
                             <td>
                                     <div class="btn-group btn-group-toggle"  data-toggle="buttons">
@@ -122,7 +122,7 @@
                     </table>
 
 
-                       <button type="submit" class="btn btn-default pull-right" id="submit" ><i class="fa fa-save"></i>&nbsp;{!!Lang::get('message.save')!!}</button>
+                       <button type="submit" class="btn btn-default pull-right" id="submit" ><i class="fa fa-save"></i>&nbsp;{!!trans('message.save')!!}</button>
 
                     {{ html()->form()->close() }}
                 </div>
@@ -133,10 +133,10 @@
              <div class="card card-secondary card-outline">
 
                   <div class="card-header">
-                      <h3 class="card-title">{{Lang::get('message.tax_classes')}}</h3>
+                      <h3 class="card-title">{{trans('message.tax_classes')}}</h3>
 
                       <div class="card-tools">
-                          <a href="#create-tax-option" class="btn btn-default pull-right btn-sm" data-toggle="modal" data-target="#create-tax-option"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{Lang::get('message.create')}}</a>
+                          <a href="#create-tax-option" class="btn btn-default pull-right btn-sm" data-toggle="modal" data-target="#create-tax-option"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{trans('message.create')}}</a>
 
 
                       </div>
@@ -324,10 +324,10 @@ $('.btn-off-3').css("background-color", "#DA4F49","color", "white");
              });
              if(id.length<=0){
                  swal.fire({
-                     title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                     title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                      html: "<div class='swal2-html-container custom-content'>" +
                          "<div class='section-sa'>" +
-                         "<p>{{Lang::get('message.sweet_tax')}}</p>" + "</div>" +
+                         "<p>{{trans('message.sweet_tax')}}</p>" + "</div>" +
                          "</div>",
                      position: 'top',
                      confirmButtonText: "{{ __('message.ok') }}",
@@ -338,10 +338,10 @@ $('.btn-off-3').css("background-color", "#DA4F49","color", "white");
              }
              else {
                  var swl = swal.fire({
-                     title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                     title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                      html: "<div class='swal2-html-container custom-content'>" +
                          "<div class='section-sa'>" +
-                         "<p>{{Lang::get('message.tax_delete')}}</p>" + "</div>" +
+                         "<p>{{trans('message.tax_delete')}}</p>" + "</div>" +
                          "</div>",
                      showCancelButton: true,
                      showCloseButton: true,
@@ -377,10 +377,10 @@ $('.btn-off-3').css("background-color", "#DA4F49","color", "white");
                              })
                          } else {
                              swal.fire({
-                                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                                  html: "<div class='swal2-html-container custom-content'>" +
                                      "<div class='section-sa'>" +
-                                     "<p>{{Lang::get('message.sweet_tax')}}</p>" + "</div>" +
+                                     "<p>{{trans('message.sweet_tax')}}</p>" + "</div>" +
                                      "</div>",
                                  position: 'top',
                                  confirmButtonText: "{{ __('message.ok') }}",

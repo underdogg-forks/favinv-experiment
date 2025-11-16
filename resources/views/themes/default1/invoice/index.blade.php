@@ -273,7 +273,7 @@
             <div class='row'>
                 <div class="col-md-6">
                     <!-- {!! html()->submit('Search')->class('btn btn-primary') !!} -->
-                    <button name="Search" type="submit"  class="btn btn-secondary"><i class="fa fa-search">&nbsp;</i>{!!Lang::get('message.search')!!}</button>
+                    <button name="Search" type="submit"  class="btn btn-secondary"><i class="fa fa-search">&nbsp;</i>{!!trans('message.search')!!}</button>
                      &nbsp;&nbsp;
                     {!! html()->submit( __('message.reset'))->class('btn btn-secondary')->id('reset') !!}
                 </div>
@@ -289,7 +289,7 @@
 <div class="card card-secondary card-outline">
     <div class="card-header">
       
-        <h3 class="card-title">{{ Lang::get('message.invoices') }}</h3>
+        <h3 class="card-title">{{ trans('message.invoices') }}</h3>
         <div class="card-tools">
         <button type="button" id="invoice_export-report-btn" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ __('message.export') }}" style="position: absolute; top: 13px; {{ isRtlForLang() ? 'right: 95.5%;' : 'left: 95.5%;' }}">
             <i class="fas fa-paper-plane"></i>
@@ -638,10 +638,10 @@
 
          if(id.length<=0){
              swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                  html: "<div  class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p style='text-align: left; margin-left:17px'>{{Lang::get('message.sweet_invoice')}}</p>" + "</div>" +
+                     "<p style='text-align: left; margin-left:17px'>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
                  confirmButtonText: "{{ __('message.ok') }}",
@@ -652,10 +652,10 @@
          }
          else {
              var swl = swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.invoice_delete')}}</p>" + "</div>" +
+                     "<p>{{trans('message.invoice_delete')}}</p>" + "</div>" +
                      "</div>",
                  showCancelButton: true,
                  showCloseButton: true,
@@ -687,10 +687,10 @@
                          })
                      } else {
                          swal.fire({
-                             title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                             title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                              html: "<div class='swal2-html-container custom-content'>" +
                                  "<div class='section-sa'>" +
-                                 "<p>{{Lang::get('message.sweet_invoice')}}</p>" + "</div>" +
+                                 "<p>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
                              confirmButtonText: "{{ __('message.ok') }}",

@@ -18,7 +18,7 @@ use App\Model\Product\Price;
 use App\Model\Product\Product;
 use App\Model\Product\ProductUpload;
 use App\Model\Product\Subscription;
-use App\Payment_log;
+use App\PaymentLog;
 use App\User;
 use Bugsnag;
 use Illuminate\Http\Request;
@@ -435,7 +435,7 @@ class OrderController extends BaseOrderController
             $installationDetails = $cont->searchInstallationPath($order->serial_key, $order->product);
             $currency = getCurrencyForClient($user->country);
             $amount = currencyFormat(1, $currency);
-            $payment_log = Payment_log::where('order', $order->number)
+            $payment_log = PaymentLog::where('order', $order->number)
             ->where('amount', $amount)
             ->where('payment_type', 'Payment method updated')
             ->orderBy('id', 'desc')
@@ -486,7 +486,7 @@ class OrderController extends BaseOrderController
             $order = $this->order->where('id', $id)->first();
             $order->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $e) {
             Bugsnag::notifyExeption($e);
 
@@ -517,36 +517,36 @@ class OrderController extends BaseOrderController
                     } else {
                         echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                        './* @scrutinizer ignore-type */\trans('message.no-record').'
                 </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.success').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.success').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.deleted-successfully').'
+                        './* @scrutinizer ignore-type */\trans('message.deleted-successfully').'
                 </div>';
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */ \Lang::get('message.select-a-row').'
+                        './* @scrutinizer ignore-type */ \trans('message.select-a-row').'
                 </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                    /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                    /* @scrutinizer ignore-type */\trans('message.failed').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                         '.$e->getMessage().'
                 </div>';

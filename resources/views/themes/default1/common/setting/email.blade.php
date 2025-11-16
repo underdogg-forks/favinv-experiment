@@ -33,7 +33,7 @@
 
 
                                 {!! html()->select('driver', ['' => __('message.choose'),'smtp' => 'SMTP','mail' => 'Php mail','mailgun' => 'Mailgun','mandrill' => 'Mandrill','ses' => 'SES','sparkpost' => 'Sparkpost'], $set->driver)->class('form-control'. ($errors->has('driver') ? ' is-invalid' : ''))->id('driver') !!}
-                                <i> {{Lang::get('message.select-email-driver')}}</i>
+                                <i> {{trans('message.select-email-driver')}}</i>
                             @error('driver')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -50,7 +50,7 @@
 
 
                                 {!! html()->text('port', $set->port)->class('form-control'. ($errors->has('port') ? ' is-invalid' : ''))->id('port') !!}
-                                <i> {{Lang::get('message.enter-email-port')}}</i>
+                                <i> {{trans('message.enter-email-port')}}</i>
                             @error('port')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -66,7 +66,7 @@
 
 
                                 {!! html()->text('host', $set->host)->class('form-control'. ($errors->has('host') ? ' is-invalid' : ''))->id('host') !!}
-                                <i> {{Lang::get('message.enter-email-host')}}</i>
+                                <i> {{trans('message.enter-email-host')}}</i>
                             @error('host')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -82,7 +82,7 @@
 
 
                                 {!! html()->select('encryption', ['' => __('message.choose'),'ssl' => 'SSL','tls' => 'TLS','starttls' => 'STARTTLS'], $set->encryption)->class('form-control'. ($errors->has('encryption') ? ' is-invalid' : ''))->id('encryption') !!}
-                                <i> {{Lang::get('message.select-email-encryption-method')}}</i>
+                                <i> {{trans('message.select-email-encryption-method')}}</i>
                             @error('encryption')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -164,7 +164,7 @@
 
 
                                 {!! html()->text('email', $set->email)->class('form-control'. ($errors->has('email') ? ' is-invalid' : ''))->id('email') !!}
-                                <i> {{Lang::get('message.enter-email')}} ({{Lang::get('message.enter-email-message')}})</i>
+                                <i> {{trans('message.enter-email')}} ({{trans('message.enter-email-message')}})</i>
                             @error('email')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -181,7 +181,7 @@
 
 
                                 {!! html()->text('from_name', $set->from_name)->class('form-control'. ($errors->has('from_name') ? ' is-invalid' : ''))->id('from_name') !!}
-                                <i> {{Lang::get('message.enter_from_name')}} </i>
+                                <i> {{trans('message.enter_from_name')}} </i>
                             @error('from_name')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -197,7 +197,7 @@
 
 
                                 {!! html()->password('password')->class('form-control'. ($errors->has('password') ? ' is-invalid' : ''))->id('password') !!}
-                                <i> {{Lang::get('message.enter-email-password')}}</i>
+                                <i> {{trans('message.enter-email-password')}}</i>
                             @error('password')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -206,7 +206,7 @@
                         </div>
                     </tr>
                     <br>
-                     <button type="submit" class="form-group btn btn-primary pull-right"  id="emailSetting"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                     <button type="submit" class="form-group btn btn-primary pull-right"  id="emailSetting"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
                   </div>
                   </div>
 

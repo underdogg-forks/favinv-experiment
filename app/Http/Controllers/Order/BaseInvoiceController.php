@@ -132,7 +132,7 @@ class BaseInvoiceController extends ExtendedBaseInvoiceController
                 return $getExpiryStatus;
             }
         } catch (\Exception $ex) {
-            throw new \Exception(\Lang::get('message.check-expiry'));
+            throw new \Exception(\trans('message.check-expiry'));
         }
     }
 

@@ -50,12 +50,12 @@
 
 
                     <div class="col-md-4 form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.payment-method'))->class('required')->for('payment_method') !!}
+                        {!! html()->label(trans('message.payment-method'))->class('required')->for('payment_method') !!}
                         {!! html()->select('payment_method', ['' => __('message.choose'), 'cash' => 'Cash', 'check' => 'Check', 'online payment' => 'Online Payment', 'razorpay' => 'Razorpay', 'stripe' => 'Stripe'])->class('form-control')->id('payment_method') !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('cost') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.price'))->class('required')->for('cost') !!}
+                        {!! html()->label(trans('message.price'))->class('required')->for('cost') !!}
                         {!! html()->text('cost')->class('form-control')->id('price') !!}
                     </div>
                 </div>

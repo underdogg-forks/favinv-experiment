@@ -12,7 +12,7 @@
 			   <input type="hidden" name="orderId" value="" id="order2">
 		        <div class="form-group">
                     <!-- name -->
-                    {!! html()->label(Lang::get('message.license_end'))->class('required')->for('license') !!}
+                    {!! html()->label(trans('message.license_end'))->class('required')->for('license') !!}
 
 
                 </div>

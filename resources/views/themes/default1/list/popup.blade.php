@@ -28,13 +28,13 @@
 
                 <div class="form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
                     <!-- Payment method -->
-                    {!! html()->label(Lang::get('message.payment-method'), 'payment_method')->class('required') !!}
+                    {!! html()->label(trans('message.payment-method'), 'payment_method')->class('required') !!}
                     {!! html()->select('payment_method', ['' =>  __('message.select'), 'cash' => 'Cash', 'check' => 'Check', 'online payment' => 'Online Payment', 'razorpay' => 'Razorpay'], null)->class('form-control') !!}
                 </div>
 
                 <div class="form-group {{ $errors->has('cost') ? 'has-error' : '' }}">
                     <!-- Cost -->
-                    {!! html()->label(Lang::get('message.price'), 'cost')->class('required') !!}
+                    {!! html()->label(trans('message.price'), 'cost')->class('required') !!}
                     {!! html()->text('cost', null)->class('form-control')->id('price') !!}
                 </div>
 
@@ -42,7 +42,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close') }}</button>
-                <input type="submit" class="btn btn-primary" value="{{Lang::get('message.save')}}">
+                <input type="submit" class="btn btn-primary" value="{{trans('message.save')}}">
                 {!! html()->form()->close()  !!}
             </div>
             <!-- /Form -->

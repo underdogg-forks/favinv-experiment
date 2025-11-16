@@ -1,9 +1,11 @@
 /nbproject/private/
 
+/vendor
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
+/bootstrap/cache
 
 /.idea
 /.vagrant

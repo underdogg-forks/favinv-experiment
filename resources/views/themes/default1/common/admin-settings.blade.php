@@ -86,7 +86,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{!! Lang::get('message.cron') !!}</div>
+                        <div class="text-center text-sm fw_400">{!! trans('message.cron') !!}</div>
                     </div>
                 </div>
 
@@ -292,7 +292,7 @@
 
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{Lang::get('message.log_setting')}}</h3>
+        <h3 class="card-title">{{trans('message.log_setting')}}</h3>
     </div>
     <!-- /.box-header -->
     <div class="card-body">
@@ -380,7 +380,7 @@
                                 </span>
                             </a>
                         </div>
-                        <p class="card-title" >{{Lang::get('message.cleanup_log')}}</p>
+                        <p class="card-title" >{{trans('message.cleanup_log')}}</p>
                     </div>
                 </div> -->
 

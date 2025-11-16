@@ -72,7 +72,7 @@
 
                         <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                             <!-- first name -->
-                            {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                            {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                             {!! html()->text('name')->class('form-control'.($errors->has('name') ? ' is-invalid' : ''))->id('productname') !!}
                             @error('name')
                             <span class="error-message"> {{$message}}</span>
@@ -83,7 +83,7 @@
 
                         <div class="col-md-4 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                             <!-- last name -->
-                            {!! html()->label(Lang::get('message.lic_type'), 'type')->class('required') !!}
+                            {!! html()->label(trans('message.lic_type'), 'type')->class('required') !!}
                             {!! html()->select('type', ['' => __('message.choose'), 'Types' => $type])->class('form-control'.($errors->has('type') ? ' is-invalid' : ''))->id('type') !!}
                             <div class="input-group-append"></div>
                             @error('type')
@@ -94,7 +94,7 @@
 
                         <div class="col-md-4 form-group {{ $errors->has('group') ? 'has-error' : '' }}">
                             <!-- last name -->
-                            {!! html()->label(Lang::get('message.group'), 'group')->class('required') !!}
+                            {!! html()->label(trans('message.group'), 'group')->class('required') !!}
                             <select name="group" value= "Choose" class="form-control {{$errors->has('group') ? ' is-invalid' : ''}}" id="groups">
                                 <option value="">{{ __('message.choose') }}</option>
                                 @foreach($group as $key=>$value)
@@ -199,7 +199,7 @@
                                     <div class="form-group {{ $errors->has('require_domain') ? 'has-error' : '' }}">
                                         <!-- last name -->
                                         {!! html()->label(trans('message.require_domain'), 'require_domain') !!}
-                                        <p>{!! html()->checkbox('require_domain',false, 1) !!} {{Lang::get('message.tick-to-show-domain-registration-options')}}</p>
+                                        <p>{!! html()->checkbox('require_domain',false, 1) !!} {{trans('message.tick-to-show-domain-registration-options')}}</p>
 
                                     </div>
                                 </li>
@@ -221,8 +221,8 @@
                                         <!--  <button type="button" class="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></button> -->
                                         <label data-toggle="tooltip" data-placement="top" title="">{{ __('message.hidden') }}</label>
 
-                                        <p>{!! html()->checkbox('hidden', false ,1) !!}  {{Lang::get('message.tick-to-hide-from-order-form')}}</p>
-                                        <p>{!! html()->checkbox('invoice_hidden', false ,1) !!}  {{Lang::get('message.tick-to-hide-from-invoice')}}</p>
+                                        <p>{!! html()->checkbox('hidden', false ,1) !!}  {{trans('message.tick-to-hide-from-order-form')}}</p>
+                                        <p>{!! html()->checkbox('invoice_hidden', false ,1) !!}  {{trans('message.tick-to-hide-from-invoice')}}</p>
 
 
                                     </div>
@@ -233,7 +233,7 @@
                                         <!--  <button type="button" class="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></button> -->
                                         <label data-toggle="tooltip" data-placement="top" title="">{{ __('message.highlight') }}</label>
 
-                                        <p>{!! html()->checkbox('highlight', false) !!}  {{Lang::get('message.tick-to-highlight-product')}}</p>
+                                        <p>{!! html()->checkbox('highlight', false) !!}  {{trans('message.tick-to-highlight-product')}}</p>
 
                                     </div>
                                 </li>
@@ -243,7 +243,7 @@
                                         <!--  <button type="button" class="" data-toggle="tooltip" data-placement="top" title="Tooltip on top"></button> -->
                                         <label data-toggle="tooltip" data-placement="top" title="">{{ __('message.contact_to_sales') }}</label>
 
-                                        <p>{!! html()->checkbox('add_to_contact', false) !!}  {{Lang::get('message.tick-to-add_to_contact-product')}}</p>
+                                        <p>{!! html()->checkbox('add_to_contact', false) !!}  {{trans('message.tick-to-add_to_contact-product')}}</p>
 
                                     </div>
                                 </li>
@@ -328,7 +328,7 @@
                                     <div class="col-md-10" id="allowmulagent" style="display:none">
                                         <p>
                                             {!! html()->checkbox('can_modify_agent', false, 1)->id('can_modify_agent') !!}
-                                            {{ Lang::get('message.allow_multiple_agents_quantity') }}
+                                            {{ trans('message.allow_multiple_agents_quantity') }}
                                         </p>
                                     </div>
                                 </td>
@@ -343,7 +343,7 @@
                                 </label>
                                 <br/>
                                 <div class="col-md-10" id="allowmulproduct" style="display:none">
-                                    <p>{!! html()->checkbox('can_modify_quantity',false, 1) !!}  {{Lang::get('message.allow_multiple_product_quantity')}} </p>
+                                    <p>{!! html()->checkbox('can_modify_quantity',false, 1) !!}  {{trans('message.allow_multiple_product_quantity')}} </p>
                                 </div>
 
                             </td>
@@ -381,7 +381,7 @@
                     {!! html()->closeModelForm() !!}
 
                 </div>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
         </div>
     </div>

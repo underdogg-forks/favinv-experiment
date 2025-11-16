@@ -21,17 +21,17 @@
 
             <?php
 
-            $default = Session::get('default');
-            $host = Session::get('host');
-            $username = Session::get('username');
-            $password = Session::get('password');
-            $databasename = Session::get('databasename');
-//          $dummy_install = Session::get('dummy_data_installation');
-            $port = Session::get('port');
-            $sslKey = Session::get('db_ssl_key');
-            $sslCert = Session::get('db_ssl_cert');
-            $sslCa = Session::get('db_ssl_ca');
-            $sslVerify = Session::get('db_ssl_verify');
+            $default = session('default');
+            $host = session('host');
+            $username = session('username');
+            $password = session('password');
+            $databasename = session('databasename');
+//          $dummy_install = session('dummy_data_installation');
+            $port = session('port');
+            $sslKey = session('db_ssl_key');
+            $sslCert = session('db_ssl_cert');
+            $sslCa = session('db_ssl_ca');
+            $sslVerify = session('db_ssl_verify');
             define('DB_DEFAULT', $default);
             define('DB_HOST', $host); // Address of your MySQL server (usually localhost)
             define('DB_USER', $username); // Username that is used to connect to the server
@@ -113,26 +113,26 @@
             function checkDBPrerequisites(array &$results, bool &$mysqli_ok, object $connection): void
             {
                 if (mysqli_select_db($connection, DB_NAME)) {
-                    $results[] = new TestResult(\Lang::get('installer_messages.database') . ' ' . DB_NAME . ' ' . \Lang::get('installer_messages.selected'), STATUS_OK);
+                    $results[] = new TestResult(\trans('installer_messages.database') . ' ' . DB_NAME . ' ' . \trans('installer_messages.selected'), STATUS_OK);
                     $mysqli_version = mysqli_get_server_info($connection);
                     $dbVersion = mysqli_get_server_version($connection);
                     if (compareMySqlAndMariDB($dbVersion)) {
-                        $results[] = new TestResult(\Lang::get('installer_messages.mysql_version_is') . ' ' . $mysqli_version, STATUS_OK);
+                        $results[] = new TestResult(\trans('installer_messages.mysql_version_is') . ' ' . $mysqli_version, STATUS_OK);
                         $sql = 'SHOW TABLES FROM ' . DB_NAME;
                         $res = mysqli_query($connection, $sql);
                         if (mysqli_fetch_array($res) === null) {
-                            $results[] = new TestResult(\Lang::get('installer_messages.database_empty'));
+                            $results[] = new TestResult(\trans('installer_messages.database_empty'));
                             $mysqli_ok = true;
                         } else {
-                            $results[] = new TestResult(\Lang::get('installer_messages.database_not_empty'), STATUS_ERROR);
+                            $results[] = new TestResult(\trans('installer_messages.database_not_empty'), STATUS_ERROR);
                             $mysqli_ok = false;
                         }
                     } else {
-                        $results[] = new TestResult(\Lang::get('installer_messages.mysql_version_is') . ' ' . $mysqli_version . ' ' . \Lang::get('installer_messages.mysql_version_required'), STATUS_ERROR);
+                        $results[] = new TestResult(\trans('installer_messages.mysql_version_is') . ' ' . $mysqli_version . ' ' . \trans('installer_messages.mysql_version_required'), STATUS_ERROR);
                         $mysqli_ok = false;
                     }
                 } else {
-                    echo '<br><br><p id="fail">' . \Lang::get('installer_messages.database_connection_unsuccessful') . ' ' . mysqli_connect_error() . '</p>';
+                    echo '<br><br><p id="fail">' . \trans('installer_messages.database_connection_unsuccessful') . ' ' . mysqli_connect_error() . '</p>';
                     $mysqli_ok = false;
                 }
             }
@@ -213,15 +213,15 @@
                         }
 
                         if ($connection) {
-                            $results[] = new TestResult(\Lang::get('installer_messages.connected_as') . ' ' . DB_USER . '@' . DB_HOST . DB_PORT, STATUS_OK);
+                            $results[] = new TestResult(\trans('installer_messages.connected_as') . ' ' . DB_USER . '@' . DB_HOST . DB_PORT, STATUS_OK);
                             checkDBPrerequisites($results, $mysqli_ok, $connection);
                         } else {
                             $mysqli_ok = false;
-                            $results[] = new TestResult(\Lang::get('installer_messages.failed_connection') . ' ' . mysqli_connect_error(), STATUS_ERROR);
+                            $results[] = new TestResult(\trans('installer_messages.failed_connection') . ' ' . mysqli_connect_error(), STATUS_ERROR);
                         }
                     }
                 } catch (Exception $e) {
-                    $results[] = new TestResult(\Lang::get('installer_messages.failed_connection') . ' ' . $e->getMessage(), STATUS_ERROR);
+                    $results[] = new TestResult(\trans('installer_messages.failed_connection') . ' ' . $e->getMessage(), STATUS_ERROR);
                     $mysqli_ok = false;
                 }
 

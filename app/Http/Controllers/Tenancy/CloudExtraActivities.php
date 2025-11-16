@@ -1314,9 +1314,9 @@ class CloudExtraActivities extends Controller
             $status = $request->input('status');
             CloudProducts::where('id', $id)->update(['trial_status' => $status]);
 
-            return successResponse(\Lang::get('message.trial_status_updated'));
+            return successResponse(\trans('message.trial_status_updated'));
         } catch (\Exception $e) {
-            return errorResponse(\Lang::get('message.trial_status_error'));
+            return errorResponse(\trans('message.trial_status_error'));
         }
     }
 

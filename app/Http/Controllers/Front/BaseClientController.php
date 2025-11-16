@@ -234,7 +234,7 @@ class BaseClientController extends Controller
             // Remove password reset records
             \DB::table('password_resets')->where('email', $user->email)->delete();
 
-            return successResponse(\Lang::get('message.updated-successfully'));
+            return successResponse(\trans('message.updated-successfully'));
         } catch (\Exception $e) {
             app('log')->error($e->getMessage());
 

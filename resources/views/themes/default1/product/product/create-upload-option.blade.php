@@ -128,7 +128,7 @@
             <input type="hidden" name="file_ids" id="file_ids" value="">
             <div class="modal-footer justify-content-between">
                 <button type="button" id="close" class="btn btn-default closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary" id="uploadVersion"><i class="fa fa-save"></i>&nbsp;{!!Lang::get('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary" id="uploadVersion"><i class="fa fa-save"></i>&nbsp;{!!trans('message.save')!!}</button>
             </div>
 
 

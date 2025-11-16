@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Common;
 
 use App\ApiKey;
-use App\Email_log;
+use App\EmailLog;
 use App\Facades\Attach;
 use App\Http\Controllers\BillingInstaller\InstallerController;
 use App\Http\Requests\Common\SettingsRequest;
@@ -17,7 +17,7 @@ use App\Model\Mailjob\QueueService;
 use App\Model\Order\Order;
 use App\Model\Payment\Currency;
 use App\Model\Plugin;
-use App\Payment_log;
+use App\PaymentLog;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -308,7 +308,7 @@ class SettingsController extends BaseSettingsController
 
         if ($request->ajax()) {
             $dataTable = collect([
-                ['options' => \Lang::get('message.license_heading'), 'description' => \Lang::get('message.license_description'), 'status' => '
+                ['options' => \trans('message.license_heading'), 'description' => \trans('message.license_description'), 'status' => '
         <label class="switch toggle_event_editing licenser">
             <input type="checkbox" value="'.($status ? '1' : '0').'"  
                    name="modules_settings"
@@ -317,45 +317,45 @@ class SettingsController extends BaseSettingsController
         </label>
     ', 'action' => $licenseAction,
                 ],
-                ['options' => \Lang::get('message.recaptcha_heading'), 'description' => \Lang::get('message.google_description'), 'status' => $toggleSwitch, 'action' => $recaptchaAction,
+                ['options' => \trans('message.recaptcha_heading'), 'description' => \trans('message.google_description'), 'status' => $toggleSwitch, 'action' => $recaptchaAction,
                 ],
-                ['options' => \Lang::get('message.msg91_heading'), 'description' => \Lang::get('message.msg91_description'), 'status' => '<label class="switch toggle_event_editing mstatus">
+                ['options' => \trans('message.msg91_heading'), 'description' => \trans('message.msg91_description'), 'status' => '<label class="switch toggle_event_editing mstatus">
                     <input type="checkbox" value="'.($mobileStatus ? '1' : '0').'"  name="mobile_settings"
                            class="checkbox4" id="mobile"'.($mobileStatus ? 'checked' : '').'>
                     <span class="slider round"></span>
                     </label>', 'action' => $mobileAction,
                 ],
-                ['options' => \Lang::get('message.mailchimp_heading'), 'description' => \Lang::get('message.mailchimp_description'), 'status' => '<label class="switch toggle_event_editing mailchimpstatus">
+                ['options' => \trans('message.mailchimp_heading'), 'description' => \trans('message.mailchimp_description'), 'status' => '<label class="switch toggle_event_editing mailchimpstatus">
                         <input type="checkbox" value="'.($mailchimpSetting ? '1' : '0').'"  name="mobile_settings"
                                class="checkbox9" id="mailchimp"'.($mailchimpSetting ? 'checked' : '').'>
                         <span class="slider round"></span>
                     </label>', 'action' => $mailchimpAction,
                 ],
-                ['options' => \Lang::get('message.terms_heading'), 'description' => \Lang::get('message.terms_description'), 'status' => '<label class="switch toggle_event_editing termstatus1">
+                ['options' => \trans('message.terms_heading'), 'description' => \trans('message.terms_description'), 'status' => '<label class="switch toggle_event_editing termstatus1">
 
                         <input type="checkbox" value="'.($termsStatus ? '1' : '0').'"  name="terms_settings"
                                class="checkbox10" id="terms"'.($termsStatus ? 'checked' : '').'>
                         <span class="slider round"></span>
                     </label>', 'action' => $termsAction,
                 ],
-                ['options' => \Lang::get('message.pipedrive_heading'), 'description' => \Lang::get('message.pipedrive_description'), 'status' => '<label class="switch toggle_event_editing pipedrivestatus">
+                ['options' => \trans('message.pipedrive_heading'), 'description' => \trans('message.pipedrive_description'), 'status' => '<label class="switch toggle_event_editing pipedrivestatus">
                         <input type="checkbox" value="'.($pipedriveStatus ? '1' : '0').'"  name="pipedrive_settings"
                            class="checkbox13" id="pipedrive"'.($pipedriveStatus ? 'checked' : '').'>
                         <span class="slider round"></span>
                     </label>', 'action' => $pipedriveAction,
                 ],
-                ['options' => \Lang::get('message.github_heading'), 'description' => \Lang::get('message.github_description'), 'status' => '<label class="switch toggle_event_editing githubstatus">
+                ['options' => \trans('message.github_heading'), 'description' => \trans('message.github_description'), 'status' => '<label class="switch toggle_event_editing githubstatus">
                             <input type="checkbox" value="'.($githubStatus ? '1' : '0').'" name="github_settings" class="checkbox" id="github"'.($githubStatus ? 'checked' : '').'>
                             <span class="slider round"></span>
                         </label>', 'action' => $githubAction,
                 ],
-                ['options' => \Lang::get('message.email_provider'), 'description' => \Lang::get('message.email_validation_description'), 'status' => '<label class="switch toggle_event_editing emailValidationStatus">
+                ['options' => \trans('message.email_provider'), 'description' => \trans('message.email_validation_description'), 'status' => '<label class="switch toggle_event_editing emailValidationStatus">
                         <input type="checkbox" value="'.($emailStatus ? '1' : '0').'"  name="EmailValidationStatus"
                                class="checkboxEmail" id="email_validation_status"'.($emailStatus ? 'checked' : '').'>
                         <span class="slider round"></span>
                     </label>', 'action' => $emailValidationAction,
                 ],
-                ['options' => \Lang::get('message.mobile_provider'), 'description' => \Lang::get('message.mobile_validation_description'), 'status' => '<label class="switch toggle_event_editing mobileValidationStatus">
+                ['options' => \trans('message.mobile_provider'), 'description' => \trans('message.mobile_validation_description'), 'status' => '<label class="switch toggle_event_editing mobileValidationStatus">
                         <input type="checkbox" value="'.($mobileValStatus ? '1' : '0').'"  name="mobileValidationStatus"
                                class="checkbox9" id="mobile_validation_status"'.($mobileValStatus ? 'checked' : '').'>
                         <span class="slider round"></span>
@@ -393,7 +393,7 @@ class SettingsController extends BaseSettingsController
             $keys = $apikeys->find(1);
             $keys->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -488,7 +488,7 @@ class SettingsController extends BaseSettingsController
 
             $setting->fill(Arr::except($input, ['password', 'logo', 'admin-logo', 'fav-icon']))->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -561,7 +561,7 @@ class SettingsController extends BaseSettingsController
             $setting = $settings->find(1);
             $setting->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -755,7 +755,7 @@ class SettingsController extends BaseSettingsController
 
     public function mailSearch($from = '', $till = '')
     {
-        $join = Email_log::select('id', 'from', 'to', 'date', 'subject', 'status');
+        $join = EmailLog::select('id', 'from', 'to', 'date', 'subject', 'status');
 
         if ($from) {
             $from = $this->DateFormat($from);
@@ -765,7 +765,7 @@ class SettingsController extends BaseSettingsController
 
         if ($till) {
             $till = $this->DateFormat($till);
-            $fromDate = Email_log::first()->date;
+            $fromDate = EmailLog::first()->date;
             $fromDate = $this->DateFormat($from ?: $fromDate); // Use $from if provided, otherwise, use the first email log date
             $join = $join->whereBetween('date', [$fromDate, $till]);
         }
@@ -786,39 +786,39 @@ class SettingsController extends BaseSettingsController
                         echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
 
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                            /* @scrutinizer ignore-type */     \Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                            /* @scrutinizer ignore-type */     \trans('message.failed').'
 
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                            './* @scrutinizer ignore-type */\trans('message.no-record').'
                     </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '
-                    ./* @scrutinizer ignore-type */\Lang::get('message.success').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '
+                    ./* @scrutinizer ignore-type */\trans('message.success').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */ \Lang::get('message.deleted-successfully').'
+                            './* @scrutinizer ignore-type */ \trans('message.deleted-successfully').'
                     </div>';
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */ \Lang::get('message.alert').
-                    '!</b> './* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */ \trans('message.alert').
+                    '!</b> './* @scrutinizer ignore-type */\trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */ \Lang::get('message.select-a-row').'
+                            './* @scrutinizer ignore-type */ \trans('message.select-a-row').'
                     </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                /* @scrutinizer ignore-type */\trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            '.\Lang::get('message.err_msg.').'
+                            '.\trans('message.err_msg.').'
                     </div>';
         }
     }
@@ -829,9 +829,9 @@ class SettingsController extends BaseSettingsController
             $setting = $settings->find(1);
             $setting->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
-            return redirect()->back()->with('fails', \Lang::get('message.err_msg'));
+            return redirect()->back()->with('fails', \trans('message.err_msg'));
         }
     }
 
@@ -849,7 +849,7 @@ class SettingsController extends BaseSettingsController
             'CLOCKWORK_ENABLE' => $enable ? 'true' : 'false',
         ]);
 
-        return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+        return redirect()->back()->with('success', \trans('message.updated-successfully'));
     }
 
     public function settingsPayment(Setting $settings, Request $request)
@@ -860,7 +860,7 @@ class SettingsController extends BaseSettingsController
 
             return view('themes.default1.common.payment-log', compact('from', 'till'));
         } catch (\Exception $ex) {
-            return redirect()->back()->with('fails', \Lang::get('message.err_msg'));
+            return redirect()->back()->with('fails', \trans('message.err_msg'));
         }
     }
 
@@ -958,7 +958,7 @@ class SettingsController extends BaseSettingsController
 
     public function paymentSearch($from = '', $till = '')
     {
-        $join = Payment_log::query()->leftJoin('users', 'payment_logs.from', '=', 'users.email')
+        $join = PaymentLog::query()->leftJoin('users', 'payment_logs.from', '=', 'users.email')
             ->select('payment_logs.id', 'from', 'to', 'date', 'subject', 'status', 'payment_logs.created_at', 'payment_method', 'order', 'exception', 'email', \DB::raw("CONCAT(first_name, ' ', last_name) as name"), 'users.id', 'payment_logs.id as count', 'amount', 'payment_type');
 
         if ($from) {
@@ -969,7 +969,7 @@ class SettingsController extends BaseSettingsController
 
         if ($till) {
             $till = $this->DateFormat($till);
-            $fromDate = Payment_log::oldest('date')->value('date');
+            $fromDate = PaymentLog::oldest('date')->value('date');
             $fromDate = $this->DateFormat($from ?: $fromDate);
             $join->whereBetween('date', [$fromDate, $till]);
         }
@@ -999,37 +999,37 @@ class SettingsController extends BaseSettingsController
                         echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
 
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                        /* @scrutinizer ignore-type */     \Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                        /* @scrutinizer ignore-type */     \trans('message.failed').'
 
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                            './* @scrutinizer ignore-type */\trans('message.no-record').'
                     </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '
-                        ./* @scrutinizer ignore-type */\Lang::get('message.success').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '
+                        ./* @scrutinizer ignore-type */\trans('message.success').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */ \Lang::get('message.deleted-successfully').'
+                            './* @scrutinizer ignore-type */ \trans('message.deleted-successfully').'
                     </div>';
             } else {
                 echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */ \Lang::get('message.alert').
-                        '!</b> './* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */ \trans('message.alert').
+                        '!</b> './* @scrutinizer ignore-type */\trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                            './* @scrutinizer ignore-type */ \Lang::get('message.select-a-row').'
+                            './* @scrutinizer ignore-type */ \trans('message.select-a-row').'
                     </div>';
-                //echo \Lang::get('message.select-a-row');
+                //echo \trans('message.select-a-row');
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                         <i class='fa fa-ban'></i>
-                        <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
-                        /* @scrutinizer ignore-type */\Lang::get('message.failed').'
+                        <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
+                        /* @scrutinizer ignore-type */\trans('message.failed').'
                         <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                             '.$e->getMessage().'
                     </div>';
@@ -1196,7 +1196,7 @@ class SettingsController extends BaseSettingsController
 
             return successResponse(trans('message.email_validation_success'));
         } catch (\Exception $e) {
-            return errorResponse(\Lang::get('message.invalid_key'));
+            return errorResponse(\trans('message.invalid_key'));
         }
     }
 
@@ -1219,7 +1219,7 @@ class SettingsController extends BaseSettingsController
             $emailSave->where('provider', $request->input('provider'))->update(['api_key' => $apikey,
                 'mode' => $request->input('mode'), 'api_secret' => $apisecret, 'to_use' => 1]);
 
-            return successResponse(\Lang::get('message.mobile_validation_success'));
+            return successResponse(\trans('message.mobile_validation_success'));
         }
 
         if ($provider == 'abstract') {
@@ -1235,7 +1235,7 @@ class SettingsController extends BaseSettingsController
 
             $emailSave->where('provider', $request->input('provider'))->update(['api_key' => $request->input('apikey'), 'to_use' => 1]);
 
-            return successResponse(\Lang::get('message.mobile_validation_success_abstract'));
+            return successResponse(\trans('message.mobile_validation_success_abstract'));
         }
     }
 }

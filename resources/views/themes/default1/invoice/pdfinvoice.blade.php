@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{{Lang::get('message.faveo-billing-application')}}</title>
+        <title>{{trans('message.faveo-billing-application')}}</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.4 -->
@@ -39,8 +39,8 @@
 
                     <div class="box-header">
 
-                        <h4>{{Lang::get("message.invoice")}}
-                            <!--<a href="{{url('orders/create')}}" class="btn btn-primary pull-right   ">{{Lang::get('message.create')}}</a></h4>-->
+                        <h4>{{trans("message.invoice")}}
+                            <!--<a href="{{url('orders/create')}}" class="btn btn-primary pull-right   ">{{trans('message.create')}}</a></h4>-->
                     </div>
                     <div id="response"></div>
 

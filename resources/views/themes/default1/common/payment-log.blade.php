@@ -124,9 +124,9 @@
 
                           </div>
                 <!-- /.card-body -->
-                    <button name="Search" type="submit"  class="btn btn-secondary"><i class="fa fa-search"></i>&nbsp;{!!Lang::get('message.search')!!}</button>
+                    <button name="Search" type="submit"  class="btn btn-secondary"><i class="fa fa-search"></i>&nbsp;{!!trans('message.search')!!}</button>
                     &nbsp;
-                    <a href="{!! url('settings/paymentlog') !!}" id="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i>&nbsp;{!!Lang::get('message.reset')!!}</a>
+                    <a href="{!! url('settings/paymentlog') !!}" id="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i>&nbsp;{!!trans('message.reset')!!}</a>
             
 
 
@@ -303,10 +303,10 @@
              });
              if(id.length<=0){
                  swal.fire({
-                     title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                     title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                      html: "<div class='swal2-html-container custom-content'>" +
                          "<div class='section-sa'>" +
-                         "<p>{{Lang::get('message.sweet_payment_log')}}</p>" + "</div>" +
+                         "<p>{{trans('message.sweet_payment_log')}}</p>" + "</div>" +
                          "</div>",
                      position: 'top',
                      confirmButtonText: "{{ __('message.ok') }}",
@@ -317,10 +317,10 @@
              }
              else {
                  var swl = swal.fire({
-                     title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                     title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                      html: "<div class='swal2-html-container custom-content'>" +
                          "<div class='section-sa'>" +
-                         "<p>{{Lang::get('message.payment_log_delete')}}</p>" + "</div>" +
+                         "<p>{{trans('message.payment_log_delete')}}</p>" + "</div>" +
                          "</div>",
                      showCancelButton: true,
                      showCloseButton: true,
@@ -353,10 +353,10 @@
                              })
                          } else {
                              swal.fire({
-                                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                                  html: "<div class='swal2-html-container custom-content'>" +
                                      "<div class='section-sa'>" +
-                                     "<p>{{Lang::get('message.sweet_payment_log')}}</p>" + "</div>" +
+                                     "<p>{{trans('message.sweet_payment_log')}}</p>" + "</div>" +
                                      "</div>",
                                  position: 'top',
                                  confirmButtonText: "{{ __('message.ok') }}",

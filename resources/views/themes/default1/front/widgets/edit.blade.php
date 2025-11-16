@@ -35,7 +35,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.name'))->class('required')->for('name') !!}
+                        {!! html()->label(trans('message.name'))->class('required')->for('name') !!}
                         {!! html()->text('name')->class('form-control'. ($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         <div class="input-group-append">
                         </div>
@@ -43,19 +43,19 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('publish') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.publish'))->class('required')->for('publish') !!}
+                        {!! html()->label(trans('message.publish'))->class('required')->for('publish') !!}
                         {!! html()->select('publish', [1 => 'Yes', 0 => 'No'])->class('form-control'. ($errors->has('publish') ? ' is-invalid' : ''))->id('publish') !!}
                         <div class="input-group-append">
                         </div>
                     </div>
                     <?php
-                $mail = ['class' => 'form-control','disabled' => 'true' , 'title' => Lang::get('message.configure_mailchimp')];
-                $twitter = ['class' => 'form-control','disabled' => 'true', 'title' => Lang::get('message.configure_tweet')];
+                $mail = ['class' => 'form-control','disabled' => 'true' , 'title' => trans('message.configure_mailchimp')];
+                $twitter = ['class' => 'form-control','disabled' => 'true', 'title' => trans('message.configure_tweet')];
                 
                 ?>
 
                     <div class="col-md-4 form-group {{ $errors->has('allow_mailchimp') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.allow_mailchimp'))->class('required')->for('allow_mailchimp') !!}
+                        {!! html()->label(trans('message.allow_mailchimp'))->class('required')->for('allow_mailchimp') !!}
                         {!! html()->select('allow_mailchimp', [1 => 'Yes', 0 => 'No'])->class('form-control')->value($widget->allow_mailchimp)->attributes($mailchimpStatus ? [] : $mail) !!}
                     </div>
 
@@ -66,7 +66,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.type'))->class('required')->for('type') !!}
+                        {!! html()->label(trans('message.type'))->class('required')->for('type') !!}
                         {!! html()->select('type', ['' => __('message.choose'), 'footer1' => 'Footer 1', 'footer2' => 'Footer 2', 'footer3' => 'Footer 3'])->class('form-control'. ($errors->has('type') ? ' is-invalid' : ''))->value($widget->type)->id('type') !!}
                         <div class="input-group-append">
                         </div>
@@ -119,7 +119,7 @@
                                     });
                         </script>
 
-                        {!! html()->label(Lang::get('message.content'))->for('content') !!}
+                        {!! html()->label(trans('message.content'))->for('content') !!}
                         {!! html()->textarea('content')->class('form-control'. ($errors->has('content') ? ' is-invalid' : ''))->id('textarea') !!}
 
                     </div>
@@ -130,7 +130,7 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
     </div>
 

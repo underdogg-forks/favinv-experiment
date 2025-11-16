@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-md-4">
                     <select class="form-control" id="phpExecutableList" onchange="checksome()">
-                        <option value="0">{{Lang::get('message.specify-php-executable')}}</option>
+                        <option value="0">{{trans('message.specify-php-executable')}}</option>
                         @foreach($paths as $path)
                             <option>{{$path}}</option>
                         @endforeach
@@ -52,7 +52,7 @@
                    <span style="font-size: 18px">-q {{$cronPath}} queue:work database >> storage/logs/cron.log</span>
                 </div>
                 <div class="col-md-1">
-                    <span style="font-size: 20px; pointer-events: initial; cursor: pointer;" id="copyBtn" title="{{Lang::get('message.verify-and-copy-command')}}" onclick="verifyPHPExecutableAndCopyCommand()"><i class="fa fa-clipboard"></i></span>
+                    <span style="font-size: 20px; pointer-events: initial; cursor: pointer;" id="copyBtn" title="{{trans('message.verify-and-copy-command')}}" onclick="verifyPHPExecutableAndCopyCommand()"><i class="fa fa-clipboard"></i></span>
                     <span style="font-size: 20px; display:none;" id="loader"><i class="fas fa-circle-notch fa-spin"></i></span>
                 </div>
             </div>
@@ -190,7 +190,7 @@
                 $(".alert-danger, .alert-success, #copyBtn").css('display', 'none');
             },
             success: function (result,status,xhr) {
-                $(".alert-success-message").html("{{Lang::get('message.cron-command-copied')}} "+result.message);
+                $(".alert-success-message").html("{{trans('message.cron-command-copied')}} "+result.message);
                 $(".cron-success, #copyBtn").css('display', 'block');
                 $("#loader").css("display", "none");
                 copy = true
@@ -200,7 +200,7 @@
                 $('#clearClipBoard').click();
                 $(".cron-danger, #copyBtn").css('display', 'block');
                 $("#loader").css("display", "none");
-                $(".alert-danger-message").html("{{Lang::get('message.cron-command-not-copied')}} "+xhr.responseJSON.message);
+                $(".alert-danger-message").html("{{trans('message.cron-command-not-copied')}} "+xhr.responseJSON.message);
             },
         });
     }

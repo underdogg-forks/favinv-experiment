@@ -10,7 +10,7 @@
             <div class="modal-body">
                 
                 <div class= "form-group">
-                    {!! html()->label(Lang::get('message.app_name'))->class('required') !!}
+                    {!! html()->label(trans('message.app_name'))->class('required') !!}
                     <input type="text" name="app_name" id="name" class="form-control app-name {{$errors->has('app_name') ? ' is-invalid' : ''}}">
                     @error('name')
                     <span class="error-message"> {{$message}}</span>
@@ -18,7 +18,7 @@
                     <span class="appnamecheck"></span>
                 </div>
                  <div class= "form-group">
-                     {!! html()->label(Lang::get('message.app_key'))->for('key')->class('required') !!}
+                     {!! html()->label(trans('message.app_key'))->for('key')->class('required') !!}
                      <div class="row">
                      <div class="col-md-8">
                     
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                  <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                     {!! html()->label(Lang::get('message.app_secret'))->for('name')->class('required') !!}
+                     {!! html()->label(trans('message.app_secret'))->for('name')->class('required') !!}
                      <div class="row">
                      <div class="col-md-12">
                     <input type="text" name="app_secret" id="secret" class="form-control {{$errors->has('app_secret') ? ' is-invalid' : ''}}">
@@ -49,7 +49,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                  <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
         </div>
     </div>

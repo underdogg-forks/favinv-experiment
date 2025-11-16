@@ -117,10 +117,10 @@ class Google2FAController extends Controller
             $user->google2fa_activation_date = \Carbon\Carbon::now();
             $user->save();
 
-            return successResponse(\Lang::get('message.valid_passcode'));
+            return successResponse(\trans('message.valid_passcode'));
         }
 
-        return errorResponse(\Lang::get('message.invalid_code_2fa'));
+        return errorResponse(\trans('message.invalid_code_2fa'));
     }
 
     /**
@@ -143,7 +143,7 @@ class Google2FAController extends Controller
         $user->code_usage_count = 0;
         $user->save();
 
-        return successResponse(\Lang::get('message.2fa_disabled'));
+        return successResponse(\trans('message.2fa_disabled'));
     }
 
     public function generateRecoveryCode()

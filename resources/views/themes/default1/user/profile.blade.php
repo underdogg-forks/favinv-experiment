@@ -121,7 +121,7 @@
 
                     <div class="form-group {{ $errors->has('first_name') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.first_name'))->class('required')->for('first_name') !!}
+                        {!! html()->label(trans('message.first_name'))->class('required')->for('first_name') !!}
                         {!! html()->text('first_name')->class('form-control'. ($errors->has('first_name') ? ' is-invalid' : '')) !!}
                         @error('first_name')
                         <span class="error-message"> {{$message}}</span>
@@ -132,7 +132,7 @@
 
                     <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.last_name'))->class('required')->for('last_name') !!}
+                        {!! html()->label(trans('message.last_name'))->class('required')->for('last_name') !!}
                         {!! html()->text('last_name')->class('form-control'. ($errors->has('last_name') ? ' is-invalid' : '')) !!}
                         @error('last_name')
                         <span class="error-message"> {{$message}}</span>
@@ -143,7 +143,7 @@
 
                     <div class="form-group {{ $errors->has('user_name') ? 'has-error' : '' }}">
                         <!-- mobile -->
-                        {!! html()->label(Lang::get('message.user_name'))->class('required')->for('user_name') !!}
+                        {!! html()->label(trans('message.user_name'))->class('required')->for('user_name') !!}
                         {!! html()->text('user_name')->class('form-control'. ($errors->has('user_name') ? ' is-invalid' : '')) !!}
                         @error('user_name')
                         <span class="error-message"> {{$message}}</span>
@@ -155,7 +155,7 @@
 
                     <div class="form-group">
                         <!-- email -->
-                        {!! html()->label(Lang::get('message.email'))->class('required')->for('email') !!}
+                        {!! html()->label(trans('message.email'))->class('required')->for('email') !!}
                         {!! html()->text('email')->class('form-control'. ($errors->has('email') ? ' is-invalid' : '')) !!}
                         @error('email')
                         <span class="error-message"> {{$message}}</span>
@@ -166,7 +166,7 @@
 
                     <div class="form-group {{ $errors->has('company') ? 'has-error' : '' }}">
                         <!-- company -->
-                        {!! html()->label(Lang::get('message.company'))->class('required')->for('company') !!}
+                        {!! html()->label(trans('message.company'))->class('required')->for('company') !!}
                         {!! html()->text('company')->class('form-control'. ($errors->has('company') ? ' is-invalid' : '')) !!}
                         @error('company')
                         <span class="error-message"> {{$message}}</span>
@@ -177,7 +177,7 @@
 
 
                     <div class="form-group {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.mobile'))->class('required')->for('mobile') !!}
+                        {!! html()->label(trans('message.mobile'))->class('required')->for('mobile') !!}
                         {!! html()->hidden('mobile_code')->id('mobile_code_hidden') !!}
 
                         {!! html()->input('tel', 'mobile', $user->mobile)->class( 'form-control selected-dial-code'. ($errors->has('mobile') ? ' is-invalid' : ''))->id('mobile_code') !!}
@@ -196,7 +196,7 @@
 
                     <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
                         <!-- phone number -->
-                        {!! html()->label(Lang::get('message.address'))->class('required')->for('address') !!}
+                        {!! html()->label(trans('message.address'))->class('required')->for('address') !!}
                         {!! html()->textarea('address')->class( 'form-control'. ($errors->has('address') ? ' is-invalid' : '')) !!}
                         @error('address')
                         <span class="error-message"> {{$message}}</span>
@@ -209,16 +209,16 @@
 
                         <div class="col-md-6 form-group {{ $errors->has('town') ? 'has-error' : '' }}">
                             <!-- mobile -->
-                            {!! html()->label(Lang::get('message.town'))->for('town') !!}
+                            {!! html()->label(trans('message.town'))->for('town') !!}
                             {!! html()->text('town')->class('form-control'. ($errors->has('town') ? ' is-invalid' : ''))->id('town') !!}
 
                         </div>
 
                         <div class="col-md-6 form-group {{ $errors->has('timezone_id') ? 'has-error' : '' }}">
                             <!-- mobile -->
-                            {!! html()->label(Lang::get('message.timezone'))->for('timezone_id')->class('required') !!}
+                            {!! html()->label(trans('message.timezone'))->for('timezone_id')->class('required') !!}
                             <!-- {!! html()->select('timezone_id')->options(['' => 'Select'] + $timezones)->class('form-control') !!} -->
-                            {!! html()->select('timezone_id')->options([Lang::get('message.choose') => $timezones])->class('form-control select2 selectpicker'. ($errors->has('timezone_id') ? ' is-invalid' : ''))->attribute('data-live-search', 'true')->attribute('required', true)->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false')->attribute('data-size', '10') !!}
+                            {!! html()->select('timezone_id')->options([trans('message.choose') => $timezones])->class('form-control select2 selectpicker'. ($errors->has('timezone_id') ? ' is-invalid' : ''))->attribute('data-live-search', 'true')->attribute('required', true)->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false')->attribute('data-size', '10') !!}
                             @error('timezone_id')
                             <span class="error-message"> {{$message}}</span>
                             @enderror
@@ -230,8 +230,8 @@
                     <div class="row">
                             <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
                         <div class="col-md-6 form-group {{ $errors->has('country') ? 'has-error' : '' }}">
-                            {!! html()->label(Lang::get('message.country'), 'country')->class('required') !!}
-                            {!! html()->select('country')->options([Lang::get('message.choose') => $countries])->class('form-control select2'. ($errors->has('country') ? ' is-invalid' : ''))->id('country')->attribute('onChange', 'getCountryAttr(this.value)')->attribute('data-live-search', 'true')->attribute('required', 'required')->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false')->attribute('data-size', '10') !!}
+                            {!! html()->label(trans('message.country'), 'country')->class('required') !!}
+                            {!! html()->select('country')->options([trans('message.choose') => $countries])->class('form-control select2'. ($errors->has('country') ? ' is-invalid' : ''))->id('country')->attribute('onChange', 'getCountryAttr(this.value)')->attribute('data-live-search', 'true')->attribute('required', 'required')->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false')->attribute('data-size', '10') !!}
                             <!-- name -->
                             @error('country')
                             <span class="error-message"> {{$message}}</span>
@@ -241,7 +241,7 @@
                         </div>
                         <div class="col-md-6 form-group {{ $errors->has('state') ? 'has-error' : '' }}">
                             <!-- name -->
-                            {!! html()->label(Lang::get('message.state')) !!}
+                            {!! html()->label(trans('message.state')) !!}
                             <!--{!! html()->select('state', [])->class('form-control'. ($errors->has('state') ? ' is-invalid' : ''))->id('state-list') !!} -->
                             <select name="state" id="state-list" class="form-control">
                                 @if(count($state)>0)
@@ -264,7 +264,7 @@
                     <div class="row">
                         <div class="col-md-6 form-group {{ $errors->has('zip') ? 'has-error' : '' }}">
                             <!-- mobile -->
-                            {!! html()->label(Lang::get('message.zip'))->for('zip') !!}
+                            {!! html()->label(trans('message.zip'))->for('zip') !!}
                             {!! html()->text('zip')->class('form-control'. ($errors->has('zip') ? ' is-invalid' : ''))->id('zip1') !!}
                             <span id="zip-error-msg"></span>
                             @error('zip')
@@ -285,7 +285,7 @@
 
                     <div class="form-group {{ $errors->has('profile_pic') ? 'has-error' : '' }}">
                         <!-- profile pic -->
-                        {!! html()->label(Lang::get('message.profile-picture'))->for('profile_pic') !!}
+                        {!! html()->label(trans('message.profile-picture'))->for('profile_pic') !!}
 
                         <div class="input-group">
                             {!! html()->file('profile_pic')->id('profile_pic') !!}
@@ -301,7 +301,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button></h4>
+                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button></h4>
 
                     {!! html()->token() !!}
                     {!! html()->form()->close() !!}
@@ -314,7 +314,7 @@
 
             <div class="card card-secondary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{Lang::get('message.change-password')}}</h3>
+                    <h3 class="card-title">{{trans('message.change-password')}}</h3>
 
 
                 </div>
@@ -326,23 +326,23 @@
                     @if(Session::has('success1'))
                         <div class="alert alert-success alert-dismissable">
                             <i class="fa fa-ban"></i>
-                            <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.success')}}.
+                            <b>{{trans('message.alert')}}!</b> {{trans('message.success')}}.
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{Session::get('success1')}}
+                            {{session('success1')}}
                         </div>
                     @endif
                     <!-- fail message -->
                     @if(Session::has('fails1'))
                         <div class="alert alert-danger alert-dismissable">
                             <i class="fa fa-ban"></i>
-                            <b>{{Lang::get('message.alert')}}!</b> {{Lang::get('message.failed')}}.
+                            <b>{{trans('message.alert')}}!</b> {{trans('message.failed')}}.
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            {{Session::get('fails1')}}
+                            {{session('fails1')}}
                         </div>
                     @endif
                     <!-- old password -->
                     <div class="form-group has-feedback {{ $errors->has('old_password') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.old_password'))->class('required')->for('old_password') !!}
+                        {!! html()->label(trans('message.old_password'))->class('required')->for('old_password') !!}
                         <div class="input-group">
                             {!! html()->password('old_password')->placeholder( __('message.password'))->class('form-control'. ($errors->has('old_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
@@ -358,7 +358,7 @@
                     </div>
                     <!-- new password -->
                     <div class="form-group has-feedback {{ $errors->has('new_password') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.new_password'))->class('required')->for('new_password') !!}
+                        {!! html()->label(trans('message.new_password'))->class('required')->for('new_password') !!}
                         <div class="input-group has-validation">
                             {!! html()->password('new_password')->placeholder( __('message.new_password'))->class('form-control'. ($errors->has('new_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
@@ -369,9 +369,9 @@
 
                         </div>
                         <small class="text-sm text-muted" id="pswd_info" style="display: none;">
-                            <span class="font-weight-bold">{{ \Lang::get('message.password_requirements') }}</span>
+                            <span class="font-weight-bold">{{ \trans('message.password_requirements') }}</span>
                             <ul class="pl-4">
-                                @foreach (\Lang::get('message.password_requirements_list') as $requirement)
+                                @foreach (\trans('message.password_requirements_list') as $requirement)
                                     <li id="{{ $requirement['id'] }}" class="text-danger">{{ $requirement['text'] }}</li>
                                 @endforeach
                             </ul>
@@ -383,7 +383,7 @@
                     </div>
                     <!-- confirm password -->
                     <div class="form-group has-feedback {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.confirm_password'))->class('required')->for('confirm_password') !!}
+                        {!! html()->label(trans('message.confirm_password'))->class('required')->for('confirm_password') !!}
                         <div class="input-group">
                             {!! html()->password('confirm_password')->placeholder( __('message.confirm_password'))->class('form-control'. ($errors->has('confirm_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
@@ -398,7 +398,7 @@
                         <span class="error-message"> {{$message}}</span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
                     {!! html()->form()->close() !!}
                 </div>
             </div>
@@ -414,7 +414,7 @@
 
             <div class="card card-secondary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{Lang::get('message.setup_2fa')}}</h3>
+                    <h3 class="card-title">{{trans('message.setup_2fa')}}</h3>
 
 
                 </div>

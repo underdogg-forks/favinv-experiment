@@ -21,7 +21,7 @@
         <div class="col-12">
             <div class="card card-secondary card-outline collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">{{Lang::get('message.filters')}}</h3>
+                    <h3 class="card-title">{{trans('message.filters')}}</h3>
 
                    <div class="card-tools">
 
@@ -71,9 +71,9 @@
 
                 <div class="col-md-12">
                     <!-- {!! html()->submit( __('message.search'))->class('btn btn-primary') !!} -->
-                      <button name="Search" type="submit"  class="btn btn-secondary" data-loading-text="<i class='fa fa-search fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-search">&nbsp;</i>{!!Lang::get('message.apply')!!}</button>
+                      <button name="Search" type="submit"  class="btn btn-secondary" data-loading-text="<i class='fa fa-search fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-search">&nbsp;</i>{!!trans('message.apply')!!}</button>
                     <!-- {!! html()->submit( __('message.reset'))->class('btn btn-danger')->id('reset') !!} -->
-                     <button name="Reset" type="submit" id="reset" class="btn btn-secondary" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.reset')!!}</button>
+                     <button name="Reset" type="submit" id="reset" class="btn btn-secondary" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.reset')!!}</button>
 
 
                 </div>

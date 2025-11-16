@@ -37,7 +37,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <!-- name -->
-                        {!! html()->label(Lang::get('message.name'), 'name')->class('required') !!}
+                        {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                         {!! html()->text('name')->class('form-control'.($errors->has('name') ? ' is-invalid' : ''))->id('name') !!}
                         @error('name')
                         <span class="error-message"> {{$message}}</span>
@@ -48,7 +48,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('publish') ? 'has-error' : '' }}">
                         <!-- publish -->
-                        {!! html()->label(Lang::get('message.publish'), 'publish')->class('required') !!}
+                        {!! html()->label(trans('message.publish'), 'publish')->class('required') !!}
                         {!! html()->select('publish', [1 => __('message.yes'), 0 => __('message.no')])->class('form-control'.($errors->has('publish') ? ' is-invalid' : '')) !!}
                         @error('publish')
                         <span class="error-message"> {{$message}}</span>
@@ -59,7 +59,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
                         <!-- slug -->
-                        {!! html()->label(Lang::get('message.slug'), 'slug')->class('required') !!}
+                        {!! html()->label(trans('message.slug'), 'slug')->class('required') !!}
                         {!! html()->text('slug')->class('form-control'.($errors->has('slug') ? ' is-invalid' : ''))->id('slug') !!}
                         @error('slug')
                         <span class="error-message"> {{$message}}</span>
@@ -74,7 +74,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('url') ? 'has-error' : '' }}">
                         <!-- url -->
-                        {!! html()->label(Lang::get('message.url'), 'url')->class('required') !!}
+                        {!! html()->label(trans('message.url'), 'url')->class('required') !!}
                         {!! html()->text('url')->class('form-control'.($errors->has('url') ? ' is-invalid' : ''))->id('url')->placeholder('https://example.com') !!}
 
                         @error('url')
@@ -86,7 +86,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- parent_page_id -->
-                        {!! html()->label(Lang::get('message.parent-page'), 'parent_page_id') !!}
+                        {!! html()->label(trans('message.parent-page'), 'parent_page_id') !!}
                         {!! html()->select('parent_page_id', ['0' => __('message.choose'), __('message.parent-page') => $parents])->class('form-control'.($errors->has('parent_page_id') ? ' is-invalid' : '')) !!}
                         @error('parent_page_id')
                         <span class="error-message"> {{$message}}</span>
@@ -95,7 +95,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- type -->
-                        {!! html()->label(Lang::get('message.page_type'), 'type') !!}
+                        {!! html()->label(trans('message.page_type'), 'type') !!}
                         {!! html()->select('type', ['none' => __('message.none'), 'contactus' => __('message.contact_us')])->class('form-control'.($errors->has('type') ? ' is-invalid' : '')) !!}
                         @error('type')
                         <span class="error-message"> {{$message}}</span>
@@ -146,7 +146,7 @@
 </script>
 
 
-                        {!! html()->label(Lang::get('message.content'), 'content')->class('required') !!}
+                        {!! html()->label(trans('message.content'), 'content')->class('required') !!}
                         {!! html()->textarea('content')->class('form-control'.($errors->has('content') ? ' is-invalid' : ''))->id('textarea') !!}
                         @error('content')
                         <span class="error-message"> {{$message}}</span>
@@ -161,7 +161,7 @@
             </div>
 
         </div>
-        <h4><button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button></h4>
+        <h4><button type="submit" class="btn btn-primary pull-right" id="submit"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button></h4>
 
     </div>
 

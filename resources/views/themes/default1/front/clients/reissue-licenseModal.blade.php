@@ -10,7 +10,7 @@
 			   <input type="hidden" name="orderId" id="orderId">
 		  <div class="form-group {{ isset($errors) && $errors->has('domain') ? 'has-error' : '' }}">
                     <!-- name -->
-              {!! html()->label('domain', Lang::get('message.domain'))
+              {!! html()->label('domain', trans('message.domain'))
 ->class('required') !!}
 
               {!! html()->text('domain')
@@ -27,7 +27,7 @@
 		
 		  <div class="modal-footer justify-content-between">
                 <button type="button" id="close" class="btn btn-default" data-dismiss="modal">{{ __('message.close')}}</button>
-              <button type="submit" id="licenseSave"  class="btn btn-primary" value="{{Lang::get('message.save')}}"><i class="fas fa-save"></i></i></button>
+              <button type="submit" id="licenseSave"  class="btn btn-primary" value="{{trans('message.save')}}"><i class="fas fa-save"></i></i></button>
             </div>
 	</div>
 </div>

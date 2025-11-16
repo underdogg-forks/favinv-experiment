@@ -9,7 +9,7 @@
             <div class="modal-body">
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.app_name'), 'app_name')->class('required') !!}
+                    {!! html()->label(trans('message.app_name'), 'app_name')->class('required') !!}
                     {!! html()->text('app_name')->class('form-control app-name'.($errors->has('app_name') ? ' is-invalid' : ''))->id('app-name') !!}
                     @error('app_name')
                     <span class="error-message"> {{$message}}</span>
@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.app_key'), 'app_key')->class('required') !!}
+                    {!! html()->label(trans('message.app_key'), 'app_key')->class('required') !!}
                     <div class="row">
                         <div class="col-md-8">
                             {!! html()->text('app_key')->class('form-control app-key'.($errors->has('app_key') ? ' is-invalid' : ''))->id('app-key')->attribute('readonly', true) !!}
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('app_secret') ? 'has-error' : '' }}">
-                    {!! html()->label(Lang::get('message.app_secret'), 'app_secret')->class('required') !!}
+                    {!! html()->label(trans('message.app_secret'), 'app_secret')->class('required') !!}
                     <div class="row">
                         <div class="col-md-12">
                             {!! html()->text('app_secret')->class('form-control app-secret'.($errors->has('app_secret') ? ' is-invalid' : ''))->id('app-secret') !!}
@@ -54,7 +54,7 @@
                 </button>
                 <button type="submit" class="btn btn-primary submit " id="submit"
                         data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i
-                            class="fa fa-save">&nbsp;</i>{!!Lang::get('message.save')!!}</button>
+                            class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
         </div>
     </div>

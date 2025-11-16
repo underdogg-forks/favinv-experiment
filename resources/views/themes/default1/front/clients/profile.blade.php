@@ -252,7 +252,7 @@ input:checked + .slider:before {
                                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">{{ __('message.time_zone')}}</label>
                                         <div class="col-lg-9">
                                             <div class="custom-select-1">
-                                                {!! html()->select('timezone_id', [Lang::get('message.choose') => $timezones])->class('form-control input-lg')->id('timezone') !!}
+                                                {!! html()->select('timezone_id', [trans('message.choose') => $timezones])->class('form-control input-lg')->id('timezone') !!}
 
                                             </div>
                                         </div>
@@ -306,9 +306,9 @@ input:checked + .slider:before {
                                             </div>
                                             <h6 id="newpasswordcheck"></h6>
                                             <small class="text-sm text-muted" id="pswd_info" style="display: none;">
-                                                <span class="font-weight-bold">{{ \Lang::get('message.password_requirements') }}</span>
+                                                <span class="font-weight-bold">{{ \trans('message.password_requirements') }}</span>
                                                 <ul class="pl-4">
-                                                    @foreach (\Lang::get('message.password_requirements_list') as $requirement)
+                                                    @foreach (\trans('message.password_requirements_list') as $requirement)
                                                         <li id="{{ $requirement['id'] }}" class="text-danger">{{ $requirement['text'] }}</li>
                                                     @endforeach
                                                 </ul>

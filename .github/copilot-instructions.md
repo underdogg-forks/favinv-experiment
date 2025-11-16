@@ -100,6 +100,9 @@ public function handle($request)
 - Constants: `UPPER_SNAKE_CASE`
 - Use descriptive, meaningful names
 - Avoid abbreviations unless universally understood
+- **NO UNDERSCORES** in class names or file names (use PascalCase instead)
+  - ❌ Bad: `Payment_log`, `Email_log`, `Auto_renewal`, `Demo_page`
+  - ✅ Good: `PaymentLog`, `EmailLog`, `AutoRenewal`, `DemoPage`
 
 ### Documentation
 - Add PHPDoc blocks to all public methods
@@ -112,6 +115,47 @@ public function handle($request)
 - Declare return types for all methods
 - Use nullable types when appropriate: `?Type`
 - Leverage union types in PHP 8+: `Type1|Type2`
+- Practice strict programming WITHOUT adding `declare(strict_types=1)` at the top of files
+- Use dependency injection WITHOUT the `readonly` keyword for broader compatibility
+
+### Translation Functions
+- **ALWAYS** use `trans()` function for all translations
+- **NEVER** use `Lang::get()` (deprecated, old Laravel style)
+- **NEVER** use `__()` helper (use `trans()` instead for consistency and clarity)
+
+Example:
+```php
+// Bad
+Lang::get('message.welcome');
+__('message.error');
+
+// Good
+trans('message.welcome');
+trans('message.error');
+```
+
+### Modern Blade Syntax
+- **NEVER** use `Form::` facade in Blade templates (deprecated Laravel Collective)
+- **NEVER** use `Session::get()` in Blade templates
+- **ALWAYS** use modern Blade directives and helpers
+
+Example:
+```blade
+{{-- Bad --}}
+{{ Session::get('user') }}
+{{ \Session::get('status') }}
+{!! Form::open(['url' => 'foo/bar']) !!}
+
+{{-- Good --}}
+{{ session('user') }}
+@session('status')
+    {{ $value }}
+@endsession
+<form action="{{ url('foo/bar') }}" method="POST">
+    @csrf
+    {{-- form fields --}}
+</form>
+```
 
 ### Error Handling
 - Use exceptions for exceptional conditions

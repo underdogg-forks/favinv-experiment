@@ -21,10 +21,10 @@
 
 
         <div class="card-header">
-            <h3 class="card-title">{{Lang::get('message.pages')}}</h3>
+            <h3 class="card-title">{{trans('message.pages')}}</h3>
 
             <div class="card-tools">
-                <a href="{{url('pages/create')}}" class="btn btn-default btn-sm pull-right" <?php if($pages_count >= 3)  {?>  onclick="return false" title="{{ __('message.page_limit')}}"  <?php  }?> ><span class="fas fa-plus"></span>&nbsp;{{Lang::get('message.create')}}</a>
+                <a href="{{url('pages/create')}}" class="btn btn-default btn-sm pull-right" <?php if($pages_count >= 3)  {?>  onclick="return false" title="{{ __('message.page_limit')}}"  <?php  }?> ><span class="fas fa-plus"></span>&nbsp;{{trans('message.create')}}</a>
 
 
             </div>
@@ -154,10 +154,10 @@
          });
          if(id.length<=0){
              swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.sweet_page')}}</p>" + "</div>" +
+                     "<p>{{trans('message.sweet_page')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
                  confirmButtonText: "{{ __('message.ok') }}",
@@ -168,10 +168,10 @@
          }
          else {
              var swl = swal.fire({
-                 title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                 title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                  html: "<div class='swal2-html-container custom-content'>" +
                      "<div class='section-sa'>" +
-                     "<p>{{Lang::get('message.page_delete')}}</p>" + "</div>" +
+                     "<p>{{trans('message.page_delete')}}</p>" + "</div>" +
                      "</div>",
                  showCancelButton: true,
                  showCloseButton: true,
@@ -203,10 +203,10 @@
                          })
                      } else {
                          swal.fire({
-                             title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                             title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                              html: "<div class='swal2-html-container custom-content'>" +
                                  "<div class='section-sa'>" +
-                                 "<p>{{Lang::get('message.sweet_page')}}</p>" + "</div>" +
+                                 "<p>{{trans('message.sweet_page')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
                              confirmButtonText: "{{ __('message.ok') }}",

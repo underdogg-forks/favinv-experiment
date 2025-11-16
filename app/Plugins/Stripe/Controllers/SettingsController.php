@@ -69,7 +69,7 @@ class SettingsController extends Controller
             $ccavanue = $ccavanue1->where('id', '1')->first();
             $ccavanue->fill($request->input())->save();
 
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

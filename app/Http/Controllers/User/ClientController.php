@@ -181,17 +181,17 @@ class ClientController extends AdvanceSearchController
 
     public function getActiveLabel($mobileActive, $emailActive, $twoFaActive)
     {
-        $emailLabel = "<i class='fas fa-envelope'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top'  title='".Lang::get('message.unverified_email')."'> </label></i>";
-        $mobileLabel = "<i class='fas fa-phone'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".Lang::get('message.unverified_mobile')."' >  </label></i>";
-        $twoFalabel = "<i class='fas fa-qrcode'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".Lang::get('message.2fa_not_enabled')."'> </label></i>";
+        $emailLabel = "<i class='fas fa-envelope'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top'  title='".trans('message.unverified_email')."'> </label></i>";
+        $mobileLabel = "<i class='fas fa-phone'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".trans('message.unverified_mobile')."' >  </label></i>";
+        $twoFalabel = "<i class='fas fa-qrcode'  style='color:red'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".trans('message.2fa_not_enabled')."'> </label></i>";
         if ($mobileActive) {
-            $mobileLabel = "<i class='fas fa-phone'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".Lang::get('message.mobile_verified')."'></label></i>";
+            $mobileLabel = "<i class='fas fa-phone'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".trans('message.mobile_verified')."'></label></i>";
         }
         if ($emailActive) {
-            $emailLabel = "<i class='fas fa-envelope'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".Lang::get('message.email_verified')."'> </label></i>";
+            $emailLabel = "<i class='fas fa-envelope'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".trans('message.email_verified')."'> </label></i>";
         }
         if ($twoFaActive) {
-            $twoFalabel = "<i class='fas fa-qrcode'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title= '".Lang::get('message.2fa_enabled')."'> </label></i>";
+            $twoFalabel = "<i class='fas fa-qrcode'  style='color:green'  <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title= '".trans('message.2fa_enabled')."'> </label></i>";
         }
 
         return $emailLabel.'&nbsp;&nbsp;'.$mobileLabel.'&nbsp;&nbsp;'.$twoFalabel;
@@ -294,7 +294,7 @@ class ClientController extends AdvanceSearchController
 
             AddUserToExternalService::dispatch($userInput);
 
-            return redirect()->back()->with('success', \Lang::get('message.saved-successfully'));
+            return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (\Swift_TransportException $e) {
             return redirect()->back()->with('warning',
                 __('message.user_created_but_email_problem').$e->getMessage());
@@ -313,7 +313,7 @@ class ClientController extends AdvanceSearchController
     {
         try {
             if (User::onlyTrashed()->find($id)) {
-                throw new \Exception(\Lang::get('message.user_suspend'));
+                throw new \Exception(\trans('message.user_suspend'));
             }
             $invoice = new Invoice();
             $order = new Order();
@@ -436,7 +436,7 @@ class ClientController extends AdvanceSearchController
             $user->fill($request->input())->save();
 
             // \Session::put('test', 1000);
-            return redirect()->back()->with('success', \Lang::get('message.updated-successfully'));
+            return redirect()->back()->with('success', \trans('message.updated-successfully'));
         } catch (\Exception $ex) {
             app('log')->error($ex->getMessage());
 
@@ -475,36 +475,36 @@ class ClientController extends AdvanceSearchController
                     } else {
                         echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
                     /* @scrutinizer ignore-type */
-                    \Lang::get('message.success').'
+                    \trans('message.success').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.no-record').'
+                        './* @scrutinizer ignore-type */\trans('message.no-record').'
                 </div>';
-                        //echo \Lang::get('message.no-record') . '  [id=>' . $id . ']';
+                        //echo \trans('message.no-record') . '  [id=>' . $id . ']';
                     }
                 }
                 echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert')
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert')
                     .'!</b> './* @scrutinizer ignore-type */
                     '
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.user-suspend-successfully').'
+                        './* @scrutinizer ignore-type */\trans('message.user-suspend-successfully').'
                 </div>';
             } else {
                 echo "<div class='alert alert-success alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '
-                    ./* @scrutinizer ignore-type */\Lang::get('message.success').'
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '
+                    ./* @scrutinizer ignore-type */\trans('message.success').'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        './* @scrutinizer ignore-type */\Lang::get('message.select-a-row').'
+                        './* @scrutinizer ignore-type */\trans('message.select-a-row').'
                 </div>';
             }
         } catch (\Exception $e) {
             echo "<div class='alert alert-danger alert-dismissable'>
                     <i class='fa fa-ban'></i>
-                    <b>"./* @scrutinizer ignore-type */\Lang::get('message.alert').'!</b> '.
+                    <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
                     /* @scrutinizer ignore-type */'
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
                         '.$e->getMessage().'
@@ -618,17 +618,17 @@ class ClientController extends AdvanceSearchController
             $exportDetail = ExportDetail::find($id);
 
             if (! $exportDetail) {
-                return redirect()->back()->with('fails', \Lang::get('message.file_not_found'));
+                return redirect()->back()->with('fails', \trans('message.file_not_found'));
             }
 
             $expirationTime = $exportDetail->created_at->addHours(6);
             if (now()->gt($expirationTime)) {
-                return redirect()->back()->with('fails', \Lang::get('message.download_link_expired'));
+                return redirect()->back()->with('fails', \trans('message.download_link_expired'));
             }
 
             $filePath = $exportDetail->file_path;
             if (! file_exists($filePath)) {
-                return redirect()->back()->with('fails', \Lang::get('message.file_not_found'));
+                return redirect()->back()->with('fails', \trans('message.file_not_found'));
             }
 
             $zipFileName = $exportDetail->file.'.zip';
@@ -650,7 +650,7 @@ class ClientController extends AdvanceSearchController
                 }
                 $zip->close();
             } else {
-                return redirect()->back()->with('fails', \Lang::get('message.failed_create_zip_file'));
+                return redirect()->back()->with('fails', \trans('message.failed_create_zip_file'));
             }
 
             return response()->download($zipFilePath, $zipFileName)->deleteFileAfterSend(true);

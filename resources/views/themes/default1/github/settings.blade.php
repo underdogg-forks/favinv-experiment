@@ -102,14 +102,14 @@ input:checked + .slider:before {
                            <input type ="hidden" id="hidden_client_secret" value="{{$githubFileds->client_secret}}">
                     <div class="col-md-6 form-group {{ $errors->has('username') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label(Lang::get('message.username'))->class('required')->for('git_username') !!}
+                        {!! html()->label(trans('message.username'))->class('required')->for('git_username') !!}
                         {!! html()->text('username', $githubFileds->username)->class('form-control git_username'. ($errors->has('username') ? ' is-invalid' : ''))->id('git_username') !!}
                         <h6 id="user"></h6>
                     </div>
 
                     <div class="col-md-6 form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                         <!-- last name -->
-                        {!! html()->label(Lang::get('message.password'))->class('required')->for('password') !!}
+                        {!! html()->label(trans('message.password'))->class('required')->for('password') !!}
                         <!-- {!! html()->password('password')->class('form-control'. ($errors->has('password') ? ' is-invalid' : ''))->id('password') !!}
                         {!! html()->password('password')->class('form-control') !!} -->
                         <input type= "password" value="" name="password" id="git_password" class="form-control git_password">
@@ -125,20 +125,20 @@ input:checked + .slider:before {
                 <div class="row">
 
                     <div class="col-md-6 form-group {{ $errors->has('client_id') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.client_id'))->class('required')->for('client_id') !!}
+                        {!! html()->label(trans('message.client_id'))->class('required')->for('client_id') !!}
                         {!! html()->text('client_id', $githubFileds->client_id)->class('form-control git_client'. ($errors->has('client_id') ? ' is-invalid' : ''))->id('git_client') !!}
                         <h6 id="c_id"></h6>
                     </div>
 
                     <div class="col-md-6 form-group {{ $errors->has('client_secret') ? 'has-error' : '' }}">
-                        {!! html()->label(Lang::get('message.client_secret'))->class('required')->for('client_secret') !!}
+                        {!! html()->label(trans('message.client_secret'))->class('required')->for('client_secret') !!}
                         {!! html()->text('client_secret', $githubFileds->client_secret)->class( 'form-control git_secret'. ($errors->has('client_secret') ? ' is-invalid' : ''))->id('git_secret') !!}
                         <h6 id="c_secret"></h6>
                     </div>
 
                 </div>
 
-                <button type="submit" id="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" id="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
             </div>

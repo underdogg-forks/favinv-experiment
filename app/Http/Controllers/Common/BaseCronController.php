@@ -236,7 +236,7 @@ class BaseCronController extends Controller
         $mail->SendEmail($setting->email, $user->email, $template->data, $template->name, $replace, $type);
     }
 
-    public function Auto_renewalMail($user, $end, $product, $order, $sub)
+    public function autoRenewalMail($user, $end, $product, $order, $sub)
     {
         $contact = getContactData();
         $product_type = Product::where('name', $product)->value('type');

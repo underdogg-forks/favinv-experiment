@@ -22,7 +22,7 @@
         <h3 class="card-title">{{ __('message.social_media') }}</h3>
 
         <div class="card-tools">
-            <a href="{{url('social-media/create')}}" class="btn btn-default btn-sm pull-right"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{Lang::get('message.create')}}</a>
+            <a href="{{url('social-media/create')}}" class="btn btn-default btn-sm pull-right"><span class="fa fa-plus"></span>&nbsp;&nbsp;{{trans('message.create')}}</a>
 
         </div>
     </div>
@@ -163,10 +163,10 @@
         });
         if(id.length<=0){
             swal.fire({
-                title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                 html: "<div class='swal2-html-container custom-content'>" +
                     "<div class='section-sa'>" +
-                    "<p>{{Lang::get('message.sweet_social')}}</p>" + "</div>" +
+                    "<p>{{trans('message.sweet_social')}}</p>" + "</div>" +
                     "</div>",
                 position: 'top',
                 confirmButtonText: "{{ __('message.ok') }}",
@@ -177,10 +177,10 @@
         }
         else {
             var swl = swal.fire({
-                title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Delete')}}</h2>",
+                title: "<h2 class='swal2-title custom-title'>{{trans('message.Delete')}}</h2>",
                 html: "<div class='swal2-html-container custom-content'>" +
                     "<div class='section-sa'>" +
-                    "<p>{{Lang::get('message.social_delete')}}</p>" + "</div>" +
+                    "<p>{{trans('message.social_delete')}}</p>" + "</div>" +
                     "</div>",
                 showCancelButton: true,
                 showCloseButton: true,
@@ -216,10 +216,10 @@
                         })
                     } else {
                         swal.fire({
-                            title: "<h2 class='swal2-title custom-title'>{{Lang::get('message.Select')}}</h2>",
+                            title: "<h2 class='swal2-title custom-title'>{{trans('message.Select')}}</h2>",
                             html: "<div class='swal2-html-container custom-content'>" +
                                 "<div class='section-sa'>" +
-                                "<p>{{Lang::get('message.sweet_social')}}</p>" + "</div>" +
+                                "<p>{{trans('message.sweet_social')}}</p>" + "</div>" +
                                 "</div>",
                             position: 'top',
                             confirmButtonText: "{{ __('message.ok') }}",

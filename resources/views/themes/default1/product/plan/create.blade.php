@@ -95,14 +95,14 @@
                   <table class="table table-responsive table-bordered table-hover" id="dynamic_table">
                     <thead>
                     <tr>
-                      <th class="col-sm-3" style="width:18%">{{ Lang::get('message.country') }} <span class="text-red">*</span></th>
-                      <th class="col-sm-3" style="width:20%">{{ Lang::get('message.currency') }} <span class="text-red">*</span></th>
-                      <th class="col-sm-3" style="width:20%">{{ Lang::get('message.price') }} <span class="text-red">*</span></th>
+                      <th class="col-sm-3" style="width:18%">{{ trans('message.country') }} <span class="text-red">*</span></th>
+                      <th class="col-sm-3" style="width:20%">{{ trans('message.currency') }} <span class="text-red">*</span></th>
+                      <th class="col-sm-3" style="width:20%">{{ trans('message.price') }} <span class="text-red">*</span></th>
                       <th class="col-sm-3" style="width:20%">
-                        {{ Lang::get('message.offer_price') }} <span class="text-bold">(%)</span>
+                        {{ trans('message.offer_price') }} <span class="text-bold">(%)</span>
                       </th>
                       <th class="col-sm-3" style="width:20%">
-                        {{ Lang::get('message.renew-price') }} <span class="text-red">*</span>
+                        {{ trans('message.renew-price') }} <span class="text-red">*</span>
                       </th>
                       
                     </tr>

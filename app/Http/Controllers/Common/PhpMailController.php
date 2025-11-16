@@ -11,7 +11,7 @@ use App\Model\Common\TemplateType;
 use App\Model\Mailjob\ExpiryMailDay;
 use App\Model\Product\Product;
 use App\Model\Product\Subscription;
-use App\Payment_log;
+use App\PaymentLog;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -294,6 +294,6 @@ class PhpMailController extends Controller
             $data['exception'] = $exception;
         }
 
-        Payment_log::insert($data);
+        PaymentLog::insert($data);
     }
 }

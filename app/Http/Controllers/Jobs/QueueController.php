@@ -211,7 +211,7 @@ class QueueController extends Controller
                     return $form;
                 case 'redis':
                     if (! extension_loaded('redis')) {
-                        return errorResponse(\Lang::get('message.extension_required_error', ['extension' => 'redis']), 500);
+                        return errorResponse(\trans('message.extension_required_error', ['extension' => 'redis']), 500);
                     }
                     $form .= "<div class='row'>";
                     $form .= $this->form($short, __('message.driver'), 'driver', 'col-md-6 form-group', __('message.redis_place'));

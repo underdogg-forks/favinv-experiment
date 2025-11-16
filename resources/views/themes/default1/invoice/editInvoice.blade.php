@@ -35,7 +35,7 @@
 
                     <div class="col-md-6 form-group {{ $errors->has('date') ? 'has-error' : '' }}">
                         <!-- date -->
-                        {!! html()->label(Lang::get('message.date'))->class('required') !!}
+                        {!! html()->label(trans('message.date'))->class('required') !!}
 
                         <div class="input-group date" id="invoice_date" data-target-input="nearest" >
 
@@ -52,7 +52,7 @@
 
                     <div class="col-md-6 form-group {{ $errors->has('total') ? 'has-error' : '' }}">
                         <!-- total -->
-                        {!! html()->label(Lang::get('message.invoice-total'))->class('required') !!}
+                        {!! html()->label(trans('message.invoice-total'))->class('required') !!}
                         <input type="text" name="total" class="form-control {{$errors->has('total') ? ' is-invalid' : ''}}" value="{{$invoice->grand_total}}" id="total">
                         @error('total')
                         <span class="error-message"> {{$message}}</span>
@@ -64,7 +64,7 @@
 
                      <div class="col-md-6 form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
                         <!-- status -->
-                         {!! html()->label(Lang::get('message.status'))->for('status') !!}
+                         {!! html()->label(trans('message.status'))->for('status') !!}
                          <select name="status"  class="form-control {{$errors->has('status') ? ' is-invalid' : ''}}" id="status">
                             <option selected="selected">{{$invoice->status}}</option>
                              <option value="">{{ __('message.choose') }}</option>
@@ -79,7 +79,7 @@
                     </div>
 
                 </div>
-                <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-save">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
+                <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-save">&nbsp;</i>{!!trans('message.update')!!}</button>
 
             </div>
 
