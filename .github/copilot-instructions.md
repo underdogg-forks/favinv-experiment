@@ -264,3 +264,157 @@ class CreateUserAction
 - **Consistency**: Follow established patterns in the codebase
 - **Test**: Ensure your changes work as expected
 - **Document**: Help future developers (including yourself) understand your code
+
+
+## Frontend: Tailwind CSS v4 Guidelines
+
+### Tailwind CSS Framework
+
+This project uses **Tailwind CSS v4** - the latest version of the utility-first framework for the admin interface.
+
+#### What's New in v4
+
+- **CSS-First Configuration**: Use `@theme` in CSS instead of `tailwind.config.js`
+- **Built-in Plugins**: Forms and typography support built-in
+- **Faster Performance**: Significantly improved build times
+- **Native CSS**: Uses modern CSS features like custom properties
+
+#### 1. Use Tailwind Utility Classes
+
+**✅ Correct - Tailwind CSS:**
+```html
+<div class="bg-white rounded-lg shadow">
+  <div class="px-6 py-4 border-b border-gray-200 font-semibold">Title</div>
+  <div class="p-6">Content</div>
+</div>
+```
+
+**❌ Avoid - Bootstrap/CoreUI:**
+```html
+<div class="card">
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
+</div>
+```
+
+#### 2. Tailwind Layout Structure
+
+```html
+<body class="bg-gray-100">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        Home
+      </a>
+    </nav>
+  </aside>
+  
+  <!-- Main Content -->
+  <div class="app-body">
+    <header class="app-header">
+      <!-- Header -->
+    </header>
+    <main class="main">
+      <!-- Content -->
+    </main>
+  </div>
+</body>
+```
+
+#### 3. Common Patterns
+
+**Cards:**
+```html
+<div class="card">
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
+</div>
+```
+
+**Buttons:**
+```html
+<button class="btn btn-primary">
+  Save
+</button>
+```
+
+**Alerts:**
+```html
+<div class="alert alert-success">
+  Success message
+</div>
+```
+
+#### 4. Bootstrap/CoreUI to Tailwind Migration
+
+| Bootstrap/CoreUI | Tailwind CSS |
+|------------------|--------------|
+| `.card` | `.bg-white .rounded-lg .shadow` |
+| `.card-header` | `.px-6 .py-4 .border-b` |
+| `.btn-primary` | `.bg-blue-600 .text-white .px-4 .py-2 .rounded` |
+| `.alert-success` | `.bg-green-50 .border .border-green-200 .text-green-800 .p-4 .rounded` |
+| `.d-flex` | `.flex` |
+| `.justify-content-between` | `.justify-between` |
+
+#### 5. Best Practices
+
+- **Utility-first**: Compose with utility classes
+- **Custom components**: Use `@layer components` for reusable patterns
+- **Responsive**: Use `sm:`, `md:`, `lg:` prefixes
+- **Consistency**: Follow Tailwind conventions
+
+#### 6. Documentation
+
+- `TAILWIND-QUICKSTART.md` - Getting started
+- `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Migration guide
+- `TAILWIND-AI-AGENT-GUIDE.md` - AI agent instructions
+
+
+## Build System: Vite
+
+This project uses **Vite 6.0** as the build system for compiling CSS and JavaScript assets.
+
+### Development
+
+Start the Vite development server with Hot Module Replacement:
+
+```bash
+npm run dev
+```
+
+This starts the Vite dev server on `http://localhost:5173` with instant HMR.
+
+### Production Build
+
+Build optimized assets for production:
+
+```bash
+npm run build
+```
+
+Output: `public/build/` directory with versioned, optimized assets.
+
+### Asset Loading
+
+Use the `@vite` directive in blade templates:
+
+```blade
+@vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
+```
+
+This automatically:
+- Loads from dev server in development (with HMR)
+- Loads versioned assets in production
+- Handles cache busting
+
+### Benefits
+
+- ⚡ **10-100x faster** builds than webpack
+- 🔥 **Instant HMR** - See changes in milliseconds
+- 📦 **Smaller bundles** - Better tree-shaking
+- 🎯 **Better DX** - Clear errors, fast feedback
+
+See `VITE-MIGRATION-GUIDE.md` for complete documentation.
+

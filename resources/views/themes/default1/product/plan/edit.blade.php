@@ -227,7 +227,7 @@
 
         </div>
       </div>
-      <div class="box-footer">
+      <div class="card-footer">
       <button type="submit" class="btn btn-primary pull-left" id="planButtons"><i class="fas fa-sync-alt">&nbsp;</i>{!!Lang::get('message.update')!!}</button>
 
     </div>

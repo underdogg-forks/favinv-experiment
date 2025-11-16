@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('content')
-<div class="box box-primary">
+<div class="card border-top border-primary">
 
     <div class="content-header">
         {!! html()->modelForm($addon,'PATCH',url('addons/'.$addon->id))->open() !!}
@@ -8,7 +8,7 @@
 
     </div>
 
-    <div class="box-body">
+    <div class="card-body">
 
         <div class="row">
 

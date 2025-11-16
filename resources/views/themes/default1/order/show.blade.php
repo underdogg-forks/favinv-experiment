@@ -104,7 +104,7 @@ input:checked + .slider:before {
                   </div>
 
                        <div class="card-body">
-                        <div class="callout callout-info">
+                        <div class="alert alert-info">
                             <div class="row">
                                 <div class="col-md-4">
                                     <b>{{ __('message.date') }}: </b>{!! getDateHtml($order->created_at) !!}

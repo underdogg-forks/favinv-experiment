@@ -410,3 +410,613 @@ class YourModelServiceTest extends TestCase
 6. **Validate early**: Check for null/invalid data at method start
 7. **Document thoroughly**: Add PHPDoc blocks for all public methods
 
+
+## Frontend Development: Tailwind CSS v4
+
+### Tailwind CSS Framework
+
+This project uses **Tailwind CSS v4** - the latest version of the utility-first CSS framework for rapid UI development.
+
+#### Why Tailwind CSS v4?
+
+1. **Utility-First**: Build designs directly in HTML with pre-defined utility classes
+2. **No CSS Bloat**: Only includes styles you actually use (automatic purging)
+3. **CSS-First Config**: Configure themes directly in CSS using `@theme` (no more JS config)
+4. **Built-in Features**: Forms and typography support built-in (no separate plugins)
+5. **Faster Builds**: Significantly improved build performance
+6. **Responsive**: Mobile-first with intuitive breakpoint prefixes
+7. **Modern CSS**: Uses native CSS features and custom properties
+
+#### Core Concepts
+
+**Utility Classes**: Single-purpose classes that do one thing well
+```html
+<div class="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+  <!-- flex: display flex -->
+  <!-- items-center: align-items center -->
+  <!-- justify-between: justify-content space-between -->
+  <!-- p-4: padding 1rem -->
+  <!-- bg-white: background white -->
+  <!-- rounded-lg: border-radius 0.5rem -->
+  <!-- shadow: box-shadow -->
+</div>
+```
+
+#### Layout Structure
+
+```html
+<body class="bg-gray-100">
+  <!-- Fixed Sidebar -->
+  <aside class="sidebar">
+    <div class="p-4">
+      <h1 class="text-xl font-bold text-white">App Name</h1>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <!-- Main Content Area -->
+  <div class="app-body">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="flex items-center justify-between px-6 py-4">
+        <h2 class="text-lg font-semibold">Page Title</h2>
+        <div class="flex items-center space-x-4">
+          <!-- Header actions -->
+        </div>
+      </div>
+    </header>
+    
+    <!-- Page Content -->
+    <main class="main">
+      <div class="space-y-6">
+        <!-- Your content -->
+      </div>
+    </main>
+  </div>
+</body>
+```
+
+#### Component Patterns
+
+**Card Component:**
+```html
+<div class="card">
+  <div class="card-header">
+    <h3 class="text-lg font-semibold text-gray-900">Card Title</h3>
+    <div class="flex items-center space-x-2">
+      <button class="text-gray-400 hover:text-gray-600">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="text-gray-600">Card content goes here</p>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary">Action</button>
+  </div>
+</div>
+```
+
+**Alert Component:**
+```html
+<!-- Success Alert -->
+<div class="alert alert-success">
+  <div class="flex">
+    <i class="fas fa-check-circle mr-3"></i>
+    <div>
+      <h4 class="font-semibold">Success!</h4>
+      <p>Your changes have been saved successfully.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Error Alert -->
+<div class="alert alert-danger">
+  <div class="flex">
+    <i class="fas fa-exclamation-circle mr-3"></i>
+    <div>
+      <h4 class="font-semibold">Error!</h4>
+      <p>Something went wrong. Please try again.</p>
+    </div>
+  </div>
+</div>
+```
+
+**Button Components:**
+```html
+<!-- Primary Button -->
+<button class="btn btn-primary">
+  Primary Action
+</button>
+
+<!-- Secondary Button -->
+<button class="btn btn-secondary">
+  Secondary Action
+</button>
+
+<!-- With Icon -->
+<button class="btn btn-primary">
+  <i class="fas fa-plus mr-2"></i>
+  Add New
+</button>
+```
+
+**Form Components:**
+```html
+<div class="space-y-4">
+  <div>
+    <label class="form-label">Email Address</label>
+    <input type="email" class="form-control" placeholder="you@example.com">
+  </div>
+  
+  <div>
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control">
+  </div>
+  
+  <div>
+    <button type="submit" class="btn btn-primary w-full">
+      Sign In
+    </button>
+  </div>
+</div>
+```
+
+**Table Component:**
+```html
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-medium text-gray-900">John Doe</td>
+        <td class="text-gray-600">john@example.com</td>
+        <td>
+          <span class="badge badge-primary">Admin</span>
+        </td>
+        <td>
+          <button class="text-blue-600 hover:text-blue-800">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+#### Responsive Design
+
+Tailwind uses mobile-first breakpoints:
+
+```html
+<!-- Stack on mobile, grid on desktop -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="card">Card 1</div>
+  <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
+</div>
+
+<!-- Hidden on mobile, visible on desktop -->
+<div class="hidden lg:block">
+  Desktop only content
+</div>
+
+<!-- Full width on mobile, fixed width on desktop -->
+<div class="w-full lg:w-64">
+  Responsive width
+</div>
+```
+
+Breakpoints:
+- `sm:` - 640px and up (tablet)
+- `md:` - 768px and up (tablet landscape)
+- `lg:` - 1024px and up (laptop)
+- `xl:` - 1280px and up (desktop)
+- `2xl:` - 1536px and up (large desktop)
+
+#### State Variants
+
+```html
+<!-- Hover States -->
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+  Hover Me
+</button>
+
+<!-- Focus States -->
+<input class="border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200">
+
+<!-- Active/Disabled States -->
+<button class="active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+  Interactive Button
+</button>
+
+<!-- Group Hover (hover parent affects child) -->
+<div class="group">
+  <div class="bg-white group-hover:bg-gray-50">
+    Hover parent to change this
+  </div>
+</div>
+```
+
+#### Dark Mode Support
+
+The application includes comprehensive dark mode support using CSS custom properties and Tailwind's dark mode utilities.
+
+**Enabling Dark Mode:**
+
+The application includes a dark mode toggle button in the navbar (moon/sun icon). User preference is automatically saved to localStorage.
+
+**For Users:**
+1. Click the moon/sun icon in the navbar
+2. Theme switches instantly
+3. Preference persists across sessions
+
+**Dark Mode in Templates:**
+
+```html
+<!-- Background colors -->
+<div class="bg-white dark:bg-gray-800">
+  Content adapts to theme
+</div>
+
+<!-- Text colors -->
+<p class="text-gray-900 dark:text-gray-100">
+  Text with dark mode support
+</p>
+
+<!-- Borders -->
+<div class="border border-gray-200 dark:border-gray-700">
+  Border adapts to theme
+</div>
+
+<!-- Hover states in dark mode -->
+<button class="bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700">
+  Button with dark mode hover
+</button>
+
+<!-- Multiple states combined -->
+<div class="bg-white dark:bg-gray-800 
+            text-gray-900 dark:text-white
+            border-gray-200 dark:border-gray-700
+            hover:shadow-lg dark:hover:shadow-2xl">
+  Comprehensive dark mode support
+</div>
+```
+
+**CSS Variables for Dark Mode:**
+
+The application uses 70+ CSS custom properties that automatically change with the theme. You can customize the dark theme in `resources/assets/css/app.css`:
+
+```css
+[data-theme="dark"] {
+  /* Layout Colors */
+  --color-body-bg: #0f172a;
+  --color-body-text: #cbd5e1;
+  
+  /* Sidebar */
+  --color-sidebar-bg: #1e293b;
+  --color-sidebar-text: #e2e8f0;
+  
+  /* Cards & Components */
+  --color-card-bg: #1e293b;
+  --color-border: #334155;
+  --color-input-bg: #0f172a;
+  
+  /* Customize any variable for your dark theme */
+}
+```
+
+**Pre-built Components with Dark Mode:**
+
+All component classes automatically support dark mode:
+
+```html
+<!-- Cards -->
+<div class="card">
+  <!-- Automatically uses dark background in dark mode -->
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
+</div>
+
+<!-- Alerts -->
+<div class="alert alert-success">
+  <!-- Maintains semantic colors in dark mode -->
+  Success message
+</div>
+
+<!-- Buttons -->
+<button class="btn btn-primary">
+  <!-- Adjusts contrast for dark backgrounds -->
+  Primary Action
+</button>
+
+<!-- Forms -->
+<input type="text" class="form-control" placeholder="Auto-adapts to dark mode">
+
+<!-- Tables -->
+<table class="table table-striped">
+  <!-- Dark-friendly striping and borders -->
+</table>
+```
+
+**JavaScript Access:**
+
+```javascript
+// Get current theme
+const theme = document.documentElement.getAttribute('data-theme');
+
+// Set theme programmatically
+document.documentElement.setAttribute('data-theme', 'dark');
+localStorage.setItem('theme', 'dark');
+
+// Toggle theme
+const newTheme = theme === 'dark' ? 'light' : 'dark';
+document.documentElement.setAttribute('data-theme', newTheme);
+localStorage.setItem('theme', newTheme);
+```
+
+**Dark Mode Color Palette:**
+
+- **Light Mode**: Clean, bright, professional
+  - Background: `#e4e5e6` (light gray)
+  - Text: `#2c384a` (dark blue-gray)
+  - Cards: `#ffffff` (white)
+  
+- **Dark Mode**: Easy on eyes, modern
+  - Background: `#0f172a` (slate-900)
+  - Text: `#cbd5e1` (slate-300)
+  - Cards: `#1e293b` (slate-800)
+
+**Accessibility:**
+
+- WCAG AA compliant contrast ratios
+- Minimum 7:1 contrast for interactive elements
+- Semantic colors maintain meaning in dark mode
+- Reduced eye strain in low-light environments
+
+#### RTL Support
+
+Tailwind automatically handles RTL with the `dir="rtl"` attribute:
+
+```html
+<html dir="rtl">
+  <!-- Automatically adjusts: -->
+  <!-- ml-4 becomes mr-4 -->
+  <!-- pl-6 becomes pr-6 -->
+  <!-- left-0 becomes right-0 -->
+</html>
+```
+
+#### Custom Components with @layer
+
+In `resources/assets/css/app.css`:
+
+```css
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-200 font-semibold text-gray-900;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .btn {
+    @apply inline-flex items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
+  }
+  
+  .btn-primary {
+    @apply border-transparent text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500;
+  }
+}
+```
+
+#### Configuration
+
+Customize in `resources/assets/css/app.css` using `@theme` (Tailwind v4):
+
+```css
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors */
+  --color-primary: #321fdb;
+  --color-sidebar-bg: #2c384a;
+  --color-sidebar-text: #c8ced3;
+  
+  /* Custom font */
+  --font-sans: 'Source Sans Pro', sans-serif;
+  
+  /* Custom spacing */
+  --spacing-128: 32rem;
+}
+```
+
+#### Bootstrap/CoreUI to Tailwind Migration
+
+| Bootstrap/CoreUI Class | Tailwind Equivalent |
+|------------------------|---------------------|
+| `.container` | `.container .mx-auto .px-4` |
+| `.row` | `.flex .flex-wrap` |
+| `.col-md-6` | `.w-full .md:w-1/2` |
+| `.card` | `.bg-white .rounded-lg .shadow` |
+| `.card-header` | `.px-6 .py-4 .border-b .border-gray-200` |
+| `.card-body` | `.p-6` |
+| `.btn` | `.inline-flex .items-center .px-4 .py-2 .rounded` |
+| `.btn-primary` | `.bg-blue-600 .hover:bg-blue-700 .text-white` |
+| `.btn-lg` | `.px-6 .py-3 .text-lg` |
+| `.alert-success` | `.bg-green-50 .border .border-green-200 .text-green-800 .p-4 .rounded` |
+| `.d-flex` | `.flex` |
+| `.justify-content-between` | `.justify-between` |
+| `.align-items-center` | `.items-center` |
+| `.text-center` | `.text-center` |
+| `.mt-3` | `.mt-3` (or `.mt-4` for 1rem) |
+| `.mb-4` | `.mb-4` (or `.mb-6` for 1.5rem) |
+| `.p-4` | `.p-4` |
+| `.bg-primary` | `.bg-blue-600` |
+| `.text-white` | `.text-white` |
+| `.rounded` | `.rounded` |
+| `.shadow` | `.shadow` |
+
+#### Best Practices
+
+1. **Start with utility classes**: Don't create custom CSS unless necessary
+2. **Use @layer components**: For reusable patterns
+3. **Mobile-first**: Design for mobile, enhance for desktop
+4. **Consistent spacing**: Use Tailwind's spacing scale (0, 1, 2, 3, 4, 6, 8, 12, 16...)
+5. **Semantic colors**: Use gray-* for neutrals, blue/primary for actions
+6. **Accessibility**: Always include focus states and ARIA attributes
+
+#### Documentation
+
+Comprehensive guides available:
+- `TAILWIND-QUICKSTART.md` - Quick start guide
+- `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Complete migration guide
+- `TAILWIND-AI-AGENT-GUIDE.md` - Instructions for AI agents to migrate Bootstrap/CoreUI to Tailwind
+- `VITE-MIGRATION-GUIDE.md` - Laravel Mix to Vite migration guide
+
+## Build System: Vite
+
+### Overview
+
+The project uses **Vite 6.0** as the build system for compiling CSS and JavaScript assets. Vite provides:
+- ⚡ 10-100x faster builds than webpack
+- 🔥 Instant Hot Module Replacement (HMR)
+- 📦 Optimized production bundles
+- 🎯 Better developer experience
+
+### Development
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+This starts:
+- Vite dev server on `http://localhost:5173`
+- Hot Module Replacement enabled
+- Instant CSS/JS updates on file save
+
+### Production Build
+
+Build optimized assets for production:
+
+```bash
+npm run build
+```
+
+Output:
+- `public/build/.vite/manifest.json` - Asset manifest
+- `public/build/assets/app-[hash].css` - Versioned CSS (104KB, 17.7KB gzipped)
+- `public/build/assets/app-[hash].js` - Versioned JS
+- Automatic code splitting and tree-shaking
+
+### Asset Loading in Blade
+
+Use the `@vite` directive to load assets:
+
+```blade
+@vite(['resources/assets/css/app.css', 'resources/assets/js/app.js'])
+```
+
+This automatically:
+- Loads assets from dev server in development (with HMR)
+- Loads versioned assets from manifest in production
+- Handles cache busting
+
+### Configuration
+
+**`vite.config.js`:**
+```javascript
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/assets/css/app.css',
+                'resources/assets/js/app.js'
+            ],
+            refresh: true,
+        }),
+    ],
+    css: {
+        postcss: './postcss.config.js',
+    },
+});
+```
+
+**`postcss.config.js`:**
+```javascript
+export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+}
+```
+
+### Adding New Assets
+
+1. Create your CSS/JS file in `resources/assets/`
+2. Add it to the `input` array in `vite.config.js`
+3. Reference it with `@vite` in your blade template
+
+Example:
+```javascript
+// vite.config.js
+laravel({
+    input: [
+        'resources/assets/css/app.css',
+        'resources/assets/css/admin.css',  // New file
+        'resources/assets/js/app.js'
+    ],
+    refresh: true,
+}),
+```
+
+```blade
+<!-- In blade template -->
+@vite(['resources/assets/css/admin.css'])
+```
+
+### Benefits
+
+- **Faster Development**: Instant HMR, no waiting for rebuilds
+- **Faster Production Builds**: 10-100x faster than webpack
+- **Smaller Bundles**: Better tree-shaking and code splitting
+- **Modern Tooling**: Built on native ESM
+- **Better DX**: Clear error messages, fast feedback
+
+### Troubleshooting
+
+**HMR not working?**
+- Ensure `npm run dev` is running
+- Check browser console for Vite connection messages
+
+**Assets not loading in production?**
+- Run `npm run build` before deploying
+- Verify `public/build/` directory exists
+
+**Port 5173 in use?**
+- Change port in `vite.config.js` server config
+
+See `VITE-MIGRATION-GUIDE.md` for complete documentation.
+

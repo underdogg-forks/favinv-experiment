@@ -380,7 +380,7 @@
                                 </span>
                             </a>
                         </div>
-                        <p class="box-title" >{{Lang::get('message.cleanup_log')}}</p>
+                        <p class="card-title" >{{Lang::get('message.cleanup_log')}}</p>
                     </div>
                 </div> -->
 
