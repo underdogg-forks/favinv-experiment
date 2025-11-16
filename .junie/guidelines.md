@@ -411,19 +411,21 @@ class YourModelServiceTest extends TestCase
 7. **Document thoroughly**: Add PHPDoc blocks for all public methods
 
 
-## Frontend Development: Tailwind CSS
+## Frontend Development: Tailwind CSS v4
 
 ### Tailwind CSS Framework
 
-This project uses **Tailwind CSS** - a utility-first CSS framework for rapid UI development.
+This project uses **Tailwind CSS v4** - the latest version of the utility-first CSS framework for rapid UI development.
 
-#### Why Tailwind CSS?
+#### Why Tailwind CSS v4?
 
 1. **Utility-First**: Build designs directly in HTML with pre-defined utility classes
-2. **No CSS Bloat**: Only includes styles you actually use (via PurgeCSS)
-3. **Customizable**: Easy theme customization through `tailwind.config.js`
-4. **Responsive**: Mobile-first with intuitive breakpoint prefixes
-5. **Modern Workflow**: Integrates seamlessly with build tools
+2. **No CSS Bloat**: Only includes styles you actually use (automatic purging)
+3. **CSS-First Config**: Configure themes directly in CSS using `@theme` (no more JS config)
+4. **Built-in Features**: Forms and typography support built-in (no separate plugins)
+5. **Faster Builds**: Significantly improved build performance
+6. **Responsive**: Mobile-first with intuitive breakpoint prefixes
+7. **Modern CSS**: Uses native CSS features and custom properties
 
 #### Core Concepts
 
@@ -700,31 +702,22 @@ In `resources/assets/css/app.css`:
 
 #### Configuration
 
-Customize in `tailwind.config.js`:
+Customize in `resources/assets/css/app.css` using `@theme` (Tailwind v4):
 
-```javascript
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: '#321fdb',
-        sidebar: {
-          bg: '#2c384a',
-          text: '#c8ced3',
-        },
-      },
-      fontFamily: {
-        sans: ['Source Sans Pro', 'sans-serif'],
-      },
-      spacing: {
-        '128': '32rem',
-      },
-    },
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+```css
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors */
+  --color-primary: #321fdb;
+  --color-sidebar-bg: #2c384a;
+  --color-sidebar-text: #c8ced3;
+  
+  /* Custom font */
+  --font-sans: 'Source Sans Pro', sans-serif;
+  
+  /* Custom spacing */
+  --spacing-128: 32rem;
 }
 ```
 

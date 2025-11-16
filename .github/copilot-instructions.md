@@ -266,11 +266,18 @@ class CreateUserAction
 - **Document**: Help future developers (including yourself) understand your code
 
 
-## Frontend: Tailwind CSS Guidelines
+## Frontend: Tailwind CSS v4 Guidelines
 
 ### Tailwind CSS Framework
 
-This project uses **Tailwind CSS** utility-first framework for the admin interface.
+This project uses **Tailwind CSS v4** - the latest version of the utility-first framework for the admin interface.
+
+#### What's New in v4
+
+- **CSS-First Configuration**: Use `@theme` in CSS instead of `tailwind.config.js`
+- **Built-in Plugins**: Forms and typography support built-in
+- **Faster Performance**: Significantly improved build times
+- **Native CSS**: Uses modern CSS features like custom properties
 
 #### 1. Use Tailwind Utility Classes
 

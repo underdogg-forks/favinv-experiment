@@ -27941,10 +27941,10 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/assets/coreui/coreui-custom.scss":
-/*!****************************************************!*\
-  !*** ./resources/assets/coreui/coreui-custom.scss ***!
-  \****************************************************/
+/***/ "./resources/assets/css/app.css":
+/*!**************************************!*\
+  !*** ./resources/assets/css/app.css ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28047,16 +28047,6 @@ if (token) {
 /***/ (() => {
 
 throw new Error("Module parse failed: Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n> <template>\n|     <div class=\"container\">\n|         <div class=\"row\">");
-
-/***/ }),
-
-/***/ "./resources/assets/sass/app.scss":
-/*!****************************************!*\
-  !*** ./resources/assets/sass/app.scss ***!
-  \****************************************/
-/***/ (() => {
-
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nCan't find stylesheet to import.\n  ╷\n9 │ @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";\n  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  ╵\n  resources/assets/sass/app.scss 9:9  root stylesheet\n    at processResult (/home/runner/work/favinv-experiment/favinv-experiment/node_modules/webpack/lib/NormalModule.js:936:19)\n    at /home/runner/work/favinv-experiment/favinv-experiment/node_modules/webpack/lib/NormalModule.js:1137:5\n    at /home/runner/work/favinv-experiment/favinv-experiment/node_modules/loader-runner/lib/LoaderRunner.js:499:11\n    at runSyncOrAsyncCallback (/home/runner/work/favinv-experiment/favinv-experiment/node_modules/loader-runner/lib/LoaderRunner.js:259:19)\n    at innerCallback (/home/runner/work/favinv-experiment/favinv-experiment/node_modules/loader-runner/lib/LoaderRunner.js:175:13)\n    at Object.loader (/home/runner/work/favinv-experiment/favinv-experiment/node_modules/sass-loader/dist/index.js:63:5)\n    at runNextTicks (node:internal/process/task_queues:60:5)\n    at process.processImmediate (node:internal/timers:454:9)");
 
 /***/ })
 
@@ -28171,7 +28161,7 @@ throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugi
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
-/******/ 			"css/coreui/coreui-custom": 0
+/******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -28221,9 +28211,8 @@ throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugi
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/coreui/coreui-custom"], () => (__webpack_require__("./resources/assets/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/coreui/coreui-custom"], () => (__webpack_require__("./resources/assets/sass/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/coreui/coreui-custom"], () => (__webpack_require__("./resources/assets/coreui/coreui-custom.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/assets/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/assets/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -1,8 +1,4 @@
 {
-    "/js/app.js": "/js/app.js?id=bf0f9c3106283f893be00ccc01a11623",
-    "/css/coreui/coreui-custom.css": "/css/coreui/coreui-custom.css?id=30c637c7effd2a3aa111afe586acb025",
-    "/js/coreui/coreui.min.js": "/js/coreui/coreui.min.js?id=370739a5cbc6bd6150916c312ab3df13",
-    "/js/coreui/coreui-utilities.min.js": "/js/coreui/coreui-utilities.min.js?id=f9ef75c4138f9b499acb06b0618d28bf",
-    "/js/coreui/perfect-scrollbar.min.js": "/js/coreui/perfect-scrollbar.min.js?id=dbc272345501609fd4321f81b9a93488",
-    "/css/coreui/perfect-scrollbar.css": "/css/coreui/perfect-scrollbar.css?id=6f36b1309fbbde634a5d54dd1734274a"
+    "/js/app.js": "/js/app.js?id=139580ffe673afa8611e91acf1d46483",
+    "/css/app.css": "/css/app.css?id=8928478c01bcbd49ce1b14e75613709e"
 }

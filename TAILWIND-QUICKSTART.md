@@ -1,8 +1,16 @@
-# Tailwind CSS Quick Start Guide
+# Tailwind CSS v4 Quick Start Guide
 
 ## Introduction
 
-This project now uses **Tailwind CSS** - a utility-first CSS framework that enables rapid UI development with pre-designed utility classes.
+This project now uses **Tailwind CSS v4** - the latest version of the utility-first CSS framework that enables rapid UI development with pre-designed utility classes.
+
+## What's New in Tailwind v4
+
+- **CSS-First Configuration**: No more `tailwind.config.js` - configure themes directly in CSS
+- **Built-in Features**: Forms and typography plugins are now built-in
+- **Faster Builds**: Significantly improved build performance
+- **Modern CSS**: Uses native CSS features like `@theme` and CSS variables
+- **Autoprefixer Built-in**: No separate autoprefixer needed
 
 ## Setup
 
@@ -25,6 +33,26 @@ npm run watch
 npm run production
 ```
 
+## Configuration
+
+### Theme Configuration (Tailwind v4 Style)
+
+Configuration is now done directly in CSS using `@theme`:
+
+```css
+/* resources/assets/css/app.css */
+@import "tailwindcss";
+
+@theme {
+  /* Custom colors */
+  --color-primary: #321fdb;
+  --color-sidebar-bg: #2c384a;
+  
+  /* Custom spacing */
+  --spacing-custom: 2.5rem;
+}
+```
+
 ## Basic Usage
 
 ### Utility-First Approach
@@ -43,7 +71,7 @@ Instead of writing custom CSS, compose designs with utility classes:
 </style>
 <button class="my-button">Click me</button>
 
-<!-- Tailwind approach -->
+<!-- Tailwind v4 approach -->
 <button class="bg-blue-500 text-white px-4 py-2 rounded">
   Click me
 </button>

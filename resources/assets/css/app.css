@@ -1,12 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Custom colors */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #321fdb;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  --color-primary: var(--color-primary-600);
+  
+  --color-sidebar-bg: #2c384a;
+  --color-sidebar-text: #c8ced3;
+  --color-sidebar-hover: #23282f;
+  
+  /* Font families */
+  --font-sans: 'Source Sans Pro', sans-serif;
+}
 
 /* Custom components for admin dashboard */
 @layer components {
   /* Sidebar styles */
   .sidebar {
-    @apply fixed left-0 top-0 h-screen w-64 bg-sidebar-bg text-sidebar-text overflow-y-auto;
+    @apply fixed left-0 top-0 h-screen w-64 overflow-y-auto;
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-sidebar-text);
   }
   
   .sidebar-nav {
@@ -18,11 +41,18 @@
   }
   
   .nav-link {
-    @apply flex items-center px-4 py-2 text-sm font-medium rounded-md text-sidebar-text hover:bg-sidebar-hover hover:text-white transition-colors duration-150;
+    @apply flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150;
+    color: var(--color-sidebar-text);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--color-sidebar-hover);
+    @apply text-white;
   }
   
   .nav-link.active {
-    @apply bg-primary text-white;
+    background-color: var(--color-primary);
+    @apply text-white;
   }
   
   .nav-icon {
@@ -78,7 +108,8 @@
   }
   
   .widget-card-primary {
-    @apply bg-primary text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6;
+    background-color: var(--color-primary);
   }
   
   .widget-card-success {
@@ -124,11 +155,24 @@
   }
   
   .btn-primary {
-    @apply border-transparent text-white bg-primary hover:bg-primary-700 focus:ring-primary;
+    @apply border-transparent text-white focus:ring-2;
+    background-color: var(--color-primary);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-primary-700);
+  }
+  
+  .btn-primary:focus {
+    --tw-ring-color: var(--color-primary);
   }
   
   .btn-secondary {
-    @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-primary;
+    @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-2;
+  }
+  
+  .btn-secondary:focus {
+    --tw-ring-color: var(--color-primary);
   }
   
   .btn-success {
@@ -141,7 +185,12 @@
   
   /* Form controls */
   .form-control {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm;
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm;
+  }
+  
+  .form-control:focus {
+    --tw-ring-color: var(--color-primary);
+    border-color: var(--color-primary);
   }
   
   .form-label {
@@ -175,7 +224,8 @@
   }
   
   .badge-primary {
-    @apply bg-primary-100 text-primary-800;
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-800);
   }
   
   .badge-success {
