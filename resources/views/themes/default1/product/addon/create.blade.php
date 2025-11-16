@@ -1,13 +1,13 @@
 @extends('themes.default1.layouts.master')
 @section('content')
-<div class="box box-primary">
+<div class="card border-top border-primary">
 
     <div class="content-header">
         {!! html()->form('POST', url('addons'))->open() !!}
         <h4>{{ Lang::get('message.addon') }} {!! html()->submit(Lang::get('message.save'))->class('form-group btn btn-primary pull-right') !!}</h4>
     </div>
 
-    <div class="box-body">
+    <div class="card-body">
 
         <div class="row">
 

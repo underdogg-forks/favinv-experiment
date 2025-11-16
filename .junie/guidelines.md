@@ -410,3 +410,187 @@ class YourModelServiceTest extends TestCase
 6. **Validate early**: Check for null/invalid data at method start
 7. **Document thoroughly**: Add PHPDoc blocks for all public methods
 
+## Frontend Development Guidelines
+
+### CoreUI 2.16 Framework
+
+This project uses CoreUI 2.16 for the admin interface. Follow these guidelines when working with views:
+
+#### CoreUI Component Usage
+
+**Use CoreUI components instead of AdminLTE:**
+
+```html
+<!-- ✅ Correct - CoreUI -->
+<div class="card">
+  <div class="card-header">Header</div>
+  <div class="card-body">Content</div>
+</div>
+
+<!-- ❌ Avoid - AdminLTE (compatibility layer exists but prefer CoreUI) -->
+<div class="box box-primary">
+  <div class="box-header">Header</div>
+  <div class="box-body">Content</div>
+</div>
+```
+
+#### CoreUI Layout Structure
+
+```html
+<!-- Main Layout Structure -->
+<body class="c-app">
+    <!-- Sidebar -->
+    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show">
+        <ul class="c-sidebar-nav">
+            <li class="c-sidebar-nav-item">
+                <a href="#" class="c-sidebar-nav-link">
+                    <i class="c-sidebar-nav-icon fas fa-home"></i>
+                    Dashboard
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="c-wrapper">
+        <header class="c-header c-header-light c-header-fixed">
+            <!-- Header content -->
+        </header>
+        
+        <div class="c-body">
+            <main class="c-main">
+                <!-- Page content -->
+            </main>
+        </div>
+    </div>
+</body>
+```
+
+#### CoreUI Components
+
+**Cards (replacing AdminLTE boxes):**
+```html
+<!-- Info widget -->
+<div class="card text-white bg-info">
+  <div class="card-body">
+    <div class="text-value-xl">150</div>
+    <div>New Orders</div>
+  </div>
+</div>
+
+<!-- Standard card -->
+<div class="card">
+  <div class="card-header">
+    <strong>Card Title</strong>
+    <div class="card-header-actions">
+      <a href="#" class="card-header-action">Action</a>
+    </div>
+  </div>
+  <div class="card-body">
+    Card content
+  </div>
+  <div class="card-footer">
+    Footer content
+  </div>
+</div>
+```
+
+**Alerts (replacing callouts):**
+```html
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Info!</h4>
+  <p>This is an informational message.</p>
+</div>
+```
+
+**Widgets:**
+```html
+<!-- Info widget with icon -->
+<div class="card">
+  <div class="card-body p-3 d-flex align-items-center">
+    <div class="bg-info p-3 mr-3 rounded">
+      <i class="fas fa-users text-white fa-2x"></i>
+    </div>
+    <div>
+      <div class="text-muted small">Users</div>
+      <div class="text-value">1,234</div>
+    </div>
+  </div>
+</div>
+```
+
+#### CSS Variables for Theming
+
+CoreUI uses CSS custom properties for easy theming. Leverage these instead of hardcoded colors:
+
+```html
+<style>
+  :root {
+    /* Override theme colors */
+    --primary: #321fdb;
+    --sidebar-bg: #2c384a;
+    --navbar-bg: #fff;
+    
+    /* Component customization */
+    --card-bg: #fff;
+    --border-color: #d8dbe0;
+  }
+</style>
+```
+
+#### Best Practices for Blade Templates
+
+1. **Use CoreUI classes consistently**
+   - Prefer `c-*` prefixed classes for layout
+   - Use Bootstrap 4 utility classes for styling
+   - Avoid mixing AdminLTE and CoreUI classes in new code
+
+2. **Maintain responsive design**
+   ```html
+   <div class="row">
+     <div class="col-lg-4 col-md-6 col-sm-12">
+       <!-- Content -->
+     </div>
+   </div>
+   ```
+
+3. **Use semantic HTML**
+   ```html
+   <nav class="breadcrumb">
+     <a class="breadcrumb-item" href="#">Home</a>
+     <span class="breadcrumb-item active">Page</span>
+   </nav>
+   ```
+
+4. **Accessibility**
+   - Include `aria-*` attributes where appropriate
+   - Use semantic HTML5 elements
+   - Ensure proper heading hierarchy
+   - Add `alt` text to images
+
+5. **RTL Support**
+   - Use `dir` attribute: `<html dir="{{ in_array(app()->getLocale(), ['ar', 'he']) ? 'rtl' : 'ltr' }}">`
+   - CoreUI handles RTL automatically with proper setup
+
+#### Component Migration Reference
+
+| AdminLTE | CoreUI | Notes |
+|----------|--------|-------|
+| `.box` | `.card` | Main container |
+| `.box-header` | `.card-header` | Header section |
+| `.box-body` | `.card-body` | Body content |
+| `.box-footer` | `.card-footer` | Footer section |
+| `.small-box` | `.card.text-white.bg-*` | Dashboard widgets |
+| `.info-box` | Custom card layout | Info widgets |
+| `.callout` | `.alert` | Alert boxes |
+| `.main-sidebar` | `.c-sidebar` | Sidebar navigation |
+| `.content-wrapper` | `.c-body > .c-main` | Main content area |
+
+#### Documentation
+
+See comprehensive CoreUI documentation in repository:
+- `COREUI-QUICKSTART.md` - Quick start guide
+- `COREUI-CSS-VARIABLES-GUIDE.md` - CSS variables reference
+- `MIGRATION-GUIDE-ADMINLTE-TO-COREUI.md` - Migration guide
+- `ADMINLTE-TO-COREUI-COMPONENT-MAPPING.md` - Component mapping
+

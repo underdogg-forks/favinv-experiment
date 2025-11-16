@@ -4,8 +4,8 @@
 <div class="row">
 
     <div class="col-md-12">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
@@ -35,13 +35,13 @@
 
             </div>
 
-            <div class="box-body">
+            <div class="card-body">
                 {!! html()->modelForm($setting, 'PATCH', url('settings'))->acceptsFiles()->open() !!}
 
                 <table class="table table-condensed">
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.company')}}</h3></td>
+                        <td><h3 class="card-title">{{Lang::get('message.company')}}</h3></td>
                         <td>{!! html()->submit(Lang::get('message.update'))->class('btn btn-primary pull-right') !!}</td>
 
                     </tr>
@@ -122,7 +122,7 @@
                     </tr>
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.smtp')}}</h3></td>
+                        <td><h3 class="card-title">{{Lang::get('message.smtp')}}</h3></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -208,7 +208,7 @@
                     </tr>
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.error-log')}}</h3></td>
+                        <td><h3 class="card-title">{{Lang::get('message.error-log')}}</h3></td>
                         <td></td>
                     </tr>
 
@@ -246,7 +246,7 @@
                     </tr>
 
                     <tr>
-                        <td><h3 class="box-title">{{Lang::get('message.templates')}}</h3></td>
+                        <td><h3 class="card-title">{{Lang::get('message.templates')}}</h3></td>
                         <td></td>
                     </tr>
 

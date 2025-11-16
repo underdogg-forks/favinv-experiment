@@ -22,10 +22,10 @@
 </style>
 {!! html()->form('GET', url("my-profile?status=$status"))->open() !!}
 <div class="row">
-        <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-info">
-            <div class="card-body pb-0">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
               <h4>{{ __('message.total_sales') }}</h4>
               @if(($allowedCurrencies2) != null)
               <span>{{$allowedCurrencies2}}: &nbsp;  {{currencyFormat($totalSalesCurrency2,$code=$allowedCurrencies2)}}</span><br/>
@@ -33,14 +33,17 @@
                <span>{{$allowedCurrencies1}}: &nbsp;  {{currencyFormat($totalSalesCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
 
-              <a href="{{url('invoices?status=success')}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
+              <div class="icon">
+                  <i class="ion ion-bag"></i>
+              </div>
+              <a href="{{url('invoices?status=success')}}" class="small-box-footer">{{ __('message.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-success">
-            <div class="card-body pb-0">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
               <h4>{{ __('message.yearly_sales') }}</h4>
                 <?php
               $startingDateOfYear = (date('Y-01-01'));
@@ -51,14 +54,17 @@
               @endif
                <span>{{$allowedCurrencies1}}:&nbsp; {{currencyFormat($yearlySalesCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
-             <a href="{{url('invoices?status=success&from='.$startingDateOfYear)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+             <a href="{{url('invoices?status=success&from='.$startingDateOfYear)}}" class="small-box-footer">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-warning">
-            <div class="card-body pb-0">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
               <h4>{{ __('message.monthly_sales') }}</h4>
                <?php
               $startMonthDate = date('Y-m-01');
@@ -70,21 +76,27 @@
               <span>{{$allowedCurrencies1}}:&nbsp; {{currencyFormat($monthlySalesCurrency1,$code=$allowedCurrencies1)}}</span>
              
             </div>
-            <a href="{{url('invoices?status=success&from='.$startMonthDate. '&till='.$endMonthDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="{{url('invoices?status=success&from='.$startMonthDate. '&till='.$endMonthDate)}}" class="small-box-footer">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
 
-         <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-danger">
-            <div class="card-body pb-0">
+         <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
               <h4>{{ __('message.pending_payments') }}</h4>
               @if(($allowedCurrencies2) != null)
               <span>{{$allowedCurrencies2}}: &nbsp;  {{currencyFormat($pendingPaymentCurrency2,$code=$allowedCurrencies2)}}</span><br/>
               @endif
                <span>{{$allowedCurrencies1}}: &nbsp; {{currencyFormat($pendingPaymentCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
-             <a href="{{url('invoices?status=pending')}}" class="card-footer text-center py-2">{{ __('message.more_info') }}
+            <div class="icon">
+             <i class="ion ion-ios-pricetag-outline"></i>
+            </div>
+             <a href="{{url('invoices?status=pending')}}" class="small-box-footer">{{ __('message.more_info') }}
               <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
@@ -92,15 +104,18 @@
         $startDate = new Carbon\Carbon('-30 days');
         $endDate = Carbon\Carbon::now()->subDay();
         @endphp
-         <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-warning">
-            <div class="card-body pb-0">
+         <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
               <h4>{{ __('message.products_installed_rate') }}&nbsp;{{number_format($getLast30DaysInstallation['rate'], 2, '.', '')}}%</h4>
               <span>{{ __('message.total_subscription') }} &nbsp;  {{$getLast30DaysInstallation['total_subscription']}}</span></br>
               <span>{{ __('message.not_installed') }} &nbsp;  {{$getLast30DaysInstallation['inactive_subscription']}}</span>
             </div>
-               <a href="{{url('orders?ins_not_ins=not_installed&sub_from='.$startDate.'&sub_till='.$endDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="icon">
+             <i class="ion ion-ios-download-outline"></i>
+            </div>
+               <a href="{{url('orders?ins_not_ins=not_installed&sub_from='.$startDate.'&sub_till='.$endDate)}}" class="small-box-footer">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
         @php
@@ -108,15 +123,18 @@
         $endDate = date('m/d/Y');
         @endphp
 
-        <div class="col-lg-4 col-sm-6">
-          <!-- CoreUI widget card -->
-          <div class="card text-white bg-info">
-            <div class="card-body pb-0">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
               <h4>{{ __('message.paid_orders_rate') }}&nbsp;{{number_format($conversionRate['rate'], 2, '.', '')}}%</h4>
               <span>{{ __('message.total_orders_rate') }} &nbsp;  {{$conversionRate['all_orders']}}</span></br>
               <span>{{ __('message.paid_orders') }} &nbsp;  {{$conversionRate['paid_orders']}}</span>
             </div>
-              <a href="{{url('orders?p_un=unpaid&from='.$startDate.'&till='.$endDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+            <div class="icon">
+             <i class="ion ion-ios-cart-outline"></i>
+            </div>
+              <a href="{{url('orders?p_un=unpaid&from='.$startDate.'&till='.$endDate)}}" class="small-box-footer">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
 </div>

@@ -26,7 +26,7 @@
 
 
                 <tr>
-                        <h4 class="box-title">{{Lang::get('message.template_list')}}</h4>
+                        <h4 class="card-title">{{Lang::get('message.template_list')}}</h4>
                     </tr>
 
                     <tr>

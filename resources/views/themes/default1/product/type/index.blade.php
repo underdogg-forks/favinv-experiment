@@ -13,9 +13,9 @@
 @stop
 @section('content')
 
-    <div class="box box-primary">
+    <div class="card border-top border-primary">
 
-    <div class="box-header">
+    <div class="card-header">
         @if (count($errors) > 0)
         <div class="alert alert-danger alert-dismissable">
              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -51,7 +51,7 @@
     </div>
        @include('themes.default1.product.type.create-type')
         @include('themes.default1.product.type.edit-type')
-       <div class="box-body">
+       <div class="card-body">
              
              <div class="row">
             

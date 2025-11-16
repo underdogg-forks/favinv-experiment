@@ -89,7 +89,7 @@
 
     <div class="col-md-12">
         <div class="card card-secondary card-outline">
-            <div class="box-header">
+            <div class="card-header">
 
             </div>
 

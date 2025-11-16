@@ -264,3 +264,128 @@ class CreateUserAction
 - **Consistency**: Follow established patterns in the codebase
 - **Test**: Ensure your changes work as expected
 - **Document**: Help future developers (including yourself) understand your code
+
+## Frontend: CoreUI 2.16 Guidelines
+
+### CoreUI Framework
+
+This project uses **CoreUI 2.16** for the admin interface. When working with Blade templates:
+
+#### 1. Use CoreUI Components
+
+**✅ Correct - CoreUI:**
+```html
+<div class="card">
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
+</div>
+```
+
+**❌ Avoid - AdminLTE (compatibility exists but use CoreUI for new code):**
+```html
+<div class="box box-primary">
+  <div class="box-header">Title</div>
+  <div class="box-body">Content</div>
+</div>
+```
+
+#### 2. CoreUI Layout Structure
+
+```html
+<body class="c-app">
+  <!-- Sidebar -->
+  <div class="c-sidebar c-sidebar-dark c-sidebar-fixed">
+    <ul class="c-sidebar-nav">
+      <li class="c-sidebar-nav-item">
+        <a href="#" class="c-sidebar-nav-link">
+          <i class="c-sidebar-nav-icon fas fa-home"></i>
+          Home
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="c-wrapper">
+    <header class="c-header c-header-fixed"></header>
+    <div class="c-body">
+      <main class="c-main">
+        <!-- Your content -->
+      </main>
+    </div>
+  </div>
+</body>
+```
+
+#### 3. Common CoreUI Components
+
+**Cards:**
+```html
+<!-- Widget card -->
+<div class="card text-white bg-primary">
+  <div class="card-body">
+    <div class="text-value-xl">150</div>
+    <div>New Users</div>
+  </div>
+</div>
+
+<!-- Standard card -->
+<div class="card">
+  <div class="card-header">
+    <strong>Title</strong>
+  </div>
+  <div class="card-body">
+    Content here
+  </div>
+</div>
+```
+
+**Alerts:**
+```html
+<div class="alert alert-success" role="alert">
+  Success message
+</div>
+```
+
+#### 4. CSS Variables for Theming
+
+Leverage CSS custom properties for easy customization:
+
+```css
+:root {
+  --primary: #321fdb;
+  --sidebar-bg: #2c384a;
+  --navbar-bg: #fff;
+  --card-bg: #fff;
+}
+```
+
+#### 5. Migration Reference
+
+When refactoring existing views:
+
+| AdminLTE | CoreUI |
+|----------|--------|
+| `.box` | `.card` |
+| `.box-header` | `.card-header` |
+| `.box-body` | `.card-body` |
+| `.small-box` | `.card.text-white.bg-*` |
+| `.callout` | `.alert` |
+| `.main-sidebar` | `.c-sidebar` |
+| `.content-wrapper` | `.c-body .c-main` |
+
+#### 6. Best Practices
+
+- **Consistency**: Use CoreUI classes throughout
+- **Responsive**: Use Bootstrap 4 grid (`col-lg-*`, `col-md-*`)
+- **Semantic HTML**: Use proper HTML5 elements
+- **Accessibility**: Add `aria-*` attributes
+- **RTL Support**: CoreUI handles RTL automatically
+
+#### 7. Documentation
+
+Reference these files in the repository:
+- `COREUI-QUICKSTART.md` - Getting started
+- `COREUI-CSS-VARIABLES-GUIDE.md` - Theming guide
+- `MIGRATION-GUIDE-ADMINLTE-TO-COREUI.md` - Migration details
+- `ADMINLTE-TO-COREUI-COMPONENT-MAPPING.md` - Component reference

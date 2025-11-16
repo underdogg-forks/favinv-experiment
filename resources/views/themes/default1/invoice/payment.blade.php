@@ -15,9 +15,9 @@
 @stop
 @section('content')
 
-<div class="box box-primary">
+<div class="card border-top border-primary">
 
-    <div class="box-header">
+    <div class="card-header">
         @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
@@ -51,7 +51,7 @@
 
     </div>
 
-    <div class="box-body">
+    <div class="card-body">
 
         <div class="row">
 

@@ -23,7 +23,7 @@
             {!! html()->form('POST', url('plans'))->id('plan')->open() !!}
 
 
-            <div class="box-body">
+            <div class="card-body">
 
           <div class="row">
 

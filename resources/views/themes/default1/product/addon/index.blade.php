@@ -3,9 +3,9 @@
 
 
 
-<div class="box box-primary">
+<div class="card border-top border-primary">
 
-    <div class="box-header">
+    <div class="card-header">
 
         <h4>{{Lang::get('message.addons')}}
         <a href="{{url('addons/create')}}" class="btn btn-primary pull-right   ">{{Lang::get('message.create')}}</a></h4>
@@ -41,7 +41,7 @@
     @endif
     <div id="response"></div>
 
-    <div class="box-body">
+    <div class="card-body">
         <div class="row">
             
             <div class="col-md-12">

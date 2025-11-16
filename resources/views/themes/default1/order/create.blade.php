@@ -3,7 +3,7 @@
     {{ __('message.create_order') }}
 @stop
 @section('content')
-<div class="box box-primary">
+<div class="card border-top border-primary">
 
     <div class="content-header">
         @if (count($errors) > 0)
@@ -37,7 +37,7 @@
 
     </div>
 
-    <div class="box-body">
+    <div class="card-body">
 
         <div class="row">
 
