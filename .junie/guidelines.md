@@ -77,12 +77,39 @@ public function process($data)
 - Use camelCase for variables and methods
 - Use PascalCase for classes
 - Use UPPER_CASE for constants
+- **NO UNDERSCORES** in class names or file names (use PascalCase instead)
+  - ❌ Bad: `Payment_log`, `Email_log`, `Auto_renewal`
+  - ✅ Good: `PaymentLog`, `EmailLog`, `AutoRenewal`
+
+### Translation Functions
+- **ALWAYS** use `trans()` function for translations
+- **NEVER** use `Lang::get()` (deprecated, old Laravel style)
+- **NEVER** use `__()` helper (use `trans()` instead for consistency)
+  - ❌ Bad: `Lang::get('message.welcome')`, `__('message.welcome')`
+  - ✅ Good: `trans('message.welcome')`
+
+### Modern Blade Syntax
+- **NEVER** use `Form::` facade in Blade templates (deprecated Laravel Collective)
+- **NEVER** use `Session::get()` in Blade templates
+  - ❌ Bad: `Session::get('key')`, `\Session::get('key')`
+  - ✅ Good: `session('key')`
+- Use modern Blade directives and helpers
+- Use `@session` directive when checking session values
+- Use `session()` helper function for retrieving session data
 
 ### Documentation
 - Add PHPDoc blocks for classes and methods
 - Document complex logic with inline comments
 - Keep comments up-to-date with code changes
 - Explain "why" rather than "what" in comments
+
+### Type Hints and Strict Programming
+- Always use type hints for parameters
+- Always declare return types for methods
+- Use nullable types when appropriate: `?Type`
+- Leverage union types in PHP 8+: `Type1|Type2`
+- Practice strict programming WITHOUT adding `declare(strict_types=1)` at the top of files
+- Use dependency injection WITHOUT the `readonly` keyword for broader compatibility
 
 ### Testing
 - Write unit tests for business logic
