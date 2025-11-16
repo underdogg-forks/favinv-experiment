@@ -410,187 +410,363 @@ class YourModelServiceTest extends TestCase
 6. **Validate early**: Check for null/invalid data at method start
 7. **Document thoroughly**: Add PHPDoc blocks for all public methods
 
-## Frontend Development Guidelines
 
-### CoreUI 2.16 Framework
+## Frontend Development: Tailwind CSS
 
-This project uses CoreUI 2.16 for the admin interface. Follow these guidelines when working with views:
+### Tailwind CSS Framework
 
-#### CoreUI Component Usage
+This project uses **Tailwind CSS** - a utility-first CSS framework for rapid UI development.
 
-**Use CoreUI components instead of AdminLTE:**
+#### Why Tailwind CSS?
 
+1. **Utility-First**: Build designs directly in HTML with pre-defined utility classes
+2. **No CSS Bloat**: Only includes styles you actually use (via PurgeCSS)
+3. **Customizable**: Easy theme customization through `tailwind.config.js`
+4. **Responsive**: Mobile-first with intuitive breakpoint prefixes
+5. **Modern Workflow**: Integrates seamlessly with build tools
+
+#### Core Concepts
+
+**Utility Classes**: Single-purpose classes that do one thing well
 ```html
-<!-- ✅ Correct - CoreUI -->
-<div class="card">
-  <div class="card-header">Header</div>
-  <div class="card-body">Content</div>
-</div>
-
-<!-- ❌ Avoid - AdminLTE (compatibility layer exists but prefer CoreUI) -->
-<div class="box box-primary">
-  <div class="box-header">Header</div>
-  <div class="box-body">Content</div>
+<div class="flex items-center justify-between p-4 bg-white rounded-lg shadow">
+  <!-- flex: display flex -->
+  <!-- items-center: align-items center -->
+  <!-- justify-between: justify-content space-between -->
+  <!-- p-4: padding 1rem -->
+  <!-- bg-white: background white -->
+  <!-- rounded-lg: border-radius 0.5rem -->
+  <!-- shadow: box-shadow -->
 </div>
 ```
 
-#### CoreUI Layout Structure
+#### Layout Structure
 
 ```html
-<!-- Main Layout Structure -->
-<body class="app">
-    <!-- Sidebar -->
-    <div class="sidebar sidebar-dark sidebar-fixed sidebar-lg-show">
-        <ul class="sidebar-nav">
-            <li class="sidebar-nav-item">
-                <a href="#" class="sidebar-nav-link">
-                    <i class="sidebar-nav-icon fas fa-home"></i>
-                    Dashboard
-                </a>
-            </li>
-        </ul>
+<body class="bg-gray-100">
+  <!-- Fixed Sidebar -->
+  <aside class="sidebar">
+    <div class="p-4">
+      <h1 class="text-xl font-bold text-white">App Name</h1>
     </div>
-    
-    <!-- Main Content -->
-    <div class="c-wrapper">
-        <header class="app-header app-header-light app-header-fixed">
-            <!-- Header content -->
-        </header>
-        
-        <div class="app-body">
-            <main class="main">
-                <!-- Page content -->
-            </main>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+    </nav>
+  </aside>
+  
+  <!-- Main Content Area -->
+  <div class="app-body">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="flex items-center justify-between px-6 py-4">
+        <h2 class="text-lg font-semibold">Page Title</h2>
+        <div class="flex items-center space-x-4">
+          <!-- Header actions -->
         </div>
-    </div>
+      </div>
+    </header>
+    
+    <!-- Page Content -->
+    <main class="main">
+      <div class="space-y-6">
+        <!-- Your content -->
+      </div>
+    </main>
+  </div>
 </body>
 ```
 
-#### CoreUI Components
+#### Component Patterns
 
-**Cards (replacing AdminLTE boxes):**
+**Card Component:**
 ```html
-<!-- Info widget -->
-<div class="card text-white bg-info">
-  <div class="card-body">
-    <div class="text-value-xl">150</div>
-    <div>New Orders</div>
-  </div>
-</div>
-
-<!-- Standard card -->
 <div class="card">
   <div class="card-header">
-    <strong>Card Title</strong>
-    <div class="card-header-actions">
-      <a href="#" class="card-header-action">Action</a>
+    <h3 class="text-lg font-semibold text-gray-900">Card Title</h3>
+    <div class="flex items-center space-x-2">
+      <button class="text-gray-400 hover:text-gray-600">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
     </div>
   </div>
   <div class="card-body">
-    Card content
+    <p class="text-gray-600">Card content goes here</p>
   </div>
   <div class="card-footer">
-    Footer content
+    <button class="btn btn-primary">Action</button>
   </div>
 </div>
 ```
 
-**Alerts (replacing callouts):**
+**Alert Component:**
 ```html
-<div class="alert alert-info" role="alert">
-  <h4 class="alert-heading">Info!</h4>
-  <p>This is an informational message.</p>
-</div>
-```
-
-**Widgets:**
-```html
-<!-- Info widget with icon -->
-<div class="card">
-  <div class="card-body p-3 d-flex align-items-center">
-    <div class="bg-info p-3 mr-3 rounded">
-      <i class="fas fa-users text-white fa-2x"></i>
-    </div>
+<!-- Success Alert -->
+<div class="alert alert-success">
+  <div class="flex">
+    <i class="fas fa-check-circle mr-3"></i>
     <div>
-      <div class="text-muted small">Users</div>
-      <div class="text-value">1,234</div>
+      <h4 class="font-semibold">Success!</h4>
+      <p>Your changes have been saved successfully.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Error Alert -->
+<div class="alert alert-danger">
+  <div class="flex">
+    <i class="fas fa-exclamation-circle mr-3"></i>
+    <div>
+      <h4 class="font-semibold">Error!</h4>
+      <p>Something went wrong. Please try again.</p>
     </div>
   </div>
 </div>
 ```
 
-#### CSS Variables for Theming
-
-CoreUI uses CSS custom properties for easy theming. Leverage these instead of hardcoded colors:
-
+**Button Components:**
 ```html
-<style>
-  :root {
-    /* Override theme colors */
-    --primary: #321fdb;
-    --sidebar-bg: #2c384a;
-    --navbar-bg: #fff;
-    
-    /* Component customization */
-    --card-bg: #fff;
-    --border-color: #d8dbe0;
-  }
-</style>
+<!-- Primary Button -->
+<button class="btn btn-primary">
+  Primary Action
+</button>
+
+<!-- Secondary Button -->
+<button class="btn btn-secondary">
+  Secondary Action
+</button>
+
+<!-- With Icon -->
+<button class="btn btn-primary">
+  <i class="fas fa-plus mr-2"></i>
+  Add New
+</button>
 ```
 
-#### Best Practices for Blade Templates
+**Form Components:**
+```html
+<div class="space-y-4">
+  <div>
+    <label class="form-label">Email Address</label>
+    <input type="email" class="form-control" placeholder="you@example.com">
+  </div>
+  
+  <div>
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control">
+  </div>
+  
+  <div>
+    <button type="submit" class="btn btn-primary w-full">
+      Sign In
+    </button>
+  </div>
+</div>
+```
 
-1. **Use CoreUI classes consistently**
-   - Prefer `c-*` prefixed classes for layout
-   - Use Bootstrap 4 utility classes for styling
-   - Avoid mixing AdminLTE and CoreUI classes in new code
+**Table Component:**
+```html
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="font-medium text-gray-900">John Doe</td>
+        <td class="text-gray-600">john@example.com</td>
+        <td>
+          <span class="badge badge-primary">Admin</span>
+        </td>
+        <td>
+          <button class="text-blue-600 hover:text-blue-800">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
 
-2. **Maintain responsive design**
-   ```html
-   <div class="row">
-     <div class="col-lg-4 col-md-6 col-sm-12">
-       <!-- Content -->
-     </div>
-   </div>
-   ```
+#### Responsive Design
 
-3. **Use semantic HTML**
-   ```html
-   <nav class="breadcrumb">
-     <a class="breadcrumb-item" href="#">Home</a>
-     <span class="breadcrumb-item active">Page</span>
-   </nav>
-   ```
+Tailwind uses mobile-first breakpoints:
 
-4. **Accessibility**
-   - Include `aria-*` attributes where appropriate
-   - Use semantic HTML5 elements
-   - Ensure proper heading hierarchy
-   - Add `alt` text to images
+```html
+<!-- Stack on mobile, grid on desktop -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="card">Card 1</div>
+  <div class="card">Card 2</div>
+  <div class="card">Card 3</div>
+</div>
 
-5. **RTL Support**
-   - Use `dir` attribute: `<html dir="{{ in_array(app()->getLocale(), ['ar', 'he']) ? 'rtl' : 'ltr' }}">`
-   - CoreUI handles RTL automatically with proper setup
+<!-- Hidden on mobile, visible on desktop -->
+<div class="hidden lg:block">
+  Desktop only content
+</div>
 
-#### Component Migration Reference
+<!-- Full width on mobile, fixed width on desktop -->
+<div class="w-full lg:w-64">
+  Responsive width
+</div>
+```
 
-| AdminLTE | CoreUI | Notes |
-|----------|--------|-------|
-| `.box` | `.card` | Main container |
-| `.box-header` | `.card-header` | Header section |
-| `.box-body` | `.card-body` | Body content |
-| `.box-footer` | `.card-footer` | Footer section |
-| `.small-box` | `.card.text-white.bg-*` | Dashboard widgets |
-| `.info-box` | Custom card layout | Info widgets |
-| `.callout` | `.alert` | Alert boxes |
-| `.main-sidebar` | `.sidebar` | Sidebar navigation |
-| `.content-wrapper` | `.app-body > .main` | Main content area |
+Breakpoints:
+- `sm:` - 640px and up (tablet)
+- `md:` - 768px and up (tablet landscape)
+- `lg:` - 1024px and up (laptop)
+- `xl:` - 1280px and up (desktop)
+- `2xl:` - 1536px and up (large desktop)
+
+#### State Variants
+
+```html
+<!-- Hover States -->
+<button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+  Hover Me
+</button>
+
+<!-- Focus States -->
+<input class="border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200">
+
+<!-- Active/Disabled States -->
+<button class="active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">
+  Interactive Button
+</button>
+
+<!-- Group Hover (hover parent affects child) -->
+<div class="group">
+  <div class="bg-white group-hover:bg-gray-50">
+    Hover parent to change this
+  </div>
+</div>
+```
+
+#### Dark Mode Support
+
+```html
+<!-- Light background, dark in dark mode -->
+<div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+  Adapts to dark mode
+</div>
+```
+
+#### RTL Support
+
+Tailwind automatically handles RTL with the `dir="rtl"` attribute:
+
+```html
+<html dir="rtl">
+  <!-- Automatically adjusts: -->
+  <!-- ml-4 becomes mr-4 -->
+  <!-- pl-6 becomes pr-6 -->
+  <!-- left-0 becomes right-0 -->
+</html>
+```
+
+#### Custom Components with @layer
+
+In `resources/assets/css/app.css`:
+
+```css
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-200 font-semibold text-gray-900;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  .btn {
+    @apply inline-flex items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
+  }
+  
+  .btn-primary {
+    @apply border-transparent text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-500;
+  }
+}
+```
+
+#### Configuration
+
+Customize in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#321fdb',
+        sidebar: {
+          bg: '#2c384a',
+          text: '#c8ced3',
+        },
+      },
+      fontFamily: {
+        sans: ['Source Sans Pro', 'sans-serif'],
+      },
+      spacing: {
+        '128': '32rem',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+#### Bootstrap/CoreUI to Tailwind Migration
+
+| Bootstrap/CoreUI Class | Tailwind Equivalent |
+|------------------------|---------------------|
+| `.container` | `.container .mx-auto .px-4` |
+| `.row` | `.flex .flex-wrap` |
+| `.col-md-6` | `.w-full .md:w-1/2` |
+| `.card` | `.bg-white .rounded-lg .shadow` |
+| `.card-header` | `.px-6 .py-4 .border-b .border-gray-200` |
+| `.card-body` | `.p-6` |
+| `.btn` | `.inline-flex .items-center .px-4 .py-2 .rounded` |
+| `.btn-primary` | `.bg-blue-600 .hover:bg-blue-700 .text-white` |
+| `.btn-lg` | `.px-6 .py-3 .text-lg` |
+| `.alert-success` | `.bg-green-50 .border .border-green-200 .text-green-800 .p-4 .rounded` |
+| `.d-flex` | `.flex` |
+| `.justify-content-between` | `.justify-between` |
+| `.align-items-center` | `.items-center` |
+| `.text-center` | `.text-center` |
+| `.mt-3` | `.mt-3` (or `.mt-4` for 1rem) |
+| `.mb-4` | `.mb-4` (or `.mb-6` for 1.5rem) |
+| `.p-4` | `.p-4` |
+| `.bg-primary` | `.bg-blue-600` |
+| `.text-white` | `.text-white` |
+| `.rounded` | `.rounded` |
+| `.shadow` | `.shadow` |
+
+#### Best Practices
+
+1. **Start with utility classes**: Don't create custom CSS unless necessary
+2. **Use @layer components**: For reusable patterns
+3. **Mobile-first**: Design for mobile, enhance for desktop
+4. **Consistent spacing**: Use Tailwind's spacing scale (0, 1, 2, 3, 4, 6, 8, 12, 16...)
+5. **Semantic colors**: Use gray-* for neutrals, blue/primary for actions
+6. **Accessibility**: Always include focus states and ARIA attributes
 
 #### Documentation
 
-See comprehensive CoreUI documentation in repository:
-- `COREUI-QUICKSTART.md` - Quick start guide
-- `COREUI-CSS-VARIABLES-GUIDE.md` - CSS variables reference
-- `MIGRATION-GUIDE-ADMINLTE-TO-COREUI.md` - Migration guide
-- `ADMINLTE-TO-COREUI-COMPONENT-MAPPING.md` - Component mapping
+Comprehensive guides available:
+- `TAILWIND-QUICKSTART.md` - Quick start guide
+- `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Complete migration guide
+- `TAILWIND-AI-AGENT-GUIDE.md` - Instructions for AI agents to migrate Bootstrap/CoreUI to Tailwind
 

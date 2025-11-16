@@ -265,15 +265,24 @@ class CreateUserAction
 - **Test**: Ensure your changes work as expected
 - **Document**: Help future developers (including yourself) understand your code
 
-## Frontend: CoreUI 2.16 Guidelines
 
-### CoreUI Framework
+## Frontend: Tailwind CSS Guidelines
 
-This project uses **CoreUI 2.16** for the admin interface. When working with Blade templates:
+### Tailwind CSS Framework
 
-#### 1. Use CoreUI Components
+This project uses **Tailwind CSS** utility-first framework for the admin interface.
 
-**✅ Correct - CoreUI:**
+#### 1. Use Tailwind Utility Classes
+
+**✅ Correct - Tailwind CSS:**
+```html
+<div class="bg-white rounded-lg shadow">
+  <div class="px-6 py-4 border-b border-gray-200 font-semibold">Title</div>
+  <div class="p-6">Content</div>
+</div>
+```
+
+**❌ Avoid - Bootstrap/CoreUI:**
 ```html
 <div class="card">
   <div class="card-header">Title</div>
@@ -281,111 +290,76 @@ This project uses **CoreUI 2.16** for the admin interface. When working with Bla
 </div>
 ```
 
-**❌ Avoid - AdminLTE (compatibility exists but use CoreUI for new code):**
-```html
-<div class="box box-primary">
-  <div class="box-header">Title</div>
-  <div class="box-body">Content</div>
-</div>
-```
-
-#### 2. CoreUI Layout Structure
+#### 2. Tailwind Layout Structure
 
 ```html
-<body class="app">
+<body class="bg-gray-100">
   <!-- Sidebar -->
-  <div class="sidebar sidebar-dark sidebar-fixed">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-item">
-        <a href="#" class="sidebar-nav-link">
-          <i class="sidebar-nav-icon fas fa-home"></i>
-          Home
-        </a>
-      </li>
-    </ul>
-  </div>
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-home"></i>
+        Home
+      </a>
+    </nav>
+  </aside>
   
   <!-- Main Content -->
-  <div class="c-wrapper">
-    <header class="app-header app-header-fixed"></header>
-    <div class="app-body">
-      <main class="main">
-        <!-- Your content -->
-      </main>
-    </div>
+  <div class="app-body">
+    <header class="app-header">
+      <!-- Header -->
+    </header>
+    <main class="main">
+      <!-- Content -->
+    </main>
   </div>
 </body>
 ```
 
-#### 3. Common CoreUI Components
+#### 3. Common Patterns
 
 **Cards:**
 ```html
-<!-- Widget card -->
-<div class="card text-white bg-primary">
-  <div class="card-body">
-    <div class="text-value-xl">150</div>
-    <div>New Users</div>
-  </div>
-</div>
-
-<!-- Standard card -->
 <div class="card">
-  <div class="card-header">
-    <strong>Title</strong>
-  </div>
-  <div class="card-body">
-    Content here
-  </div>
+  <div class="card-header">Title</div>
+  <div class="card-body">Content</div>
 </div>
+```
+
+**Buttons:**
+```html
+<button class="btn btn-primary">
+  Save
+</button>
 ```
 
 **Alerts:**
 ```html
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success">
   Success message
 </div>
 ```
 
-#### 4. CSS Variables for Theming
+#### 4. Bootstrap/CoreUI to Tailwind Migration
 
-Leverage CSS custom properties for easy customization:
+| Bootstrap/CoreUI | Tailwind CSS |
+|------------------|--------------|
+| `.card` | `.bg-white .rounded-lg .shadow` |
+| `.card-header` | `.px-6 .py-4 .border-b` |
+| `.btn-primary` | `.bg-blue-600 .text-white .px-4 .py-2 .rounded` |
+| `.alert-success` | `.bg-green-50 .border .border-green-200 .text-green-800 .p-4 .rounded` |
+| `.d-flex` | `.flex` |
+| `.justify-content-between` | `.justify-between` |
 
-```css
-:root {
-  --primary: #321fdb;
-  --sidebar-bg: #2c384a;
-  --navbar-bg: #fff;
-  --card-bg: #fff;
-}
-```
+#### 5. Best Practices
 
-#### 5. Migration Reference
+- **Utility-first**: Compose with utility classes
+- **Custom components**: Use `@layer components` for reusable patterns
+- **Responsive**: Use `sm:`, `md:`, `lg:` prefixes
+- **Consistency**: Follow Tailwind conventions
 
-When refactoring existing views:
+#### 6. Documentation
 
-| AdminLTE | CoreUI |
-|----------|--------|
-| `.box` | `.card` |
-| `.box-header` | `.card-header` |
-| `.box-body` | `.card-body` |
-| `.small-box` | `.card.text-white.bg-*` |
-| `.callout` | `.alert` |
-| `.main-sidebar` | `.sidebar` |
-| `.content-wrapper` | `.app-body .main` |
-
-#### 6. Best Practices
-
-- **Consistency**: Use CoreUI classes throughout
-- **Responsive**: Use Bootstrap 4 grid (`col-lg-*`, `col-md-*`)
-- **Semantic HTML**: Use proper HTML5 elements
-- **Accessibility**: Add `aria-*` attributes
-- **RTL Support**: CoreUI handles RTL automatically
-
-#### 7. Documentation
-
-Reference these files in the repository:
-- `COREUI-QUICKSTART.md` - Getting started
-- `COREUI-CSS-VARIABLES-GUIDE.md` - Theming guide
-- `MIGRATION-GUIDE-ADMINLTE-TO-COREUI.md` - Migration details
-- `ADMINLTE-TO-COREUI-COMPONENT-MAPPING.md` - Component reference
+- `TAILWIND-QUICKSTART.md` - Getting started
+- `BOOTSTRAP-TO-TAILWIND-MIGRATION.md` - Migration guide
+- `TAILWIND-AI-AGENT-GUIDE.md` - AI agent instructions
