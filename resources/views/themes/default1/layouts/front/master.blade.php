@@ -415,7 +415,7 @@ $days = $pay->where('product','117')->value('days');
                                                     @endif
                                                     <?php
                                                     $cloud = \App\Model\Common\StatusSetting::where('id','1')->value('cloud_button');
-                                                    $Demo_page = App\Demo_page::first();
+                                                    $DemoPage = App\DemoPage::first();
                                                     ?>
                                                     @if($cloud == 1)
                                                         <li class="demo-icons">

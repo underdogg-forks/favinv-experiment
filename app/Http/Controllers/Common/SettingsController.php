@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Common;
 
 use App\ApiKey;
-use App\Email_log;
+use App\EmailLog;
 use App\Facades\Attach;
 use App\Http\Controllers\BillingInstaller\InstallerController;
 use App\Http\Requests\Common\SettingsRequest;
@@ -17,7 +17,7 @@ use App\Model\Mailjob\QueueService;
 use App\Model\Order\Order;
 use App\Model\Payment\Currency;
 use App\Model\Plugin;
-use App\Payment_log;
+use App\PaymentLog;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -755,7 +755,7 @@ class SettingsController extends BaseSettingsController
 
     public function mailSearch($from = '', $till = '')
     {
-        $join = Email_log::select('id', 'from', 'to', 'date', 'subject', 'status');
+        $join = EmailLog::select('id', 'from', 'to', 'date', 'subject', 'status');
 
         if ($from) {
             $from = $this->DateFormat($from);
@@ -765,7 +765,7 @@ class SettingsController extends BaseSettingsController
 
         if ($till) {
             $till = $this->DateFormat($till);
-            $fromDate = Email_log::first()->date;
+            $fromDate = EmailLog::first()->date;
             $fromDate = $this->DateFormat($from ?: $fromDate); // Use $from if provided, otherwise, use the first email log date
             $join = $join->whereBetween('date', [$fromDate, $till]);
         }
@@ -958,7 +958,7 @@ class SettingsController extends BaseSettingsController
 
     public function paymentSearch($from = '', $till = '')
     {
-        $join = Payment_log::query()->leftJoin('users', 'payment_logs.from', '=', 'users.email')
+        $join = PaymentLog::query()->leftJoin('users', 'payment_logs.from', '=', 'users.email')
             ->select('payment_logs.id', 'from', 'to', 'date', 'subject', 'status', 'payment_logs.created_at', 'payment_method', 'order', 'exception', 'email', \DB::raw("CONCAT(first_name, ' ', last_name) as name"), 'users.id', 'payment_logs.id as count', 'amount', 'payment_type');
 
         if ($from) {
@@ -969,7 +969,7 @@ class SettingsController extends BaseSettingsController
 
         if ($till) {
             $till = $this->DateFormat($till);
-            $fromDate = Payment_log::oldest('date')->value('date');
+            $fromDate = PaymentLog::oldest('date')->value('date');
             $fromDate = $this->DateFormat($from ?: $fromDate);
             $join->whereBetween('date', [$fromDate, $till]);
         }

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Demo_page extends Model
+class DemoPage extends Model
 {
     use HasFactory;
 

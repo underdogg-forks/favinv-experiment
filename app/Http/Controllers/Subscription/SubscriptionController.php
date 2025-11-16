@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Subscription;
 
 use App\ApiKey;
-use App\Auto_renewal;
+use App\AutoRenewal;
 use App\Http\Controllers\Common\CronController;
 use App\Http\Controllers\ConcretePostSubscriptionHandleController;
 use App\Http\Controllers\Controller;
@@ -195,7 +195,7 @@ class SubscriptionController extends Controller
                 $user = \DB::table('users')->where('id', $userid)->first();
                 $oldcurrency = getCurrencyForClient($user->country);
                 $countryId = Country::where('country_code_char2', $user->country)->value('country_id');
-                $stripe_payment_details = Auto_renewal::where('user_id', $userid)->where('order_id', $subscription->order_id)->where('payment_method', 'stripe')->latest()->first(['customer_id', 'payment_intent_id']);
+                $stripe_payment_details = AutoRenewal::where('user_id', $userid)->where('order_id', $subscription->order_id)->where('payment_method', 'stripe')->latest()->first(['customer_id', 'payment_intent_id']);
                 $planid = Plan::where('product', $product_details->id)->value('id');
 
 //                $subscription = Subscription::where('id', $subscription->id)->first();

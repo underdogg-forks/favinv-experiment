@@ -18,7 +18,7 @@ use App\Model\Product\Price;
 use App\Model\Product\Product;
 use App\Model\Product\ProductUpload;
 use App\Model\Product\Subscription;
-use App\Payment_log;
+use App\PaymentLog;
 use App\User;
 use Bugsnag;
 use Illuminate\Http\Request;
@@ -435,7 +435,7 @@ class OrderController extends BaseOrderController
             $installationDetails = $cont->searchInstallationPath($order->serial_key, $order->product);
             $currency = getCurrencyForClient($user->country);
             $amount = currencyFormat(1, $currency);
-            $payment_log = Payment_log::where('order', $order->number)
+            $payment_log = PaymentLog::where('order', $order->number)
             ->where('amount', $amount)
             ->where('payment_type', 'Payment method updated')
             ->orderBy('id', 'desc')

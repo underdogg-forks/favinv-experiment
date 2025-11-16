@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\ApiKey;
 use App\DefaultPage;
-use App\Demo_page;
+use App\DemoPage;
 use App\Http\Controllers\Common\TemplateController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Front\ContactRequest;
@@ -1032,7 +1032,7 @@ class PageController extends Controller
     public function VewDemoPage()
     {
         try {
-            $Demo_page = Demo_page::first();
+            $DemoPage = DemoPage::first();
 
             return view('themes.default1.common.setting.demo-page', compact('Demo_page'));
         } catch (\Exception $ex) {
@@ -1049,8 +1049,8 @@ class PageController extends Controller
             'status' => $request->input('status') === 'true' ? 1 : 0,
         ];
 
-        $existingData = Demo_page::first();
-        $existingData ? $existingData->update($data) : Demo_page::create($data);
+        $existingData = DemoPage::first();
+        $existingData ? $existingData->update($data) : DemoPage::create($data);
 
         $message = $existingData ? __('message.data_updated_successfully') : __('message.data_created_successfully');
 
