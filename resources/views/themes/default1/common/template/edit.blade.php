@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
- {{ __('message.edit_templates') }}
+ {{ trans('message.edit_templates') }}
 @stop
 @section('content-header')
  <style>
@@ -25,14 +25,14 @@
         }
     </style>
     <div class="col-sm-6">
-        <h1>{{ __('message.edit_template') }}</h1>
+        <h1>{{ trans('message.edit_template') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('template')}}"><i class="fa fa-dashboard"></i> {{ __('message.templates') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_template') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('template')}}"><i class="fa fa-dashboard"></i> {{ trans('message.templates') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_template') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -42,7 +42,7 @@
 <div class="card card-secondary card-outline">
     <!-- Card Header with explanatory text -->
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.shortcode_information') }}</h3>
+        <h3 class="card-title">{{ trans('message.shortcode_information') }}</h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                 <i class="fas fa-minus"></i>
@@ -51,9 +51,9 @@
     </div>
     <!-- Card Body with shortcode section -->
     <div class="card-body">
-        <p>{{ __('message.below_shortcodes_templates') }}</p>
+        <p>{{ trans('message.below_shortcodes_templates') }}</p>
         <div class="shortcode-box">
-            <h4>{{ __('message.available_shortcodes') }}</h4>
+            <h4>{{ trans('message.available_shortcodes') }}</h4>
             <div class="shortcode-container">
                 @foreach ($codes as $code)
                     <span class="shortcode" data-toggle="tooltip" data-placement="top" title="{{ $tooltips[$code] }}">{{ $code }}</span>
@@ -94,7 +94,7 @@
                     <div class="col-md-6 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
                         {!! html()->label(trans('message.template-types'))->class('required') !!}
-                        {!! html()->select('type', ['' => __('message.select'), 'Type' => $type])->class('form-control') !!}
+                        {!! html()->select('type', ['' => trans('message.select'), 'Type' => $type])->class('form-control') !!}
                         @error('type')
                         <span class="error-message"> {{$message}}</span>
                         @enderror
@@ -174,7 +174,7 @@
             </div>
 
         </div>
-        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
+        <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
 
     </div>
 

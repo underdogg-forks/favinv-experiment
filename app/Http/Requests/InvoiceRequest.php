@@ -36,13 +36,13 @@ class InvoiceRequest extends FormRequest
     public function messages()
     {
         return [
-            'user.required' => __('validation.invoice.user.required'),
-            'date.required' => __('validation.invoice.date.required'),
-            'date.date' => __('validation.invoice.date.date'),
-            'domain.regex' => __('validation.invoice.domain.regex'),
-            'plan.required_if' => __('validation.invoice.plan.required_if'),
-            'price.required' => __('validation.invoice.price.required'),
-            'product.required' => __('validation.invoice.product.required'),
+            'user.required' => trans('validation.invoice.user.required'),
+            'date.required' => trans('validation.invoice.date.required'),
+            'date.date' => trans('validation.invoice.date.date'),
+            'domain.regex' => trans('validation.invoice.domain.regex'),
+            'plan.required_if' => trans('validation.invoice.plan.required_if'),
+            'price.required' => trans('validation.invoice.price.required'),
+            'product.required' => trans('validation.invoice.product.required'),
         ];
     }
 }

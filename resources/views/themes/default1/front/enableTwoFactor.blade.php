@@ -1,24 +1,24 @@
 @extends('themes.default1.layouts.front.master')
 
 @section('title')
-    {{ __('message.two_factor') }}
+    {{ trans('message.two_factor') }}
 @stop
 
 @section('page-heading')
-    {{ __('message.two_factor') }}
+    {{ trans('message.two_factor') }}
 @stop
 
 @section('page-header')
-    {{ __('message.forgot-password') }}
+    {{ trans('message.forgot-password') }}
 @stop
 
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
     @else
-        <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
     @endif
-    <li class="active text-dark">{{ __('message.two_factor') }}</li>
+    <li class="active text-dark">{{ trans('message.two_factor') }}</li>
 @stop
 
 @section('main-class')
@@ -37,15 +37,15 @@
                 {{-- Auth Code --}}
                 <div class="mb-4">
                     <label for="2fa_code" class="form-label text-color-dark fw-bold">
-                        {{ __('message.enter_auth_code') }} <span class="text-danger">*</span>
+                        {{ trans('message.enter_auth_code') }} <span class="text-danger">*</span>
                     </label>
                     <input type="text" name="totp" maxlength="6" id="2fa_code"
                            class="form-control form-control-lg text-4"
-                           placeholder="{{ __('message.otp_placeholder') }}">
+                           placeholder="{{ trans('message.otp_placeholder') }}">
                     <div id="codecheck" class="form-text text-danger"></div>
                 </div>
 
-                <p class="text-muted mb-4">{{ __('message.open_two_factor') }}</p>
+                <p class="text-muted mb-4">{{ trans('message.open_two_factor') }}</p>
 
                 {{-- Recaptcha --}}
                 <div class="mb-4" id="2fa_recaptcha"></div>
@@ -56,9 +56,9 @@
                 @if(!Session::has('reset_token'))
                     <div class="mb-4">
                         <div class="text-muted">
-                            {{ __('message.having_problem') }}
+                            {{ trans('message.having_problem') }}
                             <a href="{{ url('recovery-code') }}" class="text-decoration-underline">
-                                {{ __('message.login_recovery_code') }}
+                                {{ trans('message.login_recovery_code') }}
                             </a>
                         </div>
                     </div>
@@ -69,9 +69,9 @@
                     <button type="submit"
                             id="2fa-submit-button"
                             class="btn btn-dark btn-lg fw-bold text-uppercase text-3 py-3"
-                            data-loading-text="{{ __('message.loading') }}"
-                            data-original-text="{{ __('message.verify') }}">
-                        {{ __('message.verify') }}
+                            data-loading-text="{{ trans('message.loading') }}"
+                            data-original-text="{{ trans('message.verify') }}">
+                        {{ trans('message.verify') }}
                     </button>
                 </div>
 
@@ -148,7 +148,7 @@
 
             $.validator.addMethod("totp6digits", function(value, element) {
                 return this.optional(element) || /^[0-9]{6}$/.test(value);
-            }, "{{ __('message.enter_valid_6_digit_code') }}");
+            }, "{{ trans('message.enter_valid_6_digit_code') }}");
 
             $('#2fa_form').validate({
                 rules: {
@@ -159,7 +159,7 @@
                 },
                 messages: {
                     totp: {
-                        required: "{{ __('message.please_enter_auth_code') }}"
+                        required: "{{ trans('message.please_enter_auth_code') }}"
                     }
                 },
                 unhighlight: function (element) {

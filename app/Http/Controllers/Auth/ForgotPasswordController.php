@@ -58,16 +58,16 @@ class ForgotPasswordController extends Controller
                     'forgot' => [new Honeypot()],
                 ],
                 [
-                    'email.required' => __('validation.custom_email.required'),
-                    'email.email' => __('validation.custom_email.email'),
-                    'email.exists' => __('validation.custom_email.exists'),
+                    'email.required' => trans('validation.custom_email.required'),
+                    'email.email' => trans('validation.custom_email.email'),
+                    'email.exists' => trans('validation.custom_email.exists'),
                 ]);
             $email = $request->email;
 
             $rateLimit = rateLimitForKeyIp('forgot_password'.$email, 3, 360, $request->ip());
 
             if ($rateLimit['status']) {
-                return errorResponse(__('message.too_many_forgot_attempts', ['time' => $rateLimit['remainingTime']]));
+                return errorResponse(trans('message.too_many_forgot_attempts', ['time' => $rateLimit['remainingTime']]));
             }
 
             $token = str_random(40);
@@ -110,14 +110,14 @@ class ForgotPasswordController extends Controller
                 $mail = new \App\Http\Controllers\Common\PhpMailController();
                 $mail->SendEmail($setting->email, $user->email, $template->data, $template->name, $replace, $type);
 
-                return successResponse(__('validation.forgot_email_validation'));
+                return successResponse(trans('validation.forgot_email_validation'));
             } else {
-                return errorResponse(__('validation.forgot_email_validation'));
+                return errorResponse(trans('validation.forgot_email_validation'));
             }
 
-            return successResponse(__('validation.forgot_email_validation'));
+            return successResponse(trans('validation.forgot_email_validation'));
         } catch (\Exception $ex) {
-            return successResponse(__('validation.forgot_email_validation'));
+            return successResponse(trans('validation.forgot_email_validation'));
         }
     }
 }

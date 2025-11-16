@@ -120,15 +120,15 @@ class ClientController extends BaseClientController
 
                 $mail->payment_log(\Auth::user()->email, 'stripe', 'success', Order::where('id', $orderid)->value('number'), null, $amount, 'Payment method updated');
 
-                $response = ['type' => 'success', 'message' => __('message.card_details_updated_successfully')];
+                $response = ['type' => 'success', 'message' => trans('message.card_details_updated_successfully')];
 
-                return ['type' => 'success', 'message' => __('message.card_details_updated_successfully')];
+                return ['type' => 'success', 'message' => trans('message.card_details_updated_successfully')];
             }
         } catch(\Exception $ex) {
             $result = $ex->getMessage();
             $mail = new \App\Http\Controllers\Common\PhpMailController();
             $mail->payment_log(\Auth::user()->email, 'stripe', 'failed', Order::where('id', $orderid)->value('number'), $result, $amount, 'Payment method updated');
-            $errorMessage = __('message.something_different_payment');
+            $errorMessage = trans('message.something_different_payment');
 
             return response()->json(['error' => $errorMessage], 500);
         }
@@ -148,7 +148,7 @@ class ClientController extends BaseClientController
             $user = User::find($userid);
             $subscription = Subscription::where('order_id', $orderid)->first();
             $this->autoRenewalSubOps($subscription, $orderid);
-            $response = ['type' => 'success', 'message' => __('message.auto_subscription_disabled')];
+            $response = ['type' => 'success', 'message' => trans('message.auto_subscription_disabled')];
 
             return response()->json($response);
         } catch(\Exception $ex) {
@@ -217,13 +217,13 @@ class ClientController extends BaseClientController
             $mail = new \App\Http\Controllers\Common\PhpMailController();
             $mail->payment_log(\Auth::user()->email, 'Razorpay', 'success', Order::where('id', $orderid)->value('number'), null, $amount, 'Payment method updated');
 
-            return redirect()->back()->with('success', __('message.card_updated_successfully'));
+            return redirect()->back()->with('success', trans('message.card_updated_successfully'));
         } catch(\Exception $ex) {
             $result = $ex->getMessage();
             $mail = new \App\Http\Controllers\Common\PhpMailController();
             $mail->payment_log(\Auth::user()->email, 'stripe', 'failed', Order::where('id', $orderid)->value('number'), $result, $amount, 'Payment method updated');
 
-            return redirect()->back()->with('fails', __('message.payment_declined', ['msg' => $ex->getMessage()]));
+            return redirect()->back()->with('fails', trans('message.payment_declined', ['msg' => $ex->getMessage()]));
         }
     }
 
@@ -376,13 +376,13 @@ class ClientController extends BaseClientController
                         $deleteButton = '';
                         $payNowButton = '';
                         $payment = '';
-                        $viewButton = '<a href="'.url('my-invoice/'.$model->id).'" class="btn btn-light-scale-2 btn-sm text-dark" id="iconStyle" data-toggle="tooltip" data-placement="top" title="'.__('message.click_here_view').'"><i class="fa fa-eye"></i></a>';
+                        $viewButton = '<a href="'.url('my-invoice/'.$model->id).'" class="btn btn-light-scale-2 btn-sm text-dark" id="iconStyle" data-toggle="tooltip" data-placement="top" title="'.trans('message.click_here_view').'"><i class="fa fa-eye"></i></a>';
 
                         if ($status != 'Success' && $model->grand_total > 0) {
-                            $payNowButton = '<a href="'.url('paynow/'.$model->id).'" class="btn btn-light-scale-2 btn-sm text-dark" id="iconStyle" data-toggle="tooltip" data-placement="top" title="'.__('message.click_here_pay').'"><i class="fa fa-credit-card"></i></a>';
+                            $payNowButton = '<a href="'.url('paynow/'.$model->id).'" class="btn btn-light-scale-2 btn-sm text-dark" id="iconStyle" data-toggle="tooltip" data-placement="top" title="'.trans('message.click_here_pay').'"><i class="fa fa-credit-card"></i></a>';
 
                             if (! $model->orderRelation()->exists()) {
-                                $deleteButton = '<a class="btn btn-light-scale-2 btn-sm text-dark delete-btn" id="iconStyle" data-id="'.$model->id.'" data-toggle="tooltip" data-placement="top" title="'.__('message.click_here_delete').'"><i class="fa fa-trash"></i></a>';
+                                $deleteButton = '<a class="btn btn-light-scale-2 btn-sm text-dark delete-btn" id="iconStyle" data-id="'.$model->id.'" data-toggle="tooltip" data-placement="top" title="'.trans('message.click_here_delete').'"><i class="fa fa-trash"></i></a>';
                             }
 
                             return $payNowButton.' '.$deleteButton.' '.$viewButton;
@@ -433,12 +433,12 @@ class ClientController extends BaseClientController
         try {
             $invoice = $this->invoice->find($id);
             if (! $invoice) {
-                throw new \Exception(__('message.invoice_not_found'));
+                throw new \Exception(trans('message.invoice_not_found'));
             }
             $payments = $invoice->payment;
             $user = \Auth::user();
             if ($invoice->user_id != $user->id) {
-                throw new \Exception(__('message.invalid_invoice_modification'));
+                throw new \Exception(trans('message.invalid_invoice_modification'));
             }
             $items = $invoice->invoiceItem()->get();
             $order = $this->order->getOrderLink($invoice->orderRelation()->value('order_id'), 'my-order');
@@ -612,7 +612,7 @@ class ClientController extends BaseClientController
                                     $link = $this->github_api->getCurl1($link['zipball_url']);
 
                                     return '<p><a href="'.$link['header']['Location'].'" class="btn btn-sm btn-primary">'
-                                        .__('message.download').
+                                        .trans('message.download').
                                         '</a>&nbsp;</p>';
                                 }
                             })
@@ -662,7 +662,7 @@ class ClientController extends BaseClientController
                                 } else {
                                     $badge = 'badge';
 
-                                    return '<a href='.url('my-order/'.$model->id).'>'.$model->number.'</a>'.'&nbsp;<span class="'.$badge.' '.$badge.'-danger"  <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.__('message.order_has_been_terminated').'">
+                                    return '<a href='.url('my-order/'.$model->id).'>'.$model->number.'</a>'.'&nbsp;<span class="'.$badge.' '.$badge.'-danger"  <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.trans('message.order_has_been_terminated').'">
 
                          </label>
             Terminated</span>';
@@ -685,7 +685,7 @@ class ClientController extends BaseClientController
                                 if ($model->order_status == 'Terminated') {
                                     return '<a href="'.url('my-order/'.$model->id).'" 
                                      class="btn btn-light-scale-2 btn-sm text-dark" style="margin-right:5px;">
-                                     <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'.__('message.click_here_view').'"></i>
+                                     <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'.trans('message.click_here_view').'"></i>
                                      </a>';
                                 }
                                 $plan = Plan::where('product', $model->product_id)->value('id');
@@ -721,7 +721,7 @@ class ClientController extends BaseClientController
 
                                 return '<a href="'.url('my-order/'.$model->id).'" 
                                 class="btn btn-light-scale-2 btn-sm text-dark" style="margin-right:5px;">
-                                <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'.__('message.click_here_view').'"></i>&nbsp; '
+                                <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="'.trans('message.click_here_view').'"></i>&nbsp; '
                                     .$listUrl.' '.$url.' '.$deleteCloud.' </a>';
                             })
                             ->filterColumn('product_name', function ($query, $keyword) {
@@ -1231,10 +1231,10 @@ class ClientController extends BaseClientController
         if ($this->canDeleteInvoice($invoice)) {
             $this->deleteInvoice($invoice);
 
-            return response()->json(['message' => __('message.invoice_deleted_successfully')]);
+            return response()->json(['message' => trans('message.invoice_deleted_successfully')]);
         }
 
-        return response()->json(['error' => __('message.cannot_delete_invoice')], 400);
+        return response()->json(['error' => trans('message.cannot_delete_invoice')], 400);
     }
 
     /**
@@ -1292,7 +1292,7 @@ class ClientController extends BaseClientController
 
                 return response()->json($response);
             } else {
-                $response = ['type' => 'fails', 'message' => __('message.something_wrong')];
+                $response = ['type' => 'fails', 'message' => trans('message.something_wrong')];
 
                 return response()->json(compact('response'), 500);
             }
@@ -1300,7 +1300,7 @@ class ClientController extends BaseClientController
             $result = $ex->getMessage();
             $mail = new \App\Http\Controllers\Common\PhpMailController();
             $mail->payment_log(\Auth::user()->email, 'stripe', 'failed', Order::where('id', $orderid)->value('number'), $result, $amount, 'Payment method updated');
-            $errorMessage = __('message.something_wrong');
+            $errorMessage = trans('message.something_wrong');
 
             return response()->json(['error' => $errorMessage], 500);
         }
@@ -1326,6 +1326,6 @@ class ClientController extends BaseClientController
         $mail = new \App\Http\Controllers\Common\PhpMailController();
         $mail->payment_log(\Auth::user()->email, 'stripe', 'success', Order::where('id', $orderid)->value('number'), null, $amount, 'Payment method updated');
 
-        return ['type' => 'success', 'message' => __('message.card_details_updated_successfully')];
+        return ['type' => 'success', 'message' => trans('message.card_details_updated_successfully')];
     }
 }

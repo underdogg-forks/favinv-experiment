@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ __('message.logviewere_created') }}</title>
+    <title>{{ trans('message.logviewere_created') }}</title>
     <meta name="description" content="LogViewer">
     <meta name="author" content="ARCANEDEV">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -284,25 +284,25 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">{{ __('message.toggle_navigation') }}</span>
+                    <span class="sr-only">{{ trans('message.toggle_navigation') }}</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
                 <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand">
-                    <i class="fa fa-fw fa-book"></i> {{ __('message.logviewer') }}
+                    <i class="fa fa-fw fa-book"></i> {{ trans('message.logviewer') }}
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="{{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                         <a href="{{ route('log-viewer::dashboard') }}">
-                            <i class="fa fa-dashboard"></i> {{ __('message.dashboard') }}
+                            <i class="fa fa-dashboard"></i> {{ trans('message.dashboard') }}
                         </a>
                     </li>
                     <li class="{{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
                         <a href="{{ route('log-viewer::logs.list') }}">
-                            <i class="fa fa-archive"></i> {{ __('message.logs') }}
+                            <i class="fa fa-archive"></i> {{ trans('message.logs') }}
                         </a>
                     </li>
                 </ul>
@@ -319,10 +319,10 @@
     <footer class="main-footer">
         <div class="container">
             <p class="text-muted pull-left">
-                {{ __('message.log_viewer') }} <span class="label label-info">{{ __('message.version') }} {{ log_viewer()->version() }}</span>
+                {{ trans('message.log_viewer') }} <span class="label label-info">{{ trans('message.version') }} {{ log_viewer()->version() }}</span>
             </p>
             <p class="text-muted pull-right">
-                {{ __('message.created_with') }} <i class="fa fa-heart"></i> {{ __('message.by_arcanedev') }} <sup>&copy;</sup>
+                {{ trans('message.created_with') }} <i class="fa fa-heart"></i> {{ trans('message.by_arcanedev') }} <sup>&copy;</sup>
             </p>
         </div>
     </footer>

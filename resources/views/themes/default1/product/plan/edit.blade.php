@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.edit_plan') }}
+    {{ trans('message.edit_plan') }}
 @stop
 @section('content-header')
   <div class="col-sm-6">
-        <h1>{{ __('message.edit_plan') }}</h1>
+        <h1>{{ trans('message.edit_plan') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('plans')}}"><i class="fa fa-dashboard"></i> {{ __('message.all_plans') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_plan') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('plans')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all_plans') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_plan') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -39,7 +39,7 @@
               <!-- product -->
                 {!! html()->label(trans('message.product'), 'product')->class('required') !!}
               <select name="product" id="planproduct" class="form-control {{$errors->has('product') ? ' is-invalid' : ''}}" onchange="myProduct()">
-                <option value="">{{ __('message.choose') }}</option>
+                <option value="">{{ trans('message.choose') }}</option>
 
                 @foreach($products as $key=>$product)
                   <option value="{{$key}}"  <?php  if(in_array($product, $selectedProduct) ) { echo "selected";} ?>>{{$product}}</option>
@@ -54,9 +54,9 @@
             </div>
             <div class="col-md-4 form-group plandays {{ $errors->has('days') ? 'has-error' : '' }}">
               <!-- days-->
-                {!! html()->label( __('message.periods'), 'days')->class('required') !!}
+                {!! html()->label( trans('message.periods'), 'days')->class('required') !!}
               <select name="days" id="plandays" class="form-control {{$errors->has('days') ? ' is-invalid' : ''}}">
-                <option value="">{{ __('message.choose') }}</option>
+                <option value="">{{ trans('message.choose') }}</option>
 
                 @foreach($periods as $key=>$period)
                   <option value="{{$key}}" <?php  if(in_array($period, $selectedPeriods) ) { echo "selected";} ?>>{{$period}}</option>
@@ -95,7 +95,7 @@
                         <td>
                           <select name="country_id[{{ $row['id'] }}]" class="form-control {{$errors->has('country_id') ? ' is-invalid' : ''}}" id="country">
                             @if (0 === $row['country_id'])
-                                <option value="0" selected>{{ __('message.default') }}</option>
+                                <option value="0" selected>{{ trans('message.default') }}</option>
                             @endif
                             @if (0 !== $row['country_id'])
                               @foreach ($countries as $country)
@@ -118,7 +118,7 @@
                         <td>
                           <select name="currency[{{ $row['id'] }}]" class="form-control currency1 {{$errors->has('currency') ? ' is-invalid' : ''}}" id="currency">
                             <option value="">
-                              {{ __('message.choose') }}
+                              {{ trans('message.choose') }}
                               </option>
                             @foreach ($currency as $code => $name)
                               <option value="{{ $code }}" @if ($code === $row['currency'])
@@ -183,8 +183,8 @@
 
             <div class="col-md-4 form-group">
               <!-- last name -->
-                {!! html()->label( __('message.price_description'), 'description') !!}
-                {!! html()->text('price_description', $priceDescription)->class('form-control'.($errors->has('product_quantity') ? ' is-invalid' : ''))->placeholder( __('message.enter_price_description')) !!}
+                {!! html()->label( trans('message.price_description'), 'description') !!}
+                {!! html()->text('price_description', $priceDescription)->class('form-control'.($errors->has('product_quantity') ? ' is-invalid' : ''))->placeholder( trans('message.enter_price_description')) !!}
               @error('description')
               <span class="error-message"> {{$message}}</span>
               @enderror
@@ -193,12 +193,12 @@
             </div>
             <div class="col-md-4 form-group">
               <!-- last name -->
-                {!! html()->label( __('message.product_quantity'), 'product_quantity')->class('required') !!}
+                {!! html()->label( trans('message.product_quantity'), 'product_quantity')->class('required') !!}
                 {!! html()->number('product_quantity', $productQuantity)
                     ->class('form-control only-numbers'.($errors->has('product_quantity') ? ' is-invalid' : ''))
                     ->id('prodquant')
                     ->attribute('disabled', true)
-                    ->placeholder( __('message.price_products')) !!}
+                    ->placeholder( trans('message.price_products')) !!}
               @error('product_quantity')
               <span class="error-message"> {{$message}}</span>
               @enderror
@@ -208,14 +208,14 @@
 
             <div class="col-md-4 form-group">
               <!-- last name -->
-                 <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188)'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.agents_selected') }}">
+                 <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188)'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.agents_selected') }}">
                         </label></i>
-                {!! html()->label( __('message.agent'), 'agents')->class('required') !!}
+                {!! html()->label( trans('message.agent'), 'agents')->class('required') !!}
                 {!! html()->number('no_of_agents', $agentQuantity)
                     ->class('form-control only-numbers'.($errors->has('no_of_agents') ? ' is-invalid' : ''))
                     ->id('agentquant')
                     ->attribute('disabled', true)
-                    ->placeholder( __('message.price_agents')) !!}
+                    ->placeholder( trans('message.price_agents')) !!}
               @error('no_of_agents')
               <span class="error-message"> {{$message}}</span>
               @enderror
@@ -359,7 +359,7 @@
         <tr id="row` + i + `">
           <td>
             <select name="country_id[]" class="form-control selectpicker" id="country" >
-              <option value="" selected disabled>{{ __('message.choose_country') }}</option>
+              <option value="" selected disabled>{{ trans('message.choose_country') }}</option>
               @foreach ($countries as $country)
                 <option value="{{$country['country_id']}}">
                   {{ $country['country_name'] }}
@@ -371,7 +371,7 @@
           <td>
             <select name="currency[]" class="form-control" id="currency">
             <option value="">
-              {{ __('message.choose') }}
+              {{ trans('message.choose') }}
             </option>
               @foreach ($currency as $code => $name)
                 <option value="{{ $code }}">

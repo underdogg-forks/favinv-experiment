@@ -10,7 +10,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="demoModalLabel">{{ __('message.book_a_demo')}}</h4>
+                    <h4 class="modal-title" id="demoModalLabel">{{ trans('message.book_a_demo')}}</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
@@ -24,12 +24,12 @@
    
                                 <div class="contact-form-success alert alert-success d-none mt-4">
 
-                                    <strong>{{ __('message.success')}}!</strong> {{ __('message.message_sent')}}
+                                    <strong>{{ trans('message.success')}}!</strong> {{ trans('message.message_sent')}}
                                 </div>
 
                                 <div class="contact-form-error alert alert-danger d-none mt-4">
 
-                                    <strong>{{ __('message.error')}}</strong> {{ __('message.error_sending_message')}}
+                                    <strong>{{ trans('message.error')}}</strong> {{ trans('message.error_sending_message')}}
 
                                     <span class="mail-error-message text-1 d-block"></span>
                                 </div>
@@ -38,16 +38,16 @@
 
                                     <div class="form-group col-lg-6">
 
-                                        <label class="form-label mb-1 text-2">{{ __('message.name_page')}} <span class="text-danger"> *</span> </label>
+                                        <label class="form-label mb-1 text-2">{{ trans('message.name_page')}} <span class="text-danger"> *</span> </label>
 
-                                        <input type="text" value="" data-msg-required="{{ __('message.contact_error_name')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="demoname" id="demoname" required>
+                                        <input type="text" value="" data-msg-required="{{ trans('message.contact_error_name')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="demoname" id="demoname" required>
                                     </div>
 
                                     <div class="form-group col-lg-6">
 
-                                        <label class="form-label mb-1 text-2">{{ __('message.email_address')}} <span class="text-danger"> *</span></label>
+                                        <label class="form-label mb-1 text-2">{{ trans('message.email_address')}} <span class="text-danger"> *</span></label>
 
-                                        <input type="email" value="" data-msg-required="{{ __('message.error_email_address')}}" data-msg-email="{{ __('message.error_email_address')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="demoemail" id="demoemail" required>
+                                        <input type="email" value="" data-msg-required="{{ trans('message.error_email_address')}}" data-msg-email="{{ trans('message.error_email_address')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="demoemail" id="demoemail" required>
                                     </div>
                                 </div>
 
@@ -55,7 +55,7 @@
 
                                     <div class="form-group col">
 
-                                        <label class="form-label mb-1 text-2">{{ __('message.mobile')}} <span class="text-danger"> *</span></label>
+                                        <label class="form-label mb-1 text-2">{{ trans('message.mobile')}} <span class="text-danger"> *</span></label>
 
                                         {!! html()->hidden('mobile', null)->id('mobile_code_hiddenDemo')->name('country_code') !!}
 
@@ -78,9 +78,9 @@
 
                                     <div class="form-group col">
 
-                                        <label class="form-label mb-1 text-2">{{ __('message.contact_message')}} <span class="text-danger"> *</span></label>
+                                        <label class="form-label mb-1 text-2">{{ trans('message.contact_message')}} <span class="text-danger"> *</span></label>
 
-                                   <textarea maxlength="5000" data-msg-required="{{ __('message.contact_error_message')}}" rows="3" class="form-control" name="demomessage" id="demomessage" required></textarea>
+                                   <textarea maxlength="5000" data-msg-required="{{ trans('message.contact_error_message')}}" rows="3" class="form-control" name="demomessage" id="demomessage" required></textarea>
                                     </div>
                                 </div>
                                 
@@ -98,9 +98,9 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ __('message.close')}}</button>&nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ trans('message.close')}}</button>&nbsp;&nbsp;&nbsp;
 
-                    <button type="submit" class="btn btn-primary" name="demoregister" id="demoregister"><i class="fa fa-book">&nbsp;&nbsp;</i>{{ __('message.book_a_demo')}}</button>
+                    <button type="submit" class="btn btn-primary" name="demoregister" id="demoregister"><i class="fa fa-book">&nbsp;&nbsp;</i>{{ trans('message.book_a_demo')}}</button>
                 </div>
             </div>
             </form>
@@ -180,12 +180,12 @@
         }
         $.validator.addMethod("validPhone", function(value, element) {
             return validatePhoneNumber(element);
-        }, "{{ __('message.error_valid_number') }}");
+        }, "{{ trans('message.error_valid_number') }}");
 
         $.validator.addMethod("regex", function(value, element, regexp) {
             var re = new RegExp(regexp);
             return this.optional(element) || re.test(value);
-        }, "{{ __('message.invalid_format') }}");
+        }, "{{ trans('message.invalid_format') }}");
 
         $('#demoForm').validate({
             rules: {
@@ -206,18 +206,18 @@
             },
             messages: {
                 demoname: {
-                    required: "{{ __('message.contact_error_name') }}"
+                    required: "{{ trans('message.contact_error_name') }}"
                 },
                 demoemail: {
-                    required: "{{ __('message.enter_your_email') }}",
-                    regex: "{{ __('message.contact_error_email') }}"
+                    required: "{{ trans('message.enter_your_email') }}",
+                    regex: "{{ trans('message.contact_error_email') }}"
                 },
                 Mobile: {
-                    required: "{{ __('message.error_mobile') }}",
-                    validPhone: "{{ __('message.enter_your_mobile') }}"
+                    required: "{{ trans('message.error_mobile') }}",
+                    validPhone: "{{ trans('message.enter_your_mobile') }}"
                 },
                 demomessage: {
-                    required: "{{ __('message.contact_error_message') }}"
+                    required: "{{ trans('message.contact_error_message') }}"
                 }
             },
             unhighlight: function(element) {

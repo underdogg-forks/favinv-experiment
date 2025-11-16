@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.templates') }}
+    {{ trans('message.templates') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.template_settings') }}</h1>
+        <h1>{{ trans('message.template_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.template') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.template') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -108,7 +108,7 @@
                     </tr>
             <!--         <tr>
 
-                        <td><b>{!! html()->label( __('message.download'), 'download') !!}</b></td>
+                        <td><b>{!! html()->label( trans('message.download'), 'download') !!}</b></td>
                                         <td>
                                             <div class="form-group {{ $errors->has('download') ? 'has-error' : '' }}">
 

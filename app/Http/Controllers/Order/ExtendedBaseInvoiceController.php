@@ -49,9 +49,9 @@ class ExtendedBaseInvoiceController extends Controller
             'amount' => 'required',
         ],
             [
-                'payment_date.required' => __('validation.payment.payment_date_required'),
-                'payment_method.required' => __('validation.payment.payment_method_required'),
-                'amount.required' => __('validation.payment.amount_required'),
+                'payment_date.required' => trans('validation.payment.payment_date_required'),
+                'payment_method.required' => trans('validation.payment.payment_method_required'),
+                'amount.required' => trans('validation.payment.amount_required'),
             ]);
 
         try {
@@ -88,9 +88,9 @@ class ExtendedBaseInvoiceController extends Controller
             'status' => 'required',
         ],
             [
-                'date.required' => __('validation.custom_date.date_required'),
-                'total.required' => __('validation.custom_date.total_required'),
-                'status.required' => __('validation.custom_date.status_required'),
+                'date.required' => trans('validation.custom_date.date_required'),
+                'total.required' => trans('validation.custom_date.total_required'),
+                'status.required' => trans('validation.custom_date.status_required'),
             ]);
 
         try {
@@ -114,10 +114,10 @@ class ExtendedBaseInvoiceController extends Controller
             'payment_method' => 'required',
             'totalAmt' => 'required|numeric|not_in:0',
         ], [
-            'payment_date.required' => __('validation.payment.payment_date_required'),
-            'payment_method.required' => __('validation.payment.payment_method_required'),
-            'totalAmt.required' => __('validation.amt_required'),
-            'totalAmt.numeric' => __('validation.amt_numeric'),
+            'payment_date.required' => trans('validation.payment.payment_date_required'),
+            'payment_method.required' => trans('validation.payment.payment_method_required'),
+            'totalAmt.required' => trans('validation.amt_required'),
+            'totalAmt.numeric' => trans('validation.amt_numeric'),
         ]);
 
         try {
@@ -130,7 +130,7 @@ class ExtendedBaseInvoiceController extends Controller
             $payment_status = 'success';
             $payment = $this->multiplePayment($clientid, $invoiceChecked, $payment_method,
                 $payment_date, $totalAmt, $invoicAmount, $amtToCredit, $payment_status);
-            $response = ['type' => 'success', 'message' => __('message.payment_updated_succcessfully')];
+            $response = ['type' => 'success', 'message' => trans('message.payment_updated_succcessfully')];
 
             return response()->json($response);
         } catch (\Exception $ex) {
@@ -214,11 +214,11 @@ class ExtendedBaseInvoiceController extends Controller
             'invoiceChecked' => 'required',
         ],
             [
-                'payment_date.required' => __('validation.payment_date_required'),
-                'payment_method.required' => __('validation.payment_method_required'),
-                'totalAmt.required' => __('validation.total_amount_required'),
-                'totalAmt.numeric' => __('validation.total_amount_numeric'),
-                'invoiceChecked.required' => __('validation.invoice_link_required'),
+                'payment_date.required' => trans('validation.payment_date_required'),
+                'payment_method.required' => trans('validation.payment_method_required'),
+                'totalAmt.required' => trans('validation.total_amount_required'),
+                'totalAmt.numeric' => trans('validation.total_amount_numeric'),
+                'invoiceChecked.required' => trans('validation.invoice_link_required'),
             ]);
 
         try {
@@ -231,7 +231,7 @@ class ExtendedBaseInvoiceController extends Controller
             $payment_status = 'success';
             $payment = $this->updatePaymentByInvoice($clientid, $invoiceChecked, $payment_method,
                 $payment_date, $totalAmt, $invoicAmount, $amtToCredit, $payment_status);
-            $response = ['type' => 'success', 'message' => __('message.payment_updated_succcessfully')];
+            $response = ['type' => 'success', 'message' => trans('message.payment_updated_succcessfully')];
 
             return response()->json($response);
         } catch (\Exception $ex) {

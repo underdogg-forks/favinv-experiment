@@ -1,16 +1,16 @@
 @extends('log-viewer::_template.master')
 @section('title')
-    {{ __('message.logs_viewer') }}
+    {{ trans('message.logs_viewer') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.logs_viewer') }}</h1>
+        <h1>{{ trans('message.logs_viewer') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.error_logs') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.error_logs') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -19,10 +19,10 @@
 
   <div class="card card-secondary card-outline">
       <div class="card-header">
-          <h3 class="card-title">{{ __('message.Log_viewer') }}</h3>
+          <h3 class="card-title">{{ trans('message.Log_viewer') }}</h3>
 
           <div class="card-tools">
-              <a href="{{url('log-viewer/logs')}}" class="btn btn-default btn-sm pull-right">&nbsp;{{ __('message.logs') }}</a>
+              <a href="{{url('log-viewer/logs')}}" class="btn btn-default btn-sm pull-right">&nbsp;{{ trans('message.logs') }}</a>
 
 
           </div>
@@ -43,7 +43,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">{{ $item['name'] }}</span>
                                     <span class="info-box-number">
-                                        {{ $item['count'] }} {{ __('message.entries') }} - {!! $item['percent'] !!} %
+                                        {{ $item['count'] }} {{ trans('message.entries') }} - {!! $item['percent'] !!} %
                                     </span>
                                     <div class="progress">
                                         <div class="progress-bar" style="width: {{ $item['percent'] }}%"></div>

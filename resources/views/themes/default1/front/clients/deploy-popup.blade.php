@@ -1,4 +1,4 @@
-<a data-id="{{$orderNumber}}" href="#tenancy" class="btn  btn-primary btn-xs open-createtenancyDialog" data-toggle="modal"><i class="fa fa-refresh"></i>&nbsp;{{ __('message.deploy')}}</a>
+<a data-id="{{$orderNumber}}" href="#tenancy" class="btn  btn-primary btn-xs open-createtenancyDialog" data-toggle="modal"><i class="fa fa-refresh"></i>&nbsp;{{ trans('message.deploy')}}</a>
 
 
 <style>
@@ -41,7 +41,7 @@
 
     function createtenancy(){
         $('#createtenancy').attr('disabled',true)
-        $("#createtenancy").html("<i class='fas fa-circle-notch fa-spin'></i> " + @json(__('message.please_wait')));
+        $("#createtenancy").html("<i class='fas fa-circle-notch fa-spin'></i> " + @json(trans('message.please_wait')));
         var domain = $('#userdomain').val();
         var password = $('#password').val();
         var order = $('#orderId').val();
@@ -51,10 +51,10 @@
             data: {'domain': domain, 'password': password, 'orderNo': order},
             success: function (data) {
                 $('#createtenancy').attr('disabled',false)
-                $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>" + @json(__('message.submit')));
+                $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>" + @json(trans('message.submit')));
                 if(data.status == 'validationFailure') {
 
-                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>' + @json(__('message.whoops')) + ' </strong>' + @json(__('message.something_wrong')) + '<ul>';
+                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>' + @json(trans('message.whoops')) + ' </strong>' + @json(trans('message.something_wrong')) + '<ul>';
                     for (var key in data.message)
                     {
                         html += '<li>' + data.message[key][0] + '</li>'
@@ -66,13 +66,13 @@
                 } else if(data.status == 'false') {
                     $('#error').show();
                     $('#success').hide();
-                    var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>' + @json(__('message.whoops')) + ' </strong>' + @json(__('message.something_wrong')) + '!!<br><ul><li>' + data.message + '</li></ul></div>';
+                    var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>' + @json(trans('message.whoops')) + ' </strong>' + @json(trans('message.something_wrong')) + '!!<br><ul><li>' + data.message + '</li></ul></div>';
                     $('#error').html(result);
                 } else if(data.status == 'success_with_warning') {
                     console.log('here');
                     $('#error').show();
                     $('#success').hide();
-                    var result = '<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>' + @json(__('message.whoops')) + ' </strong><br><ul><li>' + data.message + '</li></ul></div>';
+                    var result = '<div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>' + @json(trans('message.whoops')) + ' </strong><br><ul><li>' + data.message + '</li></ul></div>';
                     $('#error').html(result);
                 } else {
                     $('#error').hide();
@@ -86,7 +86,7 @@
                 $("#generate").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>"+"@json(trans('message.submit'))");
                 if(response.status == 422) {
 
-                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>' + @json(__('message.whoops')) + ' </strong>' + @json(__('message.something_wrong')) + '<ul>';
+                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>' + @json(trans('message.whoops')) + ' </strong>' + @json(trans('message.something_wrong')) + '<ul>';
                     for (var key in response.responseJSON.errors)
                     {
                         html += '<li>' + response.responseJSON.errors[key][0] + '</li>'
@@ -119,7 +119,7 @@
       const domain = domainInput.value;
 
       if (domain.length > 28) {
-        validationMessage.textContent = @json( __('message.domain_characters'));
+        validationMessage.textContent = @json( trans('message.domain_characters'));
         validationMessage.style.color = "red";
       } else {
         validationMessage.textContent = "";

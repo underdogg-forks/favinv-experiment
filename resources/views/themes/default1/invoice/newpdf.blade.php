@@ -4,7 +4,7 @@
         
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>{{ __('message.pdf_invoice') }}</title>
+        <title>{{ trans('message.pdf_invoice') }}</title>
         <link rel="stylesheet" href="{{asset('admin/css/bootstrap.min.css')}}">
     </head>  
     <style>
@@ -52,7 +52,7 @@
                                 @endif
                             <!--<small  style="height: 50px;color: red;" class="float-right">Date: {!! $date !!}</small>-->
                         <p class="float-right" style=" position: relative;
-                          top: 3.5px;left: 3px;">{!! $date !!}</p><p class="float-right">{{ __('message.date') }}:</p>
+                          top: 3.5px;left: 3px;">{!! $date !!}</p><p class="float-right">{{ trans('message.date') }}:</p>
                             </h4>
                         </div><!-- /.col -->
                     </div>
@@ -60,7 +60,7 @@
                     <!-- info row -->
                     <div class="row">
                         <div class="col-sm-4 invoice-col">
-                            {{ __('message.from') }}
+                            {{ trans('message.from') }}
                             <address>
 
                                 <strong style="word-wrap: break-word;">{{$set->company}}</strong><br>
@@ -70,9 +70,9 @@
                                 {{getStateByCode($set->state)['name']}}
                                 @endif
                                 {{$set->zip}}<br/>
-                                <strong>{{ __('message.country') }} :</strong> {{getCountryByCode($set->country)}}<br/>
-                                <strong>{{ __('message.mobile') }} :</strong> <b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
-                                <strong>{{ __('message.email') }} :</strong> {{$set->company_email}}
+                                <strong>{{ trans('message.country') }} :</strong> {{getCountryByCode($set->country)}}<br/>
+                                <strong>{{ trans('message.mobile') }} :</strong> <b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
+                                <strong>{{ trans('message.email') }} :</strong> {{$set->company_email}}
                             </address>
                             
                             
@@ -89,14 +89,14 @@
                         </div><!-- /.col -->
                          <div class="col-sm-4 float-right" style=" position: relative;
                         top: 1px;left: 5%;">
-                            <b>{{ __('message.invoice') }}   #{{$invoice->number}}</b><br>
+                            <b>{{ trans('message.invoice') }}   #{{$invoice->number}}</b><br>
                             <br>
 
 
 
                         </div><!-- /.col -->
                         <div class="col-sm-4">
-                            &nbsp;&nbsp;&nbsp;{{ __('message.to') }}
+                            &nbsp;&nbsp;&nbsp;{{ trans('message.to') }}
                             <address>
                                 
                                 <strong>{{$user->first_name}} {{$user->last_name}}</strong><br>
@@ -106,9 +106,9 @@
                                 {{getStateByCode($user->state)['name']}}
                                 @endif
                                 {{$user->zip}}<br>
-                                <strong>{{ __('message.country') }} :</strong> {{getCountryByCode($user->country)}}<br>
-                                <strong>{{ __('message.mobile') }} :</strong> @if($user->mobile_code)<b>+</b>{{$user->mobile_code}} @endif{{$user->mobile}}<br/>
-                                <strong>{{ __('message.email') }} :</strong> {{$user->email}}
+                                <strong>{{ trans('message.country') }} :</strong> {{getCountryByCode($user->country)}}<br>
+                                <strong>{{ trans('message.mobile') }} :</strong> @if($user->mobile_code)<b>+</b>{{$user->mobile_code}} @endif{{$user->mobile}}<br/>
+                                <strong>{{ trans('message.email') }} :</strong> {{$user->email}}
                             </address>
                         </div><!-- /.col -->
                        
@@ -120,12 +120,12 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('message.order_no') }}</th>
-                                        <th>{{ __('message.product') }}</th>
-                                        <th>{{ __('message.price') }}</th>
-                                        <th>{{ __('message.agents') }}</th>
-                                        <th>{{ __('message.quantity') }}</th>
-                                        <th>{{ __('message.sub_total') }}</th>
+                                        <th>{{ trans('message.order_no') }}</th>
+                                        <th>{{ trans('message.product') }}</th>
+                                        <th>{{ trans('message.price') }}</th>
+                                        <th>{{ trans('message.agents') }}</th>
+                                        <th>{{ trans('message.quantity') }}</th>
+                                        <th>{{ trans('message.sub_total') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -172,7 +172,7 @@
                               <div class="table-responsive">
                                  <table class="table">
                                      <tr>
-                                         <th>{{ __('message.sub_total') }}:</th>
+                                         <th>{{ trans('message.sub_total') }}:</th>
                                          <td">{{currencyFormat($item->subtotal,$code=$symbol)}}</td>
                                      </tr>
                                      <?php
@@ -181,14 +181,14 @@
 
                                      @if($invoice->credits)
                                          <tr>
-                                             <th>{{ __('message.discount') }}</th>
+                                             <th>{{ trans('message.discount') }}</th>
                                              <td>{{currencyFormat($invoice->credits,$code=$symbol)}} (Credits)</td>
                                          </tr>
                                      @endif
 
                                     @if($invoice->discount)
                                 <tr>
-                                    <th>{{ __('message.discount') }}</th>
+                                    <th>{{ trans('message.discount') }}</th>
                                     <td>{{currencyFormat($invoice->discount,$code=$symbol)}} ({{$invoice->coupon_code}})</td>
                                 </tr>
                                 @endif
@@ -247,12 +247,12 @@
 
                                 @if($invoice->processing_fee != null && $invoice->processing_fee != '0%')
                                 <tr>
-                                    <th class="font-weight-bold text-color-grey">{{ __('message.processing_fee') }} <span style="font-weight: normal;">({{$invoice->processing_fee}})</span></th>
+                                    <th class="font-weight-bold text-color-grey">{{ trans('message.processing_fee') }} <span style="font-weight: normal;">({{$invoice->processing_fee}})</span></th>
                                     <td class="text-color-grey">{{currencyFormat($feeAmount,$code = $symbol)}}</td>
                                 </tr>
                                 @endif
                                     <tr>
-                                    <th>{{ __('message.total') }}:</th>
+                                    <th>{{ trans('message.total') }}:</th>
                                     <td>{{currencyFormat($invoice->grand_total,$code=$symbol)}}</td>
                                 </tr>
                                

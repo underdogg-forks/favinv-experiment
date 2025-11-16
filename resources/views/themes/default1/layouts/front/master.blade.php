@@ -327,7 +327,7 @@ $days = $pay->where('product','117')->value('days');
                                                     <li class="dropdown">
 
                                                         <a class="nav-link dropdown-toggle {{ strpos(request()->url(), 'group') !== false ? 'active' : '' }}" href="javascript:;">
-                                                            &nbsp;{{ __('message.store') }}&nbsp;
+                                                            &nbsp;{{ trans('message.store') }}&nbsp;
                                                         </a>
 
                                                         <ul class="dropdown-menu border-light mt-n1">
@@ -378,39 +378,39 @@ $days = $pay->where('product','117')->value('days');
                                                         <li class="dropdown">
 
                                                             <a class="nav-link dropdown-toggle {{ Request::is('client-dashboard', 'my-orders', 'my-invoices', 'my-profile') ? 'active' : '' }}" href="javascript:;">
-                                                                &nbsp;{{ __('message.my_account') }}&nbsp;
+                                                                &nbsp;{{ trans('message.my_account') }}&nbsp;
                                                             </a>
 
                                                             <ul class="dropdown-menu border-light mt-n1">
                                                                 @if(Auth::user()->role == 'admin')
                                                                     <li>
-                                                                        <a href="{{url('/')}}" class="dropdown-item">{{ __('message.admin_dashboard') }}</a>
+                                                                        <a href="{{url('/')}}" class="dropdown-item">{{ trans('message.admin_dashboard') }}</a>
                                                                     </li>
                                                                 @endif
                                                                 <li>
-                                                                    <a href="{{url('client-dashboard')}}" class="dropdown-item">{{ __('message.dashboard') }}</a>
+                                                                    <a href="{{url('client-dashboard')}}" class="dropdown-item">{{ trans('message.dashboard') }}</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="{{url('my-orders')}}" class="dropdown-item">{{ __('message.my_orders') }}</a>
-                                                                </li>
-
-                                                                <li>
-                                                                    <a href="{{url('my-invoices')}}" class="dropdown-item">{{ __('message.my_invoices') }}</a>
+                                                                    <a href="{{url('my-orders')}}" class="dropdown-item">{{ trans('message.my_orders') }}</a>
                                                                 </li>
 
                                                                 <li>
-                                                                    <a href="{{url('my-profile')}}" class="dropdown-item">{{ __('message.my_profile') }}</a>
+                                                                    <a href="{{url('my-invoices')}}" class="dropdown-item">{{ trans('message.my_invoices') }}</a>
                                                                 </li>
 
                                                                 <li>
-                                                                    <a href="{{url('auth/logout')}}" class="dropdown-item">{{ __('message.logout') }}</a>
+                                                                    <a href="{{url('my-profile')}}" class="dropdown-item">{{ trans('message.my_profile') }}</a>
+                                                                </li>
+
+                                                                <li>
+                                                                    <a href="{{url('auth/logout')}}" class="dropdown-item">{{ trans('message.logout') }}</a>
                                                                 </li>
                                                             </ul>
                                                         </li>
                                                     @else
 
                                                         <li>
-                                                            <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{url('login')}}">{{ __('message.sign-up') }}</a>
+                                                            <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{url('login')}}">{{ trans('message.sign-up') }}</a>
                                                         </li>
                                                     @endif
                                                     <?php
@@ -419,13 +419,13 @@ $days = $pay->where('product','117')->value('days');
                                                     ?>
                                                     @if($cloud == 1)
                                                         <li class="demo-icons">
-                                                            <a class="nav-link btn open-createTenantDialog startFreeTrialBtn">{{ __('message.start_free_trial') }}</a>
+                                                            <a class="nav-link btn open-createTenantDialog startFreeTrialBtn">{{ trans('message.start_free_trial') }}</a>
                                                         </li>
                                                         @endif
                                                         </li>
                                                         @if($Demo_page->status)
                                                             <li class="demo-icons">
-                                                                <a class="nav-link" id="demo-req">{{ __('message.request_for_demo') }}</a>
+                                                                <a class="nav-link" id="demo-req">{{ trans('message.request_for_demo') }}</a>
                                                             </li>
                                                         @endif
                                                 </ul>
@@ -434,7 +434,7 @@ $days = $pay->where('product','117')->value('days');
                                         <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2 me-2 me-lg-0">
                                             <div class="header-nav-feature header-nav-features-cart d-inline-flex ms-2 mx-3">
                                                 <a href="{{ url('show/cart') }}" class="header-nav-features-toggle text-decoration-none">
-                                                    <span class="text-dark opacity-8 font-weight-bold text-color-hover-primary"> {{ __('message.cart') }}</span>
+                                                    <span class="text-dark opacity-8 font-weight-bold text-color-hover-primary"> {{ trans('message.cart') }}</span>
                                                     <img src="{{asset('client/porto/fonts/icon-cart.svg')}}" width="14" alt="" class="header-nav-top-icon-img">
                                                     <span class="position-absolute top-0 start-100 translate-end badge rounded-pill custom-pills">{{ Cart::getTotalQuantity() }}</span>
                                             </span>
@@ -460,7 +460,7 @@ $days = $pay->where('product','117')->value('days');
                                                                         <a href="#">{{ $item->name }}</a><br>
                                                                         <span class="amount"><strong>{{ currencyFormat($total, $code = $currency) }}</strong></span>
                                                                     </p>
-                                                                    <a onclick="removeItem('{{$item->id}}');"data-bs-toggle="tooltip" title="{{ __('message.remove_this_item') }}" class="btn-remove">
+                                                                    <a onclick="removeItem('{{$item->id}}');"data-bs-toggle="tooltip" title="{{ trans('message.remove_this_item') }}" class="btn-remove">
                                                                         <i class="fas fa-times"></i>
                                                                     </a>
                                                                 </div>
@@ -473,35 +473,35 @@ $days = $pay->where('product','117')->value('days');
                                                             @endphp
 
                                                            <div class="product-details d-flex justify-content-between align-items-center" style="margin-bottom: 20px;font-weight: 500;font-size: 13px;font-family: Poppins,sans-serif;letter-spacing: -0.12px;">
-                                                            <span class="text-muted">0 {{ __('message.caps_items') }}</span>
+                                                            <span class="text-muted">0 {{ trans('message.caps_items') }}</span>
                                                             @if (Auth::check() && $data)
-                                                            <a class="text-v-dark text-uppercase" style="color: black;font-family: Poppins,sans-serif;font-weight: 700;font-size: 13px;letter-spacing: -0.12px;" href="{{url("show/cart")}}">{{ __('message.view_cart') }}</a>
+                                                            <a class="text-v-dark text-uppercase" style="color: black;font-family: Poppins,sans-serif;font-weight: 700;font-size: 13px;letter-spacing: -0.12px;" href="{{url("show/cart")}}">{{ trans('message.view_cart') }}</a>
                                                             @else
-                                                             <a class="text-v-dark text-uppercase" href="{{ url('login') }}">{{ __('message.view_cart') }}</a>
+                                                             <a class="text-v-dark text-uppercase" href="{{ url('login') }}">{{ trans('message.view_cart') }}</a>
                                                             @endif
                                                         </div>
 
                                                         <hr style="border-top: 0.5px solid #ccc;">
 
-                                                        <span  style="display: block; text-align: center;">{{ __('message.no_products_cart') }}</span>
+                                                        <span  style="display: block; text-align: center;">{{ trans('message.no_products_cart') }}</span>
 
 
                                                         @endforelse
                                                         @if (!Cart::isEmpty())
                                                             <div class="totals">
-                                                                <span class="label">{{ __('message.total') }}:</span>
+                                                                <span class="label">{{ trans('message.total') }}:</span>
                                                                 <span class="price-total"><span class="price">{{ currencyFormat(Cart::getTotal(), $code = $currency) }}</span></span>
                                                             </div>
 
                                                             <li>
                                                                 <div class="actions">
                                                                     <a class="btn btn-dark btn-modern text-uppercase font-weight-semi-bold col-5"
-                                                                       href="{{ url('show/cart') }}">{{ __('message.view_cart') }}</a>
+                                                                       href="{{ url('show/cart') }}">{{ trans('message.view_cart') }}</a>
                                                                     @if (count($domain) > 0)
                                                                         <a href="#domain" data-toggle="modal" data-target="#domain"
-                                                                           class="btn btn-primary col-5">{{ __('message.proceed_checkout') }}</a>
+                                                                           class="btn btn-primary col-5">{{ trans('message.proceed_checkout') }}</a>
                                                                     @else
-                                                                        <a href="{{ url('checkout') }}" class="btn btn-primary">{{ __('message.checkout') }}</a>
+                                                                        <a href="{{ url('checkout') }}" class="btn btn-primary">{{ trans('message.checkout') }}</a>
                                                                     @endif
                                                                 </div>
                                                             </li>
@@ -563,10 +563,10 @@ $days = $pay->where('product','117')->value('days');
 
                                 <div class="px-4 d-none d-lg-inline-block ws-nowrap">
                                     @if($cloud == 1)
-                                        <a class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2 open-createTenantDialog startFreeTrialBtn" style="color: white;">{{ __('message.start_free_trial') }}</a>
+                                        <a class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2 open-createTenantDialog startFreeTrialBtn" style="color: white;">{{ trans('message.start_free_trial') }}</a>
                                     @endif
                                     @if($Demo_page->status)
-                                        <a id="demo-req" class="btn border-0 px-4 py-2 line-height-9 btn-primary" style="color: white;">{{ __('message.request_for_demo') }}</a>
+                                        <a id="demo-req" class="btn border-0 px-4 py-2 line-height-9 btn-primary" style="color: white;">{{ trans('message.request_for_demo') }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -626,8 +626,8 @@ $days = $pay->where('product','117')->value('days');
                 @if(Session::has('success'))
 
                     <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"> <span aria-hidden="true"></span></button>
-                        <strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }}</strong>
+                        <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"> <span aria-hidden="true"></span></button>
+                        <strong><i class="far fa-thumbs-up"></i> {{ trans('message.well_done') }}</strong>
 
                         {!!session('success')!!}
                     </div>
@@ -638,7 +638,7 @@ $days = $pay->where('product','117')->value('days');
             @if(Session::has('fails') )
 
                 <div class="alert alert-danger alert-dismissible" role="alert">
-                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button>
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true"></span></button>
                     {{session('fails')}}
                 </div>
 
@@ -646,7 +646,7 @@ $days = $pay->where('product','117')->value('days');
             @if (isset($errors) && $errors->any())
                 <div class="alert alert-danger alert-dismissible" role="alert">
 
-                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button>
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true"></span></button>
 
                     @if ($errors->count() > 1)
                         <ul>
@@ -703,7 +703,7 @@ $days = $pay->where('product','117')->value('days');
 
                                     <div class="input-group mb-2">
 
-                                        <input type="text" name="domain" autocomplete="off" id="userdomain" class="form-control col col-7 rounded-0" placeholder="{{ __('message.admin_domain') }}" required>
+                                        <input type="text" name="domain" autocomplete="off" id="userdomain" class="form-control col col-7 rounded-0" placeholder="{{ trans('message.admin_domain') }}" required>
                                         <input type="text" class="form-control col col-5 rounded-0" value=".{{cloudSubDomain()}}" disabled="true" style="background-color: #4081B5; color:white; border-color: #0088CC">
                                         <p id="validationMessage"></p>
                                     </div>
@@ -729,10 +729,10 @@ $days = $pay->where('product','117')->value('days');
                             <hr>
                             @if($dataCenters->count()==1)
                                 <div class="text-center">
-                                    <p>{{ __('message.data_center_location') }} <b data-nearest-center="">{!! array_first($dataCenters)->cloud_countries !!} </b><!--<a role="button" href="javascript:void(0)" data-center-link="" aria-labelledby="data-center-text-label-dataCenter119678097062480"><b>Change</b></a>--></p>
+                                    <p>{{ trans('message.data_center_location') }} <b data-nearest-center="">{!! array_first($dataCenters)->cloud_countries !!} </b><!--<a role="button" href="javascript:void(0)" data-center-link="" aria-labelledby="data-center-text-label-dataCenter119678097062480"><b>Change</b></a>--></p>
                                 </div>
                             @else
-                                <label style="margin-top: 2px; text-align: left;"><b>{{ __('message.choose_data_center') }}</b></label>
+                                <label style="margin-top: 2px; text-align: left;"><b>{{ trans('message.choose_data_center') }}</b></label>
                                 <div class="row">
                                     <div class="col col-12">
                                         <div class="input-group"> <!-- Wrap select and icon within input-group -->
@@ -771,8 +771,8 @@ $days = $pay->where('product','117')->value('days');
 
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-light pull-left closebutton" id="closebutton" data-dismiss="modal">{{ __('message.close') }}</button>
-                        <button type="submit"  class="btn btn-primary createTenant" id="createTenant" onclick="firstlogin({{Auth::user()->id}})"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ __('message.submit') }}</button>
+                        <button type="button" class="btn btn-light pull-left closebutton" id="closebutton" data-dismiss="modal">{{ trans('message.close') }}</button>
+                        <button type="submit"  class="btn btn-primary createTenant" id="createTenant" onclick="firstlogin({{Auth::user()->id}})"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ trans('message.submit') }}</button>
 
                         {!! html()->form()->close()  !!}
                     </div>
@@ -803,7 +803,7 @@ $days = $pay->where('product','117')->value('days');
                                 <label><b>{!! optional(cloudPopUpDetails())->cloud_label_field !!}</b></label>
                                 <div class="input-group mb-2">
                                     <input type="hidden"  name="order" id="orderId"/>
-                                    <input type="text" name="domain" autocomplete="off" id="userdomainPurchase" class="form-control col col-7 rounded-0" placeholder="{{ __('message.admin_domain') }}" required>
+                                    <input type="text" name="domain" autocomplete="off" id="userdomainPurchase" class="form-control col col-7 rounded-0" placeholder="{{ trans('message.admin_domain') }}" required>
                                     <input type="text" class="form-control col col-5 rounded-0" value=".{{cloudSubDomain()}}" disabled="true" style="background-color: #4081B5; color:white; border-color: #0088CC">
 
                                 </div>
@@ -813,10 +813,10 @@ $days = $pay->where('product','117')->value('days');
                                     <div class="col col-12">
                                         @if($dataCenters->count()==1)
                                             <div class="text-center">
-                                                <p>{{ __('message.data_center_location') }} <b data-nearest-center="">{!! array_first($dataCenters)->cloud_countries !!} </b><!--<a role="button" href="javascript:void(0)" data-center-link="" aria-labelledby="data-center-text-label-dataCenter119678097062480"><b>Change</b></a>--></p>
+                                                <p>{{ trans('message.data_center_location') }} <b data-nearest-center="">{!! array_first($dataCenters)->cloud_countries !!} </b><!--<a role="button" href="javascript:void(0)" data-center-link="" aria-labelledby="data-center-text-label-dataCenter119678097062480"><b>Change</b></a>--></p>
                                             </div>
                                         @else
-                                            <label style="margin-top: 2px; text-align: left;"><b>{{ __('message.choose_data_center') }}</b></label>
+                                            <label style="margin-top: 2px; text-align: left;"><b>{{ trans('message.choose_data_center') }}</b></label>
                                             <div class="row">
                                                 <div class="col col-12">
                                                     <div class="input-group"> <!-- Wrap select and icon within input-group -->
@@ -866,8 +866,8 @@ $days = $pay->where('product','117')->value('days');
                     });
                 </script>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left closebutton" id="closebutton" data-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ __('message.close') }}</button>
-                    <button type="submit"  class="btn btn-primary createtenancy" id="createtenancy" onclick="createtenancy()"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ __('message.submit') }}</button>
+                    <button type="button" class="btn btn-default pull-left closebutton" id="closebutton" data-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ trans('message.close') }}</button>
+                    <button type="submit"  class="btn btn-primary createtenancy" id="createtenancy" onclick="createtenancy()"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ trans('message.submit') }}</button>
                     {!! html()->form()->close() !!}
                 </div>
                 <!-- /Form -->
@@ -896,11 +896,11 @@ $days = $pay->where('product','117')->value('days');
                 <div class="row">
                     <div class="col mt-4 mb-4 pb-5">
 
-                        <p class="text-center text-3 mb-0 text-color-grey">{{ __('message.copyright') }} © <?php echo date('Y') ?> .
+                        <p class="text-center text-3 mb-0 text-color-grey">{{ trans('message.copyright') }} © <?php echo date('Y') ?> .
 
                             <a href="{{$set->website}}" class="text-color-grey text-color-hover-primary font-weight-bold" target="_blank">{{$set->company}}. </a>
 
-                            {{ __('message.all_rights') }}
+                            {{ trans('message.all_rights') }}
 
                             <a href="{{$set->website}}" class="text-color-grey text-color-hover-primary font-weight-bold" target="_blank">Faveo</a>
                         </p>
@@ -1051,8 +1051,8 @@ setTimeout(function() {
                 },
                 messages: {
                     newsletterEmail: {
-                        required: "{{ __('message.login_validation.email_required') }}",
-                        email: "{{ __('message.contact_error_email') }}"
+                        required: "{{ trans('message.login_validation.email_required') }}",
+                        email: "{{ trans('message.contact_error_email') }}"
                     }
                 },
                 errorElement: "div",
@@ -1077,7 +1077,7 @@ setTimeout(function() {
                 const $mailchimpMessage = $("#mailchimp-message");
                 const $submitBtn = $("#mailchimp-subscription");
 
-                $submitBtn.prop("disabled", true).html('{{ __("message.waiting") }}');
+                $submitBtn.prop("disabled", true).html('{{ trans("message.waiting") }}');
 
                 try {
                     // Get reCAPTCHA token
@@ -1086,7 +1086,7 @@ setTimeout(function() {
                     );
 
                     if (!recaptchaToken) {
-                        $submitBtn.prop("disabled", false).html('{{ __("message.caps_go") }}');
+                        $submitBtn.prop("disabled", false).html('{{ trans("message.caps_go") }}');
                         return false;
                     }
 
@@ -1124,18 +1124,18 @@ setTimeout(function() {
                                 return;
                             }
 
-                            const errorMsg = response.message || "{{ __('message.error_occurred') }}";
+                            const errorMsg = response.message || "{{ trans('message.error_occurred') }}";
                             showAlert($mailchimpMessage, "error", errorMsg);
                         },
                         complete: function() {
-                            $submitBtn.prop("disabled", false).html('{{ __("message.caps_go") }}');
+                            $submitBtn.prop("disabled", false).html('{{ trans("message.caps_go") }}');
                             window.mailChimpRecaptcha.reset();
                         }
                     });
                 } catch (error) {
                     console.error("Newsletter submission error:", error);
-                    showAlert($mailchimpMessage, "error", "{{ __('message.error_occurred') }}");
-                    $submitBtn.prop("disabled", false).html('{{ __("message.caps_go") }}');
+                    showAlert($mailchimpMessage, "error", "{{ trans('message.error_occurred') }}");
+                    $submitBtn.prop("disabled", false).html('{{ trans("message.caps_go") }}');
                 }
             });
         }
@@ -1213,9 +1213,9 @@ setTimeout(function() {
     });
 
     window.translations = {
-        instance_successfully_created: @json(__('message.instance_successfully_created')),
-        instance_not_created: @json(__('message.instance_not_created')),
-        domain_already_taken: @json(__('message.domain_already_taken')),
+        instance_successfully_created: @json(trans('message.instance_successfully_created')),
+        instance_not_created: @json(trans('message.instance_not_created')),
+        domain_already_taken: @json(trans('message.domain_already_taken')),
     };
 
     function translate(key, values = {}) {
@@ -1269,7 +1269,7 @@ setTimeout(function() {
 
 
         $('#createTenant').attr('disabled',true)
-        $("#createTenant").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+        $("#createTenant").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
         var domain = $('#userdomain').val();
         var password = $('#password').val();
         var product = $('#serviceType').val();
@@ -1279,10 +1279,10 @@ setTimeout(function() {
             url: "{{url('first-login')}}",
             success: function (data) {
                 $('#createTenant').attr('disabled',false)
-                $("#createTenant").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
+                $("#createTenant").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
                 if(data.status == 'validationFailure') {
 
-                    var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<ul>';
+                    var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<ul>';
                     for (var key in data.message)
                     {
                         html += '<li>' + data.message[key][0] + '</li>'
@@ -1294,27 +1294,27 @@ setTimeout(function() {
                 } else if(data.status == 'false') {
                     $('#clouderror').show();
                     $('#cloudsuccess').hide();
-                    var result =  '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}!!<br><ul><li>'+data.message+'</li></ul></div>';
+                    var result =  '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}!!<br><ul><li>'+data.message+'</li></ul></div>';
                     $('#clouderror').html(result);
                 } else if(data.status == 'success_with_warning') {
                     $('#clouderror').show();
                     $('#cloudsuccess').hide();
-                    var result =  '<div class="alert alert-warning alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ __('message.whoops') }} </strong><br><ul><li>'+translate('instance_not_created',{'installationUrl':data.installationUrl,'reason':data.reason})+'</li></ul></div>';
+                    var result =  '<div class="alert alert-warning alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ trans('message.whoops') }} </strong><br><ul><li>'+translate('instance_not_created',{'installationUrl':data.installationUrl,'reason':data.reason})+'</li></ul></div>';
                     $('#clouderror').html(result);
                 } else {
                     $('#clouderror').hide();
                     $('#cloudsuccess').show();
-                    var result =  '<div class="alert alert-success alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ __('message.success') }}! </strong>'+translate('instance_successfully_created',{'installationUrl':data.installationUrl})+'!</div>';
+                    var result =  '<div class="alert alert-success alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true"></span></button><strong>{{ trans('message.success') }}! </strong>'+translate('instance_successfully_created',{'installationUrl':data.installationUrl})+'!</div>';
                     $('#cloudsuccess').html(result);
                 }
             },error: function (response) {
                 $('#createTenant').attr('disabled',false)
-                $("#createTenant").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
-                $("#generate").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
+                $("#createTenant").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
+                $("#generate").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
 
                 var html = '<div class="alert alert-danger alert-dismissible">' +
                     '<button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button>' +
-                    '<strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<ul>';
+                    '<strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<ul>';
 
                 if (response.status == 422) {
                     for (var key in response.responseJSON.errors) {
@@ -1379,7 +1379,7 @@ setTimeout(function() {
         const domain = domainInput.value;
 
         if (domain.length > 28) {
-            validationMessage.textContent = "{{ __('message.domain_characters') }}";
+            validationMessage.textContent = "{{ trans('message.domain_characters') }}";
             validationMessage.style.color = "red";
         } else {
             validationMessage.textContent = "";
@@ -1440,7 +1440,7 @@ setTimeout(function() {
         $('.startFreeTrialBtn').on('click', function () {
             // If not authenticated, remember that the button was clicked
             localStorage.setItem('freeTrialClicked', 'true');
-            var message = {!! json_encode(__('message.log_free_trial')) !!};
+            var message = {!! json_encode(trans('message.log_free_trial')) !!};
             var baseUrl = "{{ env('APP_URL') }}";
 
             // Redirect to the login/register page
@@ -1492,7 +1492,7 @@ setTimeout(function() {
                     $('#demoregister').attr('disabled',false);
                 } else {
                     errorMsgdemo.classList.remove("hide");
-                    errorMsgdemo.innerHTML = "{{ __('message.error_valid_number') }}";
+                    errorMsgdemo.innerHTML = "{{ trans('message.error_valid_number') }}";
                     $('#mobilenumdemo').css("border-color","red");
                     $('#error-msgdemo').css({"color":"red","margin-top":"5px"});
                     $('#demoregister').attr('disabled',true);
@@ -1511,7 +1511,7 @@ setTimeout(function() {
                     $('#demoregister').attr('disabled',false);
                 } else {
                     errorMsgdemo.classList.remove("hide");
-                    errorMsgdemo.innerHTML = "{{ __('message.error_valid_number') }}";
+                    errorMsgdemo.innerHTML = "{{ trans('message.error_valid_number') }}";
                     $('#mobilenumdemo').css("border-color","red");
                     $('#error-msgdemo').css({"color":"red","margin-top":"5px"});
                     $('#demoregister').attr('disabled',true);
@@ -1533,7 +1533,7 @@ setTimeout(function() {
             const domainName = domainInputPurchase.value;
 
             if (domainName.length > 28) {
-                validationMessagePurchase.textContent = "{{ __('message.domain_characters') }}";
+                validationMessagePurchase.textContent = "{{ trans('message.domain_characters') }}";
                 validationMessagePurchase.style.color = "red";
             } else {
                 validationMessagePurchase.textContent = "";
@@ -1552,7 +1552,7 @@ setTimeout(function() {
 
         function createtenancy(){
             $('#createtenancy').attr('disabled',true)
-            $("#createtenancy").html("<i class='fas fa-circle-notch fa-spin'></i> {{ __('message.please_wait') }}");
+            $("#createtenancy").html("<i class='fas fa-circle-notch fa-spin'></i> {{ trans('message.please_wait') }}");
             var domain = $('#userdomainPurchase').val();
             var order = $('#orderId').val();
             $.ajax({
@@ -1561,10 +1561,10 @@ setTimeout(function() {
                 data: {'domain': domain, 'id': order},
                 success: function (data) {
                     $('#createtenancy').attr('disabled',false)
-                    $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
+                    $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
                     if(data.status == 'validationFailure') {
 
-                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<ul>';
+                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<ul>';
                         for (var key in data.message)
                         {
                             html += '<li>' + data.message[key][0] + '</li>'
@@ -1576,31 +1576,31 @@ setTimeout(function() {
                     } else if(data.status == 'false') {
                         $('#error').show();
                         $('#success').hide();
-                        var result =  '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}!<br><ul><li>'+data.message+'</li></ul></div>';
+                        var result =  '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}!<br><ul><li>'+data.message+'</li></ul></div>';
                         $('#error').html(result);
                     } else if(data.status == 'success_with_warning') {
                         console.log('here');
                         $('#error').show();
                         $('#success').hide();
-                        var result =  '<div class="alert alert-warning alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button><strong>{{ __('message.whoops') }} </strong><br><ul><li>'+data.message+'</li></ul></div>';
+                        var result =  '<div class="alert alert-warning alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button><strong>{{ trans('message.whoops') }} </strong><br><ul><li>'+data.message+'</li></ul></div>';
                         $('#error').html(result);
                     } else {
                         window.location.href = data.redirectTo;
                     }
                 },error: function (response) {
                     $('#createtenancy').attr('disabled',false)
-                    $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
-                    $("#generate").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ __('message.submit') }}");
+                    $("#createtenancy").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
+                    $("#generate").html("<i class='fa fa-check'>&nbsp;&nbsp;</i>{{ trans('message.submit') }}");
                     if(response.status == 422) {
 
-                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<ul>';
+                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<ul>';
                         for (var key in response.responseJSON.errors)
                         {
                             html += '<li>' + response.responseJSON.errors[key][0] + '</li>'
                         }
 
                     } else {
-                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<ul>';
+                        var html = '<div class="alert alert-danger alert-dismissible"><button type="button" class="btn-close" data-dismiss="alert" aria-hidden="true"></button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<ul>';
                         html += '<li>' + response.responseJSON.message + '</li>'
                     }
 

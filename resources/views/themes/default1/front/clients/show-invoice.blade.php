@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.invoice') }}
+{{ trans('message.invoice') }}
 @stop
 @section('page-heading')
-    {{ __('message.view_invoice')}}
+    {{ trans('message.view_invoice')}}
 @stop
 @section('breadcrumb')
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.view_invoice')}}</li>
+     <li class="active text-dark">{{ trans('message.view_invoice')}}</li>
 @stop 
 <style type="text/css">
     .text-fail{
@@ -57,7 +57,7 @@ active
                         <img alt="Logo" width="150" height="100" src="{{ $set->logo }}" style="margin-top: -2px">
                          @endif
 
-                        <h2 class="font-weight-normal text-7 mb-0">{{ __('message.invoice')}} &nbsp;<span class="text-0 text-color-grey">#{{$invoice->number}}</span></h2>
+                        <h2 class="font-weight-normal text-7 mb-0">{{ trans('message.invoice')}} &nbsp;<span class="text-0 text-color-grey">#{{$invoice->number}}</span></h2>
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@ active
 
                     <div class="overflow-hidden mb-2 pb-1">
 
-                        <h4 class="mb-0">{{ __('message.date')}} {!! $date !!}</h4>
+                        <h4 class="mb-0">{{ trans('message.date')}} {!! $date !!}</h4>
                     </div>
 
 
@@ -83,7 +83,7 @@ active
 
                 <div class="col-lg-6">
 
-                    <h2 class="text-color-dark font-weight-bold text-4 mb-1">{{ __('message.from')}}</h2>
+                    <h2 class="text-color-dark font-weight-bold text-4 mb-1">{{ trans('message.from')}}</h2>
 
                     <ul class="list list-unstyled text-2 mb-0">
 
@@ -96,23 +96,23 @@ active
                                 {{getStateByCode($set->state)['name']}}
                                 @endif
                                 {{$set->zip}}<br/>
-                                <strong>{{ __('message.country') }}: </strong>{{getCountryByCode($set->country)}}<br/>
-                                <strong>{{ __('message.mobile') }}: </strong><b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
-                                <strong>{{ __('message.email') }}: </strong>{{$set->company_email}}</li>
+                                <strong>{{ trans('message.country') }}: </strong>{{getCountryByCode($set->country)}}<br/>
+                                <strong>{{ trans('message.mobile') }}: </strong><b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
+                                <strong>{{ trans('message.email') }}: </strong>{{$set->company_email}}</li>
 
                          @if($set->gstin)
-                        <li class="mb-0 mt-2 text-4"><b class="text-dark">{{ __('message.gstin')}}</b> #{{$set->gstin}}</li>
+                        <li class="mb-0 mt-2 text-4"><b class="text-dark">{{ trans('message.gstin')}}</b> #{{$set->gstin}}</li>
                         @endif
                         @if($set->cin_no)
 
-                        <li class="mb-0 text-4"><b class="text-dark">{{ __('message.cin')}}</b> #{{$set->cin_no}}</li>
+                        <li class="mb-0 text-4"><b class="text-dark">{{ trans('message.cin')}}</b> #{{$set->cin_no}}</li>
                         @endif
                     </ul>
                 </div>
               
                 <div class="col-lg-6 mb-4 mb-lg-0">
 
-                    <h2 class="text-color-dark font-weight-bold text-4 mb-1">{{ __('message.to') }}</h2>
+                    <h2 class="text-color-dark font-weight-bold text-4 mb-1">{{ trans('message.to') }}</h2>
 
                     <ul class="list list-unstyled text-2 mb-0">
 
@@ -126,11 +126,11 @@ active
                             {{getStateByCode($user->state)['name']}}
                         @endif
                         {{$user->zip}}<br/>
-                        <strong>{{ __('message.country')}} : </strong>{{getCountryByCode($user->country)}}<br/>
-                        <strong>{{ __('message.mobile')}} : </strong>@if($user->mobile_code)<b>+</b>{{$user->mobile_code}}@endif {{$user->mobile}}<br/>
-                        <strong>{{ __('message.email')}} : </strong> {{$user->email}}<br />
+                        <strong>{{ trans('message.country')}} : </strong>{{getCountryByCode($user->country)}}<br/>
+                        <strong>{{ trans('message.mobile')}} : </strong>@if($user->mobile_code)<b>+</b>{{$user->mobile_code}}@endif {{$user->mobile}}<br/>
+                        <strong>{{ trans('message.email')}} : </strong> {{$user->email}}<br />
                         @if($user->gstin)
-                            <b>{{ __('message.gstin')}}</b>  &nbsp; #{{$user->gstin}}
+                            <b>{{ trans('message.gstin')}}</b>  &nbsp; #{{$user->gstin}}
                             <br>
                             @endif
         </ul>
@@ -144,12 +144,12 @@ active
 
                         <thead>
                         <tr>
-                            <th>{{ __('message.order_no')}}</th>
-                            <th>{{ __('message.product')}}</th>
-                            <th>{{ __('message.price')}}</th>
-                            <th>{{ __('message.agents')}}</th>
-                            <th>{{ __('message.quantity')}}</th>
-                            <th>{{ __('message.sub_total')}}</th>
+                            <th>{{ trans('message.order_no')}}</th>
+                            <th>{{ trans('message.product')}}</th>
+                            <th>{{ trans('message.price')}}</th>
+                            <th>{{ trans('message.agents')}}</th>
+                            <th>{{ trans('message.quantity')}}</th>
+                            <th>{{ trans('message.sub_total')}}</th>
                         </tr>
                         </thead>
 
@@ -171,7 +171,7 @@ active
                            
                                 @elseif($order != '--')
                                 <td>{!! $order !!}
-                                <span class='badge badge-primary'>{{ __('message.renewed')}}</span></td>
+                                <span class='badge badge-primary'>{{ trans('message.renewed')}}</span></td>
                                 @else
                                 <td>--</td>
                             @endif
@@ -210,19 +210,19 @@ active
                                 <tbody>
                                 <tr>
 
-                                    <th>{{ __('message.sub_total')}}</th>
+                                    <th>{{ trans('message.sub_total')}}</th>
 
                                     <td class="moveleft"  style="border-top: unset !important;">{{currencyFormat($itemsSubtotal,$code=$symbol)}}</td>
                                 </tr>
                                 @if($invoice->credits)
                                         <tr>
-                                            <th>{{ __('message.discount')}}</th>
+                                            <th>{{ trans('message.discount')}}</th>
                                             <td>{{currencyFormat($invoice->credits,$code=$symbol)}} (Credits)</td>
                                         </tr>
                                     @endif
                                 @if($invoice->coupon_code && $invoice->discount)
                                 <tr>
-                                    <th>{{ __('message.discount')}}</th>
+                                    <th>{{ trans('message.discount')}}</th>
                                     <td class="moveleft">{{currencyFormat($invoice->discount,$code=$symbol)}} ({{$invoice->coupon_code}})</td>
                                 </tr>
                                 @endif
@@ -285,13 +285,13 @@ active
 
                                 @if($invoice->processing_fee != null && $invoice->processing_fee != '0%')
                                 <tr>
-                                    <th class="font-weight-bold text-color-grey">{{ __('message.processing_fee')}} <label style="font-weight: normal;">({{$invoice->processing_fee}})</label></th>
+                                    <th class="font-weight-bold text-color-grey">{{ trans('message.processing_fee')}} <label style="font-weight: normal;">({{$invoice->processing_fee}})</label></th>
                                     <td class="text-color-grey moveleft">{{currencyFormat($feeAmount,$code = $symbol)}}</td>
                                 </tr>
                                 @endif
                                 <tr class="h6">
 
-                                    <th class="border-0">{{ __('message.total')}}</th>
+                                    <th class="border-0">{{ trans('message.total')}}</th>
 
                                     <td class="border-0 moveleft">{{currencyFormat($invoice->grand_total,$code = $symbol)}}</td>
                                 </tr>
@@ -317,10 +317,10 @@ active
 
                         <thead>
                         <tr>
-                            <th>{{ __('message.transaction_date')}}</th>
-                            <th>{{ __('message.method')}}</th>
-                            <th>{{ __('message.total')}}</th>
-                            <th>{{ __('message.status')}}</th>
+                            <th>{{ trans('message.transaction_date')}}</th>
+                            <th>{{ trans('message.method')}}</th>
+                            <th>{{ trans('message.total')}}</th>
+                            <th>{{ trans('message.status')}}</th>
                         </tr>
                         </thead>
 
@@ -347,12 +347,12 @@ active
 
             <div class="mt-4">
 
-                <button id="invoice-pdf" onclick="downloadPdf({{ $invoice->id }})" data-loading-text="{{ __('message.generating_pdf')}}" data-original-text="{{ __('message.generate_pdf')}}" class="btn btn-dark float-end ms-2">
-                    <i class="fa fa-download"></i> {{ __('message.generate_pdf')}}
+                <button id="invoice-pdf" onclick="downloadPdf({{ $invoice->id }})" data-loading-text="{{ trans('message.generating_pdf')}}" data-original-text="{{ trans('message.generate_pdf')}}" class="btn btn-dark float-end ms-2">
+                    <i class="fa fa-download"></i> {{ trans('message.generate_pdf')}}
                 </button>
 
                  @if($invoice->status !='Success')
-                    <a href="{{url('paynow/'.$invoice->id)}}" target="_blank" class="btn btn-dark float-end ms-2"><i class="fa fa-credit-card"></i> {{ __('message.pay_now')}}</a>
+                    <a href="{{url('paynow/'.$invoice->id)}}" target="_blank" class="btn btn-dark float-end ms-2"><i class="fa fa-credit-card"></i> {{ trans('message.pay_now')}}</a>
                 @endif
 
             </div>
@@ -382,7 +382,7 @@ active
             },
             error: function(xhr, status, error) {
                 console.error("Download failed:", error);
-                alert(@json( __('message.failed_generate_pdf')));
+                alert(@json( trans('message.failed_generate_pdf')));
             },
             complete: function() {
                 $btn.prop('disabled', false).html('<i class="fa fa-download"></i>  '+$btn.data('original-text'));

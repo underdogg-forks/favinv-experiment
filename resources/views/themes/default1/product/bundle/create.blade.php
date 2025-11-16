@@ -18,7 +18,7 @@
 
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+                    <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -70,7 +70,7 @@
                     <div class="col-md-6 form-group {{ $errors->has('items.0') ? 'has-error' : '' }}">
 
                         {!! html()->label(trans('message.bundle-items'), 'items')->class('required') !!}
-                        {!! html()->select('items[]', ['' => __('message.select'), 'Products' => $products])
+                        {!! html()->select('items[]', ['' => trans('message.select'), 'Products' => $products])
                             ->class('form-control')
                             ->multiple() !!}
 

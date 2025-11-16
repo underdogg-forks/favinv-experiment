@@ -82,7 +82,7 @@ class Google2FAController extends Controller
                 $isValid = (new Google2FA())->verifyKey($secret, $request->totp);
 
                 if (! $isValid) {
-                    throw new \Exception(__('message.invalid_passcode'));
+                    throw new \Exception(trans('message.invalid_passcode'));
                 }
             });
         } catch (\Exception $e) {
@@ -133,7 +133,7 @@ class Google2FAController extends Controller
     {
         $user = $request->userId ? User::where('id', $request->userId)->first() : $request->user();
         if (\Auth::user()->role != 'admin' && $user->id != \Auth::user()->id) {
-            return errorResponse(__('message.cannot_disable_2fa'));
+            return errorResponse(trans('message.cannot_disable_2fa'));
         }
         //make secret column blank
         $user->google2fa_secret = null;
@@ -176,7 +176,7 @@ class Google2FAController extends Controller
             'rec_code' => 'required',
             'recovery_code' => [new Honeypot()],
         ], [
-            'rec_code.required' => __('validation.please_enter_recovery_code'),
+            'rec_code.required' => trans('validation.please_enter_recovery_code'),
         ]);
 
         try {
@@ -186,11 +186,11 @@ class Google2FAController extends Controller
 
             return $this->handleTwoFactorLogin($request, $user, 'recovery-code', function ($user, $request) {
                 if ($user->code_usage_count == 1) {
-                    throw new \Exception(__('message.code_authenticator_disable_2fa'));
+                    throw new \Exception(trans('message.code_authenticator_disable_2fa'));
                 }
 
                 if ($request->rec_code !== $user->backup_code) {
-                    throw new \Exception(__('message.invalid_recovery_code'));
+                    throw new \Exception(trans('message.invalid_recovery_code'));
                 }
 
                 $user->code_usage_count = 1;

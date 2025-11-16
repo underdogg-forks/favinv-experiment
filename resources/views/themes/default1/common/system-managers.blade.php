@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.system_manager') }}
+    {{ trans('message.system_manager') }}
 @stop
 @section('content-header')
 <style>
@@ -14,13 +14,13 @@
 
 </style>
     <div class="col-sm-6">
-        <h1>{{ __('message.system_manager') }}</h1>
+        <h1>{{ trans('message.system_manager') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.system_manager') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.system_manager') }}</li>
         </ol>
     </div>
 
@@ -32,7 +32,7 @@
         <form id="managerSettingsForm">
             <div class="card card-secondary card-outline elevation-2">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('message.system_manager_settings') }}</h3>
+                    <h3 class="card-title">{{ trans('message.system_manager_settings') }}</h3>
                 </div>
 
                 <div class="card-body">
@@ -41,8 +41,8 @@
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="autoAssignAccountSwitch" name="autoAssignAccount" {{ $accountManagersAutoAssign ? 'checked' : '' }}>
                                 <label class="custom-control-label label-toggle" for="autoAssignAccountSwitch">
-                                    <strong>{{ __('message.enable_account_manager') }}</strong>
-                                    <small class="text-muted d-block">{{ __('message.account_upon_creation') }}</small>
+                                    <strong>{{ trans('message.enable_account_manager') }}</strong>
+                                    <small class="text-muted d-block">{{ trans('message.account_upon_creation') }}</small>
                                 </label>
                             </div>
                         </div>
@@ -50,8 +50,8 @@
                             <div class="custom-control custom-switch">
                                 <input type="checkbox" class="custom-control-input" id="autoAssignSalesSwitch" name="autoAssignSales" {{ $salesManagerAutoAssign ? 'checked' : '' }}>
                                 <label class="custom-control-label label-toggle" for="autoAssignSalesSwitch">
-                                    <strong>{{ __('message.enable_sales_manager') }}</strong>
-                                    <small class="text-muted d-block">{{ __('message.sales_upon_creation') }}</small>
+                                    <strong>{{ trans('message.enable_sales_manager') }}</strong>
+                                    <small class="text-muted d-block">{{ trans('message.sales_upon_creation') }}</small>
                                 </label>
                             </div>
                         </div>
@@ -60,9 +60,9 @@
                         <!-- Account Manager Replacement -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="accountManagerCurrent">{{ __('message.current_account_manager') }}</label>
+                                <label for="accountManagerCurrent">{{ trans('message.current_account_manager') }}</label>
                                 <select class="form-control select2-manager" name="accountManagerCurrent" id="accountManagerCurrent">
-                                    <option value="">{{ __('message.select') }}</option>
+                                    <option value="">{{ trans('message.select') }}</option>
                                     @foreach($accountManagers as $key => $manager)
                                         <option value="{{ $key }}">{{ $manager }}</option>
                                     @endforeach
@@ -71,7 +71,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="accountManagerNew">{{ __('message.select_replacement_manager') }}</label>
+                                <label for="accountManagerNew">{{ trans('message.select_replacement_manager') }}</label>
                                 <select class="form-control select2-new" name="accountManagerNew" id="accountManagerNew" multiple>
                                 </select>
                             </div>
@@ -82,9 +82,9 @@
                         <!-- Sales Manager Replacement -->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="salesManagerCurrent">{{ __('message.current_sales_manager') }}</label>
+                                <label for="salesManagerCurrent">{{ trans('message.current_sales_manager') }}</label>
                                 <select class="form-control select2-manager" name="salesManagerCurrent" id="salesManagerCurrent">
-                                    <option value="">{{ __('message.select') }}</option>
+                                    <option value="">{{ trans('message.select') }}</option>
                                     @foreach($salesManager as $key => $manager)
                                         <option value="{{ $key }}">{{ $manager }}</option>
                                     @endforeach
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="salesManagerNew">{{ __('message.select_replacement_sales_manager') }}</label>
+                                <label for="salesManagerNew">{{ trans('message.select_replacement_sales_manager') }}</label>
                                 <select class="form-control select2-new" name="salesManagerNew" id="salesManagerNew" multiple>
                                 </select>
                             </div>
@@ -103,7 +103,7 @@
 
                 <div class="card-footer">
                     <button class="btn btn-primary" type="submit">
-                        <i class="fas fa-save"></i>&nbsp; {{ __('message.save') }}
+                        <i class="fas fa-save"></i>&nbsp; {{ trans('message.save') }}
                     </button>
                 </div>
             </div>
@@ -115,25 +115,25 @@
             function initSelect2Manager() {
                 $('.select2-manager').select2({
                     allowClear: true,
-                    placeholder: "{{ __('message.pipe_select_option') }}"
+                    placeholder: "{{ trans('message.pipe_select_option') }}"
                 });
             }
 
             // Function to initialize select2-new
             function initSelect2New() {
                 $('.select2-new').select2({
-                    placeholder: "{{ __('message.search') }}",
+                    placeholder: "{{ trans('message.search') }}",
                     minimumInputLength: 1,
                     maximumSelectionLength: 1,
                     language: {
                         inputTooShort: function () {
-                            return '{{ __("message.select2_input_too_short") }}';
+                            return '{{ trans("message.select2_input_too_short") }}';
                         },
                         noResults: function () {
-                            return '{{ __("message.select2_no_results") }}';
+                            return '{{ trans("message.select2_no_results") }}';
                         },
                         searching: function () {
-                            return '{{ __("message.select2_searching") }}';
+                            return '{{ trans("message.select2_searching") }}';
                         }
                     },
                     ajax: {
@@ -204,7 +204,7 @@
 
                 // Pass if both are empty; fail if this is empty and the other is not
                 return valIsEmpty && otherIsEmpty || !valIsEmpty;
-            }, "{{ __('validation.required') }}");
+            }, "{{ trans('validation.required') }}");
 
 
             $('#managerSettingsForm').validate({
@@ -223,10 +223,10 @@
                     }
                 },
                 messages: {
-                    accountManagerCurrent: "{{ __('message.existingAccManager_required') }}",
-                    accountManagerNew: "{{ __('message.newAccManager_required') }}",
-                    salesManagerCurrent: "{{ __('message.select_system_sales_manager') }}",
-                    salesManagerNew: "{{ __('message.select_new_sales_manager') }}"
+                    accountManagerCurrent: "{{ trans('message.existingAccManager_required') }}",
+                    accountManagerNew: "{{ trans('message.newAccManager_required') }}",
+                    salesManagerCurrent: "{{ trans('message.select_system_sales_manager') }}",
+                    salesManagerNew: "{{ trans('message.select_new_sales_manager') }}"
                 },
                 errorPlacement: function (error, element) {
                     error.addClass('invalid-feedback');

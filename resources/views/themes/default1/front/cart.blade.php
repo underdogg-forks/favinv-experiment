@@ -1,21 +1,21 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.cart') }}
+    {{ trans('message.cart') }}
 @stop
 @section('page-header')
     <br>
-    {{ __('message.cart') }}
+    {{ trans('message.cart') }}
 @stop
 @section('page-heading')
-{{ __('message.cart') }}
+{{ trans('message.cart') }}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
 @endif
- <li class="active text-dark">{{ __('message.cart')}}</li>
+ <li class="active text-dark">{{ trans('message.cart')}}</li>
 @stop
 @section('main-class') "main shop" @stop
 
@@ -120,28 +120,28 @@
 
                                             <th class="product-name text-uppercase" width="" style="font-family: Arial;">
 
-                                                {{ __('message.product')}}
+                                                {{ trans('message.product')}}
 
                                             </th>
 
                                             <th class="product-price text-uppercase" width="">
 
-                                                {{ __('message.price')}}
+                                                {{ trans('message.price')}}
                                             </th>
 
                                             <th class="product-quantity text-uppercase" width="">
 
-                                                {{ __('message.quantity')}}
+                                                {{ trans('message.quantity')}}
                                             </th>
                                             <th class="product-agents text-uppercase" width="">
 
-                                                {{ __('message.agents')}}
+                                                {{ trans('message.agents')}}
                                             </th>
 
 
                                             <th class="product-subtotal text-uppercase" width="">
 
-                                                {{ __('message.sub_total')}}
+                                                {{ trans('message.sub_total')}}
                                             </th>
                                         </tr>
                                     </thead>
@@ -150,7 +150,7 @@
                                                 $productdetails1=$item->associatedModel->getAttributes();
                                                    if(\Auth::check()) {
                                                    Cart::clearItemConditions($item->id);
-                                                   if(\Session::has('code')) {
+                                                   if(session()->has('code')) {
                                                    \Session::forget('code');
                                                    \Session::forget('usage');
                                                     $cartcont = new \App\Http\Controllers\Front\CartController();
@@ -184,7 +184,7 @@
 
                                                 <div class="product-thumbnail-wrapper" style="width: 100px;">
 
-                                                    <a onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove" data-bs-toggle="tooltip" title="{{ __('message.remove_product')}}" style="top: -15px;">
+                                                    <a onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove" data-bs-toggle="tooltip" title="{{ trans('message.remove_product')}}" style="top: -15px;">
 
                                                         <i class="fas fa-times"></i>
                                                     </a>
@@ -237,7 +237,7 @@
 
                                                     @if (!$item->attributes->agents)
 
-                                                            {{ __('message.unlimited_agents') }}
+                                                            {{ trans('message.unlimited_agents') }}
                                                     @else
                                                         @if($isAllowedtoEdit['agent'])
                                                             <div class="quantity">
@@ -282,7 +282,7 @@
 
                             <div class="card-body">
 
-                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.cart_totals')}}</h4>
+                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.cart_totals')}}</h4>
 
 
                                 <div class="table-responsive">
@@ -294,7 +294,7 @@
                                             <tr class="total">
 
                                                 <td>
-                                                    <strong class="text-color-dark text-3-5" style="font-family: Arial;">{{ __('message.total')}}</strong>
+                                                    <strong class="text-color-dark text-3-5" style="font-family: Arial;">{{ trans('message.total')}}</strong>
                                                 </td>
 
                                                 <td class="text-end">
@@ -313,7 +313,7 @@
                                             <form action="{{url('cart/clear')}}" method="post">
                                             {{ csrf_field() }}
 
-                                             <a href="{{url('cart/clear')}}"><button class="btn btn-light btn-modern text-2 text-uppercase" style="background: #F4F4F4;">{{ __('message.clear_cart')}}</button></a>
+                                             <a href="{{url('cart/clear')}}"><button class="btn btn-light btn-modern text-2 text-uppercase" style="background: #F4F4F4;">{{ trans('message.clear_cart')}}</button></a>
                                             </form>
                                         </div>
                                     </div>
@@ -321,9 +321,9 @@
                                     <div class="col-md-auto px-0">
                                         @if(count($domain)>0)
 
-                                       <a href="#domain" data-toggle="modal" data-target="#domain" class="btn btn-dark btn-modern text-2 text-uppercase checkout">{{ __('message.checkout') }} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></a>
+                                       <a href="#domain" data-toggle="modal" data-target="#domain" class="btn btn-dark btn-modern text-2 text-uppercase checkout">{{ trans('message.checkout') }} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></a>
                                          @else
-                                         <a href="{{url('checkout')}}" class="btn btn-dark btn-modern text-2 text-uppercase checkout">{{ __('message.checkout') }} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></a>
+                                         <a href="{{url('checkout')}}" class="btn btn-dark btn-modern text-2 text-uppercase checkout">{{ trans('message.checkout') }} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></a>
                                           @endif
                                     </div>
                                 </div>
@@ -338,7 +338,7 @@
                         <div class="col-md-12" style="text-align: center;">
 
                                     <div class="col-md-offset-5">
-                                        <p class="text-black">{{ __('message.no_item_cart')}}</p>
+                                        <p class="text-black">{{ trans('message.no_item_cart')}}</p>
                                         @if(Auth::check())
 
                                             @php
@@ -346,11 +346,11 @@
                                             @endphp
                                         
                                            @if(!is_null($data))
-                                            <a href="{{url("group/$data->pricing_templates_id/$data->id")}}" class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2">{{ __('message.continue_shopping')}}
+                                            <a href="{{url("group/$data->pricing_templates_id/$data->id")}}" class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2">{{ trans('message.continue_shopping')}}
                                                 @endif
 
                                                 @else
-                                                    <a href="{{url('login')}}" class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2">{{ __('message.continue_shopping')}}
+                                                    <a href="{{url('login')}}" class="btn border-0 px-4 py-2 line-height-9 btn-tertiary me-2">{{ trans('message.continue_shopping')}}
                                                         @endif
                                                     </a>
                                 </div>

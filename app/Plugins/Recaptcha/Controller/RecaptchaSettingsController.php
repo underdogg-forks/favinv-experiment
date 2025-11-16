@@ -38,6 +38,6 @@ class RecaptchaSettingsController extends Controller
             'error_message', 'theme', 'size', 'badge_position',
         ]));
 
-        return successResponse(__('recaptcha::recaptcha.captcha_settings_updated'));
+        return successResponse(trans('recaptcha::recaptcha.captcha_settings_updated'));
     }
 }

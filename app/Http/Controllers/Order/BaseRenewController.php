@@ -52,10 +52,10 @@ class BaseRenewController extends Controller
             $product = $this->getProductByProductId($item->product_id, $order);
             $user = $this->getUserById($order->client);
             if (! $user) {
-                throw new Exception(__('message.user_removed_database'));
+                throw new Exception(trans('message.user_removed_database'));
             }
             if (! $product) {
-                throw new Exception(__('message.product_removed_database'));
+                throw new Exception(trans('message.product_removed_database'));
             }
 
             if (is_null($agents)) {

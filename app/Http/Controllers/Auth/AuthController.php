@@ -64,7 +64,7 @@ class AuthController extends BaseAuthController
             if ($activate) {
                 $email = $activate->email;
             } else {
-                throw new NotFoundHttpException(__('message.token_mismatch_account_not_activated'));
+                throw new NotFoundHttpException(trans('message.token_mismatch_account_not_activated'));
             }
             $user = $user->where('email', $email)->first();
             if ($user) {
@@ -79,16 +79,16 @@ class AuthController extends BaseAuthController
                         return redirect($url);
                     }
 
-                    return redirect($url)->with('success', __('message.email_verification_success'));
+                    return redirect($url)->with('success', trans('message.email_verification_success'));
                 } else {
-                    return redirect($url)->with('warning', __('message.email_already_verified'));
+                    return redirect($url)->with('warning', trans('message.email_already_verified'));
                 }
             } else {
-                throw new NotFoundHttpException(__('message.user_email_not_found'));
+                throw new NotFoundHttpException(trans('message.user_email_not_found'));
             }
         } catch (\Exception $ex) {
             if ($ex->getCode() == 400) {
-                return redirect($url)->with('success', __('message.email_verification_success'));
+                return redirect($url)->with('success', trans('message.email_verification_success'));
             }
 
             return redirect($url)->with('fails', $ex->getMessage());
@@ -109,17 +109,17 @@ class AuthController extends BaseAuthController
             'password' => 'required|confirmed|min:6',
         ],
             [
-                'name.required' => __('validation.auth_controller.name_required'),
-                'name.max' => __('validation.auth_controller.name_max'),
+                'name.required' => trans('validation.auth_controller.name_required'),
+                'name.max' => trans('validation.auth_controller.name_max'),
 
-                'email.required' => __('validation.auth_controller.email_required'),
-                'email.email' => __('validation.auth_controller.email_email'),
-                'email.max' => __('validation.auth_controller.email_max'),
-                'email.unique' => __('validation.auth_controller.email_unique'),
+                'email.required' => trans('validation.auth_controller.email_required'),
+                'email.email' => trans('validation.auth_controller.email_email'),
+                'email.max' => trans('validation.auth_controller.email_max'),
+                'email.unique' => trans('validation.auth_controller.email_unique'),
 
-                'password.required' => __('validation.auth_controller.password_required'),
-                'password.confirmed' => __('validation.auth_controller.password_confirmed'),
-                'password.min' => __('validation.auth_controller.password_min'),
+                'password.required' => trans('validation.auth_controller.password_required'),
+                'password.confirmed' => trans('validation.auth_controller.password_confirmed'),
+                'password.min' => trans('validation.auth_controller.password_min'),
             ]);
     }
 
@@ -144,8 +144,8 @@ class AuthController extends BaseAuthController
             'eid' => 'required|string',
         ],
             [
-                'eid.required' => __('validation.eid_required'),
-                'eid.string' => __('validation.eid_string'),
+                'eid.required' => trans('validation.eid_required'),
+                'eid.string' => trans('validation.eid_string'),
             ]);
 
         try {
@@ -156,7 +156,7 @@ class AuthController extends BaseAuthController
             $user = User::where('email', $email)->firstOrFail();
 
             if ($user->mobile_verified) {
-                return errorResponse(__('message.mobile_already_verified'));
+                return errorResponse(trans('message.mobile_already_verified'));
             }
 
             $response = $this->sendOtp($user->mobile_code.$user->mobile, $user->id);
@@ -169,9 +169,9 @@ class AuthController extends BaseAuthController
                 return errorResponse($response['message']);
             }
 
-            return successResponse(__('message.otp_verification.send_success'));
+            return successResponse(trans('message.otp_verification.send_success'));
         } catch (\Exception $e) {
-            return errorResponse(__('message.otp_verification.send_failure'));
+            return errorResponse(trans('message.otp_verification.send_failure'));
         }
     }
 
@@ -191,11 +191,11 @@ class AuthController extends BaseAuthController
             'eid' => 'required|string',
             'type' => 'required|string|in:text,voice',
         ], [
-            'eid.required' => __('validation.resend_otp.eid_required'),
-            'eid.string' => __('validation.resend_otp.eid_string'),
-            'type.required' => __('validation.resend_otp.type_required'),
-            'type.string' => __('validation.resend_otp.type_string'),
-            'type.in' => __('validation.resend_otp.type_in'),
+            'eid.required' => trans('validation.resend_otp.eid_required'),
+            'eid.string' => trans('validation.resend_otp.eid_string'),
+            'type.required' => trans('validation.resend_otp.type_required'),
+            'type.string' => trans('validation.resend_otp.type_string'),
+            'type.in' => trans('validation.resend_otp.type_in'),
         ]);
         try {
             $email = Crypt::decrypt($request->eid);
@@ -214,12 +214,12 @@ class AuthController extends BaseAuthController
             }
 
             if ($type === 'voice') {
-                return successResponse(__('message.otp_verification.resend_voice_send_success'));
+                return successResponse(trans('message.otp_verification.resend_voice_send_success'));
             }
 
-            return successResponse(__('message.otp_verification.resend_send_success'));
+            return successResponse(trans('message.otp_verification.resend_send_success'));
         } catch (\Exception $exception) {
-            return errorResponse(__('message.otp_verification.resend_send_failure'));
+            return errorResponse(trans('message.otp_verification.resend_send_failure'));
         }
     }
 
@@ -228,8 +228,8 @@ class AuthController extends BaseAuthController
         $request->validate([
             'eid' => 'required|string',
         ], [
-            'eid.required' => __('validation.eid_required'),
-            'eid.string' => __('validation.eid_string'),
+            'eid.required' => trans('validation.eid_required'),
+            'eid.string' => trans('validation.eid_string'),
         ]);
         try {
             $email = Crypt::decrypt($request->eid);
@@ -248,18 +248,18 @@ class AuthController extends BaseAuthController
 
             return successResponse(
                 $method === 'GET'
-                    ? __('message.email_verification.resend_success')
-                    : __('message.email_verification.send_success')
+                    ? trans('message.email_verification.resend_success')
+                    : trans('message.email_verification.send_success')
             );
         } catch (\Exception $exception) {
-            return errorResponse(__('message.email_verification.send_failure'));
+            return errorResponse(trans('message.email_verification.send_failure'));
         }
     }
 
     public function verifyOtp(Request $request)
     {
         if (rateLimitForKeyIp('verify_mobile_otp', 5, 1, $request->ip())['status']) {
-            return errorResponse(__('message.too_many_attempts'));
+            return errorResponse(trans('message.too_many_attempts'));
         }
 
         $request->validate([
@@ -267,10 +267,10 @@ class AuthController extends BaseAuthController
             'otp' => 'required|string|size:6',
         ],
             [
-                'eid.required' => __('validation.verify_otp.eid_required'),  // Translating for eid field
-                'eid.string' => __('validation.verify_otp.eid_string'),
-                'otp.required' => __('validation.verify_otp.otp_required'),
-                'otp.size' => __('validation.verify_otp.otp_size'),
+                'eid.required' => trans('validation.verify_otp.eid_required'),  // Translating for eid field
+                'eid.string' => trans('validation.verify_otp.eid_string'),
+                'otp.required' => trans('validation.verify_otp.otp_required'),
+                'otp.size' => trans('validation.verify_otp.otp_size'),
             ]);
         try {
             // Decrypt the email
@@ -284,7 +284,7 @@ class AuthController extends BaseAuthController
 
             // Validate OTP
             if (! is_numeric($request->otp)) {
-                return errorResponse(__('message.otp_invalid_format'));
+                return errorResponse(trans('message.otp_invalid_format'));
             }
 
             $response = $this->sendVerifyOTP($otp, $user->mobile_code.$user->mobile);
@@ -300,12 +300,12 @@ class AuthController extends BaseAuthController
                 //dispatch the job to add user to external services
                 AddUserToExternalService::dispatch($user, 'verify');
 
-                \Session::flash('success', __('message.registration_complete'));
+                \Session::flash('success', trans('message.registration_complete'));
             }
 
-            return successResponse(__('message.otp_verified'));
+            return successResponse(trans('message.otp_verified'));
         } catch (\Exception $e) {
-            return errorResponse(__('message.error_occurred_while_verify'));
+            return errorResponse(trans('message.error_occurred_while_verify'));
         }
     }
 
@@ -316,10 +316,10 @@ class AuthController extends BaseAuthController
             'otp' => 'required|string|size:6',
         ],
             [
-                'eid.required' => __('validation.verify_otp.eid_required'),  // Translating for eid field
-                'eid.string' => __('validation.verify_otp.eid_string'),
-                'otp.required' => __('validation.verify_otp.otp_required'),
-                'otp.size' => __('validation.verify_otp.otp_size'),
+                'eid.required' => trans('validation.verify_otp.eid_required'),  // Translating for eid field
+                'eid.string' => trans('validation.verify_otp.eid_string'),
+                'otp.required' => trans('validation.verify_otp.otp_required'),
+                'otp.size' => trans('validation.verify_otp.otp_size'),
             ]);
 
         try {
@@ -334,11 +334,11 @@ class AuthController extends BaseAuthController
             $account = AccountActivate::where('email', $email)->latest()->first(['token', 'updated_at']);
 
             if ($account->token !== $otp) {
-                return errorResponse(__('message.email_verification.invalid_token'));
+                return errorResponse(trans('message.email_verification.invalid_token'));
             }
 
             if ($account->updated_at->addMinutes(10) < Carbon::now()) {
-                return errorResponse(__('message.email_verification.token_expired'));
+                return errorResponse(trans('message.email_verification.token_expired'));
             }
 
             AccountActivate::where('email', $email)->delete();
@@ -350,12 +350,12 @@ class AuthController extends BaseAuthController
                 //dispatch the job to add user to external services
                 AddUserToExternalService::dispatch($user, 'verify');
 
-                \Session::flash('success', __('message.registration_complete'));
+                \Session::flash('success', trans('message.registration_complete'));
             }
 
-            return successResponse(__('message.email_verification.email_verified'));
+            return successResponse(trans('message.email_verification.email_verified'));
         } catch (\Exception $e) {
-            return errorResponse(__('message.email_verification.invalid_token'));
+            return errorResponse(trans('message.email_verification.invalid_token'));
         }
     }
 
@@ -378,16 +378,16 @@ class AuthController extends BaseAuthController
             ->orderBy('state_subdivision_name', 'asc')->get();
 
             if (count($states) > 0) {
-                echo '<option value="">'.__('message.choose').'</option>';
+                echo '<option value="">'.trans('message.choose').'</option>';
                 foreach ($states as $stateList) {
                     echo '<option value='.$stateList->state_subdivision_code.'>'
                 .$stateList->state_subdivision_name.'</option>';
                 }
             } else {
-                echo "<option value=''>".__('message.no_states_available').'</option>';
+                echo "<option value=''>".trans('message.no_states_available').'</option>';
             }
         } catch (\Exception $ex) {
-            echo "<option value=''>".__('message.problem_while_loading').'</option>';
+            echo "<option value=''>".trans('message.problem_while_loading').'</option>';
 
             return redirect()->back()->with('fails', $ex->getMessage());
         }

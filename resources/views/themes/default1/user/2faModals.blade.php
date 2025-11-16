@@ -29,7 +29,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ __('message.set_up_authenticator') }}</h4>
+                    <h4 class="modal-title">{{ trans('message.set_up_authenticator') }}</h4>
                     <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -38,7 +38,7 @@
                     <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.varify_password'))->class('required') !!}
                         <div class="input-group">
-                            <input type="password" name="password" id="user_password" placeholder="{{ __('message.enter_password') }}" class="form-control" required="required">
+                            <input type="password" name="password" id="user_password" placeholder="{{ trans('message.enter_password') }}" class="form-control" required="required">
                             <span role="button" class="input-group-text" onclick="togglePasswordVisibility(this)">
                                 <i class="fa fa-eye-slash"></i>
                             </span>
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex">
-                    <button type="button" id="verify_password" class="btn btn-primary ms-auto"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ __('message.validate') }}</button>
+                    <button type="button" id="verify_password" class="btn btn-primary ms-auto"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ trans('message.validate') }}</button>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ __('message.set_up_authenticator') }}</h4>
+                    <h4 class="modal-title">{{ trans('message.set_up_authenticator') }}</h4>
                     <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -68,11 +68,11 @@
                         <input type="hidden" name="user_password" id="user_password" value="">
                         <input type="hidden" name="login_type" id="login_type" value="social">
                         <h5>Hi {{$user->first_name}},</h5>
-                        <p><b>{{ __('message.continue_verify_social_login') }}</b></p>
+                        <p><b>{{ trans('message.continue_verify_social_login') }}</b></p>
                     </form>
                 </div>
                 <div class="modal-footer d-flex">
-                    <button type="submit" id="verify_password" class="btn btn-primary ms-auto"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ __('message.validate') }}</button>
+                    <button type="submit" id="verify_password" class="btn btn-primary ms-auto"><i class="fa fa-check">&nbsp;&nbsp;</i>{{ trans('message.validate') }}</button>
                 </div>
             </div>
         </div>
@@ -83,22 +83,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.client_recovery_code') }}</h4>
+                <h4 class="modal-title">{{ trans('message.client_recovery_code') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="alertMessagecopied"></div>
-                <p>{{ __('message.recovery_code_account') }}</p>
+                <p>{{ trans('message.recovery_code_account') }}</p>
                 <div class="row align-items-center">
-                    <div><label class="col-form-label"><strong>{{ __('message.client_recovery_code') }} :</strong></label></div>
+                    <div><label class="col-form-label"><strong>{{ trans('message.client_recovery_code') }} :</strong></label></div>
                     <div class="col">
                         <div class="input-group">
                             <input type="text" id="recoverycode" class="form-control" disabled>
                             @component('mini_views.copied_flash_text', [
                            'navigations' => [
-                              ['btnName' => 'rec_code', 'slot' => 'recovery', 'style' => '<span class="input-group-text" id="copyBtn" data-bs-toggle="tooltip" title="'. __('message.copy_clipboard').'" onclick="copyRecoveryCode()" ><i id="copy_icon_recovery" class="fa fa-clipboard"></i></span>'],
+                              ['btnName' => 'rec_code', 'slot' => 'recovery', 'style' => '<span class="input-group-text" id="copyBtn" data-bs-toggle="tooltip" title="'. trans('message.copy_clipboard').'" onclick="copyRecoveryCode()" ><i id="copy_icon_recovery" class="fa fa-clipboard"></i></span>'],
                            ]
                         ])
                             @endcomponent
@@ -107,16 +107,16 @@
                 </div>
                 <br>
                 <div>
-                    <p>{{ __('message.treat_recovery_code') }} <a href="https://lastpass.com" target="_blank">{{ __('message.lastpass') }}</a>, <a href="https://1Password.com" target="_blank">{{ __('message.1_password') }}</a>, {{ __('message.or') }} <a href="https://keepersecurity.com.com" target="_blank">{{ __('message.keeper') }}</a>.</p>
+                    <p>{{ trans('message.treat_recovery_code') }} <a href="https://lastpass.com" target="_blank">{{ trans('message.lastpass') }}</a>, <a href="https://1Password.com" target="_blank">{{ trans('message.1_password') }}</a>, {{ trans('message.or') }} <a href="https://keepersecurity.com.com" target="_blank">{{ trans('message.keeper') }}</a>.</p>
                 </div>
                 <span id="passerror"></span>
             </div>
             <div class="modal-footer d-flex">
                 <button type="button" id="next_rec_code" class="btn btn-primary ms-auto">
                     @if(in_array(app()->getLocale(), ['ar', 'he']))
-                        <i class="fa fa-arrow-right"></i>&nbsp;&nbsp;{{ __('message.next') }}
+                        <i class="fa fa-arrow-right"></i>&nbsp;&nbsp;{{ trans('message.next') }}
                     @else
-                        {{ __('message.next') }}&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                        {{ trans('message.next') }}&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
                     @endif
                 </button>
             </div>
@@ -128,7 +128,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.set_up_authenticator') }}</h4>
+                <h4 class="modal-title">{{ trans('message.set_up_authenticator') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -136,38 +136,38 @@
             <div class="text-center">
                 <div class="modal-body bar-code">
                     <ul class="col-sm-offset-3 offset-sm-2 text-left">
-                        <li>{{ __('message.get_authenticator') }}</li>
-                        <li>{{ __('message.app_select') }} <b>{{ __('message.set_up_account') }}</b></li>
-                        <li>{{ __('message.choose') }} <b>{{ __('message.scan_barcode') }}</b></li>
+                        <li>{{ trans('message.get_authenticator') }}</li>
+                        <li>{{ trans('message.app_select') }} <b>{{ trans('message.set_up_account') }}</b></li>
+                        <li>{{ trans('message.choose') }} <b>{{ trans('message.scan_barcode') }}</b></li>
                     </ul>
                     <div id="barcode">
                         <!--<img id="image"/>-->
                         <div id="svgshow"></div>
                     </div>
-                    <a href="javascript:;" id="cantscanit">{{ __('message.caps_can_not_scan') }}</a>
+                    <a href="javascript:;" id="cantscanit">{{ trans('message.caps_can_not_scan') }}</a>
                 </div>
                 <div class="modal-body secret-key">
                     <div id="alertMessage2"></div>
                     <ul class="col-sm-offset-3 offset-sm-2 text-left">
-                        <li>{{ __('message.tap') }} <b>{{ __('message.menu') }}</b>, {{ __('message.then') }} <b>{{ __('message.set_up_account') }}</b></li>
-                        <li>{{ __('message.tap') }} <b>{{ __('message.enter_provided_key') }}</b></li>
-                        <li>{{ __('message.enter_email_address') }}</li>
+                        <li>{{ trans('message.tap') }} <b>{{ trans('message.menu') }}</b>, {{ trans('message.then') }} <b>{{ trans('message.set_up_account') }}</b></li>
+                        <li>{{ trans('message.tap') }} <b>{{ trans('message.enter_provided_key') }}</b></li>
+                        <li>{{ trans('message.enter_email_address') }}</li>
                         <br>
                         <div class="col-md-6">
                             <input type="text" id="secretkeyid" readonly="readonly" class="form-control" style="width: auto;">
                         </div>
                         <br><br>
-                        <li>{{ __('message.make_sure') }} <b>{{ __('message.time_based') }}</b> {{ __('message.is_turned_on') }} <b>{{ __('message.add') }}</b> {{ __('message.to_finish') }}</li>
+                        <li>{{ trans('message.make_sure') }} <b>{{ trans('message.time_based') }}</b> {{ trans('message.is_turned_on') }} <b>{{ trans('message.add') }}</b> {{ trans('message.to_finish') }}</li>
                     </ul>
-                    <a href="javascript:;" id="scanbarcode">{{ __('message.caps_scan_barcode') }}</a>
+                    <a href="javascript:;" id="scanbarcode">{{ trans('message.caps_scan_barcode') }}</a>
                 </div>
             </div>
             <div class="modal-footer d-flex">
                 <button type="button" id="scan_complete" class="btn btn-primary ms-auto">
                     @if(in_array(app()->getLocale(), ['ar', 'he']))
-                        <i class="fa fa-arrow-right"></i>&nbsp;&nbsp;{{ __('message.next') }}
+                        <i class="fa fa-arrow-right"></i>&nbsp;&nbsp;{{ trans('message.next') }}
                     @else
-                        {{ __('message.next') }}&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                        {{ trans('message.next') }}&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
                     @endif
                 </button>
             </div>
@@ -179,7 +179,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.set_up_authenticator') }}</h4>
+                <h4 class="modal-title">{{ trans('message.set_up_authenticator') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -187,18 +187,18 @@
             <div class="modal-body modal-body-spacing">
                 {!! html()->label(trans('message.enter_6_digit_code'))->class('required') !!}
                 <div class="form-group form-field-template">
-                    <input type="text" name="password" id="passcode" placeholder="{{ __('message.enter_passcode') }}" class="form-control" required="required">
+                    <input type="text" name="password" id="passcode" placeholder="{{ trans('message.enter_passcode') }}" class="form-control" required="required">
                     <span id="passcodeerror"></span>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" id="prev_button" class="btn btn-default" dir="{{ in_array(app()->getLocale(), ['ar', 'he']) ? 'rtl' : 'ltr' }}">
                  <span class="button-content">
-                    <i class="fa {{ in_array(app()->getLocale(), ['ar', 'he']) ? 'fa-arrow-left' : 'fa-arrow-left' }}" style="margin-right: 8px;"></i>{{ __('message.previous') }}
+                    <i class="fa {{ in_array(app()->getLocale(), ['ar', 'he']) ? 'fa-arrow-left' : 'fa-arrow-left' }}" style="margin-right: 8px;"></i>{{ trans('message.previous') }}
                  </span>
                 </button>
                 <button type="button" id="pass_btn" class="btn ms-auto btn-primary pull-right float-right">
-                    <i class="fa fa-check"></i> {{ __('message.verify') }}
+                    <i class="fa fa-check"></i> {{ trans('message.verify') }}
                 </button>
             </div>
         </div>
@@ -209,18 +209,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.set_up_authenticator') }}</h4>
+                <h4 class="modal-title">{{ trans('message.set_up_authenticator') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {{ __('message.set_auth_invoicing') }}
+                    {{ trans('message.set_auth_invoicing') }}
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left closeandrefresh" data-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ __('message.close') }}</button>
+                <button type="button" class="btn btn-default pull-left closeandrefresh" data-dismiss="modal"><i class="fa fa-times">&nbsp;&nbsp;</i>{{ trans('message.close') }}</button>
             </div>
         </div>
     </div>
@@ -230,7 +230,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.two_factor_authentication') }}</h4>
+                <h4 class="modal-title">{{ trans('message.two_factor_authentication') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -238,11 +238,11 @@
             <div class="modal-body">
                 <div id="alertMessage"></div>
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {{ __('message.two_factor_verification') }}
+                    {{ trans('message.two_factor_verification') }}
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-danger pull-right float-right" id="turnoff2fa"><i class="fa fa-power-off"></i> {{ __('message.caps_turn_off') }}</button>
+                <button class="btn btn-danger pull-right float-right" id="turnoff2fa"><i class="fa fa-power-off"></i> {{ trans('message.caps_turn_off') }}</button>
             </div>
         </div>
     </div>
@@ -253,16 +253,16 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="width:700px;">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.client_recovery_code') }}</h4>
+                <h4 class="modal-title">{{ trans('message.client_recovery_code') }}</h4>
                 <button type="button" class="close closeandrefresh" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('message.recovery_code_once') }}</p>
+                <p>{{ trans('message.recovery_code_once') }}</p>
                 <div class="row align-items-center">
                     <div>
-                        <label for="newrecoverycode" class="col-form-label"><strong>{{ __('message.client_recovery_code') }} :</strong></label>
+                        <label for="newrecoverycode" class="col-form-label"><strong>{{ trans('message.client_recovery_code') }} :</strong></label>
                     </div>
                     <div class="col">
                         <div class="input-group">
@@ -279,7 +279,7 @@
                 <span id="passerror"></span>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-dark" id="generateNewCode">{{ __('message.generate_new') }}</button>
+                <button class="btn btn-dark" id="generateNewCode">{{ trans('message.generate_new') }}</button>
             </div>
         </div>
     </div>

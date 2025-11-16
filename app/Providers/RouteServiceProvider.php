@@ -74,7 +74,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         return function () {
             if (request()->expectsJson()) {
-                return errorResponse(__('message.too_many_attempts'), 429);
+                return errorResponse(trans('message.too_many_attempts'), 429);
             }
             
             abort(429);

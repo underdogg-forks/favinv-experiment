@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.order') }}
+    {{ trans('message.order') }}
 @stop
 @section('content-header')
 <style>
@@ -74,13 +74,13 @@ input:checked + .slider:before {
 
 
 <div class="col-sm-6">
-    <h1>{{ __('message.order_details') }}</h1>
+    <h1>{{ trans('message.order_details') }}</h1>
 </div>
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{url('orders')}}"><i class="fa fa-dashboard"></i> {{ __('message.all-orders') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('message.view_order') }}</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{url('orders')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all-orders') }}</a></li>
+        <li class="breadcrumb-item active">{{ trans('message.view_order') }}</li>
     </ol>
 </div><!-- /.col -->
 
@@ -98,7 +98,7 @@ input:checked + .slider:before {
                     <h4 class="card-title" style="color:black;">
                      
                          <i class="fa fa-users"></i>
-                        {{ __('message.overview') }}
+                        {{ trans('message.overview') }}
                      
                     </h4>
                   </div>
@@ -107,14 +107,14 @@ input:checked + .slider:before {
                         <div class="alert alert-info">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <b>{{ __('message.date') }}: </b>{!! getDateHtml($order->created_at) !!}
+                                    <b>{{ trans('message.date') }}: </b>{!! getDateHtml($order->created_at) !!}
                                 </div>
                                 <div class="col-md-4">
-                                    <b>{{ __('message.order_no') }}: </b>  #{{$order->number}}
+                                    <b>{{ trans('message.order_no') }}: </b>  #{{$order->number}}
 
                                 </div>
                                 <div class="col-md-4">
-                                    <b>{{ __('message.status') }}: </b>{{$order->order_status}}
+                                    <b>{{ trans('message.status') }}: </b>{{$order->order_status}}
                                 </div>
                             </div>
                             <br>
@@ -124,8 +124,8 @@ input:checked + .slider:before {
                                ?>
                             @if(!empty($terminatedOrderId))
                                 <p class="order-links">
-                                    {{ __('message.this_order') }} <b>{{$order->number}}</b>
-                                    {{ __('message.has_generated') }}: <a class="order-link" href="{{$terminatedOrderId}}">{{$terminatedOrderNumber}}</a>.
+                                    {{ trans('message.this_order') }} <b>{{$order->number}}</b>
+                                    {{ trans('message.has_generated') }}: <a class="order-link" href="{{$terminatedOrderId}}">{{$terminatedOrderNumber}}</a>.
                                 </p>
                             @endif
 
@@ -142,13 +142,13 @@ input:checked + .slider:before {
 
                                 @foreach($newOrders as $newOrder)
                                     <div class="termination-message">
-                                        <p class="termination-notice"><b>{{ __('message.termination_notice') }}</b></p>
+                                        <p class="termination-notice"><b>{{ trans('message.termination_notice') }}</b></p>
                                         <p class="termination-description">
-                                            {{ __('message.order_terminated') }}
+                                            {{ trans('message.order_terminated') }}
                                         </p>
                                         <p class="order-links">
-                                            {{ __('message.termination_order') }}: <b>{{$order->number}}</b>
-                                            {{ __('message.has_new_order') }}: <a class="order-link" href="{{$newOrder[0]->id}}">{{$newOrder[0]->number}}</a>.
+                                            {{ trans('message.termination_order') }}: <b>{{$order->number}}</b>
+                                            {{ trans('message.has_new_order') }}: <a class="order-link" href="{{$newOrder[0]->id}}">{{$newOrder[0]->number}}</a>.
                                         </p>
                                     </div>
 
@@ -167,7 +167,7 @@ input:checked + .slider:before {
                            <div class="card-body table-responsive">
                                <div class="card-header">
                               <h5 class="card-title" style="position: absolute;left: 7px;bottom: 10px;">
-                                  {{ __('message.user_details') }}
+                                  {{ trans('message.user_details') }}
                              </h5>
                                </div>
 
@@ -175,16 +175,16 @@ input:checked + .slider:before {
                               
                             <table class="table table-hover">
 
-                                <tbody><tr><td><b>{{ __('message.name_page') }}:</b></td><td><a href="{{url('clients/'.$user->id)}}">{{ucfirst($user->first_name)}}</a></td></tr>
-                                    <tr><td><b>{{ __('message.email') }}:</b></td><td>{{$user->email}}</td></tr>
-                                    <tr><td><b>{{ __('message.mobile') }}:</b></td><td>@if($user->mobile_code)(<b>+</b>{{$user->mobile_code}})@endif&nbsp;{{$user->mobile}}</td></tr>
-                                    <tr><td><b>{{ __('message.address') }}:</b></td><td>{{$user->address}},
+                                <tbody><tr><td><b>{{ trans('message.name_page') }}:</b></td><td><a href="{{url('clients/'.$user->id)}}">{{ucfirst($user->first_name)}}</a></td></tr>
+                                    <tr><td><b>{{ trans('message.email') }}:</b></td><td>{{$user->email}}</td></tr>
+                                    <tr><td><b>{{ trans('message.mobile') }}:</b></td><td>@if($user->mobile_code)(<b>+</b>{{$user->mobile_code}})@endif&nbsp;{{$user->mobile}}</td></tr>
+                                    <tr><td><b>{{ trans('message.address') }}:</b></td><td>{{$user->address}},
                                             {{ucfirst($user->town)}}, 
                                             @if(key_exists('name',getStateByCode($user->state)))
                                             {{getStateByCode($user->state)['name']}}
                                             @endif
                                         </td></tr>
-                                    <tr><td><b>{{ __('message.country') }}:</b></td><td>{{getCountryByCode($user->country)}}</td></tr>
+                                    <tr><td><b>{{ trans('message.country') }}:</b></td><td>{{getCountryByCode($user->country)}}</td></tr>
 
                                 </tbody>
                               </table>
@@ -212,23 +212,23 @@ input:checked + .slider:before {
                                                    <div class="modal-dialog" role="document">
                                                        <div class="modal-content">
                                                            <div class="modal-header">
-                                                               <h5 class="modal-title" id="exampleModalLabel">{{ __('message.enter_domain_host') }}</h5>
+                                                               <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.enter_domain_host') }}</h5>
                                                            </div>
                                                            <div class="modal-body">
                                                                <form method="GET" action="{{url('uploadFile')}}" id="domain_id">
                                                                    {!! csrf_field() !!}
                                                                    <div class="form-group">
-                                                                       <label for="recipient-name" class="col-form-label required">{{ __('message.domain-name') }}</label>
+                                                                       <label for="recipient-name" class="col-form-label required">{{ trans('message.domain-name') }}</label>
                                                                        <input type="text" class="form-control" id="recipient-name" placeholder="https://example.com/public" name="domain" value="">
                                                                        {!! html()->hidden('orderNo', $order->number) !!}
                                                                        {!! html()->hidden('userId', $user->id) !!}
                                                                        <br>
                                                                        <div class="modal-footer d-flex justify-content-between">
                                                                            <button type="button" id="close" class="btn btn-default float-start" data-dismiss="modal">
-                                                                               <i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}
+                                                                               <i class="fa fa-times"></i>&nbsp;{{ trans('message.close') }}
                                                                            </button>
                                                                            <button type="submit" id="domainSave" class="done btn btn-primary float-end">
-                                                                               <i class="fas fa-save"></i>&nbsp;{{ __('message.done') }}
+                                                                               <i class="fas fa-save"></i>&nbsp;{{ trans('message.done') }}
                                                                            </button>
                                                                        </div>
                                                                    </div>
@@ -239,7 +239,7 @@ input:checked + .slider:before {
                                                </div>
                                            <div class="card-header">
                                                <h4 class="card-title" style="position: absolute;left: 7px;bottom: 10px;">
-                                                   {{ __('message.license_details') }}
+                                                   {{ trans('message.license_details') }}
                                                </h4>
                                            </div>
 
@@ -249,15 +249,15 @@ input:checked + .slider:before {
                                                <input type="hidden" name="domainRes" id="domainRes" value={{$allowDomainStatus}}>
                                                <tbody>
                                                <tr>
-                                                   <td><b>{{ __('message.license_code') }}</b></td>
+                                                   <td><b>{{ trans('message.license_code') }}</b></td>
                                                    <td id="" data-type="serialkey">{{($order->serial_key)}}</td>
 
                                                    <td> @component('mini_views.copied_flash_text',
-                                                        ['navigations'=>[['btnName'=>'lic_btn','slot'=>'license','style'=>'<span data-type="copy" style="font-size: 12px; pointer-events: initial; cursor: pointer; display: inline-block;height: 28px;width: 24px;" id="copyBtn" data-toggle="tooltip"  title="'. __('message.copy_clipboard') .'" class="btn btn-sm btn-secondary btn-xs" style="width:max-content;border:none;margin-left: 20px;"><i class="fas fa-copy"></i></span><span class="badge badge-success badge-xs pull-right" id="copied1" style="display:none;margin-top:-40px;margin-left:-20px;position: absolute;">'.__('message.copied').'</span>'],
+                                                        ['navigations'=>[['btnName'=>'lic_btn','slot'=>'license','style'=>'<span data-type="copy" style="font-size: 12px; pointer-events: initial; cursor: pointer; display: inline-block;height: 28px;width: 24px;" id="copyBtn" data-toggle="tooltip"  title="'. trans('message.copy_clipboard') .'" class="btn btn-sm btn-secondary btn-xs" style="width:max-content;border:none;margin-left: 20px;"><i class="fas fa-copy"></i></span><span class="badge badge-success badge-xs pull-right" id="copied1" style="display:none;margin-top:-40px;margin-left:-20px;position: absolute;">'.trans('message.copied').'</span>'],
                                                         ]
                                                         ])                    
                                                         @endcomponent
-                                                    <button class='class="btn btn-sm btn-secondary btn-xs' style="width:max-content;border:none;margin-left: 20px;" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}"><i class="fas fa-id-card-alt" style='color:white;' {!! tooltip( __('message.tooltip_reissue_license')) !!}</i>
+                                                    <button class='class="btn btn-sm btn-secondary btn-xs' style="width:max-content;border:none;margin-left: 20px;" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}"><i class="fas fa-id-card-alt" style='color:white;' {!! tooltip( trans('message.tooltip_reissue_license')) !!}</i>
                                                      </button>
 
                                                    </td>
@@ -268,12 +268,12 @@ input:checked + .slider:before {
 
                                                   
                                                    <tr>
-                                                       <td><b>{{ __('message.installation_limit') }}:</b></td>
+                                                       <td><b>{{ trans('message.installation_limit') }}:</b></td>
                                                        <td>
                                                            {{$noOfAllowedInstallation}}
                                                        </td>
                                                        <td>
-                                                           <button class="btn btn-sm btn-secondary btn-xs"  id="installlimit" limit-id="{{$order->id}}" install-limit="{{$noOfAllowedInstallation}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( __('message.edit')) !!}</i></button>
+                                                           <button class="btn btn-sm btn-secondary btn-xs"  id="installlimit" limit-id="{{$order->id}}" install-limit="{{$noOfAllowedInstallation}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( trans('message.edit')) !!}</i></button>
 
                                                        </td>
 
@@ -294,21 +294,21 @@ input:checked + .slider:before {
                                                </tr> -->
                                                @endif
                                                <tr>
-                                                   <td><b>{{ __('message.updates_expiry') }}:</b></td>
+                                                   <td><b>{{ trans('message.updates_expiry') }}:</b></td>
                                                    <td class="brtags"> {!! $date !!} </td>
                                                    <td>
                                                        @if($date != '--')
-                                                           <button class="btn btn-sm btn-secondary btn-xs" id="updates_end" updates-id="{{$order->id}}" data-date="{{getTimeInLoggedInUserTimeZone($subscription->update_ends_at,'m/d/Y')}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( __('message.edit')) !!}</i></button>
+                                                           <button class="btn btn-sm btn-secondary btn-xs" id="updates_end" updates-id="{{$order->id}}" data-date="{{getTimeInLoggedInUserTimeZone($subscription->update_ends_at,'m/d/Y')}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( trans('message.edit')) !!}</i></button>
                                                        @endif
                                                    </td>
                                                </tr>
 
                                                <tr>
-                                                   <td><b>{{ __('message.license_expiry') }}:</b></td>
+                                                   <td><b>{{ trans('message.license_expiry') }}:</b></td>
                                                    <td class="brtags">{!! $licdate !!} </td>
                                                    <td>
                                                        @if($licdate != '--')
-                                                           <button class="btn btn-sm btn-secondary btn-xs" id="license_end" license-id="{{$order->id}}" license-date="{{getTimeInLoggedInUserTimeZone($subscription->ends_at,'m/d/Y')}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( __('message.edit')) !!}</i>
+                                                           <button class="btn btn-sm btn-secondary btn-xs" id="license_end" license-id="{{$order->id}}" license-date="{{getTimeInLoggedInUserTimeZone($subscription->ends_at,'m/d/Y')}}"><i class="fa fa-edit" style='color:white;' {!! tooltip( trans('message.edit')) !!}</i>
                                                            </button>
                                                        @endif
                                                    </td>
@@ -316,17 +316,17 @@ input:checked + .slider:before {
 
                                                
                                                <tr>
-                                                   <td><b>{{ __('message.support_expiry') }}:</b></td>
+                                                   <td><b>{{ trans('message.support_expiry') }}:</b></td>
                                                    <td class="brtags">{!! $supdate !!}</td>
                                                    <td>
                                                        @if($supdate != '--')
-                                                           <button class="btn btn-sm btn-secondary btn-xs" id="support_end" support-id="{{$order->id}}" support-date="{{getTimeInLoggedInUserTimeZone($subscription->support_ends_at,'m/d/Y')}}" ><i class="fa fa-edit" style='color:white;' {!! tooltip( __('message.edit')) !!}</i></button>
+                                                           <button class="btn btn-sm btn-secondary btn-xs" id="support_end" support-id="{{$order->id}}" support-date="{{getTimeInLoggedInUserTimeZone($subscription->support_ends_at,'m/d/Y')}}" ><i class="fa fa-edit" style='color:white;' {!! tooltip( trans('message.edit')) !!}</i></button>
                                                              </button>
                                                        @endif
                                                    </td>
                                                </tr>  
                                                <tr>
-                                                   <td><b>{{ __('message.switch_localized_license') }}</b></td>
+                                                   <td><b>{{ trans('message.switch_localized_license') }}</b></td>
                                                    <td class="brtags"> 
                                                  <label class="switch toggle_event_editing">
                                                      <input data-id="{{$order->number}}" class="localized-slider checkbox" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{$order->license_mode=='File' ? 'checked' : '' }}>
@@ -335,7 +335,7 @@ input:checked + .slider:before {
                                                 </td>
                                                 <td>
                                                 @if($order->license_mode=='File')  
-                                                <button class="btn btn-secondary mb-2 btn-sm" id="defaultModalLabel" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <span title="{{ __('message.enter_client_domain_license') }}" {!!tooltip('Edit')!!} {{ __('message.enter_domain_license') }}></span></button>
+                                                <button class="btn btn-secondary mb-2 btn-sm" id="defaultModalLabel" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"> <span title="{{ trans('message.enter_client_domain_license') }}" {!!tooltip('Edit')!!} {{ trans('message.enter_domain_license') }}></span></button>
                                                 @endif
                                                </td>
                                                </tr>
@@ -358,7 +358,7 @@ input:checked + .slider:before {
                    <div class="card-header with-border">
                     <h4 class="card-title" style="color:black;">
                       <i class="fa fa-credit-card"></i>
-                        {{ __('message.installation_details') }}
+                        {{ trans('message.installation_details') }}
                     </h4>
                   </div>
                 </a>
@@ -366,10 +366,10 @@ input:checked + .slider:before {
                        <div class="col-md-12">
                          <table id="installationDetail-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
                         <thead><tr>
-                        <th>{{ __('message.installation_path') }}</th>
-                         <th>{{ __('message.installation_ip') }}</th>
-                         <th>{{ __('message.version') }}</th>
-                         <th>{{ __('message.last_active') }}</th>
+                        <th>{{ trans('message.installation_path') }}</th>
+                         <th>{{ trans('message.installation_ip') }}</th>
+                         <th>{{ trans('message.version') }}</th>
+                         <th>{{ trans('message.last_active') }}</th>
                          </tr>
                     </thead>
                          </table>
@@ -398,7 +398,7 @@ input:checked + .slider:before {
                    <div class="card-header with-border">
                     <h4 class="card-title" style="color:black;margin-left: -8px;">
                       <i class="fa fa-credit-card"></i>
-                        {{ __('message.invoice_list') }}
+                        {{ trans('message.invoice_list') }}
                     </h4>
                   </div>
                 </a>
@@ -409,15 +409,15 @@ input:checked + .slider:before {
 
                     <thead><tr>
                         
-                         <th >{{ __('message.invoice_no') }}</th>
-                          <th>{{ __('message.products') }}</th>
+                         <th >{{ trans('message.invoice_no') }}</th>
+                          <th>{{ trans('message.products') }}</th>
                            
-                            <th>{{ __('message.date') }}</th>
-                            <th>{{ __('message.total') }}</th>
+                            <th>{{ trans('message.date') }}</th>
+                            <th>{{ trans('message.total') }}</th>
                             
-                             <th>{{ __('message.status') }}</th>
+                             <th>{{ trans('message.status') }}</th>
                              
-                            <th>{{ __('message.action') }}</th>
+                            <th>{{ trans('message.action') }}</th>
                         </tr></thead>
                         </table>
 
@@ -457,7 +457,7 @@ input:checked + .slider:before {
                   "url":  "{{Url('get-installation-details/'.$order->id)}}",
                      error: function(xhr) {
                      if(xhr.status == 401) {
-                      alert('{{ __('message.session_expired') }}')
+                      alert('{{ trans('message.session_expired') }}')
                       window.location.href = '/login';
                      }
                   }
@@ -467,23 +467,23 @@ input:checked + .slider:before {
                   "oLanguage": {
                       "sLengthMenu": "_MENU_ Records per page",
                       "sSearch"    : "Search: ",
-                      "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                      "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
                   },
                   language: {
                       paginate: {
-                          first:      "{{ __('message.paginate_first') }}",
-                          last:       "{{ __('message.paginate_last') }}",
-                          next:       "{{ __('message.paginate_next') }}",
-                          previous:   "{{ __('message.paginate_previous') }}"
+                          first:      "{{ trans('message.paginate_first') }}",
+                          last:       "{{ trans('message.paginate_last') }}",
+                          next:       "{{ trans('message.paginate_next') }}",
+                          previous:   "{{ trans('message.paginate_previous') }}"
                       },
-                      emptyTable:     "{{ __('message.empty_table') }}",
-                      search:         "{{ __('message.datatable_search') }} ",
-                      info:           "{{ __('message.datatable_info') }}",
-                      zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                      infoEmpty:      "{{ __('message.info_empty') }}",
-                      infoFiltered:   "{{ __('message.info_filtered') }}",
-                      lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                      loadingRecords: "{{ __('message.loading_records') }}",
+                      emptyTable:     "{{ trans('message.empty_table') }}",
+                      search:         "{{ trans('message.datatable_search') }} ",
+                      info:           "{{ trans('message.datatable_info') }}",
+                      zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                      infoEmpty:      "{{ trans('message.info_empty') }}",
+                      infoFiltered:   "{{ trans('message.info_filtered') }}",
+                      lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                      loadingRecords: "{{ trans('message.loading_records') }}",
                   },
                       columnDefs: [
                       { 
@@ -522,7 +522,7 @@ input:checked + .slider:before {
             "url":  "{{Url('get-my-invoices/'.$order->id.'/'.$user->id.'/admin')}}",
                error: function(xhr) {
                if(xhr.status == 401) {
-                alert('{{ __('message.session_expired') }}')
+                alert('{{ trans('message.session_expired') }}')
                 window.location.href = '/login';
                }
             }
@@ -532,22 +532,22 @@ input:checked + .slider:before {
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
                 "sSearch"    : "Search: ",
-                "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                search:         "{{ __('message.datatable_search') }} ",
-                info:           "{{ __('message.datatable_info') }}",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                search:         "{{ trans('message.datatable_search') }} ",
+                info:           "{{ trans('message.datatable_info') }}",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
                 columnDefs: [
                 { 
@@ -591,23 +591,23 @@ input:checked + .slider:before {
                    <div class="card-header">
                     <h4 class="card-title" style="color:black;">
                        <i class="fa fa-bars"></i>
-                        {{ __('message.payment_receipts') }}
+                        {{ trans('message.payment_receipts') }}
                     </h4>
                   </div>
                 </a>
                        <div class="card-body">
                        <div class="col-md-12">
                            <table id="order1-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
-                 <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class= "fa fa-trash"></i>&nbsp;&nbsp;{{ __('message.delmultiple') }}</button><br /><br />
+                 <button  value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete"><i class= "fa fa-trash"></i>&nbsp;&nbsp;{{ trans('message.delmultiple') }}</button><br /><br />
                     <thead><tr>
                         <th class="no-sort"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
-                         <th>{{ __('message.invoice_no') }}</th>
-                          <th>{{ __('message.total') }}</th>
+                         <th>{{ trans('message.invoice_no') }}</th>
+                          <th>{{ trans('message.total') }}</th>
                            
-                            <th>{{ __('message.method') }}</th>
-                            <th>{{ __('message.status') }}</th>
+                            <th>{{ trans('message.method') }}</th>
+                            <th>{{ trans('message.status') }}</th>
                             
-                             <th>{{ __('message.payment_date') }}</th>
+                             <th>{{ trans('message.payment_date') }}</th>
                              
                         </tr></thead>
                      </table>
@@ -634,7 +634,7 @@ input:checked + .slider:before {
                    <div class="card-header">
                     <h4 class="card-title" style="color:black;">
                        <i class="fa fa-bars"></i>
-                        {{ __('message.auto_renewal') }}
+                        {{ trans('message.auto_renewal') }}
                     </h4>
                   </div>
                 </a>
@@ -645,7 +645,7 @@ input:checked + .slider:before {
                             <table class="table table-hover">
 
                                 <tbody>
-                                    <tr><td><b>{{ __('message.auto_renewal_subscription') }}</b></td><td>
+                                    <tr><td><b>{{ trans('message.auto_renewal_subscription') }}</b></td><td>
                                   <label class="switch toggle_event_editing">
                                              <input type="checkbox" value="{{$statusAutorenewal}}"  name="is_subscribed"
                                               class="renewcheckbox" id="renew">
@@ -668,15 +668,15 @@ input:checked + .slider:before {
                                         }
                                         ?>
                                     @if($subscription && $subscription->is_subscribed && $payment_log)
-                                     <tr><td><b>{{ __('message.status') }}:</b></td><td>
-                                     <span class="text-success font-weight-bold">{{ __('message.active') }}</span>
+                                     <tr><td><b>{{ trans('message.status') }}:</b></td><td>
+                                     <span class="text-success font-weight-bold">{{ trans('message.active') }}</span>
                                      </td></tr>
-                                    <tr><td><b>{{ __('message.payment-method') }}:</b></td><td>{{ucfirst($payment_log->payment_method)}}</td></tr>
+                                    <tr><td><b>{{ trans('message.payment-method') }}:</b></td><td>{{ucfirst($payment_log->payment_method)}}</td></tr>
   
-                                    <tr><td><b>{{ __('message.subscription_start_date') }}:</b></td><td>{!! getDateHtml($payment_log->date) !!}</td></tr>
+                                    <tr><td><b>{{ trans('message.subscription_start_date') }}:</b></td><td>{!! getDateHtml($payment_log->date) !!}</td></tr>
                                     @else
-                                    <tr><td><b>{{ __('message.status') }}:</b></td><td>
-                                     <span class="text-danger font-weight-bold">{{ __('message.inactive') }}</span>
+                                    <tr><td><b>{{ trans('message.status') }}:</b></td><td>
+                                     <span class="text-danger font-weight-bold">{{ trans('message.inactive') }}</span>
                                      </td></tr>
                                     @endif
 
@@ -746,9 +746,9 @@ input:checked + .slider:before {
                     },
                     success: function(response){
                     $('#alertMessage').show();
-                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong>'+response.message+'.</div>';
+                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong>'+response.message+'.</div>';
                     $('#alertMessage').html(result+ ".");
-                    $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+                    $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
                     setInterval(function(){
                         $('#alertMessage').slideUp(3000);
                     }, 1000);
@@ -768,7 +768,7 @@ input:checked + .slider:before {
             "url":  "{{Url('get-my-payment/'.$order->id.'/'.$user->id)}}",
                error: function(xhr) {
                if(xhr.status == 401) {
-                alert('{{ __('message.session_expired') }}')
+                alert('{{ trans('message.session_expired') }}')
                 window.location.href = '/login';
                }
             }
@@ -778,22 +778,22 @@ input:checked + .slider:before {
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
                 "sSearch"    : "Search: ",
-                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                search:         "{{ __('message.datatable_search') }} ",
-                info:           "{{ __('message.datatable_info') }}",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                search:         "{{ trans('message.datatable_search') }} ",
+                info:           "{{ trans('message.datatable_info') }}",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
                  columnDefs: [
                 { 
@@ -856,7 +856,7 @@ input:checked + .slider:before {
                      "<p>{{trans('message.sweet_payment')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
-                 confirmButtonText: "{{ __('message.ok') }}",
+                 confirmButtonText: "{{ trans('message.ok') }}",
                  showCloseButton: true,
                  confirmButtonColor: "#007bff",
                  width: "600px",
@@ -875,7 +875,7 @@ input:checked + .slider:before {
                  width: "600px",
 
                  confirmButtonText: @json(trans('message.Delete')),
-                 cancelButtonText: "{{ __('message.cancel') }}",
+                 cancelButtonText: "{{ trans('message.cancel') }}",
                  confirmButtonColor: "#007bff",
 
              }).then((result) => {
@@ -906,7 +906,7 @@ input:checked + .slider:before {
                                  "<p>{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
-                             confirmButtonText: "{{ __('message.ok') }}",
+                             confirmButtonText: "{{ trans('message.ok') }}",
                              showCloseButton: true,
                              confirmButtonColor: "#007bff",
                              width: "600px",
@@ -1007,13 +1007,13 @@ input:checked + .slider:before {
                 url : "{{url('reissue-license')}}",
                 data : {'id':id},
                   beforeSend: function () {
-                 $('#response1').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>');
+                 $('#response1').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>');
 
                 },
           
                 success: function (data) {
                if (data.message =='success'){
-                 var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                 var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                   $('#response1').html(result);
                      $('#response1').css('color', 'green');
                 setTimeout(function(){
@@ -1042,13 +1042,13 @@ input:checked + .slider:before {
                 url : "{{url('change-domain')}}",
                 data : {'domain':domain,'id':id},
                   beforeSend: function () {
-                 $('#response').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>');
+                 $('#response').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>');
 
                 },
           
                 success: function (data) {
                if (data.message =='success'){
-                 var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                 var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                   $('#response').html(result);
                      $('#response').css('color', 'green');
                 setTimeout(function(){
@@ -1083,7 +1083,7 @@ input:checked + .slider:before {
  //When Submit Button is Clicked in Modal Popup, passvalue through Ajax
     $("#updatesSave").on('click',function(){
       $('#updatesSave').attr('disabled',true);
-      $('#updatesSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+      $('#updatesSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
         var newdate = $("#newDate").val();
         var orderId = $("#order").val();
         $.ajax({
@@ -1095,7 +1095,7 @@ input:checked + .slider:before {
               $("#updatesSave").html("Save");
                 if (response.message =='success') {
 
-                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                      $('#response2').html(result);
                      $('#response2').css('color', 'green');
                  setTimeout(function(){
@@ -1107,7 +1107,7 @@ input:checked + .slider:before {
               $("#updatesSave").attr('disabled',false);
               $("#updatesSave").html("Save");
                 var myJSON = JSON.parse(response.responseText).errors;
-                var html = '<div class="alert alert-danger"><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                var html = '<div class="alert alert-danger"><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                   for (var key in myJSON)
                   {
                       html += '<li>' + myJSON[key][0] + '</li>'
@@ -1135,7 +1135,7 @@ input:checked + .slider:before {
  //When Submit Button is Clicked in Modal Popup, passvalue through Ajax
     $("#licenseExpSave").on('click',function(){
        $('#licenseExpSave').attr('disabled',true);
-      $('#licenseExpSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.success') }}");
+      $('#licenseExpSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.success') }}");
         var newdate = $("#newDate2").val();
         var orderId = $("#order2").val();
         $.ajax({
@@ -1146,7 +1146,7 @@ input:checked + .slider:before {
               $("#licenseExpSave").attr('disabled',false);
               $("#licenseExpSave").html("Save");
                 if (response.message =='success') {
-                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                      $('#response343').html(result);
                      $('#response343').css('color', 'green');
                  setTimeout(function(){
@@ -1158,7 +1158,7 @@ input:checked + .slider:before {
               $("#licenseExpSave").attr('disabled',false);
               $("#licenseExpSave").html("Save");
                   var myJSON = JSON.parse(response.responseText).errors;
-                       var html = '<div class="alert alert-danger"><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                       var html = '<div class="alert alert-danger"><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                           for (var key in myJSON)
                           {
                               html += '<li>' + myJSON[key][0] + '</li>'
@@ -1187,7 +1187,7 @@ input:checked + .slider:before {
  //When Submit Button is Clicked in Modal Popup, passvalue through Ajax
     $("#supportExpSave").on('click',function(){
        $('#supportExpSave').attr('disabled',true);
-       $('#supportExpSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+       $('#supportExpSave').html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
         var newdate = $("#newDate3").val();
         var orderId = $("#order3").val();
         $.ajax({
@@ -1198,7 +1198,7 @@ input:checked + .slider:before {
                $("#supportExpSave").attr('disabled',false);
               $("#supportExpSave").html("Save");
                 if (response.message =='success') {
-                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                      $('#response4').html(result);
                      $('#response4').css('color', 'green');
                  setTimeout(function(){
@@ -1210,7 +1210,7 @@ input:checked + .slider:before {
                $("#supportExpSave").attr('disabled',false);
               $("#supportExpSave").html("Save");
                   var myJSON = JSON.parse(response.responseText).errors;
-                       var html = '<div class="alert alert-danger"><strong>{{ __('message.whoops') }}! </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                       var html = '<div class="alert alert-danger"><strong>{{ trans('message.whoops') }}! </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                           for (var key in myJSON)
                           {
                               html += '<li>' + myJSON[key][0] + '</li>'
@@ -1283,12 +1283,12 @@ input:checked + .slider:before {
             data: {'orderid': orderId , 'limit': newlimit},
             url: "{{url('edit-installation-limit')}}",
              beforeSend: function () {
-                 $('#response5').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>');
+                 $('#response5').html( '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>');
 
             },
             success: function (response) {
                 if (response.message =='success') {
-                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong> '+response.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                      $('#response5').html(result);
                      $('#response5').css('color', 'green');
                  setTimeout(function(){
@@ -1298,7 +1298,7 @@ input:checked + .slider:before {
             },
             error: function(response) {
                   var myJSON = JSON.parse(response.responseText).errors;
-                       var html = '<div class="alert alert-danger"><strong>{{ __('message.whoops') }}! </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                       var html = '<div class="alert alert-danger"><strong>{{ trans('message.whoops') }}! </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                           for (var key in myJSON)
                           {
                               html += '<li>' + myJSON[key][0] + '</li>'
@@ -1353,9 +1353,9 @@ input:checked + .slider:before {
                    },
                 success: function (response) {
                     $('#alertMessage').show();
-                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong>'+response.update+'.</div>';
+                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong>'+response.update+'.</div>';
                     $('#alertMessage').html(result+ ".");
-                    $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+                    $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
                     setInterval(function(){
                         $('#alertMessage').slideUp(3000);
                     }, 1000);

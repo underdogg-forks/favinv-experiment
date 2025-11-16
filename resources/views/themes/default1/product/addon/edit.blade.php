@@ -16,7 +16,7 @@
 
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+                    <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -52,7 +52,7 @@
 
                     <div class="col-md-3 form-group {{ $errors->has('subscription') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.subscription'), 'subscription')->class('required') !!}
-                        {!! html()->select('subscription', ['' => __('message.select'), 'Subscription' => $subscription])->class('form-control') !!}
+                        {!! html()->select('subscription', ['' => trans('message.select'), 'Subscription' => $subscription])->class('form-control') !!}
                     </div>
 
                     <div class="col-md-3 form-group {{ $errors->has('regular_price') ? 'has-error' : '' }}">
@@ -102,7 +102,7 @@
 
                     <div class="col-md-6 form-group {{ $errors->has('products') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.applicable-products'), 'products') !!}
-                        {!! html()->select('products[]', ['' => __('message.select'), 'Products' => $product], $relation)
+                        {!! html()->select('products[]', ['' => trans('message.select'), 'Products' => $product], $relation)
                             ->class('form-control')
                             ->multiple() !!}
                     </div>

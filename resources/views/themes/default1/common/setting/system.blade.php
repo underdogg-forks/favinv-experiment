@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.system-settings') }}
+    {{ trans('message.system-settings') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.company_details') }}</h1>
+        <h1>{{ trans('message.company_details') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.system-settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.system-settings') }}</li>
         </ol>
     </div><!-- /.col -->
     <style>
@@ -234,7 +234,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label( __('message.system_zip'), 'zip') !!}</b></td>
+                        <td><b>{!! html()->label( trans('message.system_zip'), 'zip') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('zip') ? 'has-error' : '' }}">
 
@@ -252,7 +252,7 @@
 
                     <tr>
 
-                        <td><b>{!! html()->label( __('message.knowledge_base_url'), 'knowledge_base_url') !!}</b></td>
+                        <td><b>{!! html()->label( trans('message.knowledge_base_url'), 'knowledge_base_url') !!}</b></td>
                         <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{trans('message.url_tooltip')}}"></i>
                         <td>
                             <div class="form-group {{ $errors->has('knowledge_base_url') ? 'has-error' : '' }}">
@@ -272,12 +272,12 @@
 
                      <tr>
                          <td>
-                             <b>{!! html()->label(__('message.default_language'))->for('language')->class('required') !!}</b>
+                             <b>{!! html()->label(trans('message.default_language'))->for('language')->class('required') !!}</b>
                          </td>
                          <td>
                              <select name="language" class="form-control" id="default_lang" required>
                                  @if($defaultLang == '')
-                                     <option value="">{{ __('message.select_default_language') }}</option>
+                                     <option value="">{{ trans('message.select_default_language') }}</option>
                                  @endif
                                  @foreach($languages as $language)
                                      <option value="{{ $language->locale }}"
@@ -305,7 +305,7 @@
                                   <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
 
                       <select name="country" value= "Choose" id="country" onChange="getCountryAttr(this.value)" class="form-control selectpicker {{$errors->has('country') ? ' is-invalid' : ''}}" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false" data-size="10">
-                             <option value="">{{ __('message.choose') }}</option>
+                             <option value="">{{ trans('message.choose') }}</option>
                            @foreach($countries as $key=>$country)
                               <option value="{{$key}}" <?php  if(in_array($country, $selectedCountry) ) { echo "selected";} ?>>{{$country}}</option>
                           @endforeach
@@ -371,7 +371,7 @@
                                 @if($set->state)
                              <option value="{{$state['id']}}">{{$state['name']}}</option>
                             @endif
-                            <option value="">{{ __('message.choose') }}</option>
+                            <option value="">{{ trans('message.choose') }}</option>
                             @foreach($states as $key=>$value)
                             <option value="{{$key}}">{{$value}}</option>
                             @endforeach
@@ -390,7 +390,7 @@
                              <?php $currencies = \App\Model\Payment\Currency::where('status',1)->pluck('name','code')->toArray(); 
                              ?>
                          <select name="default_currency" value= "Choose"  class="form-control selectpicker {{$errors->has('default_currency') ? ' is-invalid' : ''}}" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false" data-size="10">
-                               <option value="">{{ __('message.choose') }}</option>
+                               <option value="">{{ trans('message.choose') }}</option>
                            @foreach($currencies as $key=>$currency)
                               <option value="{{$key}}" <?php  if(in_array($currency, $selectedCurrency) ) { echo "selected";} ?>>{{$currency}}</option>
                           @endforeach
@@ -409,7 +409,7 @@
                           <td><b>{!! html()->label(trans('message.admin-logo'), 'logo') !!}</b></td>
                           <td>
                             <div class="form-group {{ $errors->has('admin-logo') ? 'has-error' : '' }}">
-                                   {{ __('message.upload_application_logo') }}
+                                   {{ trans('message.upload_application_logo') }}
 
                                 <div class="d-flex align-items-center mt-1">
                                     @if($set->admin_logo)
@@ -418,7 +418,7 @@
 
                                     <div class="custom-file ml-3">
                                         {!! html()->file('admin-logo')->class('custom-file-input cursor-pointer'.($errors->has('admin-logo') ? ' is-invalid' : ''))->id('admin-logo')->attribute('role', 'button') !!}
-                                        <label role="button" class="custom-file-label cursor-pointer" for="admin-logo">{{ __('message.choose_file') }}</label>
+                                        <label role="button" class="custom-file-label cursor-pointer" for="admin-logo">{{ trans('message.choose_file') }}</label>
                                         @error('admin_logo')
                                         <span class="error-message"> {{$message}}</span>
                                         @enderror
@@ -441,7 +441,7 @@
 
                          <td>
                             <div class="form-group {{ $errors->has('fav-icon') ? 'has-error' : '' }}">
-                                    {{ __('message.upload_favicon_admin_client_panel') }}
+                                    {{ trans('message.upload_favicon_admin_client_panel') }}
 
                                 <div class="d-flex align-items-center mt-1">
                                     @if($set->fav_icon)
@@ -450,7 +450,7 @@
 
                                     <div class="custom-file ml-3">
                                         {!! html()->file('fav-icon')->class('custom-file-input'.($errors->has('fav-icon') ? ' is-invalid' : ''))->id('fav-icon')->attribute('role', 'button') !!}
-                                        <label role="button" class="custom-file-label" for="fav-icon">{{ __('message.choose_file') }}</label>
+                                        <label role="button" class="custom-file-label" for="fav-icon">{{ trans('message.choose_file') }}</label>
                                     </div>
                                 </div>
                                 <span class="hide system-error" id="favicon-err-Msg"></span>
@@ -506,7 +506,7 @@
                         <td><b>{!! html()->label(trans('message.client-logo'), 'logo') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
-                                {{ __('message.upload_company_logo') }}
+                                {{ trans('message.upload_company_logo') }}
 
                                 <div class="d-flex align-items-center mt-1">
                                     @if($set->logo)
@@ -518,7 +518,7 @@
 
                                         {!! html()->file('logo')->class('custom-file-input'.($errors->has('logo') ? ' is-invalid' : ''))->id('logo')->attribute('role', 'button')->attribute('onchange', 'previewImage("preview-logo", "logo")') !!}
 
-                                        <label role="button" class="custom-file-label" for="logo">{{ __('message.choose_file') }}</label>
+                                        <label role="button" class="custom-file-label" for="logo">{{ trans('message.choose_file') }}</label>
                                     </div>
                                 </div>
                                 <span class="hide system-error" id="logo-err-Msg"></span>
@@ -956,7 +956,7 @@
                 data: {id:id,column:column,"_token": "{{ csrf_token() }}"},
                success: function (response) {
                     $('#alertMessage3').show();
-                    var result =  '<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="far fa-thumbs-up"></i>{{ __('message.well_done') }} </strong>'+response.message+'!</div>';
+                    var result =  '<div class="alert alert-success"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="far fa-thumbs-up"></i>{{ trans('message.well_done') }} </strong>'+response.message+'!</div>';
                     $('#alertMessage3').html(result+ ".");
                     setTimeout(function(){
                        window.location.reload(1);
@@ -966,7 +966,7 @@
                error: function (ex) {
         
                     var myJSON = JSON.parse(ex.responseText);
-                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>{{ __('message.oh_snap') }} </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>{{ trans('message.oh_snap') }} </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                     for (var key in myJSON)
                     {
                         html += '<li>' + myJSON[key][0] + '</li>'

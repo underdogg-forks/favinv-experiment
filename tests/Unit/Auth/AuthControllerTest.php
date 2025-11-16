@@ -63,7 +63,7 @@ class AuthControllerTest extends TestCase
         $request = new Request(['eid' => Crypt::encrypt($user->email)]);
 
         $response = json_decode($this->authController->requestOtp($request)->getContent());
-        $this->assertEquals(__('message.otp_verification.send_success'), $response->message);
+        $this->assertEquals(trans('message.otp_verification.send_success'), $response->message);
     }
 
     #[Test]
@@ -82,12 +82,12 @@ class AuthControllerTest extends TestCase
             ->once()
             ->andReturn([
                 'type' => 'success',
-                'message' => __('message.otp_verified'),
+                'message' => trans('message.otp_verified'),
             ]);
 
         $response = json_decode($this->authController->verifyOtp($request)->getContent());
 
-        $this->assertEquals(__('message.otp_verified'), $response->message);
+        $this->assertEquals(trans('message.otp_verified'), $response->message);
     }
 
     #[Test]
@@ -105,12 +105,12 @@ class AuthControllerTest extends TestCase
             ->once()
             ->andReturn([
                 'type' => 'error',
-                'message' => __('message.otp_invalid'),
+                'message' => trans('message.otp_invalid'),
             ]);
 
         $response = json_decode($this->authController->verifyOtp($request)->getContent());
 
-        $this->assertEquals(__('message.otp_invalid'), $response->message);
+        $this->assertEquals(trans('message.otp_invalid'), $response->message);
     }
 
     #[Test]
@@ -127,7 +127,7 @@ class AuthControllerTest extends TestCase
 
         $response = json_decode($this->authController->sendEmail($request)->getContent());
 
-        $this->assertEquals(__('message.email_verification.send_success'), $response->message);
+        $this->assertEquals(trans('message.email_verification.send_success'), $response->message);
     }
 
     #[Test]
@@ -158,7 +158,7 @@ class AuthControllerTest extends TestCase
 
         $response = json_decode($this->authController->sendEmail($request)->getContent());
 
-        $this->assertEquals(__('message.email_verification.send_failure'), $response->message);
+        $this->assertEquals(trans('message.email_verification.send_failure'), $response->message);
     }
 
     #[Test]
@@ -173,7 +173,7 @@ class AuthControllerTest extends TestCase
 
         $response = json_decode($this->authController->sendEmail($request)->getContent());
 
-        $this->assertEquals(__('message.email_verification.already_sent'), $response->message);
+        $this->assertEquals(trans('message.email_verification.already_sent'), $response->message);
     }
 
     #[Test]
@@ -189,7 +189,7 @@ class AuthControllerTest extends TestCase
 
         $response = json_decode($this->authController->sendEmail($request, 'GET')->getContent());
 
-        $this->assertEquals(__('message.email_verification.resend_success'), $response->message);
+        $this->assertEquals(trans('message.email_verification.resend_success'), $response->message);
     }
 
     #[Test]
@@ -201,6 +201,6 @@ class AuthControllerTest extends TestCase
 
         $response = json_decode($this->authController->sendEmail($request)->getContent());
 
-        $this->assertEquals(__('message.email_verification.send_failure'), $response->message);
+        $this->assertEquals(trans('message.email_verification.send_failure'), $response->message);
     }
 }

@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 
 @section('title')
-    {{ __('message.pipedrive') }}
+    {{ trans('message.pipedrive') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.pipedrive_settings') }}</h1>
+        <h1>{{ trans('message.pipedrive_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.pipedrive_settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.pipedrive_settings') }}</li>
         </ol>
     </div>
 @stop
@@ -52,9 +52,9 @@
 
     <div class="alert alert-info" role="alert">
         <i class="fas fa-info-circle mr-2"></i>
-        {{ __('message.pipedrive_config_info') }}
-        <a class="sync-button" role="button" data-toggle="tooltip" title="{{ __('message.sync_pipedrive_fields') }}">
-            <strong>{{ __('message.click_pipedrive_sync') }}</strong> <i class="fas fa-sync ml-1" id="sync-icon"></i>
+        {{ trans('message.pipedrive_config_info') }}
+        <a class="sync-button" role="button" data-toggle="tooltip" title="{{ trans('message.sync_pipedrive_fields') }}">
+            <strong>{{ trans('message.click_pipedrive_sync') }}</strong> <i class="fas fa-sync ml-1" id="sync-icon"></i>
         </a>
     </div>
 
@@ -80,15 +80,15 @@
                     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link {{ $isPerson ? 'active' : '' }}"
-                               href="{{ url('pipedrive/mapping/'.$groups['personId']) }}">{{ __('message.pipe_person') }}</a>
+                               href="{{ url('pipedrive/mapping/'.$groups['personId']) }}">{{ trans('message.pipe_person') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ $isOrganization ? 'active' : '' }}"
-                               href="{{ url('pipedrive/mapping/'.$groups['organizationId']) }}">{{ __('message.organization') }}</a>
+                               href="{{ url('pipedrive/mapping/'.$groups['organizationId']) }}">{{ trans('message.organization') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ $isDeal ? 'active' : '' }}"
-                               href="{{ url('pipedrive/mapping/'.$groups['dealId']) }}">{{ __('message.pipe_deal') }}</a>
+                               href="{{ url('pipedrive/mapping/'.$groups['dealId']) }}">{{ trans('message.pipe_deal') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -98,10 +98,10 @@
                     <div class="card-body">
                         <div class="card card-secondary card-outline">
                             <div class="card-header">
-                                <h5>{{ __('message.mapping_fields') }}
+                                <h5>{{ trans('message.mapping_fields') }}
                                     @if($isDeal)
                                         <i class="fas fa-info-circle fa-sm" data-toggle="tooltip" data-placement="top"
-                                           title="{{ __('message.deal_title_required') }}"></i>
+                                           title="{{ trans('message.deal_title_required') }}"></i>
                                     @endif
                                 </h5>
                             </div>
@@ -114,10 +114,10 @@
                                             <div class="row mapping-row" data-index="{{ $index }}">
                                                 <div class="col-5">
                                                     <div class="form-group">
-                                                        <label>{{ __('message.pipedrive_fields') }}</label>
+                                                        <label>{{ trans('message.pipedrive_fields') }}</label>
                                                         <select class="form-control pipedrive-select select_fields"
                                                                 name="select1[]">
-                                                            <option value="">-- {{ __('message.select') }} --</option>
+                                                            <option value="">-- {{ trans('message.select') }} --</option>
                                                             @foreach($pipedriveFields as $pipedriveField)
                                                                 <option value="{{ $pipedriveField['id'] }}"
                                                                         {{ $pipedriveField['id'] == $field['id'] ? 'selected' : '' }}>
@@ -129,12 +129,12 @@
                                                 </div>
                                                 <div class="col-5">
                                                     <div class="form-group">
-                                                        <label>{{ __('message.faveo_invoicing_fields') }}</label>
+                                                        <label>{{ trans('message.faveo_invoicing_fields') }}</label>
                                                             <?php
                                                             $isLocalField = empty($field['pipedrive_options']);
                                                             ?>
                                                         <select class="form-control select_fields" name="select2[]" faveo-field="{{ !$isLocalField ? "false" : "true" }}">
-                                                            <option value="">-- {{ __('message.select') }} --</option>
+                                                            <option value="">-- {{ trans('message.select') }} --</option>
                                                             @if(!$isLocalField)
                                                                 @foreach($field['pipedrive_options'] as $pipedrive)
                                                                     <option value="{{ $pipedrive['id'] }}"
@@ -156,7 +156,7 @@
                                                 <div class="col-2 delete-row-col">
                                                     @if($index > 0)
                                                         <button type="button" class="btn btn-default delete-row"
-                                                                data-toggle="tooltip" title="{{ __('message.delete_attribute') }}">
+                                                                data-toggle="tooltip" title="{{ trans('message.delete_attribute') }}">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                     @endif
@@ -167,10 +167,10 @@
                                         <div class="row mapping-row" data-index="0">
                                             <div class="col-5">
                                                 <div class="form-group">
-                                                    <label>{{ __('message.pipedrive_fields') }}</label>
+                                                    <label>{{ trans('message.pipedrive_fields') }}</label>
                                                     <select class="form-control pipedrive-select select_fields"
                                                             name="select1[]">
-                                                        <option value="">-- {{ __('message.select') }} --</option>
+                                                        <option value="">-- {{ trans('message.select') }} --</option>
                                                         @foreach($pipedriveFields as $pipedriveField)
                                                             <option value="{{ $pipedriveField['id'] }}">
                                                                 {{ $pipedriveField['field_name'] }}
@@ -181,9 +181,9 @@
                                             </div>
                                             <div class="col-5">
                                                 <div class="form-group">
-                                                    <label>{{ __('message.faveo_invoicing_fields') }}</label>
+                                                    <label>{{ trans('message.faveo_invoicing_fields') }}</label>
                                                     <select class="form-control select_fields" name="select2[]" faveo-field="true">
-                                                        <option value="">-- {{ __('message.select') }} --</option>
+                                                        <option value="">-- {{ trans('message.select') }} --</option>
                                                         @foreach($localFields as $localField)
                                                             <option value="{{ $localField['id'] }}">
                                                                 {{ $localField['field_name'] }}
@@ -200,13 +200,13 @@
                                 </div>
                                 <div>
                                     <a class="text-primary" role="button" id="add-new">
-                                        <i class="fas fa-plus-circle"></i> {{ __('message.addnew') }}
+                                        <i class="fas fa-plus-circle"></i> {{ trans('message.addnew') }}
                                     </a>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary pull-right" id="saveBtn">
-                                    <i class="fa fa-save btn-icon"></i>&nbsp;&nbsp;<span class="btn-text">{{ __('message.save') }}</span>
+                                    <i class="fa fa-save btn-icon"></i>&nbsp;&nbsp;<span class="btn-text">{{ trans('message.save') }}</span>
                                 </button>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
             // Initialize Select2
             $('.select_fields').select2({
                 allowClear: true,
-                placeholder: "{{ __('message.pipe_select_option') }}"
+                placeholder: "{{ trans('message.pipe_select_option') }}"
             });
 
             // Re-initialize Select2 on window resize
@@ -229,7 +229,7 @@
             new ResizeObserver(() => {
                 $('.select_fields').select2({
                     allowClear: true,
-                    placeholder: "{{ __('message.pipe_select_option') }}"
+                    placeholder: "{{ trans('message.pipe_select_option') }}"
                 });
             }).observe(formElement);
 
@@ -284,14 +284,14 @@
                     if (!val1) {
                         isValid = false;
                         $select1.addClass('is-invalid');
-                        $select1.parent().append('<div class="invalid-feedback">{{ __('message.pipe_select_field') }}</div>');
+                        $select1.parent().append('<div class="invalid-feedback">{{ trans('message.pipe_select_field') }}</div>');
                     }
 
                     // Validation for select2
                     if (!val2) {
                         isValid = false;
                         $select2.addClass('is-invalid');
-                        $select2.parent().append('<div class="invalid-feedback">{{ __('message.pipe_select_field') }}</div>');
+                        $select2.parent().append('<div class="invalid-feedback">{{ trans('message.pipe_select_field') }}</div>');
                     }
                 });
 
@@ -328,7 +328,7 @@
                     },
                     success: function (response) {
                         // Clear existing options and add new ones
-                        $faveoSelect.empty().append('<option value="">-- {{ __('message.select') }} --</option>');
+                        $faveoSelect.empty().append('<option value="">-- {{ trans('message.select') }} --</option>');
 
                         if (response.data.options && response.data.options.length > 0) {
                             // Add new options from API response
@@ -366,7 +366,7 @@
             // Function to reset Faveo dropdown to default options
             function resetFaveoDropdown($select) {
                 $select.empty().append(`
-            <option value="">-- {{ __('message.select') }} --</option>
+            <option value="">-- {{ trans('message.select') }} --</option>
             @foreach($localFields as $localField)
                 <option value="{{ $localField['id'] }}">{{ $localField['field_name'] }}</option>
             @endforeach
@@ -390,13 +390,13 @@
 
                 // Create select options HTML for Pipedrive fields with available options only
                 const availableOptions = getAvailablePipedriveOptions();
-                let pipedriveOptionsHtml = '<option value="">-- {{ __('message.select') }} --</option>';
+                let pipedriveOptionsHtml = '<option value="">-- {{ trans('message.select') }} --</option>';
                 availableOptions.forEach(option => {
                     pipedriveOptionsHtml += `<option value="${option.id}">${option.text}</option>`;
                 });
 
                 const localOptionsHtml = `
-            <option value="">-- {{ __('message.select') }} --</option>
+            <option value="">-- {{ trans('message.select') }} --</option>
             @foreach($localFields as $localField)
                 <option value="{{ $localField['id'] }}">{{ $localField['field_name'] }}</option>
             @endforeach
@@ -406,7 +406,7 @@
             <div class="row mapping-row" data-index="${index}">
                 <div class="col-5">
                     <div class="form-group">
-                        <label>{{ __('message.pipedrive_fields') }}</label>
+                        <label>{{ trans('message.pipedrive_fields') }}</label>
                         <select class="form-control pipedrive-select select_fields" name="select1[]">
                             ${pipedriveOptionsHtml}
                         </select>
@@ -414,14 +414,14 @@
                 </div>
                 <div class="col-5">
                     <div class="form-group">
-                        <label>{{ __('message.faveo_invoicing_fields') }}</label>
+                        <label>{{ trans('message.faveo_invoicing_fields') }}</label>
                         <select class="form-control select_fields" name="select2[]" faveo-field="true">
                             ${localOptionsHtml}
                         </select>
                     </div>
                 </div>
                 <div class="col-2 delete-row-col">
-                    <button type="button" class="btn btn-default delete-row" data-toggle="tooltip" title="{{ __('message.delete_attribute') }}">
+                    <button type="button" class="btn btn-default delete-row" data-toggle="tooltip" title="{{ trans('message.delete_attribute') }}">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
@@ -430,7 +430,7 @@
                 $selectContainer.append(newRow);
                 $('.select_fields').select2({
                     allowClear: true,
-                    placeholder: "{{ __('message.pipe_select_option') }}"
+                    placeholder: "{{ trans('message.pipe_select_option') }}"
                 });
                 $('[data-toggle="tooltip"]').tooltip();
             });
@@ -550,7 +550,7 @@
                     beforeSend: function () {
                         $btn.prop('disabled', true);                         // Disable the button
                         $icon.removeClass('fa-save').addClass('fa-spinner fa-spin');  // Show spinner icon
-                        $text.text('{{ __('message.saving') }}');                             // Update text
+                        $text.text('{{ trans('message.saving') }}');                             // Update text
                     },
                     success: function (response) {
                         showAlert('success', response.message || 'Mapping saved successfully.');
@@ -563,7 +563,7 @@
                     complete: function () {
                         $btn.prop('disabled', false);                        // Re-enable button
                         $icon.removeClass('fa-spinner fa-spin').addClass('fa-save'); // Restore save icon
-                        $text.text('{{ __('message.save') }}');                                  // Restore text
+                        $text.text('{{ trans('message.save') }}');                                  // Restore text
                     }
                 });
             });

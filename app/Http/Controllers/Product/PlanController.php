@@ -124,7 +124,7 @@ class PlanController extends ExtendedPlanController
                          })
                         ->addColumn('action', function ($model) {
                             return '<a href='.url('plans/'.$model->id.'/edit')." 
-                            class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit' 
+                            class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit' 
                             style='color:white;'> </i></a>";
                         })
                           ->filterColumn('name', function ($query, $keyword) {

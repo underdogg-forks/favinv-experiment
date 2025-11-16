@@ -1,20 +1,20 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.profile') }}
+{{ trans('message.profile') }}
 @stop
 @section('nav-profile')
 active
 @stop
 @section('page-heading')
-    {{ __('message.profile')}}
+    {{ trans('message.profile')}}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.profile')}}</li>
+     <li class="active text-dark">{{ trans('message.profile')}}</li>
 @stop
 @section('content')
 <style>
@@ -126,17 +126,17 @@ input:checked + .slider:before {
 
                             <li class="nav-item">
 
-                                <a class="nav-link active" id="profile_detail" href="#profile" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.my_profile')}}</a>
+                                <a class="nav-link active" id="profile_detail" href="#profile" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.my_profile')}}</a>
                             </li>
 
                             <li class="nav-item">
 
-                                <a class="nav-link" id="change_password" href="#password" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.change_password')}}</a>
+                                <a class="nav-link" id="change_password" href="#password" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.change_password')}}</a>
                             </li>
 
                             <li class="nav-item">
 
-                                <a class="nav-link" id="two_fa" href="#twofa" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.setup_2fa')}}</a>
+                                <a class="nav-link" id="two_fa" href="#twofa" data-bs-toggle="tab" data-hash data-hash-offset="0" data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.setup_2fa')}}</a>
                             </li>
                         </ul>
                     </aside>
@@ -168,7 +168,7 @@ input:checked + .slider:before {
                             <div class="col-lg-12 order-1 order-lg-2">
 
                                     <div class="form-group row {{ $errors->has('first_name') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.first_name')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.first_name')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->text('first_name')->class('form-control text-3 h-auto py-2')->id('firstName') !!}
 
@@ -176,21 +176,21 @@ input:checked + .slider:before {
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('last_name') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.last_name')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.last_name')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->text('last_name')->class('form-control text-3 h-auto py-2')->id('lastName') !!}
                                             <h6 id="lastNameCheck"></h6>
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('email') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.email')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.email')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->email('email')->class('form-control text-3 h-auto py-2')->id('Email') !!}
                                             <h6 id="emailCheck"></h6>
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.mobile')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.mobile')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->hidden('mobile_code')->id('code_hidden') !!}
                                             <!--<input class="form-control selected-dial-code"  id="mobile_code" value="{{$user->mobile}}" name="mobile" type="tel"> -->
@@ -202,14 +202,14 @@ input:checked + .slider:before {
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('company') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.front_company')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.front_company')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->text('company')->class('form-control text-3 h-auto py-2')->id('Company') !!}
                                             <h6 id="companyCheck"></h6>
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('address') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.address')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.address')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->textarea('address')->class('form-control text-3 h-auto py-2')->id('Address') !!}
                                             <h6 id="addressCheck"></h6>
@@ -229,7 +229,7 @@ input:checked + .slider:before {
 
                                                     <option value="{{$state['id']}}">{{$state['name']}}</option>
 
-                                                <option value="">{{ __('message.select_state')}}</option>
+                                                <option value="">{{ trans('message.select_state')}}</option>
                                                 @foreach($states as $key=>$value)
 
                                                     <option value="{{$key}}">{{$value}}</option>
@@ -239,7 +239,7 @@ input:checked + .slider:before {
                                             </div>
                                     </div>
                                      <div class="form-group row {{ $errors->has('=country') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">{{ __('message.country')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">{{ trans('message.country')}}</label>
                                         <div class="col-lg-9">
                                             {!! html()->text('country', $selectedCountry)->class('form-control input-lg')->attribute('onChange', 'getCountryAttr(this.value);')->attribute('title',trans('message.admin_update_country'))->attribute('readonly', 'readonly')->attribute('data-toggle', 'tooltip')->attribute('data-placement', 'top') !!}
 
@@ -249,7 +249,7 @@ input:checked + .slider:before {
                                         </div>
                                     </div>
                                     <div class="form-group row {{ $errors->has('timezone_id') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">{{ __('message.time_zone')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">{{ trans('message.time_zone')}}</label>
                                         <div class="col-lg-9">
                                             <div class="custom-select-1">
                                                 {!! html()->select('timezone_id', [trans('message.choose') => $timezones])->class('form-control input-lg')->id('timezone') !!}
@@ -262,7 +262,7 @@ input:checked + .slider:before {
 
                                         </div>
                                         <div class="form-group col-lg-3">
-                                            <button type="submit" id="submit" class="btn btn-dark font-weight-bold text-3 btn-modern float-end" data-original-text="{{__('message.update')}}" data-loading-text="{{ __('message.loading') }}">{{ __('message.update')}}</button>
+                                            <button type="submit" id="submit" class="btn btn-dark font-weight-bold text-3 btn-modern float-end" data-original-text="{{trans('message.update')}}" data-loading-text="{{ trans('message.loading') }}">{{ trans('message.update')}}</button>
                                         </div>
                                     </div>
 
@@ -283,7 +283,7 @@ input:checked + .slider:before {
                                 {!! html()->modelForm($user, 'PATCH',url('my-password'))->id('changePasswordForm')->open() !!}
 
                                 <div class="form-group row {{ $errors->has('old_password') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.old_password')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.old_password')}}</label>
                                         <div class="col-lg-9">
                                             <div class="input-group">
                                                 {!! html()->password('old_password')->class('form-control text-3 h-auto py-2')->id('old_password') !!}
@@ -296,7 +296,7 @@ input:checked + .slider:before {
                                     </div>
 
                                     <div class="form-group row {{ $errors->has('new_password') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.new_password')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.new_password')}}</label>
                                         <div class="col-lg-9">
                                             <div class="input-group">
                                                 {!! html()->password('new_password')->class('form-control text-3 h-auto py-2')->id('new_password') !!}
@@ -317,7 +317,7 @@ input:checked + .slider:before {
                                     </div>
 
                                     <div class="form-group row {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
-                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ __('message.confirm_password')}}</label>
+                                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2 required">{{ trans('message.confirm_password')}}</label>
                                         <div class="col-lg-9">
                                             <div class="input-group">
                                                 {!! html()->password('confirm_password')->class('form-control text-3 h-auto py-2')->id('confirm_password') !!}
@@ -333,7 +333,7 @@ input:checked + .slider:before {
 
                                         </div>
                                         <div class="form-group col-lg-3">
-                                            <button type="submit" class="btn btn-dark font-weight-bold text-3 btn-modern float-end" data-loading-text="{{ __('message.loading')}}" id="password">{{ __('message.update')}}</button>
+                                            <button type="submit" class="btn btn-dark font-weight-bold text-3 btn-modern float-end" data-loading-text="{{ trans('message.loading')}}" id="password">{{ trans('message.update')}}</button>
                                         </div>
                                     </div>
                                 {!! html()->closeModelForm() !!}
@@ -351,13 +351,13 @@ input:checked + .slider:before {
 
 
                                     @if($is2faEnabled ==0)
-                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;height:26px;" class="img-responsive img-circle img-sm">&nbsp;{{ __('message.authenticator_app')}}
+                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;height:26px;" class="img-responsive img-circle img-sm">&nbsp;{{ trans('message.authenticator_app')}}
                                 @else
-                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;height:26px;" class="img-responsive img-circle img-sm">&nbsp;{{ __('message.two_step_verfication')}} {{getTimeInLoggedInUserTimeZone($dateSinceEnabled)}}
+                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;height:26px;" class="img-responsive img-circle img-sm">&nbsp;{{ trans('message.two_step_verfication')}} {{getTimeInLoggedInUserTimeZone($dateSinceEnabled)}}
                                     <br><br><br>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <button class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" id="viewRecCode" style="width: 250px !important;">{{ __('message.recovery_code')}}</button>
+                                            <button class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" id="viewRecCode" style="width: 250px !important;">{{ trans('message.recovery_code')}}</button>
                                         </div>
                                     </div>
                                 @endif
@@ -378,17 +378,17 @@ input:checked + .slider:before {
         </div>
 <script>
     window.trans = {
-        please_enter_password: "{{ __('message.please_enter_password') }}",
-        verifying: "{{ __('message.2fa_verifying') }}",
-        incorrect_password: "{{ __('message.incorrect_password') }}",
-        please_enter_code: "{{ __('message.please_enter_code') }}",
-        wrong_code: "{{ __('message.wrong_code') }}",
-        turned_off: "{{ __('message.caps_turned_off') }}",
-        please_wait: "{{ __('message.please_wait') }}",
-        new_code_generated: "{{ __('message.new_code_generated') }}",
-        validate: "{{ __('message.validate') }}",
-        verify: "{{ __('message.verify') }}",
-        generate_new: "{{ __('message.generate_new') }}",
+        please_enter_password: "{{ trans('message.please_enter_password') }}",
+        verifying: "{{ trans('message.2fa_verifying') }}",
+        incorrect_password: "{{ trans('message.incorrect_password') }}",
+        please_enter_code: "{{ trans('message.please_enter_code') }}",
+        wrong_code: "{{ trans('message.wrong_code') }}",
+        turned_off: "{{ trans('message.caps_turned_off') }}",
+        please_wait: "{{ trans('message.please_wait') }}",
+        new_code_generated: "{{ trans('message.new_code_generated') }}",
+        validate: "{{ trans('message.validate') }}",
+        verify: "{{ trans('message.verify') }}",
+        generate_new: "{{ trans('message.generate_new') }}",
     };
 </script>
 
@@ -554,7 +554,7 @@ input:checked + .slider:before {
         }
         $.validator.addMethod("validPhone", function(value, element) {
             return validatePhoneNumber(element);
-        }, "{{ __('message.error_valid_number') }}");
+        }, "{{ trans('message.error_valid_number') }}");
         function placeErrorMessage(error, element, errorMapping = null) {
             if (errorMapping !== null && errorMapping[element.attr("name")]) {
                 $(errorMapping[element.attr("name")]).html(error);
@@ -565,7 +565,7 @@ input:checked + .slider:before {
         $.validator.addMethod("regex", function(value, element, regexp) {
             var re = new RegExp(regexp);
             return this.optional(element) || re.test(value);
-        }, "{{ __('message.invalid_format') }}");
+        }, "{{ trans('message.invalid_format') }}");
         document.getElementById('profilePic').addEventListener('change', function(event) {
             const file = event.target.files[0];
 
@@ -574,13 +574,13 @@ input:checked + .slider:before {
             // Allowed image types
             const allowedTypes = ["image/png", "image/jpg", "image/jpeg"];
             if (!allowedTypes.includes(file.type)) {
-                showAlert('error',"{{ __('message.image_allowed') }}");
+                showAlert('error',"{{ trans('message.image_allowed') }}");
                 return;
             }
 
             // Check file size (2MB limit)
             if (file.size > 2097152) {
-                showAlert('error',"{{ __('message.image_max') }}");
+                showAlert('error',"{{ trans('message.image_max') }}");
                 return;
             }
 
@@ -629,38 +629,38 @@ input:checked + .slider:before {
             },
             messages: {
                 first_name: {
-                    required: "{{ __('message.contact_error_firstname') }}",
-                    regex: "{{ __('message.enter_valid_firstname') }}"
+                    required: "{{ trans('message.contact_error_firstname') }}",
+                    regex: "{{ trans('message.enter_valid_firstname') }}"
                 },
                 last_name: {
-                    required: "{{ __('message.contact_error_lastname') }}",
-                    regex: "{{ __('message.enter_valid_lastname') }}"
+                    required: "{{ trans('message.contact_error_lastname') }}",
+                    regex: "{{ trans('message.enter_valid_lastname') }}"
                 },
                 email: {
-                    required: "{{ __('message.enter_your_email') }}",
-                    regex: "{{ __('message.contact_error_email') }}"
+                    required: "{{ trans('message.enter_your_email') }}",
+                    regex: "{{ trans('message.contact_error_email') }}"
                 },
                 mobile: {
-                    required: "{{ __('message.error_mobile') }}",
-                    validPhone: "{{ __('message.error_valid_number') }}"
+                    required: "{{ trans('message.error_mobile') }}",
+                    validPhone: "{{ trans('message.error_valid_number') }}"
                 },
                 company: {
-                    required: "{{ __('message.enter_your_company_name') }}"
+                    required: "{{ trans('message.enter_your_company_name') }}"
                 },
                 address: {
-                    required: "{{ __('message.enter_your_address') }}"
+                    required: "{{ trans('message.enter_your_address') }}"
                 },
                 town: {
-                    required: "{{ __('message.enter_your_town') }}"
+                    required: "{{ trans('message.enter_your_town') }}"
                 },
                 state: {
-                    required: "{{ __('message.enter_your_state') }}"
+                    required: "{{ trans('message.enter_your_state') }}"
                 },
                 country: {
-                    required: "{{ __('message.enter_your_country') }}"
+                    required: "{{ trans('message.enter_your_country') }}"
                 },
                 timezone_id: {
-                    required: "{{ __('message.enter_your_timezone') }}"
+                    required: "{{ trans('message.enter_your_timezone') }}"
                 }
             },
             unhighlight: function (element) {
@@ -732,14 +732,14 @@ input:checked + .slider:before {
                 }
             },
             messages: {
-                old_password: "{{ __('message.old_pass_required') }}",
+                old_password: "{{ trans('message.old_pass_required') }}",
                 new_password: {
-                    required: "{{ __('message.new_pass_required') }}",
-                    regex: "{{ __('message.strong_password') }}"
+                    required: "{{ trans('message.new_pass_required') }}",
+                    regex: "{{ trans('message.strong_password') }}"
                 },
                 confirm_password: {
-                    required: "{{ __('message.confirm_pass_required') }}",
-                    equalTo: "{{ __('message.password_mismatch') }}"
+                    required: "{{ trans('message.confirm_pass_required') }}",
+                    equalTo: "{{ trans('message.password_mismatch') }}"
                 }
             },
             unhighlight: function (element) {
@@ -778,13 +778,13 @@ input:checked + .slider:before {
             });
 
             if (!code) {
-                errorBox.text("{{ __('message.auth_code_required') }}").show();
+                errorBox.text("{{ trans('message.auth_code_required') }}").show();
                 inputField.css('border-color', 'red'); // Change border color to red
                 return;
             }
 
             if (!/^\d{6}$/.test(code)) {
-                errorBox.text("{{ __('message.6_code_numer') }}").show();
+                errorBox.text("{{ trans('message.6_code_numer') }}").show();
                 inputField.css('border-color', 'red'); // Change border color to red
                 return;
             }
@@ -809,7 +809,7 @@ input:checked + .slider:before {
                 },
                 error: function (xhr) {
                     const res = xhr.responseJSON || {};
-                    const message = res.message || "{{ __('message.invalid_code_2fa') }}";
+                    const message = res.message || "{{ trans('message.invalid_code_2fa') }}";
                     errorBox.text(message).show();
                     inputField.css('border-color', 'red');
                     inputField.val('');

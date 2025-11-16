@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close')}}</button>
-                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
+                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ trans('message.close')}}</button>
+                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

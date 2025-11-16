@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 
 @section('title')
-    {{ __('recaptcha::recaptcha.captcha_settings') }}
+    {{ trans('recaptcha::recaptcha.captcha_settings') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('recaptcha::recaptcha.captcha_settings') }}</h1>
+        <h1>{{ trans('recaptcha::recaptcha.captcha_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> {{ __('recaptcha::recaptcha.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ __('recaptcha::recaptcha.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('recaptcha::recaptcha.captcha_settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> {{ trans('recaptcha::recaptcha.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ trans('recaptcha::recaptcha.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('recaptcha::recaptcha.captcha_settings') }}</li>
         </ol>
     </div>
 @stop
@@ -21,37 +21,37 @@
     <div id="recaptcha-setting-alert" role="alert" aria-live="polite"></div>
     <div class="card card-secondary card-outline">
         <div class="card-header">
-            <h3 class="card-title">{{ __('recaptcha::recaptcha.captcha_configuration') }}</h3>
+            <h3 class="card-title">{{ trans('recaptcha::recaptcha.captcha_configuration') }}</h3>
         </div>
         {!! html()->form()->id('captcha-settings-form')->open() !!}
         <div class="card-body">
             {{-- General Configuration --}}
             <div class="form-group row">
-                <label for="captcha_version" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.captcha_version') }}</label>
+                <label for="captcha_version" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.captcha_version') }}</label>
                 <div class="col-sm-8">
                     {!! html()->select('captcha_version', [
-                            'v3_invisible' => __('recaptcha::recaptcha.recaptcha_v3'),
-                            'v2_invisible' => __('recaptcha::recaptcha.recaptcha_v2_invisible'),
-                            'v2_checkbox' => __('recaptcha::recaptcha.recaptcha_v2_checkbox')
+                            'v3_invisible' => trans('recaptcha::recaptcha.recaptcha_v3'),
+                            'v2_invisible' => trans('recaptcha::recaptcha.recaptcha_v2_invisible'),
+                            'v2_checkbox' => trans('recaptcha::recaptcha.recaptcha_v2_checkbox')
                         ])
                         ->class('form-control')
                         ->id('captcha_version')
                     !!}
-                    <small class="form-text text-muted">{{ __('recaptcha::recaptcha.select_captcha_type') }}</small>
+                    <small class="form-text text-muted">{{ trans('recaptcha::recaptcha.select_captcha_type') }}</small>
                 </div>
             </div>
 
             <div class="form-group row" id="group_failover_action">
-                <label for="failover_action" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.failover_action') }}</label>
+                <label for="failover_action" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.failover_action') }}</label>
                 <div class="col-sm-8">
                     {!! html()->select('failover_action', [
-                            'none' => __('recaptcha::recaptcha.none'),
-                            'v2_checkbox' => __('recaptcha::recaptcha.fallback_v2_checkbox')
+                            'none' => trans('recaptcha::recaptcha.none'),
+                            'v2_checkbox' => trans('recaptcha::recaptcha.fallback_v2_checkbox')
                         ])
                         ->class('form-control')
                         ->id('failover_action')
                     !!}
-                    <small class="form-text text-muted">{{ __('recaptcha::recaptcha.action_if_captcha_fails') }}</small>
+                    <small class="form-text text-muted">{{ trans('recaptcha::recaptcha.action_if_captcha_fails') }}</small>
                 </div>
             </div>
 
@@ -59,35 +59,35 @@
 
             {{-- reCAPTCHA v3 Settings --}}
             <div class="v3-settings-block">
-                <h5 class="text-muted mb-3">{{ __('recaptcha::recaptcha.recaptcha_v3_settings') }}</h5>
+                <h5 class="text-muted mb-3">{{ trans('recaptcha::recaptcha.recaptcha_v3_settings') }}</h5>
 
                 <div class="form-group row">
-                    <label for="v3_site_key" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v3_site_key') }}</label>
+                    <label for="v3_site_key" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v3_site_key') }}</label>
                     <div class="col-sm-8">
-                        {!! html()->text('v3_site_key')->class('form-control')->id('v3_site_key')->placeholder(__('recaptcha::recaptcha.enter_v3_site_key')) !!}
+                        {!! html()->text('v3_site_key')->class('form-control')->id('v3_site_key')->placeholder(trans('recaptcha::recaptcha.enter_v3_site_key')) !!}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="v3_secret_key" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v3_secret_key') }}</label>
+                    <label for="v3_secret_key" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v3_secret_key') }}</label>
                     <div class="col-sm-8">
-                        {!! html()->password('v3_secret_key')->class('form-control')->placeholder(__('recaptcha::recaptcha.enter_v3_secret_key'))->value(old('v3_secret_key', $settings->v3_secret_key ?? '')) !!}
+                        {!! html()->password('v3_secret_key')->class('form-control')->placeholder(trans('recaptcha::recaptcha.enter_v3_secret_key'))->value(old('v3_secret_key', $settings->v3_secret_key ?? '')) !!}
                     </div>
                 </div>
 
                 <div class="form-group row conditional-setting" id="group_score_threshold">
-                    <label for="score_threshold" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v3_score_threshold') }}</label>
+                    <label for="score_threshold" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v3_score_threshold') }}</label>
                     <div class="col-sm-8">
                         {!! html()->input('number', 'score_threshold')
                             ->class('form-control')
                             ->attributes(['min' => 0, 'max' => 1, 'step' => 0.1])
                         !!}
-                        <small class="form-text text-muted">{{ __('recaptcha::recaptcha.v3_score_hint') }}</small>
+                        <small class="form-text text-muted">{{ trans('recaptcha::recaptcha.v3_score_hint') }}</small>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v3_preview') }}</label>
+                    <label class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v3_preview') }}</label>
                     <div class="col-sm-8">
                         <div id="v3-preview-container" class="border p-3 bg-light min-height-100">
                             <div id="v3_response"></div>
@@ -99,24 +99,24 @@
 
             {{-- reCAPTCHA v2 Settings --}}
             <div class="v2-settings-block">
-                <h5 class="text-muted mb-3 mt-4">{{ __('recaptcha::recaptcha.recaptcha_v2_settings') }}</h5>
+                <h5 class="text-muted mb-3 mt-4">{{ trans('recaptcha::recaptcha.recaptcha_v2_settings') }}</h5>
 
                 <div class="form-group row">
-                    <label for="v2_site_key" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v2_site_key') }}</label>
+                    <label for="v2_site_key" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v2_site_key') }}</label>
                     <div class="col-sm-8">
-                        {!! html()->text('v2_site_key')->class('form-control')->id('v2_site_key')->placeholder(__('recaptcha::recaptcha.enter_v2_site_key')) !!}
+                        {!! html()->text('v2_site_key')->class('form-control')->id('v2_site_key')->placeholder(trans('recaptcha::recaptcha.enter_v2_site_key')) !!}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="v2_secret_key" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v2_secret_key') }}</label>
+                    <label for="v2_secret_key" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v2_secret_key') }}</label>
                     <div class="col-sm-8">
-                        {!! html()->password('v2_secret_key')->class('form-control')->placeholder(__('recaptcha::recaptcha.enter_v2_secret_key')) !!}
+                        {!! html()->password('v2_secret_key')->class('form-control')->placeholder(trans('recaptcha::recaptcha.enter_v2_secret_key')) !!}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.v2_preview') }}</label>
+                    <label class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.v2_preview') }}</label>
                     <div class="col-sm-8">
                         <div id="v2-preview-container" class="border p-3 bg-light min-height-100">
                             <div id="v2_response"></div>
@@ -129,44 +129,44 @@
             <hr>
 
             {{-- Appearance & Messages --}}
-            <h5 class="text-muted mb-3 mt-4">{{ __('recaptcha::recaptcha.appearance_messages') }}</h5>
+            <h5 class="text-muted mb-3 mt-4">{{ trans('recaptcha::recaptcha.appearance_messages') }}</h5>
 
             {{-- Conditional Appearance Settings --}}
             <div class="form-group row conditional-setting" id="group_theme">
-                <label class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.theme') }}</label>
+                <label class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.theme') }}</label>
                 <div class="col-sm-8 d-flex align-items-center">
                     <div class="form-check form-check-inline">
                         {!! html()->radio('theme', true, 'light')->id('theme_light')->class('form-check-input') !!}
-                        <label class="form-check-label" for="theme_light">{{ __('recaptcha::recaptcha.theme_light') }}</label>
+                        <label class="form-check-label" for="theme_light">{{ trans('recaptcha::recaptcha.theme_light') }}</label>
                     </div>
                     <div class="form-check form-check-inline">
                         {!! html()->radio('theme', false, 'dark')->id('theme_dark')->class('form-check-input') !!}
-                        <label class="form-check-label" for="theme_dark">{{ __('recaptcha::recaptcha.theme_dark') }}</label>
+                        <label class="form-check-label" for="theme_dark">{{ trans('recaptcha::recaptcha.theme_dark') }}</label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group row conditional-setting" id="group_size">
-                <label class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.size') }}</label>
+                <label class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.size') }}</label>
                 <div class="col-sm-8 d-flex align-items-center">
                     <div class="form-check form-check-inline">
                         {!! html()->radio('size', true, 'normal')->id('size_normal')->class('form-check-input') !!}
-                        <label class="form-check-label" for="size_normal">{{ __('recaptcha::recaptcha.size_normal') }}</label>
+                        <label class="form-check-label" for="size_normal">{{ trans('recaptcha::recaptcha.size_normal') }}</label>
                     </div>
                     <div class="form-check form-check-inline">
                         {!! html()->radio('size', false, 'compact')->id('size_compact')->class('form-check-input') !!}
-                        <label class="form-check-label" for="size_compact">{{ __('recaptcha::recaptcha.size_compact') }}</label>
+                        <label class="form-check-label" for="size_compact">{{ trans('recaptcha::recaptcha.size_compact') }}</label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group row conditional-setting" id="group_badge_position">
-                <label for="badge_position" class="col-sm-4 col-form-label">{{ __('recaptcha::recaptcha.badge_position') }}</label>
+                <label for="badge_position" class="col-sm-4 col-form-label">{{ trans('recaptcha::recaptcha.badge_position') }}</label>
                 <div class="col-sm-8">
                     {!! html()->select('badge_position', [
-                            'bottomright' => __('recaptcha::recaptcha.badge_bottomright'),
-                            'bottomleft'  => __('recaptcha::recaptcha.badge_bottomleft'),
-                            'inline'      => __('recaptcha::recaptcha.badge_inline')
+                            'bottomright' => trans('recaptcha::recaptcha.badge_bottomright'),
+                            'bottomleft'  => trans('recaptcha::recaptcha.badge_bottomleft'),
+                            'inline'      => trans('recaptcha::recaptcha.badge_inline')
                         ])
                         ->class('form-control')
                         ->id('badge_position')
@@ -177,7 +177,7 @@
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary pull-right">
-                <i class="fa fa-save">&nbsp;&nbsp;</i>{{ __('recaptcha::recaptcha.save') }}
+                <i class="fa fa-save">&nbsp;&nbsp;</i>{{ trans('recaptcha::recaptcha.save') }}
             </button>
         </div>
         {!! html()->form()->close() !!}
@@ -255,7 +255,7 @@
                         this.showLoading(false);
                     },
                     error: () => {
-                        this.showAlert('{{ __('recaptcha::recaptcha.failed_save_settings') }}', 'error');
+                        this.showAlert('{{ trans('recaptcha::recaptcha.failed_save_settings') }}', 'error');
                         this.showLoading(false);
                     }
                 });
@@ -345,10 +345,10 @@
                 try {
                     this.instances.v3 = await RecaptchaManager.init(this.elements.v3Response, { mode: 'v3', v3SiteKey: siteKey, action: 'settings_save', forceReload: true, badge: 'inline' });
                     const token = await this.instances.v3.getToken();
-                    if (!token) throw new Error('{{ __('recaptcha::recaptcha.complete_recaptcha_v3') }}');
+                    if (!token) throw new Error('{{ trans('recaptcha::recaptcha.complete_recaptcha_v3') }}');
                 } catch (error) {
                     this.clearV3Preview();
-                    this.elements.v3Error.textContent = '{{ __('recaptcha::recaptcha.failed_generate_v3_token') }}';
+                    this.elements.v3Error.textContent = '{{ trans('recaptcha::recaptcha.failed_generate_v3_token') }}';
                 }
             }
             async renderV2Preview(siteKey, theme, size) {
@@ -357,7 +357,7 @@
                     this.instances.v2 = await RecaptchaManager.init(this.elements.v2Response, { mode: 'v2', v2SiteKey: siteKey, theme, size, debug: true });
                 } catch (error) {
                     this.clearV2Preview();
-                    this.elements.v2Response.innerHTML = '<span class="text-danger">{{ __('recaptcha::recaptcha.failed_generate_v2_token') }}</span>';
+                    this.elements.v2Response.innerHTML = '<span class="text-danger">{{ trans('recaptcha::recaptcha.failed_generate_v2_token') }}</span>';
                 }
             }
             async renderV2InvisiblePreview(siteKey) {
@@ -366,7 +366,7 @@
                     this.instances.v2Invisible = await RecaptchaManager.init(this.elements.v2Response, { mode: 'v2-invisible', v2SiteKey: siteKey, debug: true, badge: 'inline' });
                 } catch (error) {
                     this.clearV2Preview();
-                    this.elements.v2Response.innerHTML = '<span class="text-danger">{{ __('recaptcha::recaptcha.failed_generate_v2_token') }}</span>';
+                    this.elements.v2Response.innerHTML = '<span class="text-danger">{{ trans('recaptcha::recaptcha.failed_generate_v2_token') }}</span>';
                 }
             }
             clearAllPreviews() {
@@ -409,7 +409,7 @@
                     const condition = params.condition;
                     const isRequired = typeof condition === 'function' ? condition() : condition;
                     return !isRequired || (value && value.trim().length > 0);
-                }, "{{ __('recaptcha::recaptcha.field_required_condition') }}");
+                }, "{{ trans('recaptcha::recaptcha.field_required_condition') }}");
 
                 // Initialize form validation
                 $(this.elements.form).validate({
@@ -456,27 +456,27 @@
                     },
                     messages: {
                         captcha_version: {
-                            required: "{{ __('recaptcha::recaptcha.select_captcha_version') }}"
+                            required: "{{ trans('recaptcha::recaptcha.select_captcha_version') }}"
                         },
                         v3_site_key: {
-                            conditionalRequired: "{{ __('recaptcha::recaptcha.v3_site_key_required') }}",
-                            recaptchaKey: "{{ __('recaptcha::recaptcha.valid_recaptcha_site_key') }}",
+                            conditionalRequired: "{{ trans('recaptcha::recaptcha.v3_site_key_required') }}",
+                            recaptchaKey: "{{ trans('recaptcha::recaptcha.valid_recaptcha_site_key') }}",
                         },
                         v3_secret_key: {
-                            conditionalRequired: "{{ __('recaptcha::recaptcha.v3_secret_key_required') }}",
-                            recaptchaKey: "{{ __('recaptcha::recaptcha.valid_recaptcha_secret_key') }}",
+                            conditionalRequired: "{{ trans('recaptcha::recaptcha.v3_secret_key_required') }}",
+                            recaptchaKey: "{{ trans('recaptcha::recaptcha.valid_recaptcha_secret_key') }}",
                         },
                         v2_site_key: {
-                            conditionalRequired: "{{ __('recaptcha::recaptcha.v2_site_key_required') }}",
-                            recaptchaKey: "{{ __('recaptcha::recaptcha.valid_recaptcha_site_key') }}",
+                            conditionalRequired: "{{ trans('recaptcha::recaptcha.v2_site_key_required') }}",
+                            recaptchaKey: "{{ trans('recaptcha::recaptcha.valid_recaptcha_site_key') }}",
                         },
                         v2_secret_key: {
-                            conditionalRequired: "{{ __('recaptcha::recaptcha.v2_secret_key_required') }}",
-                            recaptchaKey: "{{ __('recaptcha::recaptcha.valid_recaptcha_secret_key') }}",
+                            conditionalRequired: "{{ trans('recaptcha::recaptcha.v2_secret_key_required') }}",
+                            recaptchaKey: "{{ trans('recaptcha::recaptcha.valid_recaptcha_secret_key') }}",
                         },
                         score_threshold: {
-                            required: "{{ __('recaptcha::recaptcha.score_threshold_required') }}",
-                            number: "{{ __('recaptcha::recaptcha.valid_number') }}",
+                            required: "{{ trans('recaptcha::recaptcha.score_threshold_required') }}",
+                            number: "{{ trans('recaptcha::recaptcha.valid_number') }}",
                         }
                     }
                 });
@@ -539,14 +539,14 @@
                         if (this.elements.failoverAction.value === 'v2_checkbox') {
                             await getToken(this.instances.v2, 'v2InvisibleResponseToken', {
                                 element: 'v2Error',
-                                empty: '{{ __("recaptcha::recaptcha.complete_recaptcha_v2") }}',
-                                failed: '{{ __("recaptcha::recaptcha.failed_generate_v2_token") }}'
+                                empty: '{{ trans("recaptcha::recaptcha.complete_recaptcha_v2") }}',
+                                failed: '{{ trans("recaptcha::recaptcha.failed_generate_v2_token") }}'
                             });
                         }
                         await getToken(this.instances.v3, 'v3ResponseToken', {
                             element: 'v3Error',
-                            empty: '{{ __("recaptcha::recaptcha.complete_recaptcha_v3") }}',
-                            failed: '{{ __("recaptcha::recaptcha.failed_generate_v3_token") }}',
+                            empty: '{{ trans("recaptcha::recaptcha.complete_recaptcha_v3") }}',
+                            failed: '{{ trans("recaptcha::recaptcha.failed_generate_v3_token") }}',
                             action: 'settings_save'
                         });
                         break;
@@ -554,16 +554,16 @@
                     case 'v2_checkbox':
                         await getToken(this.instances.v2, 'v2ResponseToken', {
                             element: 'v2Error',
-                            empty: '{{ __("recaptcha::recaptcha.complete_recaptcha_v2") }}',
-                            failed: '{{ __("recaptcha::recaptcha.failed_generate_v2_token") }}'
+                            empty: '{{ trans("recaptcha::recaptcha.complete_recaptcha_v2") }}',
+                            failed: '{{ trans("recaptcha::recaptcha.failed_generate_v2_token") }}'
                         });
                         break;
 
                     case 'v2_invisible':
                         await getToken(this.instances.v2Invisible, 'v2InvisibleResponseToken', {
                             element: 'v2Error',
-                            empty: '{{ __("recaptcha::recaptcha.complete_recaptcha_v2") }}',
-                            failed: '{{ __("recaptcha::recaptcha.failed_generate_v2_token") }}'
+                            empty: '{{ trans("recaptcha::recaptcha.complete_recaptcha_v2") }}',
+                            failed: '{{ trans("recaptcha::recaptcha.failed_generate_v2_token") }}'
                         });
                         break;
                 }
@@ -576,13 +576,13 @@
                 if (!$(this.elements.form).valid()) { this.shakeForm(); return false; }
                 const submitButton = this.elements.form.querySelector('button[type="submit"]');
                 submitButton.disabled = true;
-                submitButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;{{ __('recaptcha::recaptcha.saving') }}...';
+                submitButton.innerHTML = '<i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;{{ trans('recaptcha::recaptcha.saving') }}...';
                 this.elements.v2Error.textContent = '';
                 this.elements.v3Error.textContent = '';
                 const { v2ResponseToken, v2InvisibleResponseToken, v3ResponseToken, hasError } = await this.tokenValidation(this.elements.captchaVersion.value);
                 if (hasError) {
                     submitButton.disabled = false;
-                    submitButton.innerHTML = '<i class="fa fa-save">&nbsp;&nbsp;</i>{{ __('recaptcha::recaptcha.save') }}';
+                    submitButton.innerHTML = '<i class="fa fa-save">&nbsp;&nbsp;</i>{{ trans('recaptcha::recaptcha.save') }}';
                     return false;
                 }
                 const payload = {
@@ -609,7 +609,7 @@
                         if (result && result.message) {
                             this.showAlert(result.message, 'success');
                         } else {
-                            this.showAlert('{{ __('recaptcha::recaptcha.settings_saved') }}', 'success');
+                            this.showAlert('{{ trans('recaptcha::recaptcha.settings_saved') }}', 'success');
                         }
                     },
                     error: (xhr) => {
@@ -622,7 +622,7 @@
                             }
                         }
 
-                        let msg = '{{ __('recaptcha::recaptcha.failed_save_settings') }}';
+                        let msg = '{{ trans('recaptcha::recaptcha.failed_save_settings') }}';
                         if (response.message) {
                             msg = response.message;
                         }
@@ -651,7 +651,7 @@
                     complete: () => {
                         this.renderPreviews();
                         submitButton.disabled = false;
-                        submitButton.innerHTML = '<i class="fa fa-save">&nbsp;&nbsp;</i>{{ __('recaptcha::recaptcha.save') }}';
+                        submitButton.innerHTML = '<i class="fa fa-save">&nbsp;&nbsp;</i>{{ trans('recaptcha::recaptcha.save') }}';
                     }
                 });
             }

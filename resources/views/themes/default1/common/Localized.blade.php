@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.localized_lic') }}
+    {{ trans('message.localized_lic') }}
 @stop
 @section('content-header')
 <div class="col-sm-6">
-    <h1>{{ __('message.localized_lic') }}</h1>
+    <h1>{{ trans('message.localized_lic') }}</h1>
 </div>
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{url('settings')}}">{{ __('message.settings') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('message.localized_lic') }}</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{url('settings')}}">{{ trans('message.settings') }}</a></li>
+        <li class="breadcrumb-item active">{{ trans('message.localized_lic') }}</li>
     </ol>
 </div><!-- /.col -->
 @stop
@@ -25,14 +25,14 @@
                  	<div id="Localized-license-table_processing" class="dataTables_processing" style="display: none;"> 
                  		<div class="overlay">
                  			<i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                 			<div class="text-bold pt-2">{{ __('message.loading') }}</div>
+                 			<div class="text-bold pt-2">{{ trans('message.loading') }}</div>
                  		</div>
                  	</div>
                  	<table id="Localized-license-table" class="table display dataTable no-footer" cellspacing="0" width="100%" styleclass="borderless" role="grid" aria-describedby="third-party-app-table_info" style="width: 100%;"> 
                     <thead>
                     	<tr role="row">
-                                <th class="sorting" tabindex="0" aria-controls="Localized-license-table" rowspan="1" colspan="1" aria-label="App name: activate to sort column ascending" style="width: 98px;">{{ __('message.license_file_name') }}</th>
-                    			<th class="sorting" tabindex="0" aria-controls="Localized-license-table" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 46px;">{{ __('message.action') }}</th></tr>
+                                <th class="sorting" tabindex="0" aria-controls="Localized-license-table" rowspan="1" colspan="1" aria-label="App name: activate to sort column ascending" style="width: 98px;">{{ trans('message.license_file_name') }}</th>
+                    			<th class="sorting" tabindex="0" aria-controls="Localized-license-table" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 46px;">{{ trans('message.action') }}</th></tr>
                     </thead>
                    <tbody>
 
@@ -45,13 +45,13 @@
                             <div class="row">
                             <div class="col-md-1">
                             <form action="{{url('LocalizedLicense/delete/'.$files)}}" method="GET" onsubmit="return ConfirmDelete()">
-                             <button  id="tooltipex" data-toggle="tooltip" data-id="2" data-appname="faveo_app_key" data-appkey="sgBX3dmgjsiRPCsy4qtQcMy1F2r8xqfl" data-secret="FAVEOSECRET" class="btn btn-sm btn-secondary btn-xs editThirdPartyApp" label="" style="font-weight:500;" title="{{ __('message.delete_license_file') }}">
+                             <button  id="tooltipex" data-toggle="tooltip" data-id="2" data-appname="faveo_app_key" data-appkey="sgBX3dmgjsiRPCsy4qtQcMy1F2r8xqfl" data-secret="FAVEOSECRET" class="btn btn-sm btn-secondary btn-xs editThirdPartyApp" label="" style="font-weight:500;" title="{{ trans('message.delete_license_file') }}">
                             <i class="fa fa-trash" style="color:white;"></i></button>&nbsp;
                             </form>
                         </div>
                         <div class="col-md-11 container2">
-                            <a href="{{url('LocalizedLicense/downloadLicense/'.$files)}}"><button class="btn btn-secondary btn-sm ml-3" data-toggle="tooltip" title="Download this license file." data-placement="top">{{ __('message.download_license_file') }}</button></a>
-                            <a href="{{url('LocalizedLicense/downloadPrivateKey/'.$files)}}"><button class="btn btn-secondary btn-sm ml-3" data-placement="top"data-toggle="tooltip" title="{{ __('message.download_this_license_key') }}">{{ __('message.download_license_key') }} </button></a>
+                            <a href="{{url('LocalizedLicense/downloadLicense/'.$files)}}"><button class="btn btn-secondary btn-sm ml-3" data-toggle="tooltip" title="Download this license file." data-placement="top">{{ trans('message.download_license_file') }}</button></a>
+                            <a href="{{url('LocalizedLicense/downloadPrivateKey/'.$files)}}"><button class="btn btn-secondary btn-sm ml-3" data-placement="top"data-toggle="tooltip" title="{{ trans('message.download_this_license_key') }}">{{ trans('message.download_license_key') }} </button></a>
                        </div>
                        </div>
                           </p>  
@@ -74,7 +74,7 @@
     
     <script type="text/javascript">
     function ConfirmDelete() {
-        return confirm("{{ __('message.sure_delete_license_file') }}");
+        return confirm("{{ trans('message.sure_delete_license_file') }}");
      }
      
      </script>
@@ -90,22 +90,22 @@
 <script>
    $(document).ready(function() {
     $('#Localized-license-table').DataTable( {
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "{{ __('message.paginate_all') }}"]],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "{{ trans('message.paginate_all') }}"]],
         language: {
             paginate: {
-                first:      "{{ __('message.paginate_first') }}",
-                last:       "{{ __('message.paginate_last') }}",
-                next:       "{{ __('message.paginate_next') }}",
-                previous:   "{{ __('message.paginate_previous') }}"
+                first:      "{{ trans('message.paginate_first') }}",
+                last:       "{{ trans('message.paginate_last') }}",
+                next:       "{{ trans('message.paginate_next') }}",
+                previous:   "{{ trans('message.paginate_previous') }}"
             },
-            emptyTable:     "{{ __('message.empty_table') }}",
-            info:           "{{ __('message.datatable_info') }}",
-            zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-            infoEmpty:      "{{ __('message.info_empty') }}",
-            infoFiltered:   "{{ __('message.info_filtered') }}",
-            lengthMenu:     "{{ __('message.length_menu') }}",
-            loadingRecords: "{{ __('message.loading_records') }}",
-            search:         "{{ __('message.table_search') }}",
+            emptyTable:     "{{ trans('message.empty_table') }}",
+            info:           "{{ trans('message.datatable_info') }}",
+            zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+            infoEmpty:      "{{ trans('message.info_empty') }}",
+            infoFiltered:   "{{ trans('message.info_filtered') }}",
+            lengthMenu:     "{{ trans('message.length_menu') }}",
+            loadingRecords: "{{ trans('message.loading_records') }}",
+            search:         "{{ trans('message.table_search') }}",
         },
     } );
 } );

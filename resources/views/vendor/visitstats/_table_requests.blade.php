@@ -1,8 +1,8 @@
  <table id="example2" class="table table-bordered table-hover">
     <thead>
-        <th>{{ __('message.request') }}</th>
-        <th>{{ __('message.referrer') }}</th>
-        <th>{{ __('message.visitor') }}</th>
+        <th>{{ trans('message.request') }}</th>
+        <th>{{ trans('message.referrer') }}</th>
+        <th>{{ trans('message.visitor') }}</th>
     </thead>
       
     <tbody>
@@ -20,7 +20,7 @@
                     @if ($visit->is_login_attempt)
                         <img class="visitortracker-icon"
                             src="{{ asset('/vendor/visitortracker/icons/login_attempt.png') }}"
-                            title="{{ __('message.login_attempt') }}">
+                            title="{{ trans('message.login_attempt') }}">
                     @endif
                     {{ $visit->method }} 
                      

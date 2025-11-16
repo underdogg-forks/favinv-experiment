@@ -39,12 +39,12 @@ class LanguageController extends Controller
 
                     return response()->json([
                         'success' => true,
-                        'message' => __('message.language_status_updated_successfully'),
+                        'message' => trans('message.language_status_updated_successfully'),
                     ]);
                 }
             }
 
-            return response()->json(['success' => false, 'message' => __('message.language_not_found')], 404);
+            return response()->json(['success' => false, 'message' => trans('message.language_not_found')], 404);
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }

@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.edit-payment') }}
+    {{ trans('message.edit-payment') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
@@ -8,10 +8,10 @@
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('clients')}}"> {{ __('message.all-users') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('clients/'.$clientid)}}">{{ __('message.view_user') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit-payment') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('clients')}}"> {{ trans('message.all-users') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('clients/'.$clientid)}}">{{ trans('message.view_user') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit-payment') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -99,7 +99,7 @@
                             <!-- last name -->
                             {!! html()->label(trans('message.payment-method'))->for('payment_method')->class('required') !!}
                             {!! html()->select('payment_method', [
-                                '' => __('message.choose'),
+                                '' => trans('message.choose'),
                                'cash' => 'Cash',
                                'check' => 'Check',
                                'online payment' => 'Online Payment',
@@ -154,7 +154,7 @@
                                             <th>{{trans('message.date')}}</th>
                                             <th>{{trans('message.invoice_number')}}</th>
                                             <th>{{trans('message.total')}}</th>
-                                            <th>{{ __('message.invoice_due') }}</th>
+                                            <th>{{ trans('message.invoice_due') }}</th>
                                             <th>{{trans('message.pay')}}</th>
                                             
                                            
@@ -205,7 +205,7 @@
                                         @endif
                                         @empty 
                                         <tr>
-                                            <td>{{ __('message.no_invoices') }}</td>
+                                            <td>{{ trans('message.no_invoices') }}</td>
                                         </tr>
                                         @endforelse
 
@@ -217,7 +217,7 @@
                             
                         </div>
                         @endif
-                          <h3>{{ __('message.amount_to_credit') }} {{$symbol}} <span class="creditAmount">0</span></h3>
+                          <h3>{{ trans('message.amount_to_credit') }} {{$symbol}} <span class="creditAmount">0</span></h3>
                     </div>
     </div>
        <script>
@@ -376,7 +376,7 @@
         });
 
 
-     $("#submit").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+     $("#submit").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
     var invoice = [];
     var invoiceAmount = [];
     $(":checked").each(function() {
@@ -406,15 +406,15 @@
           success: function (response) {
             $('#alertMessage').show();
             // console.log(response)
-            var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong>'+response.message+'.</div>';
+            var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong>'+response.message+'.</div>';
             $('#alertMessage').html(result+ ".");
-              $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+              $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
           },
           error: function (ex) {
                var errors = ex.responseJSON;
                $('#error1').show();
-            var html = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-ban"></i>{{ __('message.alert') }}! </strong>'+ex.responseJSON.message+' <br><ul>';
-             $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+            var html = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-ban"></i>{{ trans('message.alert') }}! </strong>'+ex.responseJSON.message+' <br><ul>';
+             $("#submit").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
             for (var key in ex.responseJSON.errors)
             {
                 html += '<li>' + ex.responseJSON.errors[key][0] + '</li>'

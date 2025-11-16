@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
- {{ __('message.create_page') }}
+ {{ trans('message.create_page') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.create_new_page') }}</h1>
+        <h1>{{ trans('message.create_new_page') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home')}}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('pages')}}"><i class="fa fa-dashboard"></i> {{ __('message.all_pages')}}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.create_new_page')}}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home')}}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('pages')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all_pages')}}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.create_new_page')}}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -49,7 +49,7 @@
                     <div class="col-md-4 form-group {{ $errors->has('publish') ? 'has-error' : '' }}">
                         <!-- publish -->
                         {!! html()->label(trans('message.publish'), 'publish')->class('required') !!}
-                        {!! html()->select('publish', [1 => __('message.yes'), 0 => __('message.no')])->class('form-control'.($errors->has('publish') ? ' is-invalid' : '')) !!}
+                        {!! html()->select('publish', [1 => trans('message.yes'), 0 => trans('message.no')])->class('form-control'.($errors->has('publish') ? ' is-invalid' : '')) !!}
                         @error('publish')
                         <span class="error-message"> {{$message}}</span>
                         @enderror
@@ -87,7 +87,7 @@
                     <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- parent_page_id -->
                         {!! html()->label(trans('message.parent-page'), 'parent_page_id') !!}
-                        {!! html()->select('parent_page_id', ['0' => __('message.choose'), __('message.parent-page') => $parents])->class('form-control'.($errors->has('parent_page_id') ? ' is-invalid' : '')) !!}
+                        {!! html()->select('parent_page_id', ['0' => trans('message.choose'), trans('message.parent-page') => $parents])->class('form-control'.($errors->has('parent_page_id') ? ' is-invalid' : '')) !!}
                         @error('parent_page_id')
                         <span class="error-message"> {{$message}}</span>
                         @enderror
@@ -96,7 +96,7 @@
                     <div class="col-md-4 form-group {{ $errors->has('parent_page_id') ? 'has-error' : '' }}">
                         <!-- type -->
                         {!! html()->label(trans('message.page_type'), 'type') !!}
-                        {!! html()->select('type', ['none' => __('message.none'), 'contactus' => __('message.contact_us')])->class('form-control'.($errors->has('type') ? ' is-invalid' : '')) !!}
+                        {!! html()->select('type', ['none' => trans('message.none'), 'contactus' => trans('message.contact_us')])->class('form-control'.($errors->has('type') ? ' is-invalid' : '')) !!}
                         @error('type')
                         <span class="error-message"> {{$message}}</span>
                         @enderror

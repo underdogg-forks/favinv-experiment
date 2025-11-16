@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.view_profile') }}
+    {{ trans('message.view_profile') }}
 @stop
 
 @section('content-header')
@@ -74,13 +74,13 @@
     </style>
 
     <div class="col-sm-6">
-        <h1>{{ __('message.view_profile') }}</h1>
+        <h1>{{ trans('message.view_profile') }}</h1>
     </div>
     <div class="col-sm-6">
 
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_profile') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_profile') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -113,7 +113,7 @@
 
             <div class="card card-secondary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('message.edit_profile') }}</h3>
+                    <h3 class="card-title">{{ trans('message.edit_profile') }}</h3>
 
 
                 </div>
@@ -247,7 +247,7 @@
                                 @if(count($state)>0)
                                     <option value="{{$state['id']}}">{{$state['name']}}</option>
                                 @endif
-                                <option value="">{{ __('message.select_state') }}</option>
+                                <option value="">{{ trans('message.select_state') }}</option>
                                 @foreach($states as $key=>$value)
                                     <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
@@ -301,7 +301,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button></h4>
+                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button></h4>
 
                     {!! html()->token() !!}
                     {!! html()->form()->close() !!}
@@ -344,7 +344,7 @@
                     <div class="form-group has-feedback {{ $errors->has('old_password') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.old_password'))->class('required')->for('old_password') !!}
                         <div class="input-group">
-                            {!! html()->password('old_password')->placeholder( __('message.password'))->class('form-control'. ($errors->has('old_password') ? ' is-invalid' : '')) !!}
+                            {!! html()->password('old_password')->placeholder( trans('message.password'))->class('form-control'. ($errors->has('old_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
                                         <span class="input-group-text" role="button" onclick="togglePasswordVisibility(this)">
                                             <i class="fa fa-eye-slash"></i>
@@ -360,7 +360,7 @@
                     <div class="form-group has-feedback {{ $errors->has('new_password') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.new_password'))->class('required')->for('new_password') !!}
                         <div class="input-group has-validation">
-                            {!! html()->password('new_password')->placeholder( __('message.new_password'))->class('form-control'. ($errors->has('new_password') ? ' is-invalid' : '')) !!}
+                            {!! html()->password('new_password')->placeholder( trans('message.new_password'))->class('form-control'. ($errors->has('new_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
                                         <span class="input-group-text" role="button" onclick="togglePasswordVisibility(this)">
                                             <i class="fa fa-eye-slash"></i>
@@ -385,7 +385,7 @@
                     <div class="form-group has-feedback {{ $errors->has('confirm_password') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.confirm_password'))->class('required')->for('confirm_password') !!}
                         <div class="input-group">
-                            {!! html()->password('confirm_password')->placeholder( __('message.confirm_password'))->class('form-control'. ($errors->has('confirm_password') ? ' is-invalid' : '')) !!}
+                            {!! html()->password('confirm_password')->placeholder( trans('message.confirm_password'))->class('form-control'. ($errors->has('confirm_password') ? ' is-invalid' : '')) !!}
                             <div class="input-group-append">
                                         <span class="input-group-text" role="button" onclick="togglePasswordVisibility(this)">
                                             <i class="fa fa-eye-slash"></i>
@@ -398,7 +398,7 @@
                         <span class="error-message"> {{$message}}</span>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.updating') }}"><i class="fas fa-sync">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
                     {!! html()->form()->close() !!}
                 </div>
             </div>
@@ -425,13 +425,13 @@
                             <h5>
                                 @if($is2faEnabled ==0)
 
-                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;" class="img-responsive img-circle img-sm">&nbsp;{{ __('message.authenticator_app') }}
+                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;" class="img-responsive img-circle img-sm">&nbsp;{{ trans('message.authenticator_app') }}
                                 @else
-                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;" class="img-responsive img-circle img-sm">&nbsp;{{ __('message.2_step_verification') }} {{getTimeInLoggedInUserTimeZone($dateSinceEnabled)}}
+                                    <img src="{{asset('common/images/authenticator.png')}}" alt="Authenticator" style="margin-top: -6px!important;" class="img-responsive img-circle img-sm">&nbsp;{{ trans('message.2_step_verification') }} {{getTimeInLoggedInUserTimeZone($dateSinceEnabled)}}
                                     <br><br><br>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <button class="btn btn-primary" id="viewRecCode">{{ __('message.recovery_code') }}</button>
+                                            <button class="btn btn-primary" id="viewRecCode">{{ trans('message.recovery_code') }}</button>
                                         </div>
                                     </div>
                                 @endif
@@ -456,17 +456,17 @@
     {!! html()->form()->close() !!}
     <script>
         window.trans = {
-            please_enter_password: "{{ __('message.please_enter_password') }}",
-            verifying: "{{ __('message.2fa_verifying') }}",
-            incorrect_password: "{{ __('message.incorrect_password') }}",
-            please_enter_code: "{{ __('message.please_enter_code') }}",
-            wrong_code: "{{ __('message.wrong_code') }}",
-            turned_off: "{{ __('message.caps_turned_off') }}",
-            please_wait: "{{ __('message.please_wait') }}",
-            new_code_generated: "{{ __('message.new_code_generated') }}",
-            validate: "{{ __('message.validate') }}",
-            verify: "{{ __('message.verify') }}",
-            generate_new: "{{ __('message.generate_new') }}",
+            please_enter_password: "{{ trans('message.please_enter_password') }}",
+            verifying: "{{ trans('message.2fa_verifying') }}",
+            incorrect_password: "{{ trans('message.incorrect_password') }}",
+            please_enter_code: "{{ trans('message.please_enter_code') }}",
+            wrong_code: "{{ trans('message.wrong_code') }}",
+            turned_off: "{{ trans('message.caps_turned_off') }}",
+            please_wait: "{{ trans('message.please_wait') }}",
+            new_code_generated: "{{ trans('message.new_code_generated') }}",
+            validate: "{{ trans('message.validate') }}",
+            verify: "{{ trans('message.verify') }}",
+            generate_new: "{{ trans('message.generate_new') }}",
         };
     </script>
     <script src="{{asset('common/js/2fa1.js')}}"></script>

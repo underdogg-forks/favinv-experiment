@@ -126,7 +126,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
             $request->from = '';
             $request->till = '';
 
-            return redirect('invoices')->with('fails', __('message.start_date_before_end_date'));
+            return redirect('invoices')->with('fails', trans('message.start_date_before_end_date'));
         }
         try {
             $currencies = Currency::where('status', 1)->pluck('code')->toArray();
@@ -216,7 +216,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
                             $check = $this->checkExecution($model->id);
                             if ($check == false) {
                                 $action = '<p><form id="execute-form" method="post" action='.url('order/execute?invoiceid='.$model->id).'>'.'<input type="hidden" name="_token" value='.\Session::token().'>'.'
-                    <button type="submit" style="margin-top:-10px;" class="btn btn-sm btn-secondary btn-xs"'.tooltip(__('message.execute_order')).'<i class="fa fa-tasks" style="color:white;"></i></button></form></p>';
+                    <button type="submit" style="margin-top:-10px;" class="btn btn-sm btn-secondary btn-xs"'.tooltip(trans('message.execute_order')).'<i class="fa fa-tasks" style="color:white;"></i></button></form></p>';
 
                                 $action .= '<script>
                             $("#execute-form").submit(function(event) {
@@ -226,7 +226,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
                             }
 
                             return '<a href='.htmlspecialchars(url('invoices/show?invoiceid='.$model->id))
-                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.view'))."<i class='fa fa-eye' 
+                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.view'))."<i class='fa fa-eye' 
                             style='color:white;'> </i></a>"
                                     ."   $action";
                         })
@@ -273,7 +273,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
             ->where('invoices.id', '=', $request->input('invoiceid'))
             ->first();
             if (User::onlyTrashed()->find($invoice->user_id)) {
-                throw new \Exception(__('message.user_suspended'));
+                throw new \Exception(trans('message.user_suspended'));
             }
             $invoiceItems = $invoice->invoiceItem()->get();
             $user = $this->user->find($invoice->user_id);
@@ -301,7 +301,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
             if ($clientid) {
                 $user = $user->where('id', $clientid)->first();
                 if (! $user) {
-                    return redirect()->back()->with('fails', __('message.invalid_user'));
+                    return redirect()->back()->with('fails', trans('message.invalid_user'));
                 }
             } else {
                 $user = '';
@@ -408,7 +408,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
 
             return $invoiceItem;
         } catch (\Exception $ex) {
-            throw new \Exception(__('message.cannot_create_invoice_item'));
+            throw new \Exception(trans('message.cannot_create_invoice_item'));
         }
     }
 
@@ -553,7 +553,7 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
             $user = $this->user->find($invoice->user_id);
 
             if (! $user || ($user->id != \Auth::user()->id && \Auth::user()->role != 'admin')) {
-                return redirect()->back()->with('fails', __('message.invalid_user'));
+                return redirect()->back()->with('fails', trans('message.invalid_user'));
             }
 
             if (! $invoice) {
@@ -590,9 +590,9 @@ class InvoiceController extends TaxRatesAndCodeExpiryController
                 app('queue')->setDefaultDriver($driver->short_name);
                 ReportExport::dispatch('invoices', $selectedColumns, $searchParams, $email)->onQueue('reports');
 
-                return response()->json(['message' => __('message.report_generation_in_progress')], 200);
+                return response()->json(['message' => trans('message.report_generation_in_progress')], 200);
             } else {
-                return response()->json(['message' => __('message.cannot_sync_queue_driver')], 400);
+                return response()->json(['message' => trans('message.cannot_sync_queue_driver')], 400);
             }
         } catch (\Exception $e) {
             \Log::error('Export failed: '.$e->getMessage());

@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.social-media') }}
+    {{ trans('message.social-media') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.create_new_social_media') }}</h1>
+        <h1>{{ trans('message.create_new_social_media') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('social-media')}}"><i class="fa fa-dashboard"></i> {{ __('message.social-media') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.create_new_social_media') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('social-media')}}"><i class="fa fa-dashboard"></i> {{ trans('message.social-media') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.create_new_social_media') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop

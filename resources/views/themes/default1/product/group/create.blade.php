@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.create_group') }}
+    {{ trans('message.create_group') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.create_product_group') }}</h1>
+        <h1>{{ trans('message.create_product_group') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('groups')}}"><i class="fa fa-dashboard"></i> {{ __('message.groups') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.create_group') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('groups')}}"><i class="fa fa-dashboard"></i> {{ trans('message.groups') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.create_group') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -147,7 +147,7 @@
 
                     {!! html()->form()->close() !!}
                 </table>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button>
 
 
 
@@ -274,7 +274,7 @@ $(document).ready(function () {
         e.preventDefault();
         if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="row"><div class="col-md-4 form-group"><input type="text" name="value[][name]" class="form-control"/></div><div class="col-md-4 form-group"><input type="text" name="price[][name]" class="form-control" /></div><a href="#" class="remove_field">{{ __('message.remove') }}</a></div>'); //add input box
+            $(wrapper).append('<div class="row"><div class="col-md-4 form-group"><input type="text" name="value[][name]" class="form-control"/></div><div class="col-md-4 form-group"><input type="text" name="price[][name]" class="form-control" /></div><a href="#" class="remove_field">{{ trans('message.remove') }}</a></div>'); //add input box
         }
     });
 

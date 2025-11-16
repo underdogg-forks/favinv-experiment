@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.create_order') }}
+    {{ trans('message.create_order') }}
 @stop
 @section('content')
 <div class="card border-top border-primary">
@@ -8,7 +8,7 @@
     <div class="content-header">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

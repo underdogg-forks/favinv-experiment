@@ -1,13 +1,13 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.cart') }}
+{{ trans('message.cart') }}
 @stop
 @section('page-heading')
-Faveo {{ __('message.download') }}
+Faveo {{ trans('message.download') }}
 @stop
 @section('breadcrumb')
-<li><a href="{{url('home')}}">{{ __('message.home')}}</a></li>
-<li class="active">{{ __('message.download')}}</li>
+<li><a href="{{url('home')}}">{{ trans('message.home')}}</a></li>
+<li class="active">{{ trans('message.download')}}</li>
 @stop
 @section('main-class') "main shop" @stop
 @section('content')
@@ -17,8 +17,8 @@ Faveo {{ __('message.download') }}
         <div class="col-md-10 col-md-offset-2">
             <div class="page-Download-main">
                 
-                <h2><span >{{ __('message.download')}}</span>&nbsp;<i class="fa fa fa-download "></i></h2>
-                <p>&nbsp;&nbsp;&nbsp;{{ __('message.download_begin')}} <a href="{{$release}}">{{ __('message.here')}}</a> {{ __('message.to_download')}}</p>
+                <h2><span >{{ trans('message.download')}}</span>&nbsp;<i class="fa fa fa-download "></i></h2>
+                <p>&nbsp;&nbsp;&nbsp;{{ trans('message.download_begin')}} <a href="{{$release}}">{{ trans('message.here')}}</a> {{ trans('message.to_download')}}</p>
             </div>
         </div>
 

@@ -1,13 +1,13 @@
 @extends('themes.default1.layouts.master')
 @section('content-header')
 <h1>
-    {{ __('message.create_template') }}
+    {{ trans('message.create_template') }}
 </h1>
   <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li><a href="{{url('settings')}}">{{ __('message.settings') }}</a></li>
-        <li><a href="{{url('templates')}}">{{ __('message.template') }}</a></li>
-        <li class="active">{{ __('message.create_template') }}</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li><a href="{{url('settings')}}">{{ trans('message.settings') }}</a></li>
+        <li><a href="{{url('templates')}}">{{ trans('message.template') }}</a></li>
+        <li class="active">{{ trans('message.create_template') }}</li>
       </ol>
 @stop
 @section('content')
@@ -16,7 +16,7 @@
     <div class="card-header">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -41,7 +41,7 @@
         </div>
         @endif
             {!! html()->form('POST', url('template'))->open() !!}
-            <h4>{{trans('message.template')}}	<button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
+            <h4>{{trans('message.template')}}	<button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
 
     </div>
 
@@ -63,7 +63,7 @@
                     <div class="col-md-4 form-group {{ $errors->has('type') ? 'has-error' : '' }}">
                         <!-- last name -->
                         {!! html()->label(trans('message.template-types'))->class('required') !!}
-                        {!! html()->select('type', ['' => __('message.Select'), 'Type' => $type])->class('form-control') !!}
+                        {!! html()->select('type', ['' => trans('message.Select'), 'Type' => $type])->class('form-control') !!}
 
                     </div>
 

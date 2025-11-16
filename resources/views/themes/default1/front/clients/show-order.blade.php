@@ -1,12 +1,12 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.orders') }}
+    {{ trans('message.orders') }}
 @stop
 @section('nav-orders')
     active
 @stop
 @section('page-heading')
-    {{ __('message.order_details')}}
+    {{ trans('message.order_details')}}
 @stop
 @section('breadcrumb')
     <style>
@@ -166,11 +166,11 @@
 
     </style>
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-        <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-    <li class="active text-dark">{{ __('message.order_details')}}</li>
+    <li class="active text-dark">{{ trans('message.order_details')}}</li>
 @stop
 
 
@@ -194,25 +194,25 @@
 
                     <div class="text-center">
                             <span>
-                                <strong>{{ __('message.order_number')}}</strong> <br>
+                                <strong>{{ trans('message.order_number')}}</strong> <br>
                                 #{{$order->number}}
                             </span>
                     </div>
                     <div class="text-center mt-4 mt-md-0">
                             <span>
-                                <strong>{{ __('message.date')}}</strong> <br>
+                                <strong>{{ trans('message.date')}}</strong> <br>
                                 {!! getDateHtml($order->created_at) !!}
                             </span>
                     </div>
                     <div class="text-center mt-4 mt-md-0">
                             <span>
-                                <strong>{{ __('message.status')}}</strong><br>
+                                <strong>{{ trans('message.status')}}</strong><br>
                                 {{$order->order_status}}
                             </span>
                     </div>
                     <div class="text-center mt-4 mt-md-0">
                             <span>
-                                <strong>{{ __('message.expiry_date')}}</strong><br>
+                                <strong>{{ trans('message.expiry_date')}}</strong><br>
                                 {!! getDateHtml($subscription->update_ends_at) !!}
                             </span>
                     </div>
@@ -227,21 +227,21 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ __('message.enter_domain_host')}}</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.enter_domain_host')}}</h5>
                         </div>
                         <div class="modal-body">
                             <form method="GET" action="{{url('uploadFile')}}">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
-                                    <label for="recipient-name" class="col-form-label">{{ __('message.domain_name')}}</label>
+                                    <label for="recipient-name" class="col-form-label">{{ trans('message.domain_name')}}</label>
                                     <input type="text" class="form-control" id="recipient-name" placeholder="https://faveohelpdesk.com/public" name="domain" value="" onkeydown="return event.key != 'Enter';">
                                     {!! html()->hidden('orderNo', $order->number) !!}
                                     {!! html()->hidden('userId', $user->id) !!}
                                     <br>
                                     <div class="modal-footer">
-                                        <button type="button" id="close" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close')}}</button>
+                                        <button type="button" id="close" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ trans('message.close')}}</button>
                                         @if((!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt')) || $order->is_downloadable==0)
-                                            <button type="submit" id="domainSave" class="done btn btn-primary" {{$order->where('number',$order->number)->update(['is_downloadable'=> 1])}}><i class="fas fa-save"></i>&nbsp;{{ __('message.done')}}</button>
+                                            <button type="submit" id="domainSave" class="done btn btn-primary" {{$order->where('number',$order->number)->update(['is_downloadable'=> 1])}}><i class="fas fa-save"></i>&nbsp;{{ trans('message.done')}}</button>
                                         @endif
                                     </div>
                                 </div>
@@ -262,28 +262,28 @@
                         <li class="nav-item">
 
                             <a class="nav-link active" href="#license" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                               data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.license_details')}}
+                               data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.license_details')}}
                             </a>
                         </li>
 
                         <li class="nav-item">
 
                             <a class="nav-link" href="#users" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                               data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.user_details')}}
+                               data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.user_details')}}
                             </a>
                         </li>
 
                         <li class="nav-item">
 
                             <a class="nav-link" href="#invoice" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                               data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.invoice_list')}}
+                               data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.invoice_list')}}
                             </a>
                         </li>
 
                         <li class="nav-item">
 
                             <a class="nav-link" href="#receipt" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                               data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.payment_receipts')}}
+                               data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.payment_receipts')}}
                             </a>
                         </li>
                         @if(in_array($product->id,cloudPopupProducts()) && $order->order_status!='Terminated')
@@ -291,7 +291,7 @@
                             <li class="nav-item">
 
                                 <a class="nav-link" href="#cloud" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                                   data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.cloud_settings')}}
+                                   data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.cloud_settings')}}
                                 </a>
                             </li>
                         @endif
@@ -301,14 +301,14 @@
                             <li class="nav-item">
 
                                 <a class="nav-link" href="#auto-renew" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                                   data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.auto_renewal')}}
+                                   data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.auto_renewal')}}
                                 </a>
                             </li>
                         @elseif($order->order_status!='Terminated')
                             <li class="nav-item">
 
                                 <a class="nav-link" href="#auto-renew" data-bs-toggle="tab" data-hash data-hash-offset="0"
-                                   data-hash-offset-lg="500" data-hash-delay="500">{{ __('message.auto_renewal')}}
+                                   data-hash-offset-lg="500" data-hash-delay="500">{{ trans('message.auto_renewal')}}
                                 </a>
                             </li>
                         @endif
@@ -320,8 +320,8 @@
                 @if($order->order_status != 'Terminated')
                     @if(!empty($terminatedOrderId))
                         <p class="order-links">
-                            {{ __('message.order')}}: <b>{{$order->number}}</b>
-                            {{ __('message.has_been_generated')}} <a class="order-link" href="{{$terminatedOrderId}}">{{$terminatedOrderNumber}}</a> {{ __('message.was_terminated')}}
+                            {{ trans('message.order')}}: <b>{{$order->number}}</b>
+                            {{ trans('message.has_been_generated')}} <a class="order-link" href="{{$terminatedOrderId}}">{{$terminatedOrderNumber}}</a> {{ trans('message.was_terminated')}}
                         </p>
                     @endif
                     <input type="hidden" name="domainRes" id="domainRes" value={{$allowDomainStatus}}>
@@ -340,29 +340,29 @@
 
                                         <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                            <span class="mb-2 font-weight-bold">{{ __('message.license_code')}}</span>
+                                            <span class="mb-2 font-weight-bold">{{ trans('message.license_code')}}</span>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-7">
                                         <span id="serialKey">{{$order->serial_key}}</span>
 
-                                        <a href="#" class="btn btn-light-scale-2 text-black btn-sm ms-4" id="copyButton" data-bs-toggle="tooltip" title="{{ __('message.copy') }}">
+                                        <a href="#" class="btn btn-light-scale-2 text-black btn-sm ms-4" id="copyButton" data-bs-toggle="tooltip" title="{{ trans('message.copy') }}">
                                             <i class="fas fa-copy"></i>
                                         </a>
 
-                                        <span id="copiedMessage" class="hidden">{{ __('message.copied')}}</span>
+                                        <span id="copiedMessage" class="hidden">{{ trans('message.copied')}}</span>
 
                                         @if ($licenseStatus == 1)
                                             @if(!in_array($product->id,cloudPopupProducts()) && $price != '0')
 
-                                                <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ __('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
+                                                <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ trans('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
                                                   <i class="fas fa-id-card-alt"></i>
                                                     @elseif(!in_array($product->id,cloudPopupProducts()) && $price == '0')
-                                                        <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ __('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
+                                                        <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ trans('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
                                                           <i class="fas fa-id-card-alt"></i>
                                                             @elseif($product->type == '4' && $price != '0')
-                                                                <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ __('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
+                                                                <a class="btn btn-light-scale-2 btn-sm text-black btn-sm" data-bs-toggle="tooltip" title="{{ trans('message.reissue_license') }}" id="reissueLic" data-id="{{$order->id}}" data-name="{{$order->domain}}" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->license_mode!='File' ? "enabled" : "disabled"}}>
                                                                  <i class="fas fa-id-card-alt"></i>
                                                                     @endif
 
@@ -380,7 +380,7 @@
 
                                         <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                            <span class="mb-2 font-weight-bold">{{ __('message.license_expiry_date')}}</span>
+                                            <span class="mb-2 font-weight-bold">{{ trans('message.license_expiry_date')}}</span>
                                         </div>
                                     </div>
 
@@ -398,7 +398,7 @@
 
                                         <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                            <span class="mb-2 font-weight-bold">{{ __('message.update_expiry_date')}}</span>
+                                            <span class="mb-2 font-weight-bold">{{ trans('message.update_expiry_date')}}</span>
                                         </div>
                                     </div>
 
@@ -416,15 +416,15 @@
 
                                         <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                            <span class="mb-2 font-weight-bold">{{ __('message.localized_license')}}</span>
+                                            <span class="mb-2 font-weight-bold">{{ trans('message.localized_license')}}</span>
                                         </div>
                                     </div>
 
                                     <div class="col-sm-7">
 
-                                     <button class="btn btn-dark mb-2 btn-sm" id="defaultModalLabel" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->is_downloadable==0 ? "enabled" : "disabled"}}>{{ __('message.download_license_file')}}</button>
-                                     <a href="{{url('downloadPrivate/'.$order->number)}}"><button class="btn btn-dark mb-2 btn-sm" onclick="refreshPage()">{{ __('message.download_license_key')}}</button></a>
-                                     <i class="fa fa-info ml-2" data-bs-toggle="tooltip" title="{{ __('message.license_mandatory')}}" >{!!tooltip('Edit')!!}</i>
+                                     <button class="btn btn-dark mb-2 btn-sm" id="defaultModalLabel" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" {{!Storage::disk('public')->exists('faveo-license-{'.$order->number.'}.txt') || $order->is_downloadable==0 ? "enabled" : "disabled"}}>{{ trans('message.download_license_file')}}</button>
+                                     <a href="{{url('downloadPrivate/'.$order->number)}}"><button class="btn btn-dark mb-2 btn-sm" onclick="refreshPage()">{{ trans('message.download_license_key')}}</button></a>
+                                     <i class="fa fa-info ml-2" data-bs-toggle="tooltip" title="{{ trans('message.license_mandatory')}}" >{!!tooltip('Edit')!!}</i>
 
 
                                     </div>
@@ -438,10 +438,10 @@
                                      <table id="installationDetail-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
                                       <thead>
                                       <tr>
-                                      <th >{{ __('message.installation_path')}}</th>
-                                      <th>{{ __('message.installation_ip')}}</th>
-                                      <th>{{ __('message.version')}} </th>
-                                      <th>{{ __('message.last_active')}}</th>
+                                      <th >{{ trans('message.installation_path')}}</th>
+                                      <th>{{ trans('message.installation_ip')}}</th>
+                                      <th>{{ trans('message.version')}} </th>
+                                      <th>{{ trans('message.last_active')}}</th>
                                         
                                     </tr></thead>
                                     </table>
@@ -461,13 +461,13 @@
 
                         @foreach($newOrders as $newOrder)
                             <div class="termination-message">
-                                <p class="termination-notice"><b>{{ __('message.imp_termination_notice')}}</b></p>
+                                <p class="termination-notice"><b>{{ trans('message.imp_termination_notice')}}</b></p>
                                 <p class="termination-description">
-                                    {{ __('message.order_msg')}}
+                                    {{ trans('message.order_msg')}}
                                 </p>
                                 <p class="order-links">
-                                    {{ __('message.termination_order')}} <b>{{$order->number}}</b>
-                                    {{ __('message.upgrade_new_order')}} <a class="order-link" href="{{$newOrder[0]->id}}">{{$newOrder[0]->number}}</a>.
+                                    {{ trans('message.termination_order')}} <b>{{$order->number}}</b>
+                                    {{ trans('message.upgrade_new_order')}} <a class="order-link" href="{{$newOrder[0]->id}}">{{$newOrder[0]->number}}</a>.
                                 </p>
                             </div>
 
@@ -488,7 +488,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.client_name')}}</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.client_name')}}</span>
                                     </div>
                                 </div>
 
@@ -503,7 +503,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.email')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.email')}}:</span>
                                     </div>
                                 </div>
 
@@ -518,7 +518,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.mobile')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.mobile')}}:</span>
                                     </div>
                                 </div>
 
@@ -533,7 +533,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.address')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.address')}}:</span>
                                     </div>
                                 </div>
 
@@ -548,7 +548,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.country')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.country')}}:</span>
                                     </div>
                                 </div>
 
@@ -564,12 +564,12 @@
                         <table id="showorder-table" class="table table-striped table-bordered mw-auto" cellspacing="0" width="100%" styleClass="borderless">
                             <thead>
                             <tr>
-                                <th>{{ __('message.number')}}</th>
-                                <th>{{ __('message.product')}}</th>
-                                <th>{{ __('message.date')}}</th>
-                                <th>{{ __('message.total')}}</th>
-                                <th>{{ __('message.status')}}</th>
-                                <th>{{ __('message.action')}}</th>
+                                <th>{{ trans('message.number')}}</th>
+                                <th>{{ trans('message.product')}}</th>
+                                <th>{{ trans('message.date')}}</th>
+                                <th>{{ trans('message.total')}}</th>
+                                <th>{{ trans('message.status')}}</th>
+                                <th>{{ trans('message.action')}}</th>
                             </tr>
                             </thead>
                         </table>
@@ -583,11 +583,11 @@
                         <table id="showpayment-table" class="table table-striped table-bordered mw-auto" cellspacing="0" width="100%" styleClass="borderless">
                             <thead>
                             <tr>
-                                <th>{{ __('message.invoice_no')}}</th>
-                                <th>{{ __('message.total')}}</th>
-                                <th>{{ __('message.method')}}</th>
-                                <th>{{ __('message.status')}}</th>
-                                <th>{{ __('message.created_at')}}</th>
+                                <th>{{ trans('message.invoice_no')}}</th>
+                                <th>{{ trans('message.total')}}</th>
+                                <th>{{ trans('message.method')}}</th>
+                                <th>{{ trans('message.status')}}</th>
+                                <th>{{ trans('message.created_at')}}</th>
                             </tr>
                             </thead>
                         </table>
@@ -604,7 +604,7 @@
 
                             <div class="text-end">
 
-                                <span class="font-weight-normal text-4">{{ __('message.plan_expiry')}} <strong class="font-weight-bold">{!! getDateHtml($subscription->ends_at) !!}</strong> </span>
+                                <span class="font-weight-normal text-4">{{ trans('message.plan_expiry')}} <strong class="font-weight-bold">{!! getDateHtml($subscription->ends_at) !!}</strong> </span>
                             </div>
                         </div>
                     </div>
@@ -626,11 +626,11 @@
 
                                         <div class="feature-box-info">
 
-                                            <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ __('message.change_cloud_domain')}}</h4>
+                                            <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ trans('message.change_cloud_domain')}}</h4>
 
-                                            <p class="mb-2"><strong class="text-black text-2">{{ __('message.current_domain_name')}}</strong> {{$installation_path}}</p>
+                                            <p class="mb-2"><strong class="text-black text-2">{{ trans('message.current_domain_name')}}</strong> {{$installation_path}}</p>
 
-                                            <p class="mb-0 text-2">{{ __('message.click_customising_domain')}}</p>
+                                            <p class="mb-0 text-2">{{ trans('message.click_customising_domain')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -655,11 +655,11 @@
                                             $latestAgents   = ltrim(substr($order->serial_key, 12),'0');
                                             ?>
 
-                                            <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ __('message.increase_decrease_agents')}}</h4>
+                                            <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ trans('message.increase_decrease_agents')}}</h4>
 
-                                            <p class="mb-2"><strong class="text-black text-2">{{ __('message.current_no_agents')}} </strong>{{$latestAgents}}</p>
+                                            <p class="mb-2"><strong class="text-black text-2">{{ trans('message.current_no_agents')}} </strong>{{$latestAgents}}</p>
 
-                                            <p class="mb-0 text-2">{{ __('message.update_agent_count')}}</p>
+                                            <p class="mb-0 text-2">{{ trans('message.update_agent_count')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -687,18 +687,18 @@
 
                                             <div class="feature-box-info">
 
-                                                <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ __('message.upgrade_downgrade_cloud')}}</h4>
+                                                <h4 class="text-4 mt-3 mb-2 text-color-grey">{{ trans('message.upgrade_downgrade_cloud')}}</h4>
 
-                                                <p class="mb-2"><strong class="text-black text-2">{{ __('message.current_plan')}}</strong> {{$planName}}</p>
+                                                <p class="mb-2"><strong class="text-black text-2">{{ trans('message.current_plan')}}</strong> {{$planName}}</p>
 
-                                                <p class="mb-0 text-2">{{ __('message.change_cloud_plan')}}</p>
+                                                <p class="mb-0 text-2">{{ trans('message.change_cloud_plan')}}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @else
-                            <h6 class="mb-1"><i>{{ __('message.current_plan')}} {{$planName}}</i></h6>
+                            <h6 class="mb-1"><i>{{ trans('message.current_plan')}} {{$planName}}</i></h6>
                         @endif
 
 
@@ -718,7 +718,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.auto_renewal')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.auto_renewal')}}:</span>
                                     </div>
                                 </div>
 
@@ -738,15 +738,15 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.status')}}:</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.status')}}:</span>
                                     </div>
                                 </div>
 
                               <div class="col-sm-7">
                                 @if($statusAutorenewal == 1)
-                                    <span class="text-success font-weight-bold">{{ __('message.active')}}</span>
+                                    <span class="text-success font-weight-bold">{{ trans('message.active')}}</span>
                                 @else
-                                    <span class="text-danger font-weight-bold">{{ __('message.inactive')}}</span>
+                                    <span class="text-danger font-weight-bold">{{ trans('message.inactive')}}</span>
                                 @endif
                             </div>
 
@@ -760,7 +760,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.payment_gateway')}}</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.payment_gateway')}}</span>
                                     </div>
                                 </div>
 
@@ -775,7 +775,7 @@
 
                                     <div class="pe-3 pe-sm-5 pb-3 pb-sm-0 border-right-light">
 
-                                        <span class="mb-2 font-weight-bold">{{ __('message.subscription_enabled_date')}}</span>
+                                        <span class="mb-2 font-weight-bold">{{ trans('message.subscription_enabled_date')}}</span>
                                     </div>
                                 </div>
 
@@ -799,7 +799,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="autorenewModalLabel">{{ __('message.auto_renewal')}}</h4>
+                    <h4 class="modal-title" id="autorenewModalLabel">{{ trans('message.auto_renewal')}}</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -810,13 +810,13 @@
 
                         <div class="form-group col">
 
-                            <label class="form-label">{{ __('message.select_payment')}} <span class="text-danger"> *</span></label>
+                            <label class="form-label">{{ trans('message.select_payment')}} <span class="text-danger"> *</span></label>
 
                             <div class="custom-select-1">
-                                <select class="form-select form-control h-auto py-2" data-msg-required="{{ __('message.please_select_city')}}" name="city" required>
-                                    <option value="">{{ __('message.select')}}</option>
-                                    <option value="1">{{ __('message.razorpay')}}</option>
-                                    <option value="2">{{ __('message.stripe')}}</option>
+                                <select class="form-select form-control h-auto py-2" data-msg-required="{{ trans('message.please_select_city')}}" name="city" required>
+                                    <option value="">{{ trans('message.select')}}</option>
+                                    <option value="1">{{ trans('message.razorpay')}}</option>
+                                    <option value="2">{{ trans('message.stripe')}}</option>
                                 </select>
                             </div>
                         </div>
@@ -825,9 +825,9 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ __('message.close')}}</button>
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">{{ trans('message.close')}}</button>
 
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ __('message.save')}}</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{ trans('message.save')}}</button>
                 </div>
             </div>
         </div>
@@ -841,7 +841,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="cloudDomainModalLabel">{{ __('message.change_cloud_domain')}}</h4>
+                    <h4 class="modal-title" id="cloudDomainModalLabel">{{ trans('message.change_cloud_domain')}}</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -850,15 +850,15 @@
                     <div id="success-domain"></div>
                     <div id="failure-domain"></div>
 
-                    <p>{{ __('message.wish_domain_purchase')}} <a href="https://store.ladybirdwebhost.com/" target="_blank">{{ __('message.click_here')}}.</a>{{ __('message.cname_cloud')}} <a href="https://docs.faveohelpdesk.com/docs/helper/cname/" target="_blank">{{ __('message.learn_more')}}.</a></p>
+                    <p>{{ trans('message.wish_domain_purchase')}} <a href="https://store.ladybirdwebhost.com/" target="_blank">{{ trans('message.click_here')}}.</a>{{ trans('message.cname_cloud')}} <a href="https://docs.faveohelpdesk.com/docs/helper/cname/" target="_blank">{{ trans('message.learn_more')}}.</a></p>
 
-                    <p class="text-black"><strong>{{ __('message.current_cloud_domain')}}</strong> {{$installation_path}}</p>
+                    <p class="text-black"><strong>{{ trans('message.current_cloud_domain')}}</strong> {{$installation_path}}</p>
 
                     <div class="row">
 
                         <div class="form-group col">
 
-                            <label class="form-label">{{ __('message.enter_domain_new_name')}} <span class="text-danger"> *</span></label>
+                            <label class="form-label">{{ trans('message.enter_domain_new_name')}} <span class="text-danger"> *</span></label>
 
                             <div class="input-group mb-3">
 
@@ -876,7 +876,7 @@
                                     method: 'POST',
                                     dataType: 'json',
                                     success: function(data) {
-                                        $('#clouduserdomainfill').html('{!! __('message.current_cloud_domain') !!} <a href="' + data.data + '">' + data.data + '</a>');
+                                        $('#clouduserdomainfill').html('{!! trans('message.current_cloud_domain') !!} <a href="' + data.data + '">' + data.data + '</a>');
                                     },
                                     error: function(error) {
                                         console.error('Error:', error);
@@ -896,7 +896,7 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" id="changeDomain" class="btn btn-primary"><i class="fas fa-globe"></i> {{ __('message.chg_domain')}}</button>
+                    <button type="button" id="changeDomain" class="btn btn-primary"><i class="fas fa-globe"></i> {{ trans('message.chg_domain')}}</button>
                 </div>
             </div>
         </div>
@@ -911,7 +911,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="numberOfAgentsModalLabel">{{ __('message.change_no_of_agents')}}</h4>
+                    <h4 class="modal-title" id="numberOfAgentsModalLabel">{{ trans('message.change_no_of_agents')}}</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -927,14 +927,14 @@
                     }
                     ?>
 
-                    <p class="text-black"><strong>{{ __('message.current_no_agents')}}</strong> {{$latestAgents}}</p>
+                    <p class="text-black"><strong>{{ trans('message.current_no_agents')}}</strong> {{$latestAgents}}</p>
 
-                    <p class="text-black"><strong>{{ __('message.price_per_agent')}} </strong>{!! currencyFormat($ExistingPlanPirce,getCurrencyForClient(\Auth::user()->country),true) !!}</p>
+                    <p class="text-black"><strong>{{ trans('message.price_per_agent')}} </strong>{!! currencyFormat($ExistingPlanPirce,getCurrencyForClient(\Auth::user()->country),true) !!}</p>
 
                     <div class="row">
 
 
-                        <label class="text-black"><strong>{{ __('message.choose_no_desired_agents') }}</strong> <span class="text-danger">*</span></label>
+                        <label class="text-black"><strong>{{ trans('message.choose_no_desired_agents') }}</strong> <span class="text-danger">*</span></label>
 
                         <div class="quantity">
                             {!! html()->number('number')->class('form-control')->id('numberAGt')->attribute('min', 1)->placeholder('') !!}
@@ -942,7 +942,7 @@
                         <br><br>
 
                         <div class="col-12">
-                            <p class="text-black" id="pricetopaid" style="display: none;"><strong>{{ __('message.price_to_be_paid') }}</strong> <span id="pricetopay" class="pricetopay"></span></p>
+                            <p class="text-black" id="pricetopaid" style="display: none;"><strong>{{ trans('message.price_to_be_paid') }}</strong> <span id="pricetopay" class="pricetopay"></span></p>
                         </div>
                         <div class="overlay" style="display: none;"></div> <!-- Add this line -->
 
@@ -957,7 +957,7 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-primary" id="agentNumber"><i class="fas fa-users"></i> {{ __('message.update_agents')}}</button>
+                    <button type="button" class="btn btn-primary" id="agentNumber"><i class="fas fa-users"></i> {{ trans('message.update_agents')}}</button>
                 </div>
             </div>
         </div>
@@ -972,7 +972,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="cloudPlanModalLabel">{{ __('message.upgrade_downgrade_cloud_plan')}}</h4>
+                    <h4 class="modal-title" id="cloudPlanModalLabel">{{ trans('message.upgrade_downgrade_cloud_plan')}}</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -982,13 +982,13 @@
                     <div id="failure-upgrade"></div>
 
 
-                    <p class="text-black"><strong>{{ __('message.current_plan')}} </strong>{{$planNameReal}}</p>
+                    <p class="text-black"><strong>{{ trans('message.current_plan')}} </strong>{{$planNameReal}}</p>
 
                     <div class="row">
 
                         <div class="form-group col">
 
-                            <label class="text-black"><strong>{{ __('message.select_new_plan')}}</strong> <span class="text-danger"> *</span></label>
+                            <label class="text-black"><strong>{{ trans('message.select_new_plan')}}</strong> <span class="text-danger"> *</span></label>
 
                             <div class="custom-select-1">
 
@@ -999,11 +999,11 @@
                             </div>
                         </div>
 
-                        <p class="text-black" id="upgrade1" style="display: none;" ><strong>{{ __('message.total_credits_remaining')}} </strong><span id="priceOldPlan" class="priceOldPlan"></span></p>
+                        <p class="text-black" id="upgrade1" style="display: none;" ><strong>{{ trans('message.total_credits_remaining')}} </strong><span id="priceOldPlan" class="priceOldPlan"></span></p>
 
-                        <p class="text-black" id="upgrade2" style="display: none;" ><strong>{{ __('message.price_for_new_plan')}} </strong><span id="priceNewPlan" class="priceNewPlan"></span></p>
+                        <p class="text-black" id="upgrade2" style="display: none;" ><strong>{{ trans('message.price_for_new_plan')}} </strong><span id="priceNewPlan" class="priceNewPlan"></span></p>
 
-                        <p class="text-black" id="upgrade2" style="display: none;" ><strong>{{ __('message.price_to_be_paid')}} </strong><span id="priceToPay" class="priceToPay" ></span></p>
+                        <p class="text-black" id="upgrade2" style="display: none;" ><strong>{{ trans('message.price_to_be_paid')}} </strong><span id="priceToPay" class="priceToPay" ></span></p>
                         <div class="overlay" style="display: none;"></div> <!-- Add this line -->
 
 
@@ -1017,7 +1017,7 @@
 
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary" id="upgradedowngrade"><i class="fas fa-cloud-upload-alt"></i> {{ __('message.change_plan')}}</button>
+                        <button type="button" class="btn btn-primary" id="upgradedowngrade"><i class="fas fa-cloud-upload-alt"></i> {{ trans('message.change_plan')}}</button>
                     </div>
                
             </div>
@@ -1034,7 +1034,7 @@
 
                 <div class="modal-header">
 
-                    <h4 class="modal-title" id="autorenewModalLabel">{{ __('message.auto_renewal')}}</h4>
+                    <h4 class="modal-title" id="autorenewModalLabel">{{ trans('message.auto_renewal')}}</h4>
 
                     <button type="button" class="btn-close"  id="srclose" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -1042,10 +1042,10 @@
                         <div class="modal-body">
                     <div class="row">
                         <div class="form-group col">
-                            <label class="form-label">{{ __('message.select_payment')}} <span class="text-danger">*</span></label>
+                            <label class="form-label">{{ trans('message.select_payment')}} <span class="text-danger">*</span></label>
                             <div class="custom-select-1">
                                 <select name="" id="sel-payment" class="form-control">
-                                    <option value="" disabled>{{ __('message.choose_your_option') }}</option>
+                                    <option value="" disabled>{{ trans('message.choose_your_option') }}</option>
                                     @foreach($gateways as $gateway)
                                     <option value="{{ strtolower($gateway) }}" {{ $recentPayment && strtolower($gateway) === strtolower($recentPayment->payment_method) ? 'selected' : '' }}>{{ $gateway }}</option>
                                     @endforeach
@@ -1058,9 +1058,9 @@
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-light"  onclick="refreshPage()" data-bs-dismiss="modal">{{ __('message.close')}}</button>
+                    <button type="button" class="btn btn-light"  onclick="refreshPage()" data-bs-dismiss="modal">{{ trans('message.close')}}</button>
 
-                    <button type="button" id="payment"  class="btn btn-primary" data-bs-dismiss="modal">{{ __('message.save')}}</button>
+                    <button type="button" id="payment"  class="btn btn-primary" data-bs-dismiss="modal">{{ trans('message.save')}}</button>
                 </div>
             </div>
         </div>
@@ -1073,7 +1073,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-radius: 50%; background-color: black;" type="button" class="close custom-close" data-dismiss="modal" aria-hidden="true" onclick="refreshPage()">&times;</button>
-                    <h4 class="modal-title" id="defaultModalLabel" style="white-space: nowrap;">{{ __('message.enter_card_details') }}</h4>
+                    <h4 class="modal-title" id="defaultModalLabel" style="white-space: nowrap;">{{ trans('message.enter_card_details') }}</h4>
                     <div class="horizontal-images">
                         <img class="img-responsive" src="https://static.vecteezy.com/system/resources/previews/020/975/567/non_2x/visa-logo-visa-icon-transparent-free-png.png">
                         <img class="img-responsive" src="https://pngimg.com/d/mastercard_PNG23.png">
@@ -1087,12 +1087,12 @@
                         <form id="payment-form" class="mx-auto" style="max-width: 500px;">
                             <div class="form-group row">
                                 <div class="col-md-12 alert alert-info">
-                                    {{ __('message.card_secure')}} {{currencyFormat(1,getCurrencyForClient(\Auth::user()->country))}}, {{ __('message.automatically_reverse')}}
+                                    {{ trans('message.card_secure')}} {{currencyFormat(1,getCurrencyForClient(\Auth::user()->country))}}, {{ trans('message.automatically_reverse')}}
                                 </div>
                             </div>
                             <!-- Card Number Field (with built-in Stripe icon) -->
                             <div class="mb-3">
-                                <label for="card-number" class="form-label">{{ __('message.card_number') }}</label>
+                                <label for="card-number" class="form-label">{{ trans('message.card_number') }}</label>
                                 <div id="card-number" class="StripeElement"></div>
                                 <div id="card-number-errors" class="text-danger mt-1" role="alert"></div>
                             </div>
@@ -1101,7 +1101,7 @@
                             <div class="row mb-3">
                                 <!-- Expiry Date Field -->
                                 <div class="col-md-6 mb-3">
-                                    <label for="card-expiry" class="form-label">{{ __('message.expiry_date') }}</label>
+                                    <label for="card-expiry" class="form-label">{{ trans('message.expiry_date') }}</label>
                                     <div id="card-expiry" class="StripeElement"></div>
                                     <div id="card-expiry-errors" class="text-danger mt-1" role="alert"></div>
                                 </div>
@@ -1118,7 +1118,7 @@
                             <div class="d-grid mb-4">
                                 <div class="btn btn-lg btn-outline-dark disabled" style="pointer-events: none;">
                                     <div class="d-flex justify-content-between w-100">
-                                        <span>{{ __('message.total') }}</span>
+                                        <span>{{ trans('message.total') }}</span>
                                         <span id="order-total">{{ currencyFormat(1,getCurrencyForClient(\Auth::user()->country)) }}</span>
                                     </div>
                                 </div>
@@ -1126,7 +1126,7 @@
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <button type="submit" id="pay" class="btn btn-primary btn-block">
-                                        {{ __('message.caps_pay_now') }}
+                                        {{ trans('message.caps_pay_now') }}
                                     </button>
                                 </div>
                             </div>
@@ -1143,16 +1143,16 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="autorenewModalLabel">{{ __('message.payment_confirmation')}}</h4>
+                        <h4 class="modal-title" id="autorenewModalLabel">{{ trans('message.payment_confirmation')}}</h4>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <input class="hidden" id="orderID" value={{$id}}>
-                            <p style="color: #333;">{{ __('message.refresh_process')}} <strong style="font-weight: bold;">{{ __('message.finish')}}</strong> {{ __('message.to_complete_payment')}}</p>
+                            <p style="color: #333;">{{ trans('message.refresh_process')}} <strong style="font-weight: bold;">{{ trans('message.finish')}}</strong> {{ trans('message.to_complete_payment')}}</p>
                             </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="confirmStripePayment" class="btn btn-primary" data-bs-dismiss="modal">{{ __('message.finish')}}</button>
+                        <button type="button" id="confirmStripePayment" class="btn btn-primary" data-bs-dismiss="modal">{{ trans('message.finish')}}</button>
                     </div>
                 </div>
             </div>
@@ -1304,7 +1304,7 @@
                             "<p>{{trans('message.auto_renewal_disable')}}</p>" + "</div>" +
                             "</div>",
                         position: 'top',
-                        confirmButtonText: "{{ __('message.ok') }}",
+                        confirmButtonText: "{{ trans('message.ok') }}",
                         confirmButtonColor: "#007bff",
                         width: "600px",
                     })
@@ -1323,9 +1323,9 @@
                     },
                     success: function(response){
                         $('#alertMessage-2').show();
-                        var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + @json(__('message.success')) + '! </strong>' + response.message + '.</div>';
+                        var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + @json(trans('message.success')) + '! </strong>' + response.message + '.</div>';
                         $('#alertMessage-2').html(result+ ".");
-                        $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+                        $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
                        setTimeout(function() {
                         $('#alertMessage-2').slideUp(3000, function() {
                             setTimeout(function() {
@@ -1352,9 +1352,9 @@
             $('#payment').on('click', function () {
                 var pay = $('#sel-payment').val();
                 if (pay == null) {
-                    $("#payment").html("<i class='fa fa-check'></i> {{ __('message.validate') }}");
+                    $("#payment").html("<i class='fa fa-check'></i> {{ trans('message.validate') }}");
                     $('#payerr').show();
-                    $('#payerr').html(@json(__('message.select_pay')));
+                    $('#payerr').html(@json(trans('message.select_pay')));
                     $('#payerr').focus();
                     $('#sel-payment').css("border-color", "red");
                     $('#payerr').css({ "color": "red" });
@@ -1366,7 +1366,7 @@
 
                     $('#pay').on('click', async function () {
                         $('#pay').prop("disabled", true);
-                        $('#pay').html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> " + @json( __('message.processing')));
+                        $('#pay').html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> " + @json( trans('message.processing')));
                         const {token, error} = await stripe.createToken(cardNumber);
 
                         await $.ajax({
@@ -1382,9 +1382,9 @@
                                     $('#stripe-Modal').modal('hide');
                                     $('#alertMessage-2').show();
                                     $('#updateButton').show();
-                                    var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success')}}! </strong>' + response.message + '.</div>';
+                                    var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success')}}! </strong>' + response.message + '.</div>';
                                     $('#alertMessage-2').html(result + ".");
-                                    $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+                                    $("#pay").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
                                     setTimeout(function () {
                                         location.reload();
                                     }, 3000);
@@ -1401,7 +1401,7 @@
                                 $("#pay").attr('disabled', false);
                                 $("#pay").html("Pay now");
                                 $('html, body').animate({scrollTop: 0}, 500);
-                                var html = '<div class="alert alert-danger alert-dismissable alert-content"><strong><i class="fas fa-exclamation-triangle"></i>{{ __('message.oh_snap') }} </strong>' + data.responseJSON.error + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><br><ul>';
+                                var html = '<div class="alert alert-danger alert-dismissable alert-content"><strong><i class="fas fa-exclamation-triangle"></i>{{ trans('message.oh_snap') }} </strong>' + data.responseJSON.error + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><br><ul>';
                                 $('#error-1').show();
                                 document.getElementById('error-1').innerHTML = html;
                             }
@@ -1424,7 +1424,7 @@
                 "url":  '{!! Url('get-my-payment-client/'.$order->id.'/'.$user->id) !!}',
                 error: function(xhr) {
                     if(xhr.status == 401) {
-                        alert(@json(__('message.session_expired')));
+                        alert(@json(trans('message.session_expired')));
                         window.location.href = '/login';
                     }
                 }
@@ -1438,19 +1438,19 @@
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
 
             },
 
@@ -1487,7 +1487,7 @@
                 "url":  '{!! Url('get-my-invoices/'.$order->id.'/'.$user->id) !!}',
                 error: function(xhr) {
                     if(xhr.status == 401) {
-                        alert('{{ __('message.session_expired')}}')
+                        alert('{{ trans('message.session_expired')}}')
                         window.location.href = '/login';
                     }
                 }
@@ -1500,19 +1500,19 @@
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
 
             },
 
@@ -1556,7 +1556,7 @@
 
                         success: function (data) {
                             if (data.message =='success'){
-                                var result = '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> ' + @json(__('message.success')) + '! </strong> ' + data.update + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                                var result = '<div class="alert alert-success alert-dismissable"><strong><i class="fa fa-check"></i> ' + @json(trans('message.success')) + '! </strong> ' + data.update + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                                 $('#response1').html(result);
                                 $('#response1').css('color', 'green');
                                 setTimeout(function(){
@@ -1584,7 +1584,7 @@
                     }
                     else{
                         $('#domaincheck').show();
-                        $('#domaincheck').html(@json(__('message.enter_domain_form')));
+                        $('#domaincheck').html(@json(trans('message.enter_domain_form')));
                         $('#domaincheck').focus();
                         $('#newDomain').css("border-color","red");
                         $('#domaincheck').css({"color":"red","margin-top":"5px"});
@@ -1605,7 +1605,7 @@
                         },
                         success: function (data) {
                             if (data.message =='success'){
-                                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done')}} </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                                var result =  '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> {{ trans('message.well_done')}} </strong> '+data.update+' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                                 $('#response').html(result);
                                 $('#response').css('color', 'green');
                                 setTimeout(function(){
@@ -1626,7 +1626,7 @@
         $(document).ready(function() {
             $('#changeDomain').on('click', function() {
                 $('#changeDomain').attr('disabled',true);
-                $('#changeDomain').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(__('message.please_wait')));
+                $('#changeDomain').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(trans('message.please_wait')));
                 $('.loader-wrapper').show();
                 $('.overlay').show(); // Show the overlay
                 $('.modal-body').css('pointer-events', 'none');
@@ -1645,10 +1645,10 @@
                     url: "{{ url('change/domain') }}",
                     success: function (data) {
                         if (data.success ==true){
-                            var result = '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> ' + @json(__('message.well_done')) + ' </strong> ' + data.message + '</div>';
+                            var result = '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> ' + @json(trans('message.well_done')) + ' </strong> ' + data.message + '</div>';
                             $('#success-domain').html(result).css('color', 'green').show();
                             $('#changeDomain').attr('disabled',false);
-                            $('#changeDomain').html("<i class='fa fa-globe'>&nbsp;&nbsp;</i>" + @json(__('message.chg_domain')));
+                            $('#changeDomain').html("<i class='fa fa-globe'>&nbsp;&nbsp;</i>" + @json(trans('message.chg_domain')));
                             $('.loader-wrapper').hide();
                             $('.overlay').hide(); // Hide the overlay
                             $('.modal-body').css('pointer-events', 'auto');
@@ -1662,10 +1662,10 @@
 
                     }, error: function(data) {
                         if (data.responseJSON.success === false) {
-                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json( __('message.error_oops')) + '</strong> ' + data.responseJSON.message + ' </div>';
+                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json( trans('message.error_oops')) + '</strong> ' + data.responseJSON.message + ' </div>';
                             $('#failure-domain').html(result).css('color', 'red').show(); // Show the error message
                             $('#changeDomain').attr('disabled', false);
-                            $('#changeDomain').html("<i class='fa fa-globe'>&nbsp;&nbsp;</i>" + @json(__('message.chg_domain')));
+                            $('#changeDomain').html("<i class='fa fa-globe'>&nbsp;&nbsp;</i>" + @json(trans('message.chg_domain')));
                             $('.loader-wrapper').hide();
                             $('.overlay').hide(); // Hide the overlay
                             $('.modal-body').css('pointer-events', 'auto');
@@ -1686,7 +1686,7 @@
         $(document).ready(function() {
             $('#agentNumber').on('click', function() {
                 $('#agentNumber').attr('disbaled',true);
-                $('#agentNumber').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(__('message.please_wait')));
+                $('#agentNumber').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(trans('message.please_wait')));
                 $('.loader-wrapper').show();
                 $('.overlay').show(); // Show the overlay
                 $('.modal-body').css('pointer-events', 'none');
@@ -1704,7 +1704,7 @@
                     url: "{{ url('changeAgents') }}",
                     success: function(response) {
                         $('#agentNumber').attr('disbaled',false);
-                        $('#agentNumber').html("<i class='fa fa-users'>&nbsp;&nbsp;</i> " + @json(__('message.update_agents')));
+                        $('#agentNumber').html("<i class='fa fa-users'>&nbsp;&nbsp;</i> " + @json(trans('message.update_agents')));
                         $('.loader-wrapper').hide();
                         $('.overlay').hide(); // Hide the overlay
                         $('.modal-body').css('pointer-events', 'auto');
@@ -1713,8 +1713,8 @@
                     error: function(data) {
                         if (data.responseJSON.success == false) {
                             $('#agentNumber').attr('disabled', false);
-                            $('#agentNumber').html("<i class='fa fa-users'>&nbsp;&nbsp;</i> " + @json(__('message.update_agents')));
-                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json( __('message.error_oops')) + ' </strong> ' + data.responseJSON.message + ' </div>';
+                            $('#agentNumber').html("<i class='fa fa-users'>&nbsp;&nbsp;</i> " + @json(trans('message.update_agents')));
+                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json( trans('message.error_oops')) + ' </strong> ' + data.responseJSON.message + ' </div>';
                             $('#failure-agent').html(result).css('color', 'red').show();
                             $('.loader-wrapper').hide();
                             $('.overlay').hide(); // Hide the overlay
@@ -1799,7 +1799,7 @@
         $(document).ready(function() {
             $('#upgradedowngrade').on('click', function() {
                 $('#upgradedowngrade').attr('disabled',true);
-                $('#upgradedowngrade').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(__('message.please_wait')));
+                $('#upgradedowngrade').html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i> " + @json(trans('message.please_wait')));
                 $('.loader-wrapper').show();
                 $('.overlay').show(); // Show the overlay
                 $('.modal-body').css('pointer-events', 'none');
@@ -1818,11 +1818,11 @@
                         window.location.href = data.redirectTo;
                         if (data.success ==true){
                             window.location = data.redirectTo;
-                            var result = '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> ' + @json(__('message.well_done')) + ' </strong> ' + data.message + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
+                            var result = '<div class="alert alert-success alert-dismissable"><strong><i class="far fa-thumbs-up"></i> ' + @json(trans('message.well_done')) + ' </strong> ' + data.message + ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>';
                             $('#response-upgrade').html(result);
                             $('#response-upgrade').css('color', 'green');
                             $('#upgradedowngrade').attr('disabled',false);
-                            $('#upgradedowngrade').html("<i class='fas fa-cloud-upload-alt'>&nbsp;&nbsp;</i>{{ __('message.change_plan')}}");
+                            $('#upgradedowngrade').html("<i class='fas fa-cloud-upload-alt'>&nbsp;&nbsp;</i>{{ trans('message.change_plan')}}");
                             $('.loader-wrapper').hide();
                             $('.overlay').hide(); // Hide the overlay
                             $('.modal-body').css('pointer-events', 'auto');
@@ -1830,10 +1830,10 @@
 
                     },  error: function(data) {
                         if (data.responseJSON.success == false) {
-                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json(__('message.error_oops')) + ' </strong> ' + data.responseJSON.message + '</div>';
+                            var result = '<div class="alert alert-danger alert-dismissable"><strong><i class="far fa-thumbs-down"></i>' + @json(trans('message.error_oops')) + ' </strong> ' + data.responseJSON.message + '</div>';
                             $('#failure-upgrade').html(result).css('color', 'red').show();
                             $('#upgradedowngrade').attr('disabled',false);
-                            $('#upgradedowngrade').html("<i class='fas fa-cloud-upload-alt'>&nbsp;&nbsp;</i>{{ __('message.change_plan')}}");
+                            $('#upgradedowngrade').html("<i class='fas fa-cloud-upload-alt'>&nbsp;&nbsp;</i>{{ trans('message.change_plan')}}");
                             $('.loader-wrapper').hide();
                             $('.overlay').hide(); // Hide the overlay
                             $('.modal-body').css('pointer-events', 'auto');
@@ -1958,7 +1958,7 @@ $(document).ready(function() {
                 $('html, body').animate({ scrollTop: 0 }, 500);
                 $('#alertMessage-2').show();
 
-                var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success')}}! </strong>' + response.message + '.</div>';
+                var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success')}}! </strong>' + response.message + '.</div>';
                 $('#alertMessage-2').html(result + ".");
                 $('#updateButton').show();
                 setTimeout(function() {
@@ -1966,10 +1966,10 @@ $(document).ready(function() {
                 }, 5000);
             },
                error: function(xhr, status, error) {
-                   var errorMessage = {!! json_encode(__('message.something_different_payment')) !!};
+                   var errorMessage = {!! json_encode(trans('message.something_different_payment')) !!};
                 $('#confirmStripe').modal('hide');
                 $('html, body').animate({ scrollTop: 0 }, 500);
-                var html = '<div class="alert alert-danger alert-dismissable alert-content"><strong><i class="fas fa-exclamation-triangle"></i> {{ __('message.oh_snap') }} </strong>' + errorMessage + ' <br><ul>';
+                var html = '<div class="alert alert-danger alert-dismissable alert-content"><strong><i class="fas fa-exclamation-triangle"></i> {{ trans('message.oh_snap') }} </strong>' + errorMessage + ' <br><ul>';
                 $('#error-1').show();
                 document.getElementById('error-1').innerHTML = html;
                 setTimeout(function() {
@@ -1995,7 +1995,7 @@ $(document).ready(function() {
                               "url":  "{{Url('get-installation-details/'.$order->id)}}",
                                  error: function(xhr) {
                                  if(xhr.status == 401) {
-                                  alert('{{ __('message.session_expired')}}')
+                                  alert('{{ trans('message.session_expired')}}')
                                   window.location.href = '/login';
                                  }
                               }
@@ -2005,23 +2005,23 @@ $(document).ready(function() {
                               "oLanguage": {
                                   "sLengthMenu": "_MENU_ Records per page",
                                   "sSearch"    : "Search: ",
-                                  "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading')}}</div></div>'
+                                  "sProcessing": '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading')}}</div></div>'
                               },
                               language: {
                                   paginate: {
-                                      first:      "{{ __('message.paginate_first') }}",
-                                      last:       "{{ __('message.paginate_last') }}",
-                                      next:       "{{ __('message.paginate_next') }}",
-                                      previous:   "{{ __('message.paginate_previous') }}"
+                                      first:      "{{ trans('message.paginate_first') }}",
+                                      last:       "{{ trans('message.paginate_last') }}",
+                                      next:       "{{ trans('message.paginate_next') }}",
+                                      previous:   "{{ trans('message.paginate_previous') }}"
                                   },
-                                  emptyTable:     "{{ __('message.empty_table') }}",
-                                  info:           "{{ __('message.datatable_info') }}",
-                                  zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                                  infoEmpty:      "{{ __('message.info_empty') }}",
-                                  infoFiltered:   "{{ __('message.info_filtered') }}",
-                                  lengthMenu:     "{{ __('message.length_menu') }}",
-                                  loadingRecords: "{{ __('message.loading_records') }}",
-                                  search:         "{{ __('message.table_search') }}",
+                                  emptyTable:     "{{ trans('message.empty_table') }}",
+                                  info:           "{{ trans('message.datatable_info') }}",
+                                  zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                                  infoEmpty:      "{{ trans('message.info_empty') }}",
+                                  infoFiltered:   "{{ trans('message.info_filtered') }}",
+                                  lengthMenu:     "{{ trans('message.length_menu') }}",
+                                  loadingRecords: "{{ trans('message.loading_records') }}",
+                                  search:         "{{ trans('message.table_search') }}",
 
                               },
 

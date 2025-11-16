@@ -13,23 +13,23 @@
         <ul class="nav nav-list flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="{{url('client-dashboard')}}">
-                    {{ __('message.dashboard')}}</a>
+                    {{ trans('message.dashboard')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('my-orders')}}">
-                    {{ __('message.my_orders')}}</a>
+                    {{ trans('message.my_orders')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('my-invoices')}}" id="invoices-tab">
-                    {{ __('message.my_invoices')}}</a>
+                    {{ trans('message.my_invoices')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="{{url('my-profile')}}">
-                    {{ __('message.my_profile')}}</a>
+                    {{ trans('message.my_profile')}}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('auth/logout')}}" >
-                    {{ __('message.logout')}}</a>
+                    {{ trans('message.logout')}}</a>
             </li>
         </ul>
     </aside>

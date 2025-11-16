@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.email_mobile_faveo') }}
+    {{ trans('message.email_mobile_faveo') }}
 @stop
 @section('page-heading')
-    {{ __('message.email_mobile') }}
+    {{ trans('message.email_mobile') }}
 @stop
 @section('page-header')
-    {{ __('message.reset_password') }}
+    {{ trans('message.reset_password') }}
 @stop
 @section('breadcrumb')
-<li><a href="{{url('home')}}">{{ __('message.home') }}</a></li>
-<li class="active">{{ __('message.verify') }}</li>
+<li><a href="{{url('home')}}">{{ trans('message.home') }}</a></li>
+<li class="active">{{ trans('message.verify') }}</li>
 @stop
 @section('main-class')
 main
@@ -43,29 +43,29 @@ main
     <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
     <!--aria-describedby="emailHelp" -->
   <div class="form-group">
-    <label for="first_name">{{ __('message.first_name') }}</label>
-    <input type="text" class="form-control" id="first_name" placeholder="{{ __('message.enter_your_firstname') }}" name="first_name">
+    <label for="first_name">{{ trans('message.first_name') }}</label>
+    <input type="text" class="form-control" id="first_name" placeholder="{{ trans('message.enter_your_firstname') }}" name="first_name">
   </div>
   
     <input type="hidden" class="form-control" value= "{{$user->id}}" name="id">
   
   <div class="form-group">
-    <label for="last_name">{{ __('message.last_name') }}</label>
-    <input type="text" class="form-control" id="last_name" placeholder="{{ __('message.enter_your_lastname') }}" name="last_name">
+    <label for="last_name">{{ trans('message.last_name') }}</label>
+    <input type="text" class="form-control" id="last_name" placeholder="{{ trans('message.enter_your_lastname') }}" name="last_name">
   </div>
     <div class="form-group">
-    <label for="company_name">{{ __('message.company-name') }}</label>
-    <input type="text" class="form-control" id="company_name" placeholder="{{ __('message.enter_your_companyname') }}" name="company_name">
+    <label for="company_name">{{ trans('message.company-name') }}</label>
+    <input type="text" class="form-control" id="company_name" placeholder="{{ trans('message.enter_your_companyname') }}" name="company_name">
   </div>
     <div class="form-group">
-    <label for="country">{{ __('message.countryname') }}</label>
-    <input type="text" class="form-control" id="country" placeholder="{{ __('message.enter_your_countryname') }}" name="country">
+    <label for="country">{{ trans('message.countryname') }}</label>
+    <input type="text" class="form-control" id="country" placeholder="{{ trans('message.enter_your_countryname') }}" name="country">
   </div>
     <div class="form-group">
-    <label for="address">{{ __('message.address') }}</label>
-    <input type="text" class="form-control" id="address" placeholder="{{ __('message.enter_your_addressname') }}" name="address">
+    <label for="address">{{ trans('message.address') }}</label>
+    <input type="text" class="form-control" id="address" placeholder="{{ trans('message.enter_your_addressname') }}" name="address">
   </div>
-  <button type="submit" class="btn btn-primary">{{ __('message.submit') }}</button>
+  <button type="submit" class="btn btn-primary">{{ trans('message.submit') }}</button>
 
                             <div class="row">
                                 <!-- Rest of the form fields -->
@@ -97,7 +97,7 @@ main
                             alert('in');
                             window.location.reload();
                         } else {
-                            alert('{{ __('message.oops') }}');
+                            alert('{{ trans('message.oops') }}');
                         }
                     }).catch(function(error) {
                         console.error(error);

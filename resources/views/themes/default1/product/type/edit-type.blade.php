@@ -14,8 +14,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-refresh">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                 <button type="button" id="close" class="btn btn-default pull-left" data-dismiss="modal">{{ trans('message.close') }}</button>
+                <button type="submit" class="btn btn-primary " id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-refresh">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

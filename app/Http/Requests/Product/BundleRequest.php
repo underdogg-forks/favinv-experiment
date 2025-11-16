@@ -32,8 +32,8 @@ class BundleRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => __('validation.bundle.name.required'),
-            'items.*.required' => __('validation.bundle.items.required'),
+            'name.required' => trans('validation.bundle.name.required'),
+            'items.*.required' => trans('validation.bundle.items.required'),
         ];
     }
 }

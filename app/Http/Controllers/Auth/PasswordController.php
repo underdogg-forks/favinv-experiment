@@ -73,9 +73,9 @@ class PasswordController extends Controller
             //'email' => 'required|email',
             'password' => 'required|confirmed',
         ], [
-            'token.required' => __('validation.token_validation.token_required'),
-            'password.required' => __('validation.token_validation.password_required'),
-            'password.confirmed' => __('validation.token_validation.password_confirmed'),
+            'token.required' => trans('validation.token_validation.token_required'),
+            'password.required' => trans('validation.token_validation.password_required'),
+            'password.confirmed' => trans('validation.token_validation.password_confirmed'),
         ]);
         $token = $request->input('token');
         $pass = $request->input('password');
@@ -88,19 +88,19 @@ class PasswordController extends Controller
                 $user->password = \Hash::make($pass);
                 $user->save();
 
-                return redirect('auth/login')->with('success', __('message.password_changed_successfully'));
+                return redirect('auth/login')->with('success', trans('message.password_changed_successfully'));
             } else {
                 return redirect()->back()
                     ->withInput($request->only('email'))
                     ->withErrors([
-                        'email' => __('message.invalid_email'),
+                        'email' => trans('message.invalid_email'),
                     ]);
             }
         } else {
             return redirect()->back()
                 ->withInput($request->only('email'))
                 ->withErrors([
-                    'email' => __('message.invalid_email'),
+                    'email' => trans('message.invalid_email'),
                 ]);
         }
     }
@@ -115,9 +115,9 @@ class PasswordController extends Controller
     {
         $this->validate($request, ['email' => 'required|email|exists:users,email'],
             [
-                'email.required' => __('validation.custom_email.required'),
-                'email.email' => __('validation.custom_email.email'),
-                'email.exists' => __('validation.custom_email.exists'),
+                'email.required' => trans('validation.custom_email.required'),
+                'email.email' => trans('validation.custom_email.email'),
+                'email.exists' => trans('validation.custom_email.exists'),
             ]);
         $email = $request->input('email');
         $token = str_random(40);
@@ -133,7 +133,7 @@ class PasswordController extends Controller
         $user = new \App\User();
         $user = $user->where('email', $email)->first();
         if (! $user) {
-            return redirect()->back()->with('fails', __('message.invalid_email'));
+            return redirect()->back()->with('fails', trans('message.invalid_email'));
         }
         //check in the settings
         $settings = new \App\Model\Common\Setting();
@@ -158,6 +158,6 @@ class PasswordController extends Controller
             $mail->sendEmail($from, $to, $data, $subject, $replace, $type);
         }
 
-        return redirect()->back()->with('success', __('message.resets_instruction').$to.'. '.__('message.check_junk_folder'));
+        return redirect()->back()->with('success', trans('message.resets_instruction').$to.'. '.trans('message.check_junk_folder'));
     }
 }

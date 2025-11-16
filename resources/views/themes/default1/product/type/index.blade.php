@@ -1,14 +1,14 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.product_types') }}
+    {{ trans('message.product_types') }}
 @stop
 @section('content-header')
 <h1>
-    {{ __('message.product_types') }}
+    {{ trans('message.product_types') }}
 </h1>
   <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li class="active">{{ __('message.all_types') }}</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li class="active">{{ trans('message.all_types') }}</li>
       </ol>
 @stop
 @section('content')
@@ -19,7 +19,7 @@
         @if (count($errors) > 0)
         <div class="alert alert-danger alert-dismissable">
              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -61,8 +61,8 @@
                      <button  value="" class="btn btn-danger btn-sm btn-alldell" id="bulk_delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;{{trans('message.delmultiple')}}</button><br /><br />
                     <thead><tr>
                         <th class="no-sort" style="width:20px"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
-                            <th>{{ __('message.name_page') }}</th>
-                            <th>{{ __('message.action') }}</th>
+                            <th>{{ trans('message.name_page') }}</th>
+                            <th>{{ trans('message.action') }}</th>
                         </tr></thead>
 
                    </table>
@@ -89,19 +89,19 @@
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                search:         "{{ __('message.datatable_search') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                search:         "{{ trans('message.datatable_search') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
 
             columnDefs: [
@@ -167,7 +167,7 @@
             }
             else
             {
-                alert("{{ __('message.select_checkbox') }}");
+                alert("{{ trans('message.select_checkbox') }}");
             }
         }  
 

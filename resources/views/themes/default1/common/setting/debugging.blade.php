@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.debugging_settings') }}
+    {{ trans('message.debugging_settings') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.debugging_settings') }}</h1>
+        <h1>{{ trans('message.debugging_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.debugging_settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.debugging_settings') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -20,7 +20,7 @@
     <div class="card-header">
 
         <div id="response"></div>
-        <h5>{{ __('message.set_debugg_option') }}
+        <h5>{{ trans('message.set_debugg_option') }}
           </h5>
     </div>
     <?php
@@ -50,7 +50,7 @@
 
             <div class="text-end mt-3">
                 <button type="submit" class="form-group btn btn-primary">
-                    <i class="fas fa-save"></i> {{ __('message.save') }}
+                    <i class="fas fa-save"></i> {{ trans('message.save') }}
                 </button>
             </div>
 

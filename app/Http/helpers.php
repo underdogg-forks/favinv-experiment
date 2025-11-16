@@ -155,8 +155,8 @@ function getExpiryLabel($expiryDate, $badge = 'badge')
 {
     if ($expiryDate < (new Carbon())->toDateTimeString()) {
         return getDateHtml($expiryDate).'&nbsp;<span class="'.$badge.' '.$badge.'-danger">
-        <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.__('validation.order_has_Expired').'">
-        </label>'.__('message.expired').'</span>';
+        <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.trans('validation.order_has_Expired').'">
+        </label>'.trans('message.expired').'</span>';
     } else {
         return getDateHtml($expiryDate);
     }
@@ -191,16 +191,16 @@ function getStatusLabel($status, $badge = 'badge')
 {
     switch ($status) {
         case 'Success':
-            return '<span class='.'"'.$badge.' '.$badge.'-success">'.__('message.amount_received').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-success">'.trans('message.amount_received').'</span>';
 
         case 'Pending':
-            return '<span class='.'"'.$badge.' '.$badge.'-danger">'.__('message.unpaid').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-danger">'.trans('message.unpaid').'</span>';
 
         case 'renewed':
-            return '<span class='.'"'.$badge.' '.$badge.'-primary">'.__('message.renewed').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-primary">'.trans('message.renewed').'</span>';
 
         default:
-            return '<span class='.'"'.$badge.' '.$badge.'-warning">'.__('message.partially_paid').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-warning">'.trans('message.partially_paid').'</span>';
     }
 }
 
@@ -538,9 +538,9 @@ function emailSendingStatus()
 
 function installationStatusLabel($installedPath)
 {
-    return $installedPath ? "&nbsp;<span class='badge badge-primary' style='background-color:darkcyan !important;' <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".__('message.installation_is_active')."'>
-                     </label>".__('message.active').'</span>' : "&nbsp;<span class='badge badge-info' <label data-toggle='tooltip' style='font-weight:500;background-color:crimson;' data-placement='top' title='".__('message.installation_is_inactive')."'>
-                    </label>".__('message.inactive').'</span>';
+    return $installedPath ? "&nbsp;<span class='badge badge-primary' style='background-color:darkcyan !important;' <label data-toggle='tooltip' style='font-weight:500;' data-placement='top' title='".trans('message.installation_is_active')."'>
+                     </label>".trans('message.active').'</span>' : "&nbsp;<span class='badge badge-info' <label data-toggle='tooltip' style='font-weight:500;background-color:crimson;' data-placement='top' title='".trans('message.installation_is_inactive')."'>
+                    </label>".trans('message.inactive').'</span>';
 }
 
 //return root url from long url (http://www.domain.com/path/file.php?aa=xx becomes http://www.domain.com/path/), remove scheme, www. and last slash if needed
@@ -634,13 +634,13 @@ function getPreReleaseStatusLabel($status, $badge = 'badge')
 {
     switch ($status) {
         case 'official':
-            return '<span class='.'"'.$badge.' '.$badge.'-success">'.__('message.official_release').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-success">'.trans('message.official_release').'</span>';
 
         case 'pre_release':
-            return '<span class='.'"'.$badge.' '.$badge.'-warning">'.__('message.pre_release').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-warning">'.trans('message.pre_release').'</span>';
 
         case 'beta':
-            return '<span class='.'"'.$badge.' '.$badge.'-info">'.__('message.beta').'</span>';
+            return '<span class='.'"'.$badge.' '.$badge.'-info">'.trans('message.beta').'</span>';
     }
 }
 

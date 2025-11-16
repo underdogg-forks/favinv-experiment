@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.invoice') }}
+    {{ trans('message.invoice') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.view_invoice') }}</h1>
+        <h1>{{ trans('message.view_invoice') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('clients')}}"><i class="fa fa-dashboard"></i> {{ __('message.all-users') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('invoices')}}"><i class="fa fa-dashboard"></i> {{ __('message.all-invoices') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.view_invoice') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('clients')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all-users') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('invoices')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all-invoices') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.view_invoice') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -57,8 +57,8 @@
                                     {{ucfirst($set->company)}}
                                 @endif
 
-                                <small class="float-right">{{ __('message.date') }}: {!! $date !!}</small><br>
-                                <small class="float-right">{{ __('message.invoice') }}: #{{$invoice->number}}</small>
+                                <small class="float-right">{{ trans('message.date') }}: {!! $date !!}</small><br>
+                                <small class="float-right">{{ trans('message.invoice') }}: #{{$invoice->number}}</small>
                                   <!--<b>Invoice   #{{$invoice->number}}</b>-->
                             </h4>
                         </div><!-- /.col -->
@@ -67,7 +67,7 @@
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
-                            {{ __('message.from') }}
+                            {{ trans('message.from') }}
                             <address>
 
                                 <strong>{{$set->company}}</strong><br>
@@ -77,23 +77,23 @@
                                 {{getStateByCode($set->state)['name']}}
                                 @endif
                                 {{$set->zip}}<br/>
-                                {{ __('message.country') }}: {{getCountryByCode($set->country)}}<br/>
-                                {{ __('message.mobile') }}: <b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
-                                {{ __('message.email') }}: {{$set->company_email}}
+                                {{ trans('message.country') }}: {{getCountryByCode($set->country)}}<br/>
+                                {{ trans('message.mobile') }}: <b>+</b>{{$set->phone_code}} {{$set->phone}}<br/>
+                                {{ trans('message.email') }}: {{$set->company_email}}
                             </address>
                              @if($set->gstin)
-                            <b>{{ __('message.gstin') }}:</b>  &nbsp; #{{$set->gstin}}
+                            <b>{{ trans('message.gstin') }}:</b>  &nbsp; #{{$set->gstin}}
                             <br>
                             @endif
 
                             @if($set->cin_no)
-                            <b>{{ __('message.cin') }}:</b>  &nbsp; #{{$set->cin_no}}
+                            <b>{{ trans('message.cin') }}:</b>  &nbsp; #{{$set->cin_no}}
                             <br>
                             @endif<br>
 
                         </div><!-- /.col -->
                         <div class="col-sm-4 invoice-col">
-                            {{ __('message.to') }}
+                            {{ trans('message.to') }}
                             <address>
                                 <strong>{{$user->first_name}} {{$user->last_name}}</strong><br>
                                 {{$user->address}}<br/>
@@ -102,13 +102,13 @@
                                 {{getStateByCode($user->state)['name']}}
                                 @endif
                                 {{$user->zip}}<br/>
-                                {{ __('message.country') }}: {{getCountryByCode($user->country)}}<br/>
+                                {{ trans('message.country') }}: {{getCountryByCode($user->country)}}<br/>
 
-                                {{ __('message.mobile') }}: @if($user->mobile_code)<b>+</b>{{$user->mobile_code}} @endif{{$user->mobile}}<br/>
-                                {{ __('message.email') }}: {{$user->email}}
+                                {{ trans('message.mobile') }}: @if($user->mobile_code)<b>+</b>{{$user->mobile_code}} @endif{{$user->mobile}}<br/>
+                                {{ trans('message.email') }}: {{$user->email}}
                             </address>
                              @if($user->gstin)
-                            <b>{{ __('message.gstin') }}:</b>  &nbsp; #{{$user->gstin}}
+                            <b>{{ trans('message.gstin') }}:</b>  &nbsp; #{{$user->gstin}}
                             <br>
                             @endif
                         </div><!-- /.col -->
@@ -120,12 +120,12 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>{{ __('message.order_no') }}</th>
-                                        <th>{{ __('message.product') }}</th>
-                                        <th>{{ __('message.price') }}</th>
-                                        <th>{{ __('message.agents') }}</th>
-                                        <th>{{ __('message.quantity') }}</th>
-                                        <th>{{ __('message.sub_total') }}</th>
+                                        <th>{{ trans('message.order_no') }}</th>
+                                        <th>{{ trans('message.product') }}</th>
+                                        <th>{{ trans('message.price') }}</th>
+                                        <th>{{ trans('message.agents') }}</th>
+                                        <th>{{ trans('message.quantity') }}</th>
+                                        <th>{{ trans('message.sub_total') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,7 +143,7 @@
                                             @elseif($order != '--')
 
                                             <td>{!! $order !!}</td>
-                                            <span>{{ __('message.renewed') }}</span>
+                                            <span>{{ trans('message.renewed') }}</span>
                                             @else
                                             <td>--</td>
                                            
@@ -180,17 +180,17 @@
                                        
                                  <table class="table">
                                      <tr>
-                                         <th style="border-top: unset !important;">{{ __('message.sub_total') }}</th>
+                                         <th style="border-top: unset !important;">{{ trans('message.sub_total') }}</th>
                                          <td class="moveright" style="border-top: unset !important;">{{currencyFormat($itemsSubtotal,$code=$symbol)}}</td>
                                      </tr>
                                      @if($invoice->credits)
                                          <tr>
-                                             <th>{{ __('message.discount') }}</th>
+                                             <th>{{ trans('message.discount') }}</th>
                                              <td class="moveright">{{currencyFormat($invoice->credits,$code=$symbol)}} (Credits)</td>
                                          </tr>
                                      @endif
                                       @if($invoice->coupon_code && $invoice->discount)
-                                  <th>{{ __('message.discount') }}</th>
+                                  <th>{{ trans('message.discount') }}</th>
                                     <td class="moveright">{{currencyFormat($invoice->discount,$code=$symbol)}} ({{$invoice->coupon_code}})</td>
                                 @endif
 
@@ -239,14 +239,14 @@
 
                                 @if($invoice->processing_fee != null && $invoice->processing_fee != '0%')
                                 <tr>
-                                    <th style="font-weight: bold;color: grey;">{{ __('message.processing_fee') }} <label style="font-weight: normal;">({{$invoice->processing_fee}})</label></th>
+                                    <th style="font-weight: bold;color: grey;">{{ trans('message.processing_fee') }} <label style="font-weight: normal;">({{$invoice->processing_fee}})</label></th>
                                     <td class="text-color-grey moveright">{{currencyFormat($feeAmount,$code = $symbol)}}</td>
                                 </tr>
                                 @endif
                                      
                                        
                                     @endif
-                                    <th>{{ __('message.total') }}</th>
+                                    <th>{{ trans('message.total') }}</th>
                                     <td class="moveright" style="font-weight: bold;">{{currencyFormat($invoice->grand_total,$code=$symbol)}}</td>
                                
                             </table>
@@ -258,7 +258,7 @@
                     <div class="row no-print">
                         <div class="col-6"></div>
                         <div class="col-6" style="left: 3%;">
-                            <a href="{{url('pdf?invoiceid='.$invoice->id)}}"><button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> {{ __('message.generate_pdf') }}</button></a>
+                            <a href="{{url('pdf?invoiceid='.$invoice->id)}}"><button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> {{ trans('message.generate_pdf') }}</button></a>
                         </div>
                     </div>
 

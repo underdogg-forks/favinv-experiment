@@ -36,7 +36,7 @@ class verifyOtp extends FormRequest
 
                 function ($attribute, $value, $fail) use ($pass) {
                     if (! Hash::check($value, $pass)) {
-                        return $fail(__('validation.password_otp.invalid'));
+                        return $fail(trans('validation.password_otp.invalid'));
                     }
                 },
             ],
@@ -46,16 +46,16 @@ class verifyOtp extends FormRequest
     public function messages()
     {
         return [
-            'verify_email.required' => __('validation.verify_email.required'),
-            'verify_email.email' => __('validation.verify_email.email'),
-            'verify_email.verify_email' => __('validation.verify_email.verify_email'), // Custom validation rule message
-            'verify_country_code.required' => __('validation.verify_country_code.required'),
-            'verify_country_code.numeric' => __('validation.verify_country_code.numeric'),
-            'verify_country_code.verify_country_code' => __('validation.verify_country_code.verify_country_code'), // Custom validation rule message
-            'verify_number.required' => __('validation.verify_number.required'),
-            'verify_number.numeric' => __('validation.verify_number.numeric'),
-            'verify_number.verify_number' => __('validation.verify_number.verify_number'), // Custom validation rule message
-            'password.required' => __('validation.password_otp.required'),
+            'verify_email.required' => trans('validation.verify_email.required'),
+            'verify_email.email' => trans('validation.verify_email.email'),
+            'verify_email.verify_email' => trans('validation.verify_email.verify_email'), // Custom validation rule message
+            'verify_country_code.required' => trans('validation.verify_country_code.required'),
+            'verify_country_code.numeric' => trans('validation.verify_country_code.numeric'),
+            'verify_country_code.verify_country_code' => trans('validation.verify_country_code.verify_country_code'), // Custom validation rule message
+            'verify_number.required' => trans('validation.verify_number.required'),
+            'verify_number.numeric' => trans('validation.verify_number.numeric'),
+            'verify_number.verify_number' => trans('validation.verify_number.verify_number'), // Custom validation rule message
+            'password.required' => trans('validation.password_otp.required'),
         ];
     }
 }

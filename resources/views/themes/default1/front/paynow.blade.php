@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.checkout') }}
+{{ trans('message.checkout') }}
 @stop
 @section('page-heading')
-    {{ __('message.checkout') }}
+    {{ trans('message.checkout') }}
 @stop
 @section('breadcrumb')
  @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
 @endif
- <li class="active text-dark">{{ __('message.checkout')}}</li>
+ <li class="active text-dark">{{ trans('message.checkout')}}</li>
 @stop
 <style type="text/css">
    
@@ -64,22 +64,22 @@
 
                                     <th class="product-name text-uppercase">
 
-                                        {{ __('message.product')}}
+                                        {{ trans('message.product')}}
 
                                     </th>
 
                                     <th class="product-quantity text-uppercase" >
 
-                                        {{ __('message.quantity')}}
+                                        {{ trans('message.quantity')}}
                                     </th>
                                      <th class="product-agents text-uppercase" >
 
-                                         {{ __('message.front_agent')}}
+                                         {{ trans('message.front_agent')}}
                                     </th>
 
                                     <th class="product-subtotal text-uppercase text-end">
 
-                                        {{ __('message.total')}}
+                                        {{ trans('message.total')}}
                                     </th>
                                 </tr>
                                 </thead>
@@ -101,7 +101,7 @@
 
                                         <div class="product-thumbnail-wrapper">
 
-                                            <span class="product-thumbnail-image" data-bs-toggle="tooltip" title="{{ __('message.faveo_enterprise_advance') }}">
+                                            <span class="product-thumbnail-image" data-bs-toggle="tooltip" title="{{ trans('message.faveo_enterprise_advance') }}">
 
                                                     <img width="90" height="90" alt="" class="img-fluid" src="{{$product->image}}">
                                                 </span>
@@ -141,7 +141,7 @@
 
                         <div class="card-body">
 
-                            <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order')}}</h4>
+                            <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order')}}</h4>
 
                             <div class="table-responsive">
 
@@ -155,7 +155,7 @@
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.cart_subtotal')}}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.cart_subtotal')}}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">{{currencyFormat($subtotal,$code = $currency)}}</span>
@@ -204,7 +204,7 @@
 
                                     <td class="border-top-0">
                                                             <strong class="d-block text-color-dark line-height-1 font-weight-semibold">
-                                                                {{ __('message.paid')}}
+                                                                {{ trans('message.paid')}}
                                                             </strong>
                                                         </td>
                                     <td class="text-end align-top border-top-0"><span class="amount font-weight-medium text-color-grey">
@@ -215,7 +215,7 @@
 
                                 <tr class="total">
                                     <th>
-                                        <strong>{{ __('message.balance') }}</strong>
+                                        <strong>{{ trans('message.balance') }}</strong>
                                     </th>
                                     <td class="text-end align-top border-top-0"><span class="amount font-weight-medium text-color-grey">
                                         {{currencyFormat($invoice->grand_total,$code = $currency)}}
@@ -225,7 +225,7 @@
                                 @endif
                                 <tr id="balance-row" class="cart-subtotal" style="color: indianred; display: none;">
                                     <td class="border-top-0">
-                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.balance')}}</strong></td>
+                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.balance')}}</strong></td>
                                     <td class="text-end align-top border-top-0">
                                         <span class="amount font-weight-medium text-color-grey">
                                         <?php
@@ -246,7 +246,7 @@
                                 @if($invoice->billing_pay)
                                 <tr id="balance-row" class="cart-subtotal" style="color: indianred;">
                                   <td class="border-top-0">
-                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.balance')}}</strong></td>
+                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.balance')}}</strong></td>
                                     <td class="text-end align-top border-top-0">
                                         <span class="amount font-weight-medium text-color-grey">
                                         -{{$dd=currencyFormat($invoice->billing_pay, $currency)}}
@@ -257,7 +257,7 @@
 
                                        <tr id="balance-row" class="cart-subtotal" style="color: indianred; display: none;">
                                                <td class="border-top-0">
-                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.balance')}}</strong></td>
+                                    <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.balance')}}</strong></td>
                                             <td class="text-end align-top border-top-0">
                                         <span class="amount font-weight-medium text-color-grey">
                                                 <?php
@@ -279,7 +279,7 @@
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total')}}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total')}}</strong>
                                         </td>
                                         <?php
                                          if (\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance')) {
@@ -312,7 +312,7 @@
 
                                                 <div class="col-sm-8">
 
-                                                    <strong class="text-color-dark text-3-5">{{ __('message.your_available_balance')}}</strong>
+                                                    <strong class="text-color-dark text-3-5">{{ trans('message.your_available_balance')}}</strong>
                                                 </div>
                                             </div>
 
@@ -324,13 +324,13 @@
                                                          @if(\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance'))
 
 
-                                                        <input class="form-check-input mt-1" type="checkbox" id="billing-pay-balance" name="agree" id="tabContent9Checkbox" data-msg-required="{{ __('message.agree_before_submitting')}}" checked>
+                                                        <input class="form-check-input mt-1" type="checkbox" id="billing-pay-balance" name="agree" id="tabContent9Checkbox" data-msg-required="{{ trans('message.agree_before_submitting')}}" checked>
                                                         @else
-                                                         <input class="form-check-input mt-1" type="checkbox" id="billing-pay-balance" name="agree" id="tabContent9Checkbox" data-msg-required="{{ __('message.agree_before_submitting')}}">
+                                                         <input class="form-check-input mt-1" type="checkbox" id="billing-pay-balance" name="agree" id="tabContent9Checkbox" data-msg-required="{{ trans('message.agree_before_submitting')}}">
                                                         @endif
 
                                                         <label class="form-check-label" for="tabContent9Checkbox">
-                                                            {{ __('message.use_your_balance')}} <strong class="text-3-5">{{currencyFormat($amt_to_credit,$code = $currency)}}</strong>
+                                                            {{ trans('message.use_your_balance')}} <strong class="text-3-5">{{currencyFormat($amt_to_credit,$code = $currency)}}</strong>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -343,7 +343,7 @@
 
                                         <td colspan="2">
 
-                                            <strong class="d-block text-color-dark mb-2">{{ __('message.payment_methods')}}</strong>
+                                            <strong class="d-block text-color-dark mb-2">{{ trans('message.payment_methods')}}</strong>
 
                                             <div class="d-flex flex-column">
                                                  @foreach($gateways as $gateway)
@@ -358,7 +358,7 @@
 
                                                     <img alt="{{$gateway}}" width="111" src="{{asset('images/logo/'.$gateway.'.png')}}">
                                                     <div id="fee" style="display:none;">
-                                                        <p class="text-color-dark text-2">{{ __('message.extra_processing')}} <b>{{$processingFee}}%</b> {{ __('message.time_payment')}}</p></div>
+                                                        <p class="text-color-dark text-2">{{ trans('message.extra_processing')}} <b>{{$processingFee}}%</b> {{ trans('message.time_payment')}}</p></div>
                                                 </label>
                                                   @endforeach
 
@@ -373,7 +373,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <button type="submit" id="proceed" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3">{{ __('message.proceed')}} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></button>
+                            <button type="submit" id="proceed" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3">{{ trans('message.proceed')}} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></button>
                          
                              {!! html()->form()->close() !!}
                         </div>
@@ -385,7 +385,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
   $('#checkoutsubmitform').submit(function(){
-     $("#proceed").html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i>{{ __('message.please_wait')}}")
+     $("#proceed").html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i>{{ trans('message.please_wait')}}")
     $("#proceed").prop('disabled', true);
 
   });

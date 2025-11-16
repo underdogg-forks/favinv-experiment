@@ -46,35 +46,35 @@ class SettingsRequest extends FormRequest
     public function messages()
     {
         return [
-            'company.required' => __('validation.settings_forms.company.required'),
-            'company.max' => __('validation.settings_forms.company.max'),
+            'company.required' => trans('validation.settings_forms.company.required'),
+            'company.max' => trans('validation.settings_forms.company.max'),
 
-            'company_email.required' => __('validation.settings_forms.company_email.required'),
-            'company_email.email' => __('validation.settings_forms.company_email.email'),
+            'company_email.required' => trans('validation.settings_forms.company_email.required'),
+            'company_email.email' => trans('validation.settings_forms.company_email.email'),
 
-            'title.max' => __('validation.settings_forms.title.max'),
+            'title.max' => trans('validation.settings_forms.title.max'),
 
-            'website.required' => __('validation.settings_forms.website.required'),
-            'website.url' => __('validation.settings_forms.website.url'),
-            'website.regex' => __('validation.settings_forms.website.regex'),
+            'website.required' => trans('validation.settings_forms.website.required'),
+            'website.url' => trans('validation.settings_forms.website.url'),
+            'website.regex' => trans('validation.settings_forms.website.regex'),
 
-            'phone.required' => __('validation.settings_forms.phone.required'),
-            'address.required' => __('validation.settings_forms.address.required'),
-            'state.required' => __('validation.settings_forms.state.required'),
-            'country.required' => __('validation.settings_forms.country.required'),
+            'phone.required' => trans('validation.settings_forms.phone.required'),
+            'address.required' => trans('validation.settings_forms.address.required'),
+            'state.required' => trans('validation.settings_forms.state.required'),
+            'country.required' => trans('validation.settings_forms.country.required'),
 
-            'gstin.max' => __('validation.settings_forms.gstin.max'),
+            'gstin.max' => trans('validation.settings_forms.gstin.max'),
 
-            'default_currency.required' => __('validation.settings_forms.default_currency.required'),
+            'default_currency.required' => trans('validation.settings_forms.default_currency.required'),
 
-            'admin-logo.mimes' => __('validation.settings_forms.admin_logo.mimes'),
-            'admin-logo.max' => __('validation.settings_forms.admin_logo.max'),
+            'admin-logo.mimes' => trans('validation.settings_forms.admin_logo.mimes'),
+            'admin-logo.max' => trans('validation.settings_forms.admin_logo.max'),
 
-            'fav-icon.mimes' => __('validation.settings_forms.fav_icon.mimes'),
-            'fav-icon.max' => __('validation.settings_forms.fav_icon.max'),
+            'fav-icon.mimes' => trans('validation.settings_forms.fav_icon.mimes'),
+            'fav-icon.max' => trans('validation.settings_forms.fav_icon.max'),
 
-            'logo.mimes' => __('validation.settings_forms.logo.mimes'),
-            'logo.max' => __('validation.settings_forms.logo.max'),
+            'logo.mimes' => trans('validation.settings_forms.logo.mimes'),
+            'logo.max' => trans('validation.settings_forms.logo.max'),
         ];
     }
 }

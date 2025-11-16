@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-{{ __('message.mailchimp') }}
+{{ trans('message.mailchimp') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.templates') }}</h1>
+        <h1>{{ trans('message.templates') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('third-party-integration')}}"><i class="fa fa-dashboard"></i> {{ __('message.third_party_integration') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.mailchimp_mapping') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('third-party-integration')}}"><i class="fa fa-dashboard"></i> {{ trans('message.third_party_integration') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.mailchimp_mapping') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -96,14 +96,14 @@ input:checked + .slider:before {
 
                 <table class="table table-hover">
                     <tr>
-                        <th>{{ __('message.agora-fields') }}</th>
-                        <th>{{ __('message.mailchimp-fields') }}</th>
+                        <th>{{ trans('message.agora-fields') }}</th>
+                        <th>{{ trans('message.mailchimp-fields') }}</th>
                     </tr>
                     @foreach (['first_name', 'last_name', 'company', 'mobile', 'address', 'country', 'town', 'state', 'zip', 'active', 'role', 'source'] as $field)
                         <tr>
-                            <td>{{ __('message.' . $field) }}</td>
+                            <td>{{ trans('message.' . $field) }}</td>
                             <td>
-                                {!! html()->select($field, ['' => __('message.Select'), 'Fields' => $mailchimp_fields])
+                                {!! html()->select($field, ['' => trans('message.Select'), 'Fields' => $mailchimp_fields])
                                     ->class('form-control') !!}
                             </td>
                         </tr>
@@ -136,7 +136,7 @@ input:checked + .slider:before {
                     <h3 class="card-title" >{{trans('message.group-fields')}}</h3><br>
 {{--                    <h4>Map Products</h4>--}}
             <div class="form-group">
-            <span style="color:red;">*&nbsp {{ __('message.map_mailchimp_products') }} </span>
+            <span style="color:red;">*&nbsp {{ trans('message.map_mailchimp_products') }} </span>
         </div>  
                <label class="switch toggle_event_editing">
                           
@@ -151,9 +151,9 @@ input:checked + .slider:before {
         ->acceptsFiles()
         ->open() !!}
               
-                        <h5>{{ __('message.select_a_group') }}</h5>
+                        <h5>{{ trans('message.select_a_group') }}</h5>
                          <select name="group"  class="form-control col-md-2"  id="group" onChange="getGroup(this.value)">
-                            <option value="">{{ __('message.choose') }}</option>
+                            <option value="">{{ trans('message.choose') }}</option>
                 @foreach ($display as $key=>$value)
                <option value="{{$value['id']}}">{{$value['title']}}</option>
                  
@@ -173,7 +173,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[0]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
 
                                    <option value="{{$key}}">{{$product}}</option>
@@ -201,7 +201,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[1]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                              
                                    <option value="{{$key}}">{{$product}}</option>
@@ -231,7 +231,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[2]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                              
                                    <option value="{{$key}}">{{$product}}</option>
@@ -262,7 +262,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[3]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                              
                                    <option value="{{$key}}">{{$product}}</option>
@@ -291,7 +291,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[4]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                              
                                    <option value="{{$key}}">{{$product}}</option>
@@ -322,7 +322,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[5]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                              
                                    <option value="{{$key}}">{{$product}}</option>
@@ -351,7 +351,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[6]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                                    <option value="{{$key}}">{{$product}}</option>
                            
@@ -378,7 +378,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[7]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                                    <option value="{{$key}}">{{$product}}</option>
                            
@@ -405,7 +405,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[8]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                                    <option value="{{$key}}">{{$product}}</option>
                            
@@ -432,7 +432,7 @@ input:checked + .slider:before {
                                 @if(count($productList)>0)
                                 <option value="">{{$productList[9]}}</option>
                                 @endif
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                               @foreach($agoraProducts as $key=>$product)
                                    <option value="{{$key}}">{{$product}}</option>
                            
@@ -470,10 +470,10 @@ input:checked + .slider:before {
         <div class="card card-secondary card-outline">
            <div id="alertMessage1"></div>
              <div class="card-body">
-                  <h3 class="card-title">{{ __('message.map_paid_group') }}</h3><br>
+                  <h3 class="card-title">{{ trans('message.map_paid_group') }}</h3><br>
             <div class="card-header">
                 <div class="form-group">
-                    <span style="color:red;">*&nbsp;{{ __('message.mailchimp_dropdown_true_false') }}<br> {{ __('message.mailchimp_account_group') }}</span>
+                    <span style="color:red;">*&nbsp;{{ trans('message.mailchimp_dropdown_true_false') }}<br> {{ trans('message.mailchimp_account_group') }}</span>
             </div>  
                 <label class="switch">
                           
@@ -498,9 +498,9 @@ input:checked + .slider:before {
 
 
                  <br>
-                        <h5>{{ __('message.select_a_group') }}</h5>
+                        <h5>{{ trans('message.select_a_group') }}</h5>
                          <select name="group"  class="form-control col-md-2"  id="group" onChange="getGroup(this.value)">
-                            <option value="">{{ __('message.choose') }}</option>
+                            <option value="">{{ trans('message.choose') }}</option>
                 @foreach ($display as $key=>$value)
                <option value="{{$value['id']}}"<?php  if(in_array($value['id'], $selectedIsPaid) ) 
                         { echo "selected";} ?>>{{$value['title']}}</option>
@@ -511,7 +511,7 @@ input:checked + .slider:before {
 
 
                  <br>
-                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i>  {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                 <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i>  {{ trans('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
                  {!! html()->closeModelForm() !!}
 
             </div>
@@ -547,7 +547,7 @@ input:checked + .slider:before {
      getInterestGroup(val)
     }
       else{
-        $(".field").html('<option value=>{{ __('message.please_select_a_group') }}</option>').val('');
+        $(".field").html('<option value=>{{ trans('message.please_select_a_group') }}</option>').val('');
     }
    }
 
@@ -594,7 +594,7 @@ input:checked + .slider:before {
       },
        success: function (data) {
             $('#alertMessage').show();
-            var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + @json(__('message.success')) + '! </strong>' + data.update + '.</div>';
+            var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + @json(trans('message.success')) + '! </strong>' + data.update + '.</div>';
             $('#alertMessage').html(result+ ".");
               setInterval(function(){ 
                 $('#alertMessage').slideUp(3000); 
@@ -636,7 +636,7 @@ input:checked + .slider:before {
       },
        success: function (data) {
             $('#alertMessage1').show();
-           var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + '{{ __("message.success") }}' + '! </strong>' + data.update + '.</div>';
+           var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> ' + '{{ trans("message.success") }}' + '! </strong>' + data.update + '.</div>';
             $('#alertMessage1').html(result+ ".");
               setInterval(function(){ 
                 $('#alertMessage1').slideUp(3000); 

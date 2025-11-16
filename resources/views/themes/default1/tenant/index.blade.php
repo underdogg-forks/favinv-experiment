@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.cloud_hub') }}
+    {{ trans('message.cloud_hub') }}
 @stop
 
 
@@ -202,14 +202,14 @@
 </style>
 
     <div class="col-sm-6">
-        <h1>{{ __('message.cloud_details') }}</h1>
+        <h1>{{ trans('message.cloud_details') }}</h1>
     </div>
 
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}"> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('settings') }}"> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.cloud_hub') }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}"> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('settings') }}"> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.cloud_hub') }}</li>
         </ol>
     </div>
 @stop
@@ -219,7 +219,7 @@
 
     <div class="card card-secondary card-outline">
         <div class="card-header">
-            <h3 class="card-title">{{ __('message.cloud_server') }}</h3>
+            <h3 class="card-title">{{ trans('message.cloud_server') }}</h3>
         </div>
         <div class="card-body table-responsive">
             {!! html()->modelForm($cloud,'POST', route('cloud-details'))->id('cloud-details')->open() !!}
@@ -251,7 +251,7 @@
     </div>
     <div class="card card-secondary card-outline">
         <div class="card-header">
-            <h3 class="card-title">{{ __('message.customise_cloud_popup') }}</h3>
+            <h3 class="card-title">{{ trans('message.customise_cloud_popup') }}</h3>
         </div>
 
         <div class="card-body table-responsive">
@@ -294,7 +294,7 @@
     ?>
     <div class="card card-secondary card-outline">
         <div class="card-header">
-            <h3 class="card-title">{{ __('message.cloud_product_configuration') }}</h3>
+            <h3 class="card-title">{{ trans('message.cloud_product_configuration') }}</h3>
         </div>
         <div class="card-body">
             {!! html()->form('POST', route('cloud-product-store'))->id('product-configuration')->open() !!}
@@ -304,7 +304,7 @@
                     <div class="form-group">
                         <!-- Select Field 1 -->
                         <select name="cloud_product" class="form-control select2" id="saas-product">
-                            <option value="">{{ __('message.choose') }}</option>
+                            <option value="">{{ trans('message.choose') }}</option>
 
                         @foreach($products as $product)
                             <option value="{!! $product->id !!}">{{$product->name}}</option>
@@ -321,7 +321,7 @@
                     {!! html()->label(trans('message.cloud_free_plan'))->class('required') !!}
                     <div class="form-group">
                         <select name="cloud_free_plan" class="form-control select2" id="saas-free-product">
-                            <option value="">{{ __('message.choose') }}</option>
+                            <option value="">{{ trans('message.choose') }}</option>
 
                         @foreach($plans as $plan)
                             <option value="{!! $plan->id !!}">{!! $plan->name !!}</option>
@@ -343,7 +343,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-save"></i> {{ __('message.save') }}
+                        <i class="fa fa-save"></i> {{ trans('message.save') }}
                     </button>
                 </div>
             </div>
@@ -358,11 +358,11 @@
             <table id="pop-product-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
                 <thead>
                 <tr>
-                    <th>{{ __('message.cloud_product') }}</th>
-                    <th>{{ __('message.free_plan_cloud') }}</th>
-                    <th>{{ __('message.cloud_prod_key') }}</th>
-                    <th>{{ __('message.action') }}</th>
-                    <th>{{ __('message.trial_status_heading') }}<i class="fas fa-question-circle  custom-tooltip" data-toggle="tooltip" data-placement="top" style="margin-left: 7px" title="{{trans('message.free_trial_status_tooltip')}}"></i></th>
+                    <th>{{ trans('message.cloud_product') }}</th>
+                    <th>{{ trans('message.free_plan_cloud') }}</th>
+                    <th>{{ trans('message.cloud_prod_key') }}</th>
+                    <th>{{ trans('message.action') }}</th>
+                    <th>{{ trans('message.trial_status_heading') }}<i class="fas fa-question-circle  custom-tooltip" data-toggle="tooltip" data-placement="top" style="margin-left: 7px" title="{{trans('message.free_trial_status_tooltip')}}"></i></th>
                 </tr>
                 </thead>
             </table>
@@ -386,7 +386,7 @@
 
     <div class="card card-secondary card-outline">
             <div class="card-header">
-                <h3 class="card-title">{{ __('message.cloud_data_centers') }}</h3>
+                <h3 class="card-title">{{ trans('message.cloud_data_centers') }}</h3>
             </div>
 
           <div class="card-body">
@@ -398,7 +398,7 @@
                           <div class="form-group">
                               <!-- Select Field 1 -->
                               <select id="cloud_countries" name="cloud_countries" class="form-control select2">
-                                  <option value="">{{ __('message.choose') }}</option>
+                                  <option value="">{{ trans('message.choose') }}</option>
                                   @foreach($countries as $country)
                                       <option value="{!! strtolower($country->country_code_char2) !!}">{{$country->nicename}}</option>
                                   @endforeach
@@ -434,7 +434,7 @@
                            <div class="col-md-4">
                                <div class="form-group">
                                    <button type="submit" class="btn btn-primary">
-                                       <i class="fa fa-save"></i> {{ __('message.save') }}
+                                       <i class="fa fa-save"></i> {{ trans('message.save') }}
                                    </button>
                                </div>
 
@@ -449,7 +449,7 @@
         <div class="card card-secondary card-outline">
             <div class="card-header">
                 <div id="response"></div>
-                <h5>{{ __('message.set_cloud_free_trial') }}</h5>
+                <h5>{{ trans('message.set_cloud_free_trial') }}</h5>
             </div>
             <div class="card-body">
                 {!! html()->form('POST', url('enable/cloud'))->open() !!}
@@ -470,7 +470,7 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">
-                    <i class="fa fa-save"></i> {{ __('message.save') }}
+                    <i class="fa fa-save"></i> {{ trans('message.save') }}
                 </button>
             </div>
         </div>
@@ -479,7 +479,7 @@
     <div id="export-message"></div>
         <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.tenants') }}</h3>
+        <h3 class="card-title">{{ trans('message.tenants') }}</h3>
     </div>
     <div id="tenatloading" style="display: none;">
         <div class="tenatspinner"></div>
@@ -487,7 +487,7 @@
     <div id="successmsg"></div>
     <div id="error"></div>
 
-        <button type="button" id="tenat_export-report-btn" class="btn btn-sm tenant_export" data-toggle="tooltip" title="{{ __('message.export') }}" style="position: absolute;right: 10px;top: 10px;">
+        <button type="button" id="tenat_export-report-btn" class="btn btn-sm tenant_export" data-toggle="tooltip" title="{{ trans('message.export') }}" style="position: absolute;right: 10px;top: 10px;">
             <i class="fas fa-paper-plane"></i>
         </button>
         <br />
@@ -498,63 +498,63 @@
         <div class="d-flex justify-content-end" style="padding-top: 0px;">
             <div class="custom-dropdown" id="columnUpdate">
                 <button class="btn btn-default float-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative;top: 32px;">
-                    <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ __('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
+                    <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ trans('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
                 </button>
                 <div class="dropdown-menu order-column-dropdown" aria-labelledby="dropdownMenuButton" id="specific-container">
                     <div class="form-check">
                         <input class="form-check-input " type="checkbox" value="Order" id="OrderCheckbox">
-                        <label class="form-check-label" for="Order">{{ __('message.order') }}</label>
+                        <label class="form-check-label" for="Order">{{ trans('message.order') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="name" id="nameCheckbox">
-                        <label class="form-check-label" for="name">{{ __('message.user') }}</label>
+                        <label class="form-check-label" for="name">{{ trans('message.user') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="email" id="emailCheckbox">
-                        <label class="form-check-label" for="email">{{ __('message.email') }}</label>
+                        <label class="form-check-label" for="email">{{ trans('message.email') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="mobile" id="mobileCheckbox">
-                        <label class="form-check-label" for="mobile">{{ __('message.mobile') }}</label>
+                        <label class="form-check-label" for="mobile">{{ trans('message.mobile') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="country" id="countryCheckbox">
-                        <label class="form-check-label" for="country">{{ __('message.country') }}</label>
+                        <label class="form-check-label" for="country">{{ trans('message.country') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Expiry day" id="Expiry dayCheckbox">
-                        <label class="form-check-label" for="Expiry day">{{ __('message.expiry_day') }}</label>
+                        <label class="form-check-label" for="Expiry day">{{ trans('message.expiry_day') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Deletion day" id="Deletion dayCheckbox">
-                        <label class="form-check-label" for="Deletion day">{{ __('message.deletion_day') }}</label>
+                        <label class="form-check-label" for="Deletion day">{{ trans('message.deletion_day') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="plan" id="planCheckbox">
-                        <label class="form-check-label" for="plan">{{ __('message.plan_status') }}</label>
+                        <label class="form-check-label" for="plan">{{ trans('message.plan_status') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="tenants" id="tenantsCheckbox">
-                        <label class="form-check-label" for="tenants">{{ __('message.tenants') }}</label>
+                        <label class="form-check-label" for="tenants">{{ trans('message.tenants') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="domain" id="domainCheckbox">
-                        <label class="form-check-label" for="domain">{{ __('message.admin_domain') }}</label>
+                        <label class="form-check-label" for="domain">{{ trans('message.admin_domain') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="db_name" id="db_nameCheckbox">
-                        <label class="form-check-label" for="db_name">{{ __('message.db_name') }}</label>
+                        <label class="form-check-label" for="db_name">{{ trans('message.db_name') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="db_username" id="db_usernameCheckbox">
-                        <label class="form-check-label" for="db_username">{{ __('message.db_username') }}</label>
+                        <label class="form-check-label" for="db_username">{{ trans('message.db_username') }}</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="action" id="actionCheckbox">
-                        <label class="form-check-label" for="action">{{ __('message.action') }}</label>
+                        <label class="form-check-label" for="action">{{ trans('message.action') }}</label>
                     </div>
                     <br>
-                    <button type="button" class="btn btn-primary btn-sm" style="position: relative; left: 20px; padding: 4px;" id="saveColumnsBtn">{{ __('message.apply') }}</button>
+                    <button type="button" class="btn btn-primary btn-sm" style="position: relative; left: 20px; padding: 4px;" id="saveColumnsBtn">{{ trans('message.apply') }}</button>
                 </div>
             </div>
 
@@ -565,19 +565,19 @@
             <table id="tenant-table" class="table display" cellspacing="0" width="100%" styleClass="borderless">
                 <thead>
                     <tr>
-                        <th>{{ __('message.order') }}</th>
-                        <th>{{ __('message.user') }}</th>
-                        <th>{{ __('message.email') }}</th>
-                        <th>{{ __('message.mobile') }}</th>
-                        <th>{{ __('message.country') }}</th>
-                        <th>{{ __('message.expiry_day') }}</th>
-                        <th>{{ __('message.deletion_day') }}</th>
-                        <th>{{ __('message.plan_status') }}</th>
-                        <th>{{ __('message.tenant') }}</th>
-                        <th>{{ __('message.admin_domain') }}</th>
-                        <th>{{ __('message.db_name') }}</th>
-                        <th>{{ __('message.db_username') }}</th>
-                        <th>{{ __('message.action') }}</th>
+                        <th>{{ trans('message.order') }}</th>
+                        <th>{{ trans('message.user') }}</th>
+                        <th>{{ trans('message.email') }}</th>
+                        <th>{{ trans('message.mobile') }}</th>
+                        <th>{{ trans('message.country') }}</th>
+                        <th>{{ trans('message.expiry_day') }}</th>
+                        <th>{{ trans('message.deletion_day') }}</th>
+                        <th>{{ trans('message.plan_status') }}</th>
+                        <th>{{ trans('message.tenant') }}</th>
+                        <th>{{ trans('message.admin_domain') }}</th>
+                        <th>{{ trans('message.db_name') }}</th>
+                        <th>{{ trans('message.db_username') }}</th>
+                        <th>{{ trans('message.action') }}</th>
                     </tr>
                 </thead>
             </table>
@@ -611,7 +611,7 @@
                     "url": '{!! route('get-tenants') !!}',
                     error: function (xhr) {
                         if (xhr.status == 401) {
-                            alert('{{ __('message.session_expired') }}');
+                            alert('{{ trans('message.session_expired') }}');
                             window.location.href = '/login';
                         }
                     },
@@ -628,24 +628,24 @@
 
                 "oLanguage": {
                     "sLengthMenu": "_MENU_ Records per page",
-                    "sSearch": "<span class='datatable-search-label'>{{ __('message.search') }}:</span> ",
-                    "sProcessing": ' <div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin" style=" margin-top: -25px;"></i><div class="text-bold pt-2">{!! __('message.loading') !!}</div></div>'
+                    "sSearch": "<span class='datatable-search-label'>{{ trans('message.search') }}:</span> ",
+                    "sProcessing": ' <div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin" style=" margin-top: -25px;"></i><div class="text-bold pt-2">{!! trans('message.loading') !!}</div></div>'
                 },
                 language: {
                     paginate: {
-                        first:      "{{ __('message.paginate_first') }}",
-                        last:       "{{ __('message.paginate_last') }}",
-                        next:       "{{ __('message.paginate_next') }}",
-                        previous:   "{{ __('message.paginate_previous') }}"
+                        first:      "{{ trans('message.paginate_first') }}",
+                        last:       "{{ trans('message.paginate_last') }}",
+                        next:       "{{ trans('message.paginate_next') }}",
+                        previous:   "{{ trans('message.paginate_previous') }}"
                     },
-                    emptyTable:     "{{ __('message.empty_table') }}",
-                    info:           "{{ __('message.datatable_info') }}",
-                    search:         "{{ __('message.datatable_search') }} ",
-                    zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                    infoEmpty:      "{{ __('message.info_empty') }}",
-                    infoFiltered:   "{{ __('message.info_filtered') }}",
-                    lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                    loadingRecords: "{{ __('message.loading_records') }}",
+                    emptyTable:     "{{ trans('message.empty_table') }}",
+                    info:           "{{ trans('message.datatable_info') }}",
+                    search:         "{{ trans('message.datatable_search') }} ",
+                    zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                    infoEmpty:      "{{ trans('message.info_empty') }}",
+                    infoFiltered:   "{{ trans('message.info_filtered') }}",
+                    lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                    loadingRecords: "{{ trans('message.loading_records') }}",
                 },
 
                 columnDefs: [
@@ -688,7 +688,7 @@
             selectedColumns.push($(this).val());
         });
          if (selectedColumns.length === 0) {
-        alert('{{ __('message.select_checkbox') }}');
+        alert('{{ trans('message.select_checkbox') }}');
         return;
         }
 
@@ -778,7 +778,7 @@
                         var result = '<div class="alert alert-success">' +
                             '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                             '<span aria-hidden="true">&times;</span></button>' +
-                            '<strong><i class="far fa-thumbs-up"></i> ' + @json(__('message.well_done')) + ' </strong>' +
+                            '<strong><i class="far fa-thumbs-up"></i> ' + @json(trans('message.well_done')) + ' </strong>' +
                             response.message + '!</div>';
 
                     $('#export-message').html(result).removeClass('text-danger').addClass('text-success');
@@ -790,8 +790,8 @@
                     var result = '<div class="alert alert-danger">' +
                         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                         '<span aria-hidden="true">&times;</span></button>' +
-                        '<strong><i class="far fa-thumbs-down"></i> {{ __('message.error_oops') }} </strong>' +
-                        '{{ __('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
+                        '<strong><i class="far fa-thumbs-down"></i> {{ trans('message.error_oops') }} </strong>' +
+                        '{{ trans('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
 
                     $('#export-message').html(result).removeClass('text-success').addClass('text-danger');
                     setTimeout(function() {
@@ -819,7 +819,7 @@
                     "<p>{{trans('message.tenant_deletion')}}<span class='text-danger'>"+id+"</span>" +"?</p></div>"+
                     "</div>",
                 showCancelButton: true,
-                cancelButtonText: "{{ __('message.cancel') }}",
+                cancelButtonText: "{{ trans('message.cancel') }}",
                 showCloseButton: true,
                 position:"top",
                 width:"600px",
@@ -839,7 +839,7 @@
                             success: function (data) {
                                 if (data.success === true) {
                                     console.log(data.message);
-                                    var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ __('message.success') }}! </strong>' + data.message + '!</div>';
+                                    var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ trans('message.success') }}! </strong>' + data.message + '!</div>';
                                     $('#successmsg').show();
                                     $('#error').hide();
                                     $('#successmsg').html(result);
@@ -850,7 +850,7 @@
                                 } else if (data.success === false) {
                                     $('#successmsg').hide();
                                     $('#error').show();
-                                    var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ __('message.whoops') }} </strong> {{ __('message.something_wrong') }}<br>' + data.message + '!</div>';
+                                    var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ trans('message.whoops') }} </strong> {{ trans('message.something_wrong') }}<br>' + data.message + '!</div>';
                                     $('#error').html(result);
                                     setInterval(function () {
                                         $('#error').slideUp(5000);
@@ -861,7 +861,7 @@
                             error: function (data) {
                                 $('#successmsg').hide();
                                 $('#error').show();
-                                var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ __('message.whoops') }} </strong> {{ __('message.something_wrong') }}<br>' + data.responseJSON.message + '!</div>';
+                                var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ trans('message.whoops') }} </strong> {{ trans('message.something_wrong') }}<br>' + data.responseJSON.message + '!</div>';
                                 $('#error').html(result);
                                 setInterval(function () {
                                     $('#error').slideUp(5000);
@@ -901,7 +901,7 @@
                     //     location.reload();
                     // }, 3000);
                     $('#successmsgpop').show();
-                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong>'+response.message+'.</div>';
+                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong>'+response.message+'.</div>';
                     $('#successmsgpop').html(result);
                     setInterval(function(){
                         $('#successmsgpop').slideUp(3000);
@@ -919,14 +919,14 @@
             }).setView([0, 0], 2); // Initialize the map with a center and zoom level.
 
             L.control.zoom({
-                zoomInTitle: '{{ __("message.zoom_in") }}',
-                zoomOutTitle: '{{ __("message.zoom_out") }}'
+                zoomInTitle: '{{ trans("message.zoom_in") }}',
+                zoomOutTitle: '{{ trans("message.zoom_out") }}'
             }).addTo(map);
 
             // Add an OpenStreetMap tile layer.
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">{{ __('message.openstreetmap') }}</a> {{ __('message.contributors') }}'
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">{{ trans('message.openstreetmap') }}</a> {{ trans('message.contributors') }}'
             }).addTo(map);
 
             // Define an array of region coordinates
@@ -988,21 +988,21 @@
                 language: {
                     sLengthMenu: "_MENU_ Records per page",
                     sSearch: "Search: ",
-                    sProcessing: ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>',
+                    sProcessing: ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>',
                     paginate: {
-                        first:      "{{ __('message.paginate_first') }}",
-                        last:       "{{ __('message.paginate_last') }}",
-                        next:       "{{ __('message.paginate_next') }}",
-                        previous:   "{{ __('message.paginate_previous') }}"
+                        first:      "{{ trans('message.paginate_first') }}",
+                        last:       "{{ trans('message.paginate_last') }}",
+                        next:       "{{ trans('message.paginate_next') }}",
+                        previous:   "{{ trans('message.paginate_previous') }}"
                     },
-                    emptyTable:     "{{ __('message.empty_table') }}",
-                    info:           "{{ __('message.datatable_info') }}",
-                    search:         "{{ __('message.datatable_search') }} ",
-                    zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                    infoEmpty:      "{{ __('message.info_empty') }}",
-                    infoFiltered:   "{{ __('message.info_filtered') }}",
-                    lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                    loadingRecords: "{{ __('message.loading_records') }}",
+                    emptyTable:     "{{ trans('message.empty_table') }}",
+                    info:           "{{ trans('message.datatable_info') }}",
+                    search:         "{{ trans('message.datatable_search') }} ",
+                    zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                    infoEmpty:      "{{ trans('message.info_empty') }}",
+                    infoFiltered:   "{{ trans('message.info_filtered') }}",
+                    lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                    loadingRecords: "{{ trans('message.loading_records') }}",
                 },
 
                 columnDefs: [
@@ -1048,7 +1048,7 @@
             "<p>{{trans('message.cloud_delete')}}</p>"+"</div>" +
             "</div>",
         showCancelButton: true,
-        cancelButtonText: "{{ __('message.cancel') }}",
+        cancelButtonText: "{{ trans('message.cancel') }}",
         showCloseButton: true,
         position:"top",
         width:"600px",
@@ -1065,7 +1065,7 @@
                     data: { 'id': id },
                     success: function (data) {
                         if (data.success === true) {
-                            var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ __('message.success') }}! </strong>' + data.message + '!</div>';
+                            var result = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ trans('message.success') }}! </strong>' + data.message + '!</div>';
                             $('#successmsgpop').show();
                             $('#errorpop').hide();
                             $('#successmsgpop').html(result);
@@ -1076,7 +1076,7 @@
                         } else if (data.success === false) {
                             $('#successmsgpop').hide();
                             $('#errorpop').show();
-                            var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ __('message.whoops') }} </strong> {{ __('message.something_wrong') }}<br>' + data.message + '!</div>';
+                            var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ trans('message.whoops') }} </strong> {{ trans('message.something_wrong') }}<br>' + data.message + '!</div>';
                             $('#errorpop').html(result);
                             setInterval(function () {
                                 $('#errorpop').slideUp(5000);
@@ -1087,7 +1087,7 @@
                     error: function (data) {
                         $('#successmsgpop').hide();
                         $('#errorpop').show();
-                        var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ __('message.whoops') }} </strong> {{ __('message.something_wrong') }}<br>' + data.responseJSON.message + '!</div>';
+                        var result = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-ban"></i>{{ trans('message.whoops') }} </strong> {{ trans('message.something_wrong') }}<br>' + data.responseJSON.message + '!</div>';
                         $('#errorpop').html(result);
                         setInterval(function () {
                             $('#errorpop').slideUp(5000);
@@ -1106,7 +1106,7 @@
                         "<p>{{trans('message.sweet_checkbox')}}</p>"+"</div>" +
                         "</div>",
                     position: 'top',
-                    confirmButtonText: "{{ __('message.ok') }}",
+                    confirmButtonText: "{{ trans('message.ok') }}",
                     showCloseButton: true,
                     confirmButtonColor: "#007bff",
                     width:"600px",

@@ -28,7 +28,7 @@ class RecaptchaMiddleware
         // Validate required request parameters
         $recaptchaResponse = $request->input('g-recaptcha-response');
         if (! $recaptchaResponse) {
-            return errorResponse(__('recaptcha::recaptcha.captcha_message'), 422);
+            return errorResponse(trans('recaptcha::recaptcha.captcha_message'), 422);
         }
 
         return match ($settings->captcha_version) {
@@ -47,7 +47,7 @@ class RecaptchaMiddleware
     ): mixed {
         $pageId = $request->input('page_id');
         if (! $pageId) {
-            return errorResponse(__('recaptcha::recaptcha.captcha_message'), 422);
+            return errorResponse(trans('recaptcha::recaptcha.captcha_message'), 422);
         }
 
         $sessionKey = $this->getSessionKey($action, $pageId);
@@ -76,13 +76,13 @@ class RecaptchaMiddleware
                 Session::put($sessionKey, true);
 
                 return successResponse(
-                    __('recaptcha::recaptcha.captcha_message'),
+                    trans('recaptcha::recaptcha.captcha_message'),
                     ['show_v2_recaptcha' => true],
                     422
                 );
             }
 
-            return errorResponse(__('recaptcha::recaptcha.captcha_message'), 422);
+            return errorResponse(trans('recaptcha::recaptcha.captcha_message'), 422);
         }
 
         // If token is valid and score is acceptable, proceed
@@ -91,7 +91,7 @@ class RecaptchaMiddleware
         }
 
         // Any other verification failure
-        return errorResponse(__('recaptcha::recaptcha.captcha_message'), 422);
+        return errorResponse(trans('recaptcha::recaptcha.captcha_message'), 422);
     }
 
     private function handleV2(
@@ -113,7 +113,7 @@ class RecaptchaMiddleware
 
         return $verification['success']
             ? $next(request())
-            : errorResponse(__('recaptcha::recaptcha.captcha_message'), 422);
+            : errorResponse(trans('recaptcha::recaptcha.captcha_message'), 422);
     }
 
     private function verify(string $secretKey, string $response, string $ip, ?string $hostname = null): array

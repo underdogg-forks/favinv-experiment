@@ -41,12 +41,12 @@ class SocialMediaRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => __('validation.social_media_form.name.required'),
-            'name.unique' => __('validation.social_media_form.name.unique'),
-            'name.max' => __('validation.social_media_form.name.max'),
-            'link.required' => __('validation.social_media_form.link.required'),
-            'link.url' => __('validation.social_media_form.link.url'),
-            'link.regex' => __('validation.social_media_form.link.regex'),
+            'name.required' => trans('validation.social_media_form.name.required'),
+            'name.unique' => trans('validation.social_media_form.name.unique'),
+            'name.max' => trans('validation.social_media_form.name.max'),
+            'link.required' => trans('validation.social_media_form.link.required'),
+            'link.url' => trans('validation.social_media_form.link.url'),
+            'link.regex' => trans('validation.social_media_form.link.regex'),
         ];
     }
 }

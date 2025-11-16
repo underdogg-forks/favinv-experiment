@@ -121,7 +121,7 @@ class TenantController extends Controller
             $keys = ThirdPartyApp::where('app_name', 'faveo_app_key')->select('app_key', 'app_secret')->first();
 
             if (! $keys->app_key) {//Valdidate if the app key to be sent is valid or not
-                throw new Exception(__('message.cloud_invalid_message'));
+                throw new Exception(trans('message.cloud_invalid_message'));
             }
             $response = $this->client->request(
                 'GET',
@@ -304,13 +304,13 @@ class TenantController extends Controller
                     if (empty($order_id) || empty($order_number)) {
                         return "<p><button data-toggle='modal'
                 data-id=".$model->id." data-name= '' onclick=deleteTenant('".$model->id."') id='delten".$model->id."'
-                class='btn btn-sm btn-dark btn-xs delTenant'".tooltip(__('message.delete'))."<i class='fa fa-trash'
+                class='btn btn-sm btn-dark btn-xs delTenant'".tooltip(trans('message.delete'))."<i class='fa fa-trash'
                 style='color:white;'> </i></button>&nbsp;</p>";
                     }
 
                     return "<p><button data-toggle='modal'
                 data-id='".$model->id."' data-name='' onclick=\"deleteTenant('".$model->id."','".$order_number."')\" id='delten".$model->id."'
-                class='btn btn-sm btn-dark btn-xs delTenant' ".tooltip(__('message.delete'))."<i class='fa fa-trash'
+                class='btn btn-sm btn-dark btn-xs delTenant' ".tooltip(trans('message.delete'))."<i class='fa fa-trash'
                 style='color:white;'> </i></button>&nbsp;</p>";
                 })
                 ->rawColumns(['Order', 'Deletion day', 'tenants', 'domain', 'db_name', 'db_username', 'action', 'name', 'email', 'mobile', 'country', 'Expiry day', 'plan'])
@@ -441,8 +441,8 @@ class TenantController extends Controller
                     $type = $temp_type->where('id', $type_id)->first()->name;
                 }
                 $subject = 'Your '.$order[0]->product()->value('name').' is now ready for use. Get started!';
-                $message = (isset($result->reason) && $result->reason != '') ? __('message.'.$result->message, ['installationUrl' => $result->installationUrl, 'reason' => $result->reason]) :
-                                        __('message.'.$result->message, ['installationUrl' => $result->installationUrl]);
+                $message = (isset($result->reason) && $result->reason != '') ? trans('message.'.$result->message, ['installationUrl' => $result->installationUrl, 'reason' => $result->reason]) :
+                                        trans('message.'.$result->message, ['installationUrl' => $result->installationUrl]);
 
                 $message = str_replace('website', strtolower($product), $message);
                 $message = str_replace('. You will receive password on your registered email', '', $message);
@@ -523,9 +523,9 @@ class TenantController extends Controller
 
                 $this->googleChat('Hello, it has come to my notice that '.$user.' has deleted this cloud instance '.$request->input('id'));
 
-                return successResponse(__('message.cloud_deleted_successfully'));
+                return successResponse(trans('message.cloud_deleted_successfully'));
             } else {
-                return errorResponse(__('message.cloud_deleted_failed'));
+                return errorResponse(trans('message.cloud_deleted_failed'));
             }
         } catch (Exception $e) {
             return errorResponse($e->getMessage());
@@ -560,8 +560,8 @@ class TenantController extends Controller
             'cloud_central_domain' => 'required',
             'cloud_cname' => 'required',
         ], [
-            'cloud_central_domain.required' => __('validation.cloud_central_domain_required'),
-            'cloud_cname.required' => __('validation.cloud_cname_required'),
+            'cloud_central_domain.required' => trans('validation.cloud_central_domain_required'),
+            'cloud_cname.required' => trans('validation.cloud_cname_required'),
         ]);
 
         try {
@@ -616,17 +616,17 @@ class TenantController extends Controller
 
                             $this->googleChat('Hello, it has come to my notice that '.$user.' has deleted this cloud instance '.$installation_path);
 
-                            return redirect()->back()->with('success', __('message.cloud_deleted_successfully'));
+                            return redirect()->back()->with('success', trans('message.cloud_deleted_successfully'));
                         } else {
                             \Log::error($response->message);
 
-                            return redirect()->back()->with('fails', __('message.cloud_deleted_failed   '));
+                            return redirect()->back()->with('fails', trans('message.cloud_deleted_failed   '));
                         }
                     }
                 }
             }
 
-            return redirect()->back()->with('fails', __('message.something_wrong_cloud_instance'));
+            return redirect()->back()->with('fails', trans('message.something_wrong_cloud_instance'));
         }
     }
 
@@ -634,7 +634,7 @@ class TenantController extends Controller
     {
         $order = Order::findorFail($order_id);
         if (\Auth::user()->role != 'admin' && $order->client != \Auth::user()->id) {
-            return errorResponse(__('message.cannot_remove_license_installation'));
+            return errorResponse(trans('message.cannot_remove_license_installation'));
         }
         $order->domain = '';
         $licenseCode = $order->serial_key;
@@ -650,7 +650,7 @@ class TenantController extends Controller
             $updateInstallStatus = $cont->updateInstalledDomain($licenseCode, $order->product);
         }
 
-        return ['message' => 'success', 'update' => __('message.license_installations_removed')];
+        return ['message' => 'success', 'update' => trans('message.license_installations_removed')];
     }
 
     private function prepareMessages($domain, $user, $success = false)
@@ -695,9 +695,9 @@ class TenantController extends Controller
             'cloud_label_radio' => 'required',
         ],
             [
-                'cloud_top_message.required' => __('validation.cloud_tenant.cloud_top_message_required'),
-                'cloud_label_field.required' => __('validation.cloud_tenant.cloud_label_field_required'),
-                'cloud_label_radio.required' => __('validation.cloud_tenant.cloud_label_radio_required'),
+                'cloud_top_message.required' => trans('validation.cloud_tenant.cloud_top_message_required'),
+                'cloud_label_field.required' => trans('validation.cloud_tenant.cloud_label_field_required'),
+                'cloud_label_radio.required' => trans('validation.cloud_tenant.cloud_label_radio_required'),
             ]);
 
         try {
@@ -721,9 +721,9 @@ class TenantController extends Controller
                 'cloud_product_key' => 'required',
             ],
             [
-                'cloud_product.required' => __('validation.cloud_tenant.cloud_product_required'),
-                'cloud_free_plan.required' => __('validation.cloud_tenant.cloud_free_plan_required'),
-                'cloud_product_key.required' => __('validation.cloud_tenant.cloud_product_key_required'),
+                'cloud_product.required' => trans('validation.cloud_tenant.cloud_product_required'),
+                'cloud_free_plan.required' => trans('validation.cloud_tenant.cloud_free_plan_required'),
+                'cloud_product_key.required' => trans('validation.cloud_tenant.cloud_product_key_required'),
             ]
         );
         try {
@@ -748,12 +748,12 @@ class TenantController extends Controller
                 app('queue')->setDefaultDriver($driver->short_name);
                 ReportExport::dispatch('tenats', $selectedColumns, $searchParams, $email)->onQueue('reports');
 
-                return response()->json(['message' => __('message.report_generation_in_progress')], 200);
+                return response()->json(['message' => trans('message.report_generation_in_progress')], 200);
             } else {
-                return response()->json(['message' => __('message.cannot_sync_queue_driver')], 400);
+                return response()->json(['message' => trans('message.cannot_sync_queue_driver')], 400);
             }
         } catch (\Exception $e) {
-            \Log::error(__('message.export_failed').$e->getMessage());
+            \Log::error(trans('message.export_failed').$e->getMessage());
 
             return response()->json(['message' => $e->getMessage()], 500);
         }

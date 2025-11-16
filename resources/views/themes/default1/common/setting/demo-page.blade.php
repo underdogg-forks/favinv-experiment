@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.demo_page_settings') }}
+    {{ trans('message.demo_page_settings') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.demo_page_settings') }}</h1>
+        <h1>{{ trans('message.demo_page_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.demopage_settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.demopage_settings') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -18,7 +18,7 @@
 <div class="card card-secondary card-outline">
     <div class="card-header">
         <div id="response"></div>
-        <h5>{{ __('message.configuring_demo') }}</h5>
+        <h5>{{ trans('message.configuring_demo') }}</h5>
     </div>
 
     <div class="card-body">
@@ -29,7 +29,7 @@
                     <input class="form-check-input" type="radio" name="status" value="true"
                            @if($Demo_page->status == true) checked @endif id="enableStatus">
                     <label class="form-check-label text-wrap" for="enableStatus">
-                        {{ __('message.enable') }}
+                        {{ trans('message.enable') }}
                     </label>
                 </div>
             </div>
@@ -38,14 +38,14 @@
                     <input class="form-check-input" type="radio" name="status" value="false"
                            @if($Demo_page->status == false) checked @endif id="disableStatus">
                     <label class="form-check-label text-wrap" for="disableStatus">
-                        {{ __('message.disable') }}
+                        {{ trans('message.disable') }}
                     </label>
                 </div>
             </div>
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-primary float-left">{{ __('message.save') }}</button>
+            <button type="submit" class="btn btn-primary float-left">{{ trans('message.save') }}</button>
         </div>
         {!! html()->form()->close() !!}
     </div>

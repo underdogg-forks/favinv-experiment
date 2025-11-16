@@ -41,19 +41,19 @@ class ProductRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => __('validation.product.name.required'),
-            'type.required' => __('validation.product.type.required'),
-            'group.required' => __('validation.product.group.required'),
-            'subscription.required' => __('validation.product.subscription.required'),
-            'currency.required' => __('validation.product.currency.required'),
-            // 'price.required' => __('validation.product.price.required'),
-            'file.required_without_all' => __('validation.product.file.required_without_all'),
-            'file.mimes' => __('validation.product.file.mimes'),
-            'image.required_without_all' => __('validation.product.image.required_without_all'),
-            'image.mimes' => __('validation.product.image.mimes'),
-            'github_owner.required_without_all' => __('validation.product.github_owner.required_without_all'),
-            'github_repository.required_without_all' => __('validation.product.github_repository.required_without_all'),
-            'github_repository.required_if' => __('validation.product.github_repository.required_if'),
+            'name.required' => trans('validation.product.name.required'),
+            'type.required' => trans('validation.product.type.required'),
+            'group.required' => trans('validation.product.group.required'),
+            'subscription.required' => trans('validation.product.subscription.required'),
+            'currency.required' => trans('validation.product.currency.required'),
+            // 'price.required' => trans('validation.product.price.required'),
+            'file.required_without_all' => trans('validation.product.file.required_without_all'),
+            'file.mimes' => trans('validation.product.file.mimes'),
+            'image.required_without_all' => trans('validation.product.image.required_without_all'),
+            'image.mimes' => trans('validation.product.image.mimes'),
+            'github_owner.required_without_all' => trans('validation.product.github_owner.required_without_all'),
+            'github_repository.required_without_all' => trans('validation.product.github_repository.required_without_all'),
+            'github_repository.required_if' => trans('validation.product.github_repository.required_if'),
         ];
     }
 }

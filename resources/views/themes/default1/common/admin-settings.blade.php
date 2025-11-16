@@ -1,15 +1,15 @@
 @extends('themes.default1.layouts.master')
 @section('title')
- {{ __('message.settings') }}
+ {{ trans('message.settings') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.application_settings') }}</h1>
+        <h1>{{ trans('message.application_settings') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.settings') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.settings') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -58,7 +58,7 @@
 
     <!-- /.box-header -->
         <div class="card-header">
-            <h3 class="card-title">{{ __('message.settings') }}</h3>
+            <h3 class="card-title">{{ trans('message.settings') }}</h3>
         </div>
     <div class="card-body">
         <div class="row">
@@ -72,7 +72,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.system-settings') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.system-settings') }}</div>
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.lic_type') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.lic_type') }}</div>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.license_permission') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.license_permission') }}</div>
                     </div>
                 </div>
 
@@ -127,7 +127,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.file_storage') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.file_storage') }}</div>
                     </div>
                 </div>
 
@@ -140,7 +140,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.payment_gateway_integrations') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.payment_gateway_integrations') }}</div>
                     </div>
                 </div>
 
@@ -153,7 +153,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.system_manager') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.system_manager') }}</div>
                     </div>
                 </div>
 
@@ -166,7 +166,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.third_party_apps') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.third_party_apps') }}</div>
                     </div>
                 </div>
 
@@ -179,7 +179,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.cloud_hub') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.cloud_hub') }}</div>
                     </div>
                 </div>
 
@@ -193,7 +193,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.localized_license') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.localized_license') }}</div>
                     </div>
                 </div>
 
@@ -208,7 +208,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.debug') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.debug') }}</div>
                     </div>
                 </div>
              @if(env('APP_DEBUG') == 'true')
@@ -221,7 +221,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.clockwork') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.clockwork') }}</div>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-6">
@@ -233,7 +233,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.pulse') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.pulse') }}</div>
                     </div>
                 </div>
                 @endif
@@ -247,7 +247,7 @@
                             </span>
                         </a>
                     </div>
-                    <div class="text-center text-sm fw_400">{{ __('message.social_logins') }}</div>
+                    <div class="text-center text-sm fw_400">{{ trans('message.social_logins') }}</div>
                 </div>
             </div>
 
@@ -260,7 +260,7 @@
                             </span>
                         </a>
                     </div>
-                    <div class="text-center text-sm fw_400">{{ __('message.language') }}</div>
+                    <div class="text-center text-sm fw_400">{{ trans('message.language') }}</div>
                 </div>
             </div>
 
@@ -274,7 +274,7 @@
                             </span>
                         </a>
                     </div>
-                    <div class="text-center text-sm fw_400">{{ __('message.contact_options') }}</div>
+                    <div class="text-center text-sm fw_400">{{ trans('message.contact_options') }}</div>
                 </div>
             </div>
               @endif
@@ -310,7 +310,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.err_log') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.err_log') }}</div>
                     </div>
                 </div>
 
@@ -323,7 +323,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.activity_log') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.activity_log') }}</div>
                     </div>
                 </div>
 
@@ -336,7 +336,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.email_log') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.email_log') }}</div>
                     </div>
                 </div>
 
@@ -349,7 +349,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.payment_log') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.payment_log') }}</div>
                     </div>
                 </div>
 
@@ -366,7 +366,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.msg91_reports') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.msg91_reports') }}</div>
                     </div>
                 </div>
             @endif
@@ -399,7 +399,7 @@
 
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.email') }}</h3>
+        <h3 class="card-title">{{ trans('message.email') }}</h3>
     </div>
     <!-- /.box-header -->
     <div class="card-body">
@@ -414,7 +414,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.email_settings') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.email_settings') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -428,7 +428,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.template_settings') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.template_settings') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -442,7 +442,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.templates') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.templates') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -456,7 +456,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.queues') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.queues') }}</div>
                     </div>
                 </div>
 
@@ -470,7 +470,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.queue_monitoring') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.queue_monitoring') }}</div>
                     </div>
                 </div>
                 @endif
@@ -483,7 +483,7 @@
 
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.api') }}</h3>
+        <h3 class="card-title">{{ trans('message.api') }}</h3>
     </div>
     <!-- /.box-header -->
     <div class="card-body">
@@ -551,7 +551,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.third_party_integrations') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.third_party_integrations') }}</div>
                     </div>
                 </div>
         </div>
@@ -562,7 +562,7 @@
 
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.common') }}</h3>
+        <h3 class="card-title">{{ trans('message.common') }}</h3>
     </div>
     <!-- /.box-header -->
     <div class="card-body">
@@ -577,7 +577,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.tax') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.tax') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -591,7 +591,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.currency') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.currency') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -604,7 +604,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.country_list') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.country_list') }}</div>
                     </div>
                 </div>
 
@@ -616,7 +616,7 @@
 </div>
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.widgets') }}</h3>
+        <h3 class="card-title">{{ trans('message.widgets') }}</h3>
     </div>
     <!-- /.box-header -->
     <div class="card-body">
@@ -631,7 +631,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.footer') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.footer') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -645,7 +645,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.social-media') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.social-media') }}</div>
                     </div>
                 </div>
                 <!--/.col-md-2-->
@@ -659,7 +659,7 @@
                                 </span>
                             </a>
                         </div>
-                        <div class="text-center text-sm fw_400">{{ __('message.analytics_custom_code') }}</div>
+                        <div class="text-center text-sm fw_400">{{ trans('message.analytics_custom_code') }}</div>
                     </div>
                 </div>
         </div>

@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-{{ __('message.create_coupon') }}
+{{ trans('message.create_coupon') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.create_new_coupon') }}</h1>
+        <h1>{{ trans('message.create_new_coupon') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('promotions')}}"><i class="fa fa-dashboard"></i> {{ __('message.all_coupons') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.create_new_coupon') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('promotions')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all_coupons') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.create_new_coupon') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -37,7 +37,7 @@
                                     <div class="d-flex">
                                     <div class="col-md-6">
                                         <!-- {!! html()->text('code')->class('form-control')->id('code') !!} -->
-                                        {!! html()->text('code')->class('form-control'.($errors->has('code') ? ' is-invalid' : ''))->id('code')->attribute('title', __('message.generation_coupon_code')) !!}
+                                        {!! html()->text('code')->class('form-control'.($errors->has('code') ? ' is-invalid' : ''))->id('code')->attribute('title', trans('message.generation_coupon_code')) !!}
                                        <!--   <input id="code" name="code" type="text" class="form-control" title="Generate Coupon Code"/> -->
                                         @error('code')
                                         <span class="error-message"> {{$message}}</span>
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <a href="#" class="btn btn-primary" id="get-code"><i class="fa fa-refresh"></i>&nbsp;{{ __('message.generate_code') }}</a>
+                                        <a href="#" class="btn btn-primary" id="get-code"><i class="fa fa-refresh"></i>&nbsp;{{ trans('message.generate_code') }}</a>
                                     </div>
                                 </div>
 
@@ -60,7 +60,7 @@
 
                         <td>
                             <div class="form-group col-lg-6 {{ $errors->has('type') ? 'has-error' : '' }}">
-                                {!! html()->select('type', ['' => __('message.select'), 'Types' => $type])->class('form-control'.($errors->has('type') ? ' is-invalid' : ''))->attribute('title', __('message.type_of_coupon')) !!}
+                                {!! html()->select('type', ['' => trans('message.select'), 'Types' => $type])->class('form-control'.($errors->has('type') ? ' is-invalid' : ''))->attribute('title', trans('message.type_of_coupon')) !!}
                                 @error('type')
                                 <span class="error-message"> {{$message}}</span>
                                 @enderror
@@ -71,10 +71,10 @@
 
                     </tr>
                     <tr>
-                        <td><b>{!! html()->label(trans('message.value'), 'value')->class('required') !!} &nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.enter_discount_amount') }}"></i></b></td>
+                        <td><b>{!! html()->label(trans('message.value'), 'value')->class('required') !!} &nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('message.enter_discount_amount') }}"></i></b></td>
                         <td>
                             <div class="form-group col-lg-6 {{ $errors->has('value') ? 'has-error' : '' }}">
-                                {!! html()->text('value')->class('form-control'.($errors->has('value') ? ' is-invalid' : ''))->attribute('title', __('message.value_of_coupon')) !!}
+                                {!! html()->text('value')->class('form-control'.($errors->has('value') ? ' is-invalid' : ''))->attribute('title', trans('message.value_of_coupon')) !!}
                                 @error('value')
                                 <span class="error-message"> {{$message}}</span>
                                 @enderror
@@ -86,10 +86,10 @@
 
                     </tr>
                     <tr>
-                        <td><b>{!! html()->label(trans('message.uses'), 'uses')->class('required') !!} &nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{!! __('message.enter_times_coupon_usage_limit') !!}"></i></b></td>
+                        <td><b>{!! html()->label(trans('message.uses'), 'uses')->class('required') !!} &nbsp;&nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{!! trans('message.enter_times_coupon_usage_limit') !!}"></i></b></td>
                         <td>
                             <div class="form-group col-lg-6 {{ $errors->has('uses') ? 'has-error' : '' }}">
-                                {!! html()->text('uses')->class('form-control'.($errors->has('uses') ? ' is-invalid' : ''))->attribute('title', __('message.coupon_used')) !!}
+                                {!! html()->text('uses')->class('form-control'.($errors->has('uses') ? ' is-invalid' : ''))->attribute('title', trans('message.coupon_used')) !!}
                                 @error('uses')
                                 <span class="error-message"> {{$message}}</span>
                                 @enderror
@@ -106,13 +106,13 @@
                         <td>
 
                             <div class="form-group col-lg-6{{ $errors->has('applied') ? 'has-error' : '' }}">
-                                {!! html()->select('applied', ['' => __('message.choose'), 'Products' => $product])
+                                {!! html()->select('applied', ['' => trans('message.choose'), 'Products' => $product])
      ->class('form-control'.($errors->has('applied') ? ' is-invalid' : ''))
      ->attribute('data-live-search', 'true')
      ->attribute('data-live-search-placeholder', 'Search')
      ->attribute('data-dropup-auto', 'false')
      ->attribute('data-size', '10')
-     ->attribute('title', __('message.coupon_applied')) !!}
+     ->attribute('title', trans('message.coupon_applied')) !!}
                                 @error('applied')
                                 <span class="error-message"> {{$message}}</span>
                                 @enderror
@@ -129,7 +129,7 @@
                         <td>
                             <div class="form-group {{ $errors->has('start') ? 'has-error' : '' }}">
                                 <div class="input-group date col-lg-6" id="startDate" data-target-input="nearest">
-                                    {!! html()->text('start')->class('form-control datetimepicker-input'.($errors->has('start') ? ' is-invalid' : ''))->attribute('title', __('message.coupon_valid'))->attribute('data-target', '#startDate') !!}
+                                    {!! html()->text('start')->class('form-control datetimepicker-input'.($errors->has('start') ? ' is-invalid' : ''))->attribute('title', trans('message.coupon_valid'))->attribute('data-target', '#startDate') !!}
                                     <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                     </div>
@@ -154,7 +154,7 @@
                             <div class="form-group {{ $errors->has('expiry') ? 'has-error' : '' }}">
 
                                 <div class="input-group date col-lg-6" id="endDate" data-target-input="nearest">
-                                    {!! html()->text('expiry')->class('form-control datetimepicker-input'.($errors->has('expiry') ? ' is-invalid' : ''))->attribute('title', __('message.coupon_expires'))->attribute('data-target', '#endDate') !!}
+                                    {!! html()->text('expiry')->class('form-control datetimepicker-input'.($errors->has('expiry') ? ' is-invalid' : ''))->attribute('title', trans('message.coupon_expires'))->attribute('data-target', '#endDate') !!}
 
                                     <div class="input-group-append" data-target="#endDate" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -180,7 +180,7 @@
                     {!! html()->form()->close() !!}
 
                 </table>
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
 
         </div>

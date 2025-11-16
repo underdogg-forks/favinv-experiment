@@ -92,7 +92,7 @@ $set = $set->findOrFail(1);
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{url('client-dashboard')}}" class="nav-link">{{ __('message.go_to_client') }}</a>
+                <a href="{{url('client-dashboard')}}" class="nav-link">{{ trans('message.go_to_client') }}</a>
             </li>
 
         </ul>
@@ -228,7 +228,7 @@ $set = $set->findOrFail(1);
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
-                                {{ __('message.users') }}
+                                {{ trans('message.users') }}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -236,13 +236,13 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('clients')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('message.all-users') }}</p>
+                                    <p>{{ trans('message.all-users') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{url('clients/create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('message.add-new') }}</p>
+                                    <p>{{ trans('message.add-new') }}</p>
                                 </a>
                             </li>
                         </ul>
@@ -251,7 +251,7 @@ $set = $set->findOrFail(1);
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                {{ __('message.orders') }}
+                                {{ trans('message.orders') }}
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -347,7 +347,7 @@ $set = $set->findOrFail(1);
                             <li class="nav-item">
                                 <a href="{{url('plans')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>{{ __('message.plans') }}</p>
+                                    <p>{{ trans('message.plans') }}</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -400,7 +400,7 @@ $set = $set->findOrFail(1);
                 @if (count($errors) > 0)
 
                     <div class="alert alert-danger alert-dismissable">
-                        <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}
+                        <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -446,8 +446,8 @@ $set = $set->findOrFail(1);
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>{{ __('message.copyright') }} &copy; {{date('Y')}} <a href="{{$set->website}}">{{$set->company}}</a>.</strong>
-        {{ __('message.all_rights') }} <a href="https://ladybirdweb.com" target="_blank"><img src="{{asset('common/images/Ladybird1.png')}}" alt="Ladybird"></a>
+        <strong>{{ trans('message.copyright') }} &copy; {{date('Y')}} <a href="{{$set->website}}">{{$set->company}}</a>.</strong>
+        {{ trans('message.all_rights') }} <a href="https://ladybirdweb.com" target="_blank"><img src="{{asset('common/images/Ladybird1.png')}}" alt="Ladybird"></a>
         <div class="float-right d-none d-sm-inline-block">
             <b>{{trans('message.version')}}</b> {{Config::get('app.version')}}
         </div>

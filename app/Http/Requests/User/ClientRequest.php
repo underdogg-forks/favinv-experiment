@@ -63,22 +63,22 @@ class ClientRequest extends Request
     public function messages()
     {
         return [
-            'first_name.required' => __('validation.users.first_name.required'),
-            'last_name.required' => __('validation.users.last_name.required'),
-            'company.required' => __('validation.users.company.required'),
-            'email.required' => __('validation.users.email.required'),
-            'email.email' => __('validation.users.email.email'),
-            'email.unique' => __('validation.users.email.unique'),
-            'address.required' => __('validation.users.address.required'),
-            'mobile.required' => __('validation.users.mobile.required'),
-            'country.required' => __('validation.users.country.required'),
-            'country.exists' => __('validation.users.country.exists'),
-            'state.required_if' => __('validation.users.state.required_if'),
-            'timezone_id.required' => __('validation.users.timezone_id.required'),
-            'user_name.required' => __('validation.users.user_name.required'),
-            'user_name.unique' => __('validation.users.user_name.unique'),
-            'zip.regex' => __('validation.users.zip.regex'),
-            'position.prohibited_if' => __('message.user_position_prohibited_if'),
+            'first_name.required' => trans('validation.users.first_name.required'),
+            'last_name.required' => trans('validation.users.last_name.required'),
+            'company.required' => trans('validation.users.company.required'),
+            'email.required' => trans('validation.users.email.required'),
+            'email.email' => trans('validation.users.email.email'),
+            'email.unique' => trans('validation.users.email.unique'),
+            'address.required' => trans('validation.users.address.required'),
+            'mobile.required' => trans('validation.users.mobile.required'),
+            'country.required' => trans('validation.users.country.required'),
+            'country.exists' => trans('validation.users.country.exists'),
+            'state.required_if' => trans('validation.users.state.required_if'),
+            'timezone_id.required' => trans('validation.users.timezone_id.required'),
+            'user_name.required' => trans('validation.users.user_name.required'),
+            'user_name.unique' => trans('validation.users.user_name.unique'),
+            'zip.regex' => trans('validation.users.zip.regex'),
+            'position.prohibited_if' => trans('message.user_position_prohibited_if'),
         ];
     }
 

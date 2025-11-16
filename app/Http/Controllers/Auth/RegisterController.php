@@ -213,7 +213,7 @@ class RegisterController extends Controller
 
             \Session::flash('user', $userInput);
 
-            return successResponse(__('message.registration_complete'), ['need_verify' => $need_verify]);
+            return successResponse(trans('message.registration_complete'), ['need_verify' => $need_verify]);
         } catch (Exception $ex) {
             app('log')->error($ex->getMessage());
 

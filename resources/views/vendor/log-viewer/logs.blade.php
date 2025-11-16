@@ -1,22 +1,22 @@
 @extends('log-viewer::_template.master')
 @section('title')
-    {{ __('message.logs_viewer') }}
+    {{ trans('message.logs_viewer') }}
 @stop
 @section('content-header')
 <h1>
-    {{ __('message.logs_viewer') }}
+    {{ trans('message.logs_viewer') }}
 </h1>
 <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li><a href="{{url('settings')}}">{{ __('message.settings') }}</a></li>
-        <li><a href="{{url('log-viewer')}}">{{ __('message.dashboard') }}</a></li>
-        <li class="active">{{ __('message.logs') }}</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li><a href="{{url('settings')}}">{{ trans('message.settings') }}</a></li>
+        <li><a href="{{url('log-viewer')}}">{{ trans('message.dashboard') }}</a></li>
+        <li class="active">{{ trans('message.logs') }}</li>
       </ol>
       @stop
 @section('content')
 <div class="box box-primary">
     <div class="box-body">
-    <h1 class="page-header">{{ __('message.logs') }}</h1>
+    <h1 class="page-header">{{ trans('message.logs') }}</h1>
 
     {!! $rows->render() !!}
 
@@ -35,7 +35,7 @@
                         @endif
                     </th>
                     @endforeach
-                    <th class="text-right">{{ __('message.actions') }}</th>
+                    <th class="text-right">{{ trans('message.actions') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,14 +97,14 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title">{{ __('message.caps_delete_log_file') }}</h4>
+                        <h4 class="modal-title">{{ trans('message.caps_delete_log_file') }}</h4>
                     </div>
                     <div class="modal-body">
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ __('message.cancel') }}</button>
-                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="{{ __('message.loading') }}&hellip;">{{ __('message.caps_delete_file') }}</button>
+                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ trans('message.cancel') }}</button>
+                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="{{ trans('message.loading') }}&hellip;">{{ trans('message.caps_delete_file') }}</button>
                     </div>
                 </div>
             </form>
@@ -124,7 +124,7 @@
                 var date = $(this).data('log-date');
                 deleteLogForm.find('input[name=date]').val(date);
                 deleteLogModal.find('.modal-body p').html(
-                    '{{ __('message.are_you_want') }} <span class="label label-danger">{{ __('message.caps_delete') }}</span>{{ __('message.this_log_file') }} <span class="label label-primary">' + date + '</span> ?'
+                    '{{ trans('message.are_you_want') }} <span class="label label-danger">{{ trans('message.caps_delete') }}</span>{{ trans('message.this_log_file') }} <span class="label label-primary">' + date + '</span> ?'
                 );
 
                 deleteLogModal.modal('show');
@@ -146,12 +146,12 @@
                             location.reload();
                         }
                         else {
-                            alert('{{ __('message.ajax_error_console') }}');
+                            alert('{{ trans('message.ajax_error_console') }}');
                             console.error(data);
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
-                        alert('{{ __('message.ajax_error_console') }}');
+                        alert('{{ trans('message.ajax_error_console') }}');
                         console.error(errorThrown);
                         submitBtn.button('reset');
                     }

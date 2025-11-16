@@ -58,7 +58,7 @@
                     @foreach($paths as $path)
                         <option>{{$path}}</option>
                     @endforeach
-                    <option value="Other">{{ __('message.other') }}</option>
+                    <option value="Other">{{ trans('message.other') }}</option>
                 </select>
                 <div class="has-feedback" id='phpExecutableTextArea' style="display: none;">
                     <div class="has-feedback">
@@ -342,7 +342,7 @@
                         <div class="form-group">
                             {!! html()
                                 ->label(
-                                    __('message.msg91_reports_deletion').'<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . trans('message.cron_trigger_deletion_msg91_reports') . '"></i>'
+                                    trans('message.msg91_reports_deletion').'<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . trans('message.cron_trigger_deletion_msg91_reports') . '"></i>'
                                 )
                                 ->for('msg91_fetching')
                                 ->toHtml()
@@ -384,7 +384,7 @@
     </div>
 </div>
 <div class="card-footer">
-    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 </div>
 
 {!! html()->form()->close() !!}

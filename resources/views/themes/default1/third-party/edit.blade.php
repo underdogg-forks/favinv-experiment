@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.edit_third_party_app') }}</h4>
+                <h4 class="modal-title">{{ trans('message.edit_third_party_app') }}</h4>
               
             </div>
 
@@ -29,7 +29,7 @@
                     <span class="appkeycheck"></span>
                    </div>
                    <div class="col-md-4">
-                        <a href="#" class="btn btn-primary get-app-key" id="get-app-key"><i class="fas fa-sync-alt"></i>&nbsp;{{ __('message.generate_key') }}</a>
+                        <a href="#" class="btn btn-primary get-app-key" id="get-app-key"><i class="fas fa-sync-alt"></i>&nbsp;{{ trans('message.generate_key') }}</a>
                    </div>
                     </div>
                 </div>
@@ -48,8 +48,8 @@
                   </div>
             </div>
             <div class="modal-footer justify-content-between">
-                 <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
+                 <button type="button" id="close" class="btn btn-default pull-left closebutton" data-dismiss="modal"><i class="fa fa-times"></i>&nbsp;{{ trans('message.close') }}</button>
+                <button type="submit" class="btn btn-primary" id="submit" data-loading-text="<i class='fa fa-save'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
         </div>
     </div>

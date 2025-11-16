@@ -1,4 +1,4 @@
-<a onclick="getTables({{$productid}},{{$clientid}},{{$invoiceid}})" class="btn btn-light-scale-2 btn-sm text-dark" data-toggle="modal" data-target="#lists">  <i class='fa fa-download' data-toggle="tooltip"  title="{{ __('message.click_to_download') }}"></i>&nbsp;</a>
+<a onclick="getTables({{$productid}},{{$clientid}},{{$invoiceid}})" class="btn btn-light-scale-2 btn-sm text-dark" data-toggle="modal" data-target="#lists">  <i class='fa fa-download' data-toggle="tooltip"  title="{{ trans('message.click_to_download') }}"></i>&nbsp;</a>
 <style>
 .tooltip:hover .tooltiptext {
     visibility: visible;
@@ -55,7 +55,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                               <h3 class="card-title">{{ __('message.product_version')}}</h3>
+                               <h3 class="card-title">{{ trans('message.product_version')}}</h3>
                             </div>
                             <div class="card-body">
 
@@ -67,10 +67,10 @@
 
                                             <thead><tr>
 
-                                                    <th>{{ __('message.version')}}</th>
-                                                    <th>{{ __('message.title')}}</th>
-                                                    <th>{{ __('message.description')}}</th>
-                                                    <th>{{ __('message.file')}}</th>
+                                                    <th>{{ trans('message.version')}}</th>
+                                                    <th>{{ trans('message.title')}}</th>
+                                                    <th>{{ trans('message.description')}}</th>
+                                                    <th>{{ trans('message.file')}}</th>
 
                                                 </tr></thead>
 
@@ -122,19 +122,19 @@
             },
         language: {
             paginate: {
-                first:      "{{ __('message.paginate_first') }}",
-                last:       "{{ __('message.paginate_last') }}",
-                next:       "{{ __('message.paginate_next') }}",
-                previous:   "{{ __('message.paginate_previous') }}"
+                first:      "{{ trans('message.paginate_first') }}",
+                last:       "{{ trans('message.paginate_last') }}",
+                next:       "{{ trans('message.paginate_next') }}",
+                previous:   "{{ trans('message.paginate_previous') }}"
             },
-            emptyTable:     "{{ __('message.empty_table') }}",
-            info:           "{{ __('message.datatable_info') }}",
-            zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-            infoEmpty:      "{{ __('message.info_empty') }}",
-            infoFiltered:   "{{ __('message.info_filtered') }}",
-            lengthMenu:     "{{ __('message.length_menu') }}",
-            loadingRecords: "{{ __('message.loading_records') }}",
-            search:         "{{ __('message.table_search') }}",
+            emptyTable:     "{{ trans('message.empty_table') }}",
+            info:           "{{ trans('message.datatable_info') }}",
+            zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+            infoEmpty:      "{{ trans('message.info_empty') }}",
+            infoFiltered:   "{{ trans('message.info_filtered') }}",
+            lengthMenu:     "{{ trans('message.length_menu') }}",
+            loadingRecords: "{{ trans('message.loading_records') }}",
+            search:         "{{ trans('message.table_search') }}",
 
         },
             columnDefs: [

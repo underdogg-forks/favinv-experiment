@@ -1,29 +1,29 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
     @if(!$isMobileVerified && !$isEmailVerified)
-        {{ __('message.email_mobile_faveo') }}
+        {{ trans('message.email_mobile_faveo') }}
     @elseif(!$isEmailVerified)
-        {{ __('message.email_mobile_faveo') }}
+        {{ trans('message.email_mobile_faveo') }}
     @elseif(!$isMobileVerified)
-        {{ __('message.mobile_faveo') }}
+        {{ trans('message.mobile_faveo') }}
     @endif
 @stop
 @section('page-heading')
     @if(!$isMobileVerified && !$isEmailVerified)
-        {{ __('message.email_mobile') }}
+        {{ trans('message.email_mobile') }}
     @elseif(!$isEmailVerified)
-        {{ __('message.email_verification_api') }}
+        {{ trans('message.email_verification_api') }}
     @elseif(!$isMobileVerified)
-        {{ __('message.mobile_verification') }}
+        {{ trans('message.mobile_verification') }}
     @endif
 @stop
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
     @else
-        <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
     @endif
-    <li class="active text-dark">{{ __('message.verify') }}</li>
+    <li class="active text-dark">{{ trans('message.verify') }}</li>
 @stop
 @section('main-class')
     main
@@ -249,31 +249,31 @@
                         <ul id="progressbar">
                             @if(!$isMobileVerified && !$isEmailVerified)
                                 @if($verification_preference === 'email')
-                                    <li class="active" id="email_li"><strong>{{ __('message.verify_email') }}</strong>
+                                    <li class="active" id="email_li"><strong>{{ trans('message.verify_email') }}</strong>
                                     </li>
-                                    <li id="otp_li"><strong>{{ __('message.verify_mobile') }}</strong></li>
+                                    <li id="otp_li"><strong>{{ trans('message.verify_mobile') }}</strong></li>
                                 @else
-                                    <li class="active" id="otp_li"><strong>{{ __('message.verify_mobile') }}</strong>
+                                    <li class="active" id="otp_li"><strong>{{ trans('message.verify_mobile') }}</strong>
                                     </li>
-                                    <li id="email_li"><strong>{{ __('message.verify_email') }}</strong></li>
+                                    <li id="email_li"><strong>{{ trans('message.verify_email') }}</strong></li>
                                 @endif
                             @elseif(!$isMobileVerified && $isEmailVerified)
-                                <li class="active" id="otp_li"><strong>{{ __('message.verify_mobile') }}</strong></li>
+                                <li class="active" id="otp_li"><strong>{{ trans('message.verify_mobile') }}</strong></li>
                             @elseif(!$isEmailVerified && $isMobileVerified)
-                                <li class="active" id="email_li"><strong>{{ __('message.verify_email') }}</strong></li>
+                                <li class="active" id="email_li"><strong>{{ trans('message.verify_email') }}</strong></li>
                             @endif
-                            <li id="success_li"><strong>{{ __('message.all_set') }}</strong></li>
+                            <li id="success_li"><strong>{{ trans('message.all_set') }}</strong></li>
                         </ul>
                         <br>
                         <!-- fieldsets -->
                         <fieldset id="fieldset_otp">
                             <div class="form-card">
                                 <div id="alert-container"></div>
-                                <p class="text-left text-color-dark text-3">{{ __('message.enter_code') }} <span
+                                <p class="text-left text-color-dark text-3">{{ trans('message.enter_code') }} <span
                                             class="text-color-danger"> *</span></p>
                                 <input class="form-control h-100" type="text" id="otp" name="otp"
-                                       placeholder="{{ __('message.otp_placeholder') }}"/>
-                                <p class="mt-3">{{ __('message.otp_description') }}</p>
+                                       placeholder="{{ trans('message.otp_placeholder') }}"/>
+                                <p class="mt-3">{{ trans('message.otp_description') }}</p>
 
                                 {{--Recaptcha--}}
                                 <div id="recaptchaMobile"></div>
@@ -285,7 +285,7 @@
                                                 <button id="otpButton" type="button"
                                                         onclick="resendOTP('mobile','text')" class="btn border-0 p-0"
                                                         style="width: 110px;">
-                                                    <i class="fa fa-refresh"></i> {{ __('message.resend_otp') }}
+                                                    <i class="fa fa-refresh"></i> {{ trans('message.resend_otp') }}
                                                 </button>
                                                 <div id="timer"></div>
                                             </div>
@@ -294,14 +294,14 @@
                                                         onclick="resendOTP('mobile','voice')"
                                                         class="border-0 px-1 background-transparent"
                                                         disabled><i
-                                                            class="fa fa-phone"></i> {{ __('message.otp_call') }}
+                                                            class="fa fa-phone"></i> {{ trans('message.otp_call') }}
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="col-6 px-0">
                                             <button type="button" id="mobileVerifyBtn" onclick="submitOtp()"
                                                     class="btn btn-primary btn-flat float-right btn-lg">
-                                                <span id="mobileVerifyBtnText">{{ __('message.verify') }}</span>
+                                                <span id="mobileVerifyBtnText">{{ trans('message.verify') }}</span>
                                             </button>
                                         </div>
                                     </div>
@@ -311,11 +311,11 @@
                         <fieldset id="fieldset_email">
                             <div class="form-card">
                                 <div id="alert-container-email"></div>
-                                <p class="text-left text-color-dark text-3">{{ __('message.enter_code') }} <span
+                                <p class="text-left text-color-dark text-3">{{ trans('message.enter_code') }} <span
                                             class="text-color-danger"> *</span></p>
                                 <input class="form-control h-100" type="text" id="email_otp" name="email_otp"
-                                       placeholder="{{ __('message.otp_placeholder') }}"/>
-                                <p class="mt-3">{{ __('message.email_otp_description') }}</p>
+                                       placeholder="{{ trans('message.otp_placeholder') }}"/>
+                                <p class="mt-3">{{ trans('message.email_otp_description') }}</p>
 
                                 {{--Recaptcha--}}
                                 <div id="recaptchaEmail"></div>
@@ -327,7 +327,7 @@
                                                 <button id="otpButtonn" type="button" onclick="resendOTP('email',null)"
                                                         class="btn border-0 p-0 d-inline-flex align-items-center"
                                                         style="width: 110px; white-space: nowrap;">
-                                                    <i class="fa fa-refresh mr-1"></i>{{ __('message.resend_email') }}
+                                                    <i class="fa fa-refresh mr-1"></i>{{ trans('message.resend_email') }}
                                                 </button>
                                                 <div id="timerEmail" class="ml-2"></div>
                                             </div>
@@ -335,7 +335,7 @@
                                         <div class="col-6 px-0">
                                             <button type="button" id="emailVerifyBtn" onclick="isEmailVerified()"
                                                     class="btn btn-primary btn-flat float-right btn-lg">
-                                                <span id="emailVerifyBtnText">{{ __('message.verify') }}</span>
+                                                <span id="emailVerifyBtnText">{{ trans('message.verify') }}</span>
                                             </button>
                                         </div>
                                     </div>
@@ -345,16 +345,16 @@
                         <fieldset id="fieldset_success">
                             <div class="form-card">
 
-                                <h2 class="purple-text text-center"><strong>{{ __('message.all_success') }}</strong>
+                                <h2 class="purple-text text-center"><strong>{{ trans('message.all_success') }}</strong>
                                 </h2>
                             </div>
                         </fieldset>
                     </form>
 
                     <div class="mt-2 text-start text-2">
-                        {{ __('message.trouble_logging_in') }} <a href="{{ url('/contact-us') }}"
+                        {{ trans('message.trouble_logging_in') }} <a href="{{ url('/contact-us') }}"
                                                                   class="text-decoration-none"
-                                                                  target="_blank">{{ __('message.click_here') }}</a>
+                                                                  target="_blank">{{ trans('message.click_here') }}</a>
                     </div>
                 </div>
             </div>
@@ -522,12 +522,12 @@
             $('.error').remove();
 
             if (!otpValue) {
-                showError(otpField, "{{ __('message.otp_required') }}");
+                showError(otpField, "{{ trans('message.otp_required') }}");
                 return;
             }
 
             if (!otpRegex.test(otpValue)) {
-                showError(otpField, "{{ __('message.otp_invalid_format') }}");
+                showError(otpField, "{{ trans('message.otp_invalid_format') }}");
                 return;
             }
 
@@ -638,12 +638,12 @@
             $('.error').remove();
 
             if (!otpValue) {
-                showError(otpField, "{{ __('message.otp_required') }}");
+                showError(otpField, "{{ trans('message.otp_required') }}");
                 return;
             }
 
             if (!otpRegex.test(otpValue)) {
-                showError(otpField, "{{ __('message.otp_invalid_format') }}");
+                showError(otpField, "{{ trans('message.otp_invalid_format') }}");
                 return;
             }
 

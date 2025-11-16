@@ -1,20 +1,20 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.login_register') }}
+    {{ trans('message.login_register') }}
 @stop
 @section('page-header')
-    {{ __('message.login_register') }}
+    {{ trans('message.login_register') }}
 @stop
 @section('page-heading')
-    {{ __('message.sign_lr') }}
+    {{ trans('message.sign_lr') }}
 @stop
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.sign-in') }} &nbsp;&nbsp;{{ __('message.or') }}&nbsp;&nbsp; {{ __('message.register') }}</li>
+     <li class="active text-dark">{{ trans('message.sign-in') }} &nbsp;&nbsp;{{ trans('message.or') }}&nbsp;&nbsp; {{ trans('message.register') }}</li>
 @stop 
 @section('main-class')
     main
@@ -124,7 +124,7 @@ foreach($scripts as $script) {
                                 <div class="row justify-content-center">
                                           <div class="col-md-6 col-lg-6 mb-5 mb-lg-0 pe-5">
 
-                    <h2 class="font-weight-bold text-5 mb-0">{{ __('message.login') }}</h2>
+                    <h2 class="font-weight-bold text-5 mb-0">{{ trans('message.login') }}</h2>
 
                     {!! html()->form('POST', url('login'))->id('formoid')->open() !!}
 
@@ -132,7 +132,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('email1') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.username_register') }}<span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.username_register') }}<span class="text-color-danger">*</span></label>
 
                                 {!! html()->text('email_username')
    ->class('form-control form-control-lg text-4')
@@ -148,7 +148,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('password1') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.password') }} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.password') }} <span class="text-color-danger">*</span></label>
 
                                 <div class="input-group">
                                     {!! html()->password('password1')
@@ -170,7 +170,7 @@ foreach($scripts as $script) {
                                                       <div class="custom-control custom-checkbox">
                                                           {!! html()->checkbox('remember', false)->class('custom-control-input')->id('rememberme') !!}
                                                           <label class="custom-control-label text-2 cur-pointer" for="rememberme">
-                                                              {{ __('message.remember-me') }}
+                                                              {{ trans('message.remember-me') }}
                                                           </label>
                                                       </div>
                                                   </div>
@@ -178,7 +178,7 @@ foreach($scripts as $script) {
                                                       <div class="{{ $errors->has('password1') ? 'has-error' : '' }}" id="forgot_password_rtl" style="text-align: right; display: block;">
                                                           <a class="text-decoration-none text-color-primary font-weight-semibold text-2 text-break" id="forgot_password_link"
                                                              href="{{ url('password/reset') }}">
-                                                              {{ __('message.forgot-my-password') }}
+                                                              {{ trans('message.forgot-my-password') }}
                                                           </a>
                                                       </div>
                                                   </div>
@@ -190,40 +190,40 @@ foreach($scripts as $script) {
 
                             <div class="form-group col">
 
-                                <button type="submit" id="login-btn" class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" data-loading-text="{{ __('message.loading') }}" data-original-text="{{ __('message.login') }}">{{ __('message.login')}}</button>
+                                <button type="submit" id="login-btn" class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" data-loading-text="{{ trans('message.loading') }}" data-original-text="{{ trans('message.login') }}">{{ trans('message.login')}}</button>
                                 @if($google_status == 1 || $twitter_status == 1 || $github_status == 1 ||$linkedin_status == 1)
 
                                 <div class="divider">
 
-                                    <span class="bg-light px-4 position-absolute left-50pct top-50pct transform3dxy-n50">{{ __('message.or')}}</span>
+                                    <span class="bg-light px-4 position-absolute left-50pct top-50pct transform3dxy-n50">{{ trans('message.or')}}</span>
                                 </div>
                                 @endif
                                 @if($google_status == 1)
 
-                                <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                <a href="{{ url('/auth/redirect/google') }}" class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
-                                    <i class="fab fa-google text-5 me-2"></i> {{ __('message.login_google')}}
+                                    <i class="fab fa-google text-5 me-2"></i> {{ trans('message.login_google')}}
                                 </a><br><br>
                                 @endif
                                 @if($twitter_status == 1)
 
-                                <a href="{{ url('/auth/redirect/twitter') }}" class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                <a href="{{ url('/auth/redirect/twitter') }}" class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
-                                    <i class="fab fa-twitter text-5 me-2"></i> {{ __('message.login_twitter')}}
+                                    <i class="fab fa-twitter text-5 me-2"></i> {{ trans('message.login_twitter')}}
                                 </a><br><br>
                                 @endif
                                 @if($github_status == 1 )
 
-                                <a href="{{ url('/auth/redirect/github') }}"  class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                <a href="{{ url('/auth/redirect/github') }}"  class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
-                                    <i class="fab fa-github text-5 me-2"></i> {{ __('message.login_github')}}
+                                    <i class="fab fa-github text-5 me-2"></i> {{ trans('message.login_github')}}
                                 </a><br><br>
                                 @endif
                                  @if($linkedin_status == 1 )
 
-                                <a href="{{ url('/auth/redirect/linkedin') }}"  class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                <a href="{{ url('/auth/redirect/linkedin') }}"  class="btn btn-primary-scale-2 btn-modern w-100 text-transform-none font-weight-bold align-items-center d-inline-flex justify-content-center text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
-                                    <i class="fab fa-linkedin-in text-5 me-2"></i> {{ __('message.login_linkedin')}}
+                                    <i class="fab fa-linkedin-in text-5 me-2"></i> {{ trans('message.login_linkedin')}}
                                 </a><br><br>
                                 @endif
                             </div>
@@ -234,7 +234,7 @@ foreach($scripts as $script) {
                 <div class="col-md-6 col-lg-6 ps-5">
 
 
-                    <h2 class="font-weight-bold text-5 mb-0">{{ __('message.register')}}</h2>
+                    <h2 class="font-weight-bold text-5 mb-0">{{ trans('message.register')}}</h2>
 
                     <form name="registerForm" id="regiser-form">
 
@@ -242,7 +242,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('first_name') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.first_name')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.first_name')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->text('first_name',e(old('first_name')))
    ->class('form-control form-control-lg text-4')
@@ -252,7 +252,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('last_name') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.last_name')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.last_name')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->text('last_name')
     ->class('form-control form-control-lg text-4')
@@ -265,7 +265,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('email') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.email_address')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.email_address')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->email('email',e(old('email')))
     ->class('form-control form-control-lg text-4')
@@ -278,7 +278,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('company') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.company_name')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.company_name')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->text('company')
     ->class('form-control form-control-lg text-4')
@@ -291,7 +291,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('address') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.address')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.address')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->textarea('address',e(old('address')))
     ->class('form-control form-control-lg text-4')
@@ -305,7 +305,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('country') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.country')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.country')}} <span class="text-color-danger">*</span></label>
 
                                 <?php $countries = \App\Model\Common\Country::pluck('nicename', 'country_code_char2')->toArray(); ?>
                                 {!! html()->select('country', ['' => ''] + $countries, $country)
@@ -325,7 +325,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('mobile_code') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.mobile')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.mobile')}} <span class="text-color-danger">*</span></label>
 
 {{--                                {!! html()->hidden('mobile')->id('mobile_code_hidden') !!}--}}
                                 <input class="form-control form-control-lg rounded" id="mobilenum" name="mobile" type="tel">
@@ -343,7 +343,7 @@ foreach($scripts as $script) {
 
                       <div class="form-row hidden">
                         <div class="form-group col{{ $errors->has('state') ? 'has-error' : '' }}">
-                            {!! html()->label(__('message.state'), 'state') !!}
+                            {!! html()->label(trans('message.state'), 'state') !!}
                             <?php
                             $value = "";
                             if (count($state) > 0) {
@@ -367,7 +367,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('password') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.password')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.password')}} <span class="text-color-danger">*</span></label>
                                 <div class="input-group">
                                     {!! html()->password('password')
         ->class('form-control form-control-lg text-4')
@@ -381,7 +381,7 @@ foreach($scripts as $script) {
 
                             <div class="form-group col {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
 
-                                <label class="form-label text-color-dark text-3">{{ __('message.re_enter_password')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label text-color-dark text-3">{{ trans('message.re_enter_password')}} <span class="text-color-danger">*</span></label>
                                 <div class="input-group">
                                     {!! html()->password('password_confirmation')
          ->class('form-control form-control-lg text-4')
@@ -411,7 +411,7 @@ foreach($scripts as $script) {
                                     <div class="custom-control custom-checkbox" style="padding-right: {{ isRtlForLang() ? '0px' : '100px' }};">
                                         <input type="checkbox" value="false" name="terms" id="term" class="custom-control-input">
                                         <label class="custom-control-label text-2 cur-pointer" for="term">
-                                            <a href="{{$apiKeys->terms_url}}" target="_blank" id="agree_term_link" class="text-decoration-none">{{ __('message.agree_term')}}</a>
+                                            <a href="{{$apiKeys->terms_url}}" target="_blank" id="agree_term_link" class="text-decoration-none">{{ trans('message.agree_term')}}</a>
                                         </label>
                                         <br><span id="termscheck"></span>
                                     </div>
@@ -426,7 +426,7 @@ foreach($scripts as $script) {
                         <div class="row">
 
                             <div class="form-group col">
-                                <button type="submit" name="register" id="register" class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" data-loading-text="{{ __('message.loading')}}" data-original-text="{{ __('message.register')}}">{{ __('message.register')}}</button>
+                                <button type="submit" name="register" id="register" class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3" data-loading-text="{{ trans('message.loading')}}" data-original-text="{{ trans('message.register')}}">{{ trans('message.register')}}</button>
 
                             </div>
                         </div>
@@ -473,7 +473,7 @@ foreach($scripts as $script) {
             $success = session('success') ?? '';
         @endphp
 
-        @if ($success === __('message.registration_complete'))
+        @if ($success === trans('message.registration_complete'))
         window.addEventListener('DOMContentLoaded', function () {
             const input = document.getElementById('username');
             input?.focus();
@@ -626,16 +626,16 @@ foreach($scripts as $script) {
 
 
                 return this.optional(element) || isEmail || isUsername;
-            }, "{{ __('message.username_or_email') }}");
+            }, "{{ trans('message.username_or_email') }}");
 
             $.validator.addMethod("regex", function(value, element, regexp) {
                 var re = new RegExp(regexp);
                 return this.optional(element) || re.test(value);
-            }, "{{ __('message.invalid_format') }}");
+            }, "{{ trans('message.invalid_format') }}");
 
             $.validator.addMethod("validPhone", function(value, element) {
                 return validatePhoneNumber(element);
-            }, "{{ __('message.error_valid_number') }}");
+            }, "{{ trans('message.error_valid_number') }}");
 
             $(document).on('change', '#term', function () {
                 $(this).val($(this).val() === "false" ? "true" : "false");
@@ -655,11 +655,11 @@ foreach($scripts as $script) {
                 },
                 messages: {
                     email_username: {
-                        required: "{{ __('message.username_or_email') }}",
-                        email_or_username: "{{ __('message.username_or_email') }}"
+                        required: "{{ trans('message.username_or_email') }}",
+                        email_or_username: "{{ trans('message.username_or_email') }}"
                     },
                     password1: {
-                        required: "{{ __('message.received_password_enter') }}",
+                        required: "{{ trans('message.received_password_enter') }}",
                     },
                 },
                 unhighlight: function(element) {
@@ -793,40 +793,40 @@ foreach($scripts as $script) {
                 },
                 messages: {
                     first_name: {
-                        required: "{{ __('message.login_validation.firstname_required') }}",
-                        regex: "{{ __('message.login_validation.firstname_regex') }}"
+                        required: "{{ trans('message.login_validation.firstname_required') }}",
+                        regex: "{{ trans('message.login_validation.firstname_regex') }}"
                     },
                     last_name: {
-                        required: "{{ __('message.login_validation.lastname_required') }}",
-                        regex: "{{ __('message.login_validation.lastname_regex') }}"
+                        required: "{{ trans('message.login_validation.lastname_required') }}",
+                        regex: "{{ trans('message.login_validation.lastname_regex') }}"
                     },
                     email: {
-                        required: "{{ __('message.login_validation.email_required') }}",
-                        email: "{{ __('message.contact_error_email') }}",
-                        regex: "{{ __('message.login_validation.email_regex') }}"
+                        required: "{{ trans('message.login_validation.email_required') }}",
+                        email: "{{ trans('message.contact_error_email') }}",
+                        regex: "{{ trans('message.login_validation.email_regex') }}"
                     },
                     company: {
-                        required: "{{ __('message.login_validation.company_required') }}"
+                        required: "{{ trans('message.login_validation.company_required') }}"
                     },
                     address: {
-                        required: "{{ __('message.login_validation.address_required') }}",
+                        required: "{{ trans('message.login_validation.address_required') }}",
                     },
                     country: {
-                        required: "{{ __('message.login_validation.country_required') }}"
+                        required: "{{ trans('message.login_validation.country_required') }}"
                     },
                     mobile: {
-                        required: "{{ __('message.login_validation.mobile_required') }}",
+                        required: "{{ trans('message.login_validation.mobile_required') }}",
                     },
                     password: {
-                        required: "{{ __('message.login_validation.password_required') }}",
-                        regex: "{{ __('message.strong_password') }}"
+                        required: "{{ trans('message.login_validation.password_required') }}",
+                        regex: "{{ trans('message.strong_password') }}"
                     },
                     password_confirmation: {
-                        required: "{{ __('message.login_validation.confirm_password_required') }}",
-                        equalTo: "{{ __('message.login_validation.confirm_password_equalto') }}"
+                        required: "{{ trans('message.login_validation.confirm_password_required') }}",
+                        equalTo: "{{ trans('message.login_validation.confirm_password_equalto') }}"
                     },
                     terms: {
-                        required: "{{ __('message.login_validation.terms_conditions_required') }}"
+                        required: "{{ trans('message.login_validation.terms_conditions_required') }}"
                     },
 
                 },
@@ -954,7 +954,7 @@ foreach($scripts as $script) {
                 getState(val);
                 getCode(val);
             } else {
-                $("#state-list").html('<option value="">{{ __('message.error_select_country')}}</option>').val('');
+                $("#state-list").html('<option value="">{{ trans('message.error_select_country')}}</option>').val('');
             }
 
 //        getCurrency(val);
@@ -968,7 +968,7 @@ foreach($scripts as $script) {
                 data: {'country_id': val},//'country_id=' + val,
                 success: function (data) {
 
-                    $("#state-list").html('<option value="">{{ __('message.error_select_country')}}</option>').val('');
+                    $("#state-list").html('<option value="">{{ trans('message.error_select_country')}}</option>').val('');
 
 
                     $("#state-list").html(data).val(state.id);

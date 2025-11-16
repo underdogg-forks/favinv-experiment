@@ -1,6 +1,6 @@
-{{ __('message.email_username') }}{{$email}}
+{{ trans('message.email_username') }}{{$email}}
 <br>
-{{ __('message.email_password') }}{{$pass}}
+{{ trans('message.email_password') }}{{$pass}}
 <br>
 <br>
-{{ __('message.activate_account') }}  <a href='{{ url('activate/'.$token) }}'>{{ __('message.email_click_here') }}</a>
+{{ trans('message.activate_account') }}  <a href='{{ url('activate/'.$token) }}'>{{ trans('message.email_click_here') }}</a>

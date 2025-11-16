@@ -87,7 +87,7 @@ class MailChimpController extends BaseMailChimpController
         } catch (Exception $ex) {
             $exe = json_decode($ex->getMessage(), true);
             if ($exe['status'] == 400) {
-                return errorResponse($user['email'].' '.__('message.is_already_subscribed'));
+                return errorResponse($user['email'].' '.trans('message.is_already_subscribed'));
             }
         }
     }
@@ -98,9 +98,9 @@ class MailChimpController extends BaseMailChimpController
         $this->validate($request, [
             'newsletterEmail' => 'required|email',
         ], [
-            'mailchimp-recaptcha-response-1.required' => __('message.robot_verification_failed'),
-            'newsletterEmail.required' => __('validation.newsletterEmail.email'),
-            'newsletterEmail.email' => __('validation.newsletterEmail.email'),
+            'mailchimp-recaptcha-response-1.required' => trans('message.robot_verification_failed'),
+            'newsletterEmail.required' => trans('validation.newsletterEmail.email'),
+            'newsletterEmail.email' => trans('validation.newsletterEmail.email'),
         ]);
 
         try {
@@ -111,7 +111,7 @@ class MailChimpController extends BaseMailChimpController
 
             ]);
 
-            return successResponse(__('message.email_added_to_mailchimp'));
+            return successResponse(trans('message.email_added_to_mailchimp'));
         } catch (Exception $ex) {
             $message = $ex->getMessage();
 
@@ -150,7 +150,7 @@ class MailChimpController extends BaseMailChimpController
 
                 return $merge_fields;
             } else {
-                return redirect()->back()->with('fails', __('message.user_not_found'));
+                return redirect()->back()->with('fails', trans('message.user_not_found'));
             }
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
@@ -318,11 +318,11 @@ class MailChimpController extends BaseMailChimpController
                 } elseif ((strcasecmp($interest->name, 'No') == 0) || (strcasecmp($interest->name, 'False') == 0)) {
                     MailchimpFieldAgoraRelation::find(1)->update(['is_paid_no' => $interest->id]);
                 } else {
-                    return redirect()->back()->with('fails', __('message.group_dropdown_values_required'));
+                    return redirect()->back()->with('fails', trans('message.group_dropdown_values_required'));
                 }
             }
 
-            return redirect()->back()->with('success', __('message.settings_updated_successfully'));
+            return redirect()->back()->with('success', trans('message.settings_updated_successfully'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
