@@ -130,23 +130,23 @@ $dark: #2c384a;
 }
 
 // Additional custom utilities and overrides using CSS variables
-.c-sidebar {
+.sidebar {
   background-color: var(--sidebar-bg) !important;
   color: var(--sidebar-color) !important;
   width: var(--sidebar-width) !important;
 }
 
-.c-sidebar-minimized .c-sidebar {
+.sidebar-minimized .sidebar {
   width: var(--sidebar-minimized-width) !important;
 }
 
-.c-header {
+.app-header {
   background-color: var(--navbar-bg) !important;
   height: var(--navbar-height) !important;
   border-bottom: 1px solid var(--border-color) !important;
 }
 
-.c-sidebar-nav-link {
+.sidebar-nav-link {
   color: var(--sidebar-nav-link-color) !important;
   transition: all var(--transition-speed);
   
@@ -155,13 +155,13 @@ $dark: #2c384a;
     color: var(--sidebar-nav-link-hover-color) !important;
   }
   
-  &.c-active {
+  &.active {
     background-color: var(--sidebar-nav-link-active-bg) !important;
     color: var(--sidebar-nav-link-active-color) !important;
   }
 }
 
-.c-sidebar-nav-icon {
+.sidebar-nav-icon {
   color: var(--sidebar-nav-link-icon-color) !important;
 }
 
@@ -170,11 +170,11 @@ $dark: #2c384a;
   background-color: var(--card-bg) !important;
 }
 
-.c-body {
+.app-body {
   background-color: var(--body-bg) !important;
 }
 
-.c-footer {
+.app-footer {
   background-color: var(--footer-bg) !important;
   color: var(--footer-color) !important;
   border-top: 1px solid var(--border-color) !important;
@@ -199,33 +199,33 @@ $dark: #2c384a;
 
 // Responsive utilities for sidebar
 @media (max-width: 991.98px) {
-  .c-sidebar {
+  .sidebar {
     margin-left: calc(-1 * var(--sidebar-width)) !important;
   }
   
-  .c-sidebar-show .c-sidebar {
+  .sidebar-show .sidebar {
     margin-left: 0 !important;
   }
 }
 
 // RTL Support with CSS Variables
 [dir="rtl"] {
-  .c-sidebar {
+  .sidebar {
     margin-left: 0 !important;
     margin-right: calc(-1 * var(--sidebar-width)) !important;
   }
   
-  .c-sidebar-show .c-sidebar {
+  .sidebar-show .sidebar {
     margin-right: 0 !important;
   }
   
   @media (min-width: 992px) {
-    .c-body {
+    .app-body {
       margin-left: 0 !important;
       margin-right: var(--sidebar-width) !important;
     }
     
-    .c-sidebar-minimized .c-body {
+    .sidebar-minimized .app-body {
       margin-right: var(--sidebar-minimized-width) !important;
     }
   }
@@ -268,30 +268,30 @@ $dark: #2c384a;
 // Compatibility classes for AdminLTE migration
 // Map AdminLTE classes to CoreUI equivalents
 .main-header {
-  @extend .c-header;
+  @extend .app-header;
 }
 
 .main-sidebar {
-  @extend .c-sidebar;
+  @extend .sidebar;
 }
 
 .sidebar-mini {
-  .c-sidebar {
+  .sidebar {
     width: var(--sidebar-width);
   }
   
-  &.sidebar-collapse .c-sidebar {
+  &.sidebar-collapse .sidebar {
     width: var(--sidebar-minimized-width);
   }
 }
 
 .content-wrapper {
-  @extend .c-body;
+  @extend .app-body;
   padding: 1.5rem;
 }
 
 .sidebar-dark-primary {
-  .c-sidebar {
+  .sidebar {
     background-color: var(--sidebar-bg);
   }
 }

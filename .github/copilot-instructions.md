@@ -292,13 +292,13 @@ This project uses **CoreUI 2.16** for the admin interface. When working with Bla
 #### 2. CoreUI Layout Structure
 
 ```html
-<body class="c-app">
+<body class="app">
   <!-- Sidebar -->
-  <div class="c-sidebar c-sidebar-dark c-sidebar-fixed">
-    <ul class="c-sidebar-nav">
-      <li class="c-sidebar-nav-item">
-        <a href="#" class="c-sidebar-nav-link">
-          <i class="c-sidebar-nav-icon fas fa-home"></i>
+  <div class="sidebar sidebar-dark sidebar-fixed">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="#" class="sidebar-nav-link">
+          <i class="sidebar-nav-icon fas fa-home"></i>
           Home
         </a>
       </li>
@@ -307,9 +307,9 @@ This project uses **CoreUI 2.16** for the admin interface. When working with Bla
   
   <!-- Main Content -->
   <div class="c-wrapper">
-    <header class="c-header c-header-fixed"></header>
-    <div class="c-body">
-      <main class="c-main">
+    <header class="app-header app-header-fixed"></header>
+    <div class="app-body">
+      <main class="main">
         <!-- Your content -->
       </main>
     </div>
@@ -371,8 +371,8 @@ When refactoring existing views:
 | `.box-body` | `.card-body` |
 | `.small-box` | `.card.text-white.bg-*` |
 | `.callout` | `.alert` |
-| `.main-sidebar` | `.c-sidebar` |
-| `.content-wrapper` | `.c-body .c-main` |
+| `.main-sidebar` | `.sidebar` |
+| `.content-wrapper` | `.app-body .main` |
 
 #### 6. Best Practices
 

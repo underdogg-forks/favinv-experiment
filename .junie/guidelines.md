@@ -438,13 +438,13 @@ This project uses CoreUI 2.16 for the admin interface. Follow these guidelines w
 
 ```html
 <!-- Main Layout Structure -->
-<body class="c-app">
+<body class="app">
     <!-- Sidebar -->
-    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show">
-        <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-item">
-                <a href="#" class="c-sidebar-nav-link">
-                    <i class="c-sidebar-nav-icon fas fa-home"></i>
+    <div class="sidebar sidebar-dark sidebar-fixed sidebar-lg-show">
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a href="#" class="sidebar-nav-link">
+                    <i class="sidebar-nav-icon fas fa-home"></i>
                     Dashboard
                 </a>
             </li>
@@ -453,12 +453,12 @@ This project uses CoreUI 2.16 for the admin interface. Follow these guidelines w
     
     <!-- Main Content -->
     <div class="c-wrapper">
-        <header class="c-header c-header-light c-header-fixed">
+        <header class="app-header app-header-light app-header-fixed">
             <!-- Header content -->
         </header>
         
-        <div class="c-body">
-            <main class="c-main">
+        <div class="app-body">
+            <main class="main">
                 <!-- Page content -->
             </main>
         </div>
@@ -583,8 +583,8 @@ CoreUI uses CSS custom properties for easy theming. Leverage these instead of ha
 | `.small-box` | `.card.text-white.bg-*` | Dashboard widgets |
 | `.info-box` | Custom card layout | Info widgets |
 | `.callout` | `.alert` | Alert boxes |
-| `.main-sidebar` | `.c-sidebar` | Sidebar navigation |
-| `.content-wrapper` | `.c-body > .c-main` | Main content area |
+| `.main-sidebar` | `.sidebar` | Sidebar navigation |
+| `.content-wrapper` | `.app-body > .main` | Main content area |
 
 #### Documentation
 

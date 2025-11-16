@@ -165,60 +165,60 @@
 
 @include('mini_views.loader')
 
-<body class="c-app">
+<body class="app">
     <!-- Sidebar -->
-    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="sidebar" id="sidebar">
         <!-- Brand Logo -->
-        <div class="c-sidebar-brand">
+        <div class="sidebar-brand d-md-down-none">
             @if ($set->admin_logo == '')
-                <a href="{{url('/')}}" class="c-sidebar-brand-full">
-                    <span class="c-sidebar-brand-full"><b>{{$set->title}}</b></span>
+                <a href="{{url('/')}}" class="sidebar-brand-full">
+                    <span class="sidebar-brand-full"><b>{{$set->title}}</b></span>
                 </a>
-                <a href="{{url('/')}}" class="c-sidebar-brand-minimized">
-                    <span class="c-sidebar-brand-minimized"><b>{{substr($set->title, 0, 2)}}</b></span>
+                <a href="{{url('/')}}" class="sidebar-brand-minimized">
+                    <span class="sidebar-brand-minimized"><b>{{substr($set->title, 0, 2)}}</b></span>
                 </a>
             @else
-                <a href="{{url('/')}}" class="c-sidebar-brand-full">
-                    <img src="{{$set->admin_logo}}" class="c-sidebar-brand-full" alt="{{$set->title}}" style="max-height: 50px; width: auto;">
+                <a href="{{url('/')}}" class="sidebar-brand-full">
+                    <img src="{{$set->admin_logo}}" class="sidebar-brand-full" alt="{{$set->title}}" style="max-height: 50px; width: auto;">
                 </a>
-                <a href="{{url('/')}}" class="c-sidebar-brand-minimized">
-                    <img src="{{$set->fav_icon ?: $set->admin_logo}}" class="c-sidebar-brand-minimized" alt="{{$set->title}}" style="max-height: 35px; width: auto;">
+                <a href="{{url('/')}}" class="sidebar-brand-minimized">
+                    <img src="{{$set->fav_icon ?: $set->admin_logo}}" class="sidebar-brand-minimized" alt="{{$set->title}}" style="max-height: 35px; width: auto;">
                 </a>
             @endif
         </div>
         
         <!-- Sidebar Navigation -->
-        <ul class="c-sidebar-nav ps" data-widget="treeview">
+        <ul class="sidebar-nav nav ps" data-widget="treeview">
             <!-- Dashboard -->
-            <li class="c-sidebar-nav-item">
-                <a href="{{url('/')}}" class="c-sidebar-nav-link" id="dashboard">
-                    <i class="c-sidebar-nav-icon fas fa-tachometer-alt"></i>
+            <li class="sidebar-nav nav-item">
+                <a href="{{url('/')}}" class="sidebar-nav nav-link" id="dashboard">
+                    <i class="sidebar-nav nav-icon fas fa-tachometer-alt"></i>
                     {{Lang::get('message.dashboard')}}
                 </a>
             </li>
             
             <!-- Users -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-users"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-users"></i>
                     {{ __('message.users') }}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('clients')}}" class="c-sidebar-nav-link" id="all_user">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('clients')}}" class="sidebar-nav nav-link" id="all_user">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{ __('message.all-users') }}</span>
                         </a>
                     </li>
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('clients/create')}}" class="c-sidebar-nav-link" id="add_user">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('clients/create')}}" class="sidebar-nav nav-link" id="add_user">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{ __('message.add-new') }}</span>
                         </a>
                     </li>
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('deleted-users')}}" class="c-sidebar-nav-link" id="soft_delete_user">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('deleted-users')}}" class="sidebar-nav nav-link" id="soft_delete_user">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{ __('message.suspended_users') }}</span>
                         </a>
                     </li>
@@ -226,15 +226,15 @@
             </li>
             
             <!-- Orders -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-chart-pie"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-chart-pie"></i>
                     {{ __('message.orders') }}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('orders')}}" class="c-sidebar-nav-link" id="all_order">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('orders')}}" class="sidebar-nav nav-link" id="all_order">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.all-orders')}}</span>
                         </a>
                     </li>
@@ -242,21 +242,21 @@
             </li>
             
             <!-- Invoices -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-paperclip"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-paperclip"></i>
                     {{Lang::get('message.invoices')}}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('invoices')}}" class="c-sidebar-nav-link" id="all_invoice">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('invoices')}}" class="sidebar-nav nav-link" id="all_invoice">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.all-invoices')}}</span>
                         </a>
                     </li>
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('invoice/generate')}}" class="c-sidebar-nav-link" id="add_invoice">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('invoice/generate')}}" class="sidebar-nav nav-link" id="add_invoice">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.add-new')}}</span>
                         </a>
                     </li>
@@ -264,29 +264,29 @@
             </li>
             
             <!-- Pages -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-sticky-note"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-sticky-note"></i>
                     {{Lang::get('message.pages')}}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('pages')}}" class="c-sidebar-nav-link" id="all_page">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('pages')}}" class="sidebar-nav nav-link" id="all_page">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.all-pages')}}</span>
                         </a>
                     </li>
                     @if($page_count <= 2)
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('pages/create')}}" class="c-sidebar-nav-link" id="all_new_page">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('pages/create')}}" class="sidebar-nav nav-link" id="all_new_page">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.add-new')}}</span>
                         </a>
                     </li>
                     @endif
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('demo/page')}}" class="c-sidebar-nav-link" id="demo_page">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('demo/page')}}" class="sidebar-nav nav-link" id="demo_page">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.add-demo')}}</span>
                         </a>
                     </li>
@@ -294,21 +294,21 @@
             </li>
             
             <!-- Products -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-briefcase"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-briefcase"></i>
                     {{Lang::get('message.products')}}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('products')}}" class="c-sidebar-nav-link" id="all_product">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('products')}}" class="sidebar-nav nav-link" id="all_product">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.all-products')}}</span>
                         </a>
                     </li>
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('products/create')}}" class="c-sidebar-nav-link" id="add_product">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('products/create')}}" class="sidebar-nav nav-link" id="add_product">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.add-new')}}</span>
                         </a>
                     </li>
@@ -316,15 +316,15 @@
             </li>
             
             <!-- Settings -->
-            <li class="c-sidebar-nav-dropdown">
-                <a href="#" class="c-sidebar-nav-dropdown-toggle">
-                    <i class="c-sidebar-nav-icon fas fa-cog"></i>
+            <li class="sidebar-nav nav-dropdown">
+                <a href="#" class="sidebar-nav nav-dropdown-toggle">
+                    <i class="sidebar-nav nav-icon fas fa-cog"></i>
                     {{Lang::get('message.settings')}}
                 </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{url('settings')}}" class="c-sidebar-nav-link" id="system_setting">
-                            <i class="c-sidebar-nav-icon far fa-circle"></i>
+                <ul class="sidebar-nav nav-dropdown-items">
+                    <li class="sidebar-nav nav-item">
+                        <a href="{{url('settings')}}" class="sidebar-nav nav-link" id="system_setting">
+                            <i class="sidebar-nav nav-icon far fa-circle"></i>
                             <span>{{Lang::get('message.system')}}</span>
                         </a>
                     </li>
@@ -332,30 +332,30 @@
             </li>
         </ul>
         
-        <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+        <button class="sidebar-minimizer" type="button" ></button>
     </div>
     
     <!-- Main Content Wrapper -->
-    <div class="c-wrapper">
+    <div class="app-body">
         <!-- Header -->
-        <header class="c-header c-header-light c-header-fixed">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+        <header class="app-header navbar">
+            <button class="navbar-toggler  d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="sidebar-show">
                 <i class="fas fa-bars"></i>
             </button>
-            <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+            <button class="navbar-toggler  mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="sidebar-show" responsive="true">
                 <i class="fas fa-bars"></i>
             </button>
             
-            <ul class="c-header-nav d-md-down-none">
-                <li class="c-header-nav-item px-3">
-                    <a href="{{url('client-dashboard')}}" class="c-header-nav-link">{{ __('message.go_to_client') }}</a>
+            <ul class="navbar-nav d-md-down-none">
+                <li class="navbar-nav-item px-3">
+                    <a href="{{url('client-dashboard')}}" class="navbar-nav-link">{{ __('message.go_to_client') }}</a>
                 </li>
             </ul>
             
-            <ul class="c-header-nav ml-auto mr-4">
+            <ul class="navbar-nav ml-auto mr-4">
                 <!-- Language Dropdown -->
-                <li class="c-header-nav-item dropdown">
-                    <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <li class="navbar-nav-item dropdown">
+                    <a class="navbar-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                         <?php
                         $localeMap = [
                             'ar' => 'ae', 'bsn' => 'bs', 'de' => 'de', 'en' => 'us', 'en-gb' => 'gb',
@@ -375,9 +375,9 @@
                 </li>
                 
                 <!-- User Dropdown -->
-                <li class="c-header-nav-item dropdown">
-                    <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        <div class="c-avatar">
+                <li class="navbar-nav-item dropdown">
+                    <a class="navbar-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="img-avatar">
                             <img src="{{Auth::user()->profile_pic}}" class="c-avatar-img" alt="{{Auth::user()->first_name}}">
                         </div>
                     </a>
@@ -401,8 +401,8 @@
         </header>
         
         <!-- Main Body -->
-        <div class="c-body">
-            <main class="c-main">
+        <div class="app-body">
+            <main class="main">
                 <div class="container-fluid">
                     @yield('content')
                 </div>
@@ -410,7 +410,7 @@
         </div>
         
         <!-- Footer -->
-        <footer class="c-footer">
+        <footer class="app-footer">
             <div>
                 <a href="https://faveo.com" target="_blank">Faveo Helpdesk</a>
                 <span class="ml-1">&copy; {{ date('Y') }} Ladybird Web Solution.</span>
@@ -442,8 +442,8 @@
         // Initialize CoreUI components
         $(document).ready(function() {
             // Initialize Perfect Scrollbar for sidebar
-            if (document.querySelector('.c-sidebar-nav')) {
-                const ps = new PerfectScrollbar('.c-sidebar-nav', {
+            if (document.querySelector('.sidebar-nav nav')) {
+                const ps = new PerfectScrollbar('.sidebar-nav nav', {
                     wheelSpeed: 2,
                     wheelPropagation: true,
                     minScrollbarLength: 20
