@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-/* Tailwind v4 Theme Configuration */
+/* Tailwind v4 Theme Configuration with Maximum CSS Variables */
 @theme {
-  /* Custom colors */
+  /* Primary Brand Colors */
   --color-primary-50: #f5f3ff;
   --color-primary-100: #ede9fe;
   --color-primary-200: #ddd6fe;
@@ -15,21 +15,131 @@
   --color-primary-900: #4c1d95;
   --color-primary: var(--color-primary-600);
   
+  --color-secondary: #ced2d8;
+  --color-success: #2eb85c;
+  --color-info: #39f;
+  --color-warning: #f9b115;
+  --color-danger: #e55353;
+  --color-light: #ebedef;
+  --color-dark: #2c384a;
+  
+  /* Sidebar Configuration */
   --color-sidebar-bg: #2c384a;
-  --color-sidebar-text: #c8ced3;
-  --color-sidebar-hover: #23282f;
+  --color-sidebar-text: #fff;
+  --color-sidebar-nav-link-color: #fff;
+  --color-sidebar-nav-link-hover-bg: var(--color-primary);
+  --color-sidebar-nav-link-hover-color: #fff;
+  --color-sidebar-nav-link-active-bg: rgba(255, 255, 255, 0.1);
+  --color-sidebar-nav-link-active-color: #fff;
+  --color-sidebar-nav-link-icon-color: rgba(255, 255, 255, 0.6);
+  
+  /* Navbar/Header Configuration */
+  --color-navbar-bg: #fff;
+  --color-navbar-text: #768192;
+  --color-navbar-hover-color: #2c384a;
+  --color-navbar-active-color: #2c384a;
+  
+  /* Body & Background */
+  --color-body-bg: #e4e5e6;
+  --color-body-text: #2c384a;
+  
+  /* Border & Effects */
+  --color-border: #d8dbe0;
+  
+  /* Card */
+  --color-card-border: var(--color-border);
+  --color-card-cap-bg: #fff;
+  --color-card-bg: #fff;
+  
+  /* Form Controls */
+  --color-input-bg: #fff;
+  --color-input-border: var(--color-border);
+  --color-input-focus-border: #8ad4ee;
+  --color-input-text: var(--color-body-text);
+  
+  /* Tables */
+  --color-table-border: var(--color-border);
+  --color-table-striped-bg: rgba(0, 0, 0, 0.02);
+  --color-table-hover-bg: rgba(0, 0, 0, 0.04);
+  
+  /* Dropdown */
+  --color-dropdown-bg: #fff;
+  --color-dropdown-border: var(--color-border);
+  --color-dropdown-link-color: #2c384a;
+  --color-dropdown-link-hover-bg: #e4e5e6;
+  
+  /* Modal */
+  --color-modal-content-bg: #fff;
+  --color-modal-content-border: var(--color-border);
+  --color-modal-backdrop-bg: #000;
+  
+  /* Footer */
+  --color-footer-bg: #ebedef;
+  --color-footer-text: #768192;
+  
+  /* Breadcrumb */
+  --color-breadcrumb-bg: transparent;
+  --color-breadcrumb-divider: #768192;
+  --color-breadcrumb-active: var(--color-body-text);
+  
+  /* Progress */
+  --color-progress-bg: #e4e5e6;
   
   /* Font families */
-  --font-sans: 'Source Sans Pro', sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  /* Spacing - extending Tailwind's default spacing scale */
+  --spacing-sidebar-width: 256px;
+  --spacing-sidebar-minimized-width: 56px;
+  --spacing-navbar-height: 56px;
+  --spacing-navbar-brand-width: 200px;
+  
+  /* Border radius */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Transitions */
+  --transition-speed: 0.3s;
+  --transition-base: all 0.3s ease-in-out;
+  --transition-sidebar: margin-left 0.3s ease-in-out, margin-right 0.3s ease-in-out;
+}
+
+/* Dark mode CSS variables (optional) */
+[data-theme="dark"] {
+  --color-body-bg: #181924;
+  --color-body-text: #c8ced3;
+  --color-sidebar-bg: #0f1116;
+  --color-navbar-bg: #0f1116;
+  --color-card-bg: #252836;
+  --color-border: #2f3346;
+  --color-input-bg: #252836;
 }
 
 /* Custom components for admin dashboard */
 @layer components {
+  /* ========================================
+     LAYOUT COMPONENTS
+     ======================================== */
+  
   /* Sidebar styles */
   .sidebar {
-    @apply fixed left-0 top-0 h-screen w-64 overflow-y-auto;
+    @apply fixed left-0 top-0 h-screen overflow-y-auto z-50;
+    width: var(--spacing-sidebar-width);
     background-color: var(--color-sidebar-bg);
-    color: var(--color-sidebar-text);
+    color: var(--color-sidebar-nav-link-color);
+    transition: var(--transition-sidebar);
+  }
+  
+  .sidebar-minimized .sidebar {
+    width: var(--spacing-sidebar-minimized-width);
   }
   
   .sidebar-nav {
@@ -41,22 +151,25 @@
   }
   
   .nav-link {
-    @apply flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150;
-    color: var(--color-sidebar-text);
+    @apply flex items-center px-4 py-2 text-sm font-medium;
+    border-radius: var(--radius);
+    color: var(--color-sidebar-nav-link-color);
+    transition: var(--transition-base);
   }
   
   .nav-link:hover {
-    background-color: var(--color-sidebar-hover);
-    @apply text-white;
+    background-color: var(--color-sidebar-nav-link-hover-bg);
+    color: var(--color-sidebar-nav-link-hover-color);
   }
   
   .nav-link.active {
-    background-color: var(--color-primary);
-    @apply text-white;
+    background-color: var(--color-sidebar-nav-link-active-bg);
+    color: var(--color-sidebar-nav-link-active-color);
   }
   
   .nav-icon {
     @apply mr-3 h-5 w-5 flex-shrink-0;
+    color: var(--color-sidebar-nav-link-icon-color);
   }
   
   .nav-dropdown .nav-link {
@@ -69,93 +182,352 @@
   
   /* Header/Navbar styles */
   .app-header {
-    @apply fixed top-0 right-0 left-64 bg-white border-b border-gray-200 z-10;
+    @apply fixed top-0 right-0 border-b z-10;
+    left: var(--spacing-sidebar-width);
+    height: var(--spacing-navbar-height);
+    background-color: var(--color-navbar-bg);
+    color: var(--color-navbar-text);
+    border-color: var(--color-border);
   }
   
   .navbar {
-    @apply flex items-center justify-between px-4 h-16;
+    @apply flex items-center justify-between px-4;
+    height: var(--spacing-navbar-height);
   }
   
   /* Main content area */
+  .app {
+    @apply min-h-screen;
+    background-color: var(--color-body-bg);
+  }
+  
   .app-body {
-    @apply ml-64 pt-16;
+    margin-left: var(--spacing-sidebar-width);
+    padding-top: var(--spacing-navbar-height);
+    background-color: var(--color-body-bg);
+    transition: var(--transition-sidebar);
+  }
+  
+  .sidebar-minimized .app-body {
+    margin-left: var(--spacing-sidebar-minimized-width);
   }
   
   .main {
     @apply p-6;
   }
   
-  /* Card components */
+  .app-footer {
+    @apply border-t px-6 py-4;
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    border-color: var(--color-border);
+  }
+  
+  /* ========================================
+     CARD COMPONENTS
+     ======================================== */
+  
   .card {
-    @apply bg-white rounded-lg shadow;
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
   }
   
   .card-header {
-    @apply px-6 py-4 border-b border-gray-200 font-semibold text-gray-900;
+    @apply px-6 py-4 border-b font-semibold;
+    background-color: var(--color-card-cap-bg);
+    border-color: var(--color-border);
+    color: var(--color-body-text);
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
   }
   
   .card-body {
     @apply p-6;
+    border-bottom-left-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
   }
   
   .card-footer {
-    @apply px-6 py-4 border-t border-gray-200 bg-gray-50;
+    @apply px-6 py-4 border-t;
+    background-color: var(--color-card-cap-bg);
+    border-color: var(--color-border);
+    border-bottom-left-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
   }
   
-  /* Widget cards */
+  /* Border top color variants for cards */
+  .card.border-top-primary {
+    border-top: 3px solid var(--color-primary);
+  }
+  
+  .card.border-top-success {
+    border-top: 3px solid var(--color-success);
+  }
+  
+  .card.border-top-info {
+    border-top: 3px solid var(--color-info);
+  }
+  
+  .card.border-top-warning {
+    border-top: 3px solid var(--color-warning);
+  }
+  
+  .card.border-top-danger {
+    border-top: 3px solid var(--color-danger);
+  }
+  
+  /* ========================================
+     WIDGET CARDS (Dashboard)
+     ======================================== */
+  
   .widget-card {
-    @apply bg-white rounded-lg shadow p-6;
+    @apply rounded-lg shadow p-6 mb-5;
+    background-color: var(--color-card-bg);
+    box-shadow: var(--shadow);
   }
   
   .widget-card-primary {
-    @apply text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6 mb-5;
     background-color: var(--color-primary);
   }
   
   .widget-card-success {
-    @apply bg-green-500 text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6 mb-5;
+    background-color: var(--color-success);
   }
   
   .widget-card-warning {
-    @apply bg-yellow-500 text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6 mb-5;
+    background-color: var(--color-warning);
   }
   
   .widget-card-danger {
-    @apply bg-red-500 text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6 mb-5;
+    background-color: var(--color-danger);
   }
   
   .widget-card-info {
-    @apply bg-blue-500 text-white rounded-lg shadow p-6;
+    @apply text-white rounded-lg shadow p-6 mb-5;
+    background-color: var(--color-info);
   }
   
-  /* Alert components */
+  /* ========================================
+     SMALL-BOX COMPONENT (AdminLTE compatibility)
+     ======================================== */
+  
+  .small-box {
+    @apply relative block mb-5;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  
+  .small-box > .inner {
+    @apply p-4;
+    min-height: 100px;
+  }
+  
+  .small-box h3,
+  .small-box h4 {
+    @apply text-4xl font-bold m-0 p-0 whitespace-nowrap text-white;
+  }
+  
+  .small-box p,
+  .small-box span {
+    @apply text-base;
+    color: rgba(255,255,255,.8);
+  }
+  
+  .small-box > .icon {
+    @apply absolute top-5 right-4 text-9xl;
+    color: rgba(0,0,0,.15);
+    z-index: 0;
+    transition: var(--transition-base);
+  }
+  
+  .small-box:hover > .icon {
+    @apply text-[95px];
+  }
+  
+  .small-box-footer {
+    @apply block py-1 text-center no-underline;
+    color: rgba(255,255,255,.8);
+    background-color: rgba(0,0,0,.1);
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  
+  .small-box-footer:hover {
+    @apply text-white no-underline;
+    background-color: rgba(0,0,0,.15);
+  }
+  
+  /* ========================================
+     INFO-BOX COMPONENT (AdminLTE compatibility)
+     ======================================== */
+  
+  .info-box {
+    @apply flex mb-4 rounded min-h-[90px] w-full;
+    background-color: var(--color-card-bg);
+    box-shadow: var(--shadow);
+  }
+  
+  .info-box-icon {
+    @apply flex items-center justify-center text-5xl w-24 text-center;
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+    color: rgba(255,255,255,.8);
+  }
+  
+  .info-box-icon > img {
+    @apply max-w-full;
+  }
+  
+  .info-box-content {
+    @apply flex flex-col justify-center flex-1 px-4 py-2;
+    line-height: 1.8;
+  }
+  
+  .info-box-text {
+    @apply block text-sm whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+  
+  .info-box-number {
+    @apply block font-bold text-2xl;
+  }
+  
+  .info-box .progress {
+    @apply my-2 h-0.5;
+    background-color: rgba(0,0,0,.125);
+  }
+  
+  /* ========================================
+     CALLOUT COMPONENT (AdminLTE compatibility)
+     ======================================== */
+  
+  .callout {
+    @apply p-4 mb-5 rounded;
+    box-shadow: var(--shadow);
+    border-left: 5px solid #e9ecef;
+  }
+  
+  .callout.callout-info {
+    background-color: rgba(51, 153, 255, 0.1);
+    border-left-color: var(--color-info);
+  }
+  
+  .callout.callout-success {
+    background-color: rgba(46, 184, 92, 0.1);
+    border-left-color: var(--color-success);
+  }
+  
+  .callout.callout-warning {
+    background-color: rgba(249, 177, 21, 0.1);
+    border-left-color: var(--color-warning);
+  }
+  
+  .callout.callout-danger {
+    background-color: rgba(229, 83, 83, 0.1);
+    border-left-color: var(--color-danger);
+  }
+  
+  .callout h4,
+  .callout h5 {
+    @apply mt-0 font-semibold;
+  }
+  
+  .callout p:last-child {
+    @apply mb-0;
+  }
+  
+  /* ========================================
+     USERS LIST COMPONENT (AdminLTE compatibility)
+     ======================================== */
+  
+  .users-list {
+    @apply pl-0 list-none;
+  }
+  
+  .users-list > li {
+    @apply w-1/4 float-left p-4 text-center;
+  }
+  
+  .users-list img {
+    @apply rounded-full max-w-full h-auto;
+  }
+  
+  .users-list-name {
+    @apply block overflow-hidden text-ellipsis whitespace-nowrap;
+    color: var(--color-body-text);
+  }
+  
+  .users-list-date {
+    @apply block text-xs;
+    color: #999;
+  }
+  
+  @media (max-width: 767px) {
+    .users-list > li {
+      @apply w-1/2;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .users-list > li {
+      @apply w-full;
+    }
+  }
+  
+  /* ========================================
+     ALERT COMPONENTS
+     ======================================== */
+  
   .alert {
-    @apply p-4 rounded-md mb-4;
+    @apply p-4 mb-4;
+    border-radius: var(--radius);
   }
   
   .alert-success {
-    @apply bg-green-50 border border-green-200 text-green-800;
+    @apply border;
+    background-color: rgba(46, 184, 92, 0.1);
+    border-color: var(--color-success);
+    color: #155724;
   }
   
   .alert-info {
-    @apply bg-blue-50 border border-blue-200 text-blue-800;
+    @apply border;
+    background-color: rgba(51, 153, 255, 0.1);
+    border-color: var(--color-info);
+    color: #004085;
   }
   
   .alert-warning {
-    @apply bg-yellow-50 border border-yellow-200 text-yellow-800;
+    @apply border;
+    background-color: rgba(249, 177, 21, 0.1);
+    border-color: var(--color-warning);
+    color: #856404;
   }
   
   .alert-danger {
-    @apply bg-red-50 border border-red-200 text-red-800;
+    @apply border;
+    background-color: rgba(229, 83, 83, 0.1);
+    border-color: var(--color-danger);
+    color: #721c24;
   }
   
-  /* Button styles */
+  /* ========================================
+     BUTTON COMPONENTS
+     ======================================== */
+  
   .btn {
-    @apply inline-flex items-center px-4 py-2 border font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-150;
+    @apply inline-flex items-center px-4 py-2 border font-medium focus:outline-none focus:ring-2 focus:ring-offset-2;
+    border-radius: var(--radius);
+    transition: var(--transition-base);
   }
   
   .btn-primary {
-    @apply border-transparent text-white focus:ring-2;
+    @apply border-transparent text-white;
     background-color: var(--color-primary);
   }
   
@@ -168,38 +540,113 @@
   }
   
   .btn-secondary {
-    @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:ring-2;
+    @apply border text-white;
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-gray-400;
   }
   
   .btn-secondary:focus {
-    --tw-ring-color: var(--color-primary);
+    --tw-ring-color: var(--color-secondary);
   }
   
   .btn-success {
-    @apply border-transparent text-white bg-green-600 hover:bg-green-700 focus:ring-green-500;
+    @apply border-transparent text-white;
+    background-color: var(--color-success);
+  }
+  
+  .btn-success:hover {
+    @apply bg-green-700;
+  }
+  
+  .btn-success:focus {
+    --tw-ring-color: var(--color-success);
   }
   
   .btn-danger {
-    @apply border-transparent text-white bg-red-600 hover:bg-red-700 focus:ring-red-500;
+    @apply border-transparent text-white;
+    background-color: var(--color-danger);
   }
   
-  /* Form controls */
+  .btn-danger:hover {
+    @apply bg-red-700;
+  }
+  
+  .btn-danger:focus {
+    --tw-ring-color: var(--color-danger);
+  }
+  
+  .btn-warning {
+    @apply border-transparent text-white;
+    background-color: var(--color-warning);
+  }
+  
+  .btn-warning:hover {
+    @apply bg-yellow-600;
+  }
+  
+  .btn-warning:focus {
+    --tw-ring-color: var(--color-warning);
+  }
+  
+  .btn-info {
+    @apply border-transparent text-white;
+    background-color: var(--color-info);
+  }
+  
+  .btn-info:hover {
+    @apply bg-blue-600;
+  }
+  
+  .btn-info:focus {
+    --tw-ring-color: var(--color-info);
+  }
+  
+  /* ========================================
+     FORM COMPONENTS
+     ======================================== */
+  
   .form-control {
-    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm;
+    @apply block w-full px-3 py-2 border shadow-sm focus:outline-none focus:ring-2 sm:text-sm;
+    background-color: var(--color-input-bg);
+    border-color: var(--color-input-border);
+    color: var(--color-input-text);
+    border-radius: var(--radius);
   }
   
   .form-control:focus {
-    --tw-ring-color: var(--color-primary);
-    border-color: var(--color-primary);
+    border-color: var(--color-input-focus-border);
+    --tw-ring-color: var(--color-input-focus-border);
   }
   
   .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-1;
+    @apply block text-sm font-medium mb-1;
+    color: var(--color-body-text);
   }
   
-  /* Table styles */
+  .form-select {
+    @apply block w-full px-3 py-2 border shadow-sm focus:outline-none focus:ring-2 sm:text-sm;
+    background-color: var(--color-input-bg);
+    border-color: var(--color-input-border);
+    color: var(--color-input-text);
+    border-radius: var(--radius);
+  }
+  
+  .form-select:focus {
+    border-color: var(--color-input-focus-border);
+    --tw-ring-color: var(--color-input-focus-border);
+  }
+  
+  /* ========================================
+     TABLE COMPONENTS
+     ======================================== */
+  
   .table {
-    @apply min-w-full divide-y divide-gray-200;
+    @apply min-w-full divide-y;
+    border-color: var(--color-table-border);
   }
   
   .table thead {
@@ -211,16 +658,31 @@
   }
   
   .table td {
-    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+    @apply px-6 py-4 whitespace-nowrap text-sm;
+    color: var(--color-body-text);
   }
   
   .table tbody {
-    @apply bg-white divide-y divide-gray-200;
+    @apply bg-white divide-y;
+    background-color: var(--color-card-bg);
+    border-color: var(--color-table-border);
   }
   
-  /* Badge/Label styles */
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: var(--color-table-striped-bg);
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: var(--color-table-hover-bg);
+  }
+  
+  /* ========================================
+     BADGE COMPONENTS
+     ======================================== */
+  
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-medium;
+    border-radius: var(--radius-full);
   }
   
   .badge-primary {
@@ -240,9 +702,22 @@
     @apply bg-red-100 text-red-800;
   }
   
-  /* Breadcrumb */
+  .badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .badge-secondary {
+    @apply bg-gray-100 text-gray-800;
+  }
+  
+  /* ========================================
+     BREADCRUMB COMPONENTS
+     ======================================== */
+  
   .breadcrumb {
-    @apply flex items-center space-x-2 text-sm text-gray-500;
+    @apply flex items-center space-x-2 text-sm;
+    background-color: var(--color-breadcrumb-bg);
+    color: var(--color-breadcrumb-divider);
   }
   
   .breadcrumb-item {
@@ -250,23 +725,338 @@
   }
   
   .breadcrumb-item.active {
-    @apply text-gray-900 font-medium;
+    @apply font-medium;
+    color: var(--color-breadcrumb-active);
+  }
+  
+  /* ========================================
+     DROPDOWN COMPONENTS
+     ======================================== */
+  
+  .dropdown {
+    @apply relative inline-block text-left;
+  }
+  
+  .dropdown-menu {
+    @apply absolute right-0 mt-2 origin-top-right rounded-md shadow-lg focus:outline-none;
+    background-color: var(--color-dropdown-bg);
+    border-color: var(--color-dropdown-border);
+    border: 1px solid var(--color-dropdown-border);
+    z-index: 1000;
+  }
+  
+  .dropdown-item {
+    @apply block px-4 py-2 text-sm;
+    color: var(--color-dropdown-link-color);
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--color-dropdown-link-hover-bg);
+  }
+  
+  /* ========================================
+     MODAL COMPONENTS
+     ======================================== */
+  
+  .modal-backdrop {
+    @apply fixed inset-0 z-40;
+    background-color: var(--color-modal-backdrop-bg);
+    opacity: 0.5;
+  }
+  
+  .modal {
+    @apply fixed inset-0 z-50 overflow-y-auto;
+  }
+  
+  .modal-dialog {
+    @apply relative w-auto mx-auto my-6;
+  }
+  
+  .modal-content {
+    @apply relative flex flex-col w-full pointer-events-auto rounded-lg shadow-lg;
+    background-color: var(--color-modal-content-bg);
+    border-color: var(--color-modal-content-border);
+  }
+  
+  .modal-header {
+    @apply flex items-start justify-between p-4 border-b;
+    border-color: var(--color-border);
+  }
+  
+  .modal-body {
+    @apply relative p-4 flex-auto;
+  }
+  
+  .modal-footer {
+    @apply flex items-center justify-end p-4 border-t;
+    border-color: var(--color-border);
+  }
+  
+  /* ========================================
+     PROGRESS COMPONENTS
+     ======================================== */
+  
+  .progress {
+    @apply flex h-4 overflow-hidden text-xs;
+    background-color: var(--color-progress-bg);
+    border-radius: var(--radius);
+  }
+  
+  .progress-bar {
+    @apply flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap transition-all;
+    background-color: var(--color-primary);
+  }
+  
+  .progress-bar-success {
+    background-color: var(--color-success);
+  }
+  
+  .progress-bar-info {
+    background-color: var(--color-info);
+  }
+  
+  .progress-bar-warning {
+    background-color: var(--color-warning);
+  }
+  
+  .progress-bar-danger {
+    background-color: var(--color-danger);
+  }
+  
+  /* ========================================
+     UTILITY COLOR CLASSES
+     ======================================== */
+  
+  .bg-primary { background-color: var(--color-primary) !important; }
+  .bg-secondary { background-color: var(--color-secondary) !important; }
+  .bg-success { background-color: var(--color-success) !important; }
+  .bg-info { background-color: var(--color-info) !important; }
+  .bg-warning { background-color: var(--color-warning) !important; }
+  .bg-danger { background-color: var(--color-danger) !important; }
+  .bg-light { background-color: var(--color-light) !important; }
+  .bg-dark { background-color: var(--color-dark) !important; }
+  
+  /* AdminLTE color aliases */
+  .bg-green { background-color: var(--color-success) !important; color: #fff !important; }
+  .bg-yellow { background-color: var(--color-warning) !important; color: #fff !important; }
+  .bg-red { background-color: var(--color-danger) !important; color: #fff !important; }
+  .bg-aqua { background-color: var(--color-info) !important; color: #fff !important; }
+  
+  .text-primary { color: var(--color-primary) !important; }
+  .text-secondary { color: var(--color-secondary) !important; }
+  .text-success { color: var(--color-success) !important; }
+  .text-info { color: var(--color-info) !important; }
+  .text-warning { color: var(--color-warning) !important; }
+  .text-danger { color: var(--color-danger) !important; }
+  
+  .border-primary { border-color: var(--color-primary) !important; }
+  .border-secondary { border-color: var(--color-secondary) !important; }
+  .border-success { border-color: var(--color-success) !important; }
+  .border-info { border-color: var(--color-info) !important; }
+  .border-warning { border-color: var(--color-warning) !important; }
+  .border-danger { border-color: var(--color-danger) !important; }
+  
+  /* ========================================
+     ADMINLTE COMPATIBILITY CLASSES
+     ======================================== */
+  
+  /* Layout compatibility */
+  .main-header {
+    @apply fixed top-0 right-0 border-b z-10;
+    left: var(--spacing-sidebar-width);
+    height: var(--spacing-navbar-height);
+    background-color: var(--color-navbar-bg);
+    color: var(--color-navbar-text);
+    border-color: var(--color-border);
+  }
+  
+  .main-sidebar {
+    @apply fixed left-0 top-0 h-screen overflow-y-auto z-50;
+    width: var(--spacing-sidebar-width);
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-sidebar-nav-link-color);
+    transition: var(--transition-sidebar);
+  }
+  
+  .content-wrapper {
+    @apply p-6;
+    margin-left: var(--spacing-sidebar-width);
+    padding-top: var(--spacing-navbar-height);
+    background-color: var(--color-body-bg);
+  }
+  
+  .sidebar-mini .sidebar {
+    width: var(--spacing-sidebar-width);
+  }
+  
+  .sidebar-mini.sidebar-collapse .sidebar {
+    width: var(--spacing-sidebar-minimized-width);
+  }
+  
+  .sidebar-dark-primary .sidebar {
+    background-color: var(--color-sidebar-bg);
+  }
+  
+  /* Box component (AdminLTE) - mapped to card */
+  .box {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+  }
+  
+  .box.box-primary {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+    border-top: 3px solid var(--color-primary);
+  }
+  
+  .box.box-success {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+    border-top: 3px solid var(--color-success);
+  }
+  
+  .box.box-info {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+    border-top: 3px solid var(--color-info);
+  }
+  
+  .box.box-warning {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+    border-top: 3px solid var(--color-warning);
+  }
+  
+  .box.box-danger {
+    background-color: var(--color-card-bg);
+    border-color: var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    @apply mb-5;
+    border-top: 3px solid var(--color-danger);
+  }
+  
+  .box-header {
+    @apply px-4 py-3 border-b;
+    border-color: var(--color-border);
+  }
+  
+  .box-title {
+    @apply inline-block text-lg m-0 leading-none;
+  }
+  
+  .box-tools {
+    @apply float-right -mt-1;
+  }
+  
+  .box-body {
+    @apply p-4;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+  }
+  
+  .box-footer {
+    @apply p-4 border-t;
+    background-color: var(--color-card-cap-bg);
+    border-color: var(--color-border);
+  }
+  
+  /* ========================================
+     ANIMATION UTILITIES
+     ======================================== */
+  
+  .fade-in {
+    animation: fadeIn var(--transition-speed);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 
-/* RTL Support */
+/* ========================================
+   RTL SUPPORT
+   ======================================== */
+
 [dir="rtl"] .sidebar {
   @apply left-auto right-0;
 }
 
 [dir="rtl"] .app-header {
-  @apply left-auto right-64;
+  left: auto;
+  right: var(--spacing-sidebar-width);
 }
 
 [dir="rtl"] .app-body {
-  @apply ml-0 mr-64;
+  margin-left: 0;
+  margin-right: var(--spacing-sidebar-width);
+}
+
+[dir="rtl"] .sidebar-minimized .app-header {
+  right: var(--spacing-sidebar-minimized-width);
+}
+
+[dir="rtl"] .sidebar-minimized .app-body {
+  margin-right: var(--spacing-sidebar-minimized-width);
 }
 
 [dir="rtl"] .nav-icon {
   @apply mr-0 ml-3;
+}
+
+[dir="rtl"] .box-tools {
+  @apply float-left;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    margin-left: calc(-1 * var(--spacing-sidebar-width));
+  }
+  
+  .sidebar-show .sidebar {
+    margin-left: 0;
+  }
+  
+  .app-header {
+    left: 0;
+  }
+  
+  .app-body {
+    margin-left: 0;
+  }
+  
+  [dir="rtl"] .sidebar {
+    margin-left: 0;
+    margin-right: calc(-1 * var(--spacing-sidebar-width));
+  }
+  
+  [dir="rtl"] .sidebar-show .sidebar {
+    margin-right: 0;
+  }
+  
+  [dir="rtl"] .app-header {
+    right: 0;
+  }
 }
