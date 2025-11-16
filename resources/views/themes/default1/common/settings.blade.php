@@ -8,7 +8,7 @@
             <div class="card-header">
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+                    <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -156,7 +156,7 @@
                     </tr>
                     <tr>
 
-                        <td>{!! html()->label(__('message.host'))->for('host')->class('font-weight-bold') !!}</td><td>
+                        <td>{!! html()->label(trans('message.host'))->for('host')->class('font-weight-bold') !!}</td><td>
                             <div class="form-group {{ $errors->has('host') ? 'has-error' : '' }}">
 
 

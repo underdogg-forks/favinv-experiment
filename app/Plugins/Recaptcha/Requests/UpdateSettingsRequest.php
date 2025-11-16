@@ -48,16 +48,16 @@ class UpdateSettingsRequest extends FormRequest
     public function attributes()
     {
         return [
-            'v2_site_key' => __('recaptcha::recaptcha.v2_site_key'),
-            'v2_secret_key' => __('recaptcha::recaptcha.v2_secret_key'),
-            'v3_site_key' => __('recaptcha::recaptcha.v3_site_key'),
-            'v3_secret_key' => __('recaptcha::recaptcha.v3_secret_key'),
-            'captcha_version' => __('recaptcha::recaptcha.captcha_version'),
-            'failover_action' => __('recaptcha::recaptcha.failover_action'),
-            'score_threshold' => __('recaptcha::recaptcha.v3_score_threshold'),
-            'theme' => __('recaptcha::recaptcha.theme'),
-            'size' => __('recaptcha::recaptcha.size'),
-            'badge_position' => __('recaptcha::recaptcha.badge_position'),
+            'v2_site_key' => trans('recaptcha::recaptcha.v2_site_key'),
+            'v2_secret_key' => trans('recaptcha::recaptcha.v2_secret_key'),
+            'v3_site_key' => trans('recaptcha::recaptcha.v3_site_key'),
+            'v3_secret_key' => trans('recaptcha::recaptcha.v3_secret_key'),
+            'captcha_version' => trans('recaptcha::recaptcha.captcha_version'),
+            'failover_action' => trans('recaptcha::recaptcha.failover_action'),
+            'score_threshold' => trans('recaptcha::recaptcha.v3_score_threshold'),
+            'theme' => trans('recaptcha::recaptcha.theme'),
+            'size' => trans('recaptcha::recaptcha.size'),
+            'badge_position' => trans('recaptcha::recaptcha.badge_position'),
         ];
     }
 
@@ -69,20 +69,20 @@ class UpdateSettingsRequest extends FormRequest
     public function messages()
     {
         return [
-            'captcha_version.required' => __('recaptcha::recaptcha.captcha_version_required'),
-            'captcha_version.in' => __('recaptcha::recaptcha.captcha_version_in'),
-            'failover_action.required' => __('recaptcha::recaptcha.failover_action_required'),
-            'failover_action.in' => __('recaptcha::recaptcha.failover_action_in'),
-            'score_threshold.required' => __('recaptcha::recaptcha.score_threshold_required'),
-            'score_threshold.numeric' => __('recaptcha::recaptcha.score_threshold_numeric'),
-            'score_threshold.min' => __('recaptcha::recaptcha.score_threshold_min'),
-            'score_threshold.max' => __('recaptcha::recaptcha.score_threshold_max'),
-            'theme.required' => __('recaptcha::recaptcha.theme_required'),
-            'theme.in' => __('recaptcha::recaptcha.theme_in'),
-            'size.required' => __('recaptcha::recaptcha.size_required'),
-            'size.in' => __('recaptcha::recaptcha.size_in'),
-            'badge_position.required' => __('recaptcha::recaptcha.badge_position_required'),
-            'badge_position.in' => __('recaptcha::recaptcha.badge_position_in'),
+            'captcha_version.required' => trans('recaptcha::recaptcha.captcha_version_required'),
+            'captcha_version.in' => trans('recaptcha::recaptcha.captcha_version_in'),
+            'failover_action.required' => trans('recaptcha::recaptcha.failover_action_required'),
+            'failover_action.in' => trans('recaptcha::recaptcha.failover_action_in'),
+            'score_threshold.required' => trans('recaptcha::recaptcha.score_threshold_required'),
+            'score_threshold.numeric' => trans('recaptcha::recaptcha.score_threshold_numeric'),
+            'score_threshold.min' => trans('recaptcha::recaptcha.score_threshold_min'),
+            'score_threshold.max' => trans('recaptcha::recaptcha.score_threshold_max'),
+            'theme.required' => trans('recaptcha::recaptcha.theme_required'),
+            'theme.in' => trans('recaptcha::recaptcha.theme_in'),
+            'size.required' => trans('recaptcha::recaptcha.size_required'),
+            'size.in' => trans('recaptcha::recaptcha.size_in'),
+            'badge_position.required' => trans('recaptcha::recaptcha.badge_position_required'),
+            'badge_position.in' => trans('recaptcha::recaptcha.badge_position_in'),
         ];
     }
 
@@ -127,7 +127,7 @@ class UpdateSettingsRequest extends FormRequest
             }
 
             if (! $this->filled('v2_g_recaptcha_response') && ! $this->filled('v3_g_recaptcha_response')) {
-                $validator->errors()->add('captcha', __('recaptcha::recaptcha.captcha_verification_failed'));
+                $validator->errors()->add('captcha', trans('recaptcha::recaptcha.captcha_verification_failed'));
             }
         });
     }
@@ -146,7 +146,7 @@ class UpdateSettingsRequest extends FormRequest
         $responseBody = $httpResponse->json();
 
         if (! $responseBody['success']) {
-            return __('recaptcha::recaptcha.invalid_secret_or_token');
+            return trans('recaptcha::recaptcha.invalid_secret_or_token');
         }
 
         if ($type === 'v3') {
@@ -154,7 +154,7 @@ class UpdateSettingsRequest extends FormRequest
                 ($responseBody['action'] ?? '') !== 'settings_save' ||
                 ($responseBody['hostname'] ?? '') !== $expectedHostname
             ) {
-                return __('recaptcha::recaptcha.captcha_verification_failed');
+                return trans('recaptcha::recaptcha.captcha_verification_failed');
             }
         }
 

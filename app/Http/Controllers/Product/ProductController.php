@@ -177,13 +177,13 @@ class ProductController extends BaseProductController
                                 if (is_array($permissions)) {
                                     if ($permissions['downloadPermission'] == 1) {
                                         $url = '<a href='.url('product/download/'.$model->id).
-                                    " class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.download'))."<i class='fas fa-cloud-download-alt' 
+                                    " class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.download'))."<i class='fas fa-cloud-download-alt' 
                                     style='color:white;'> </i></a>";
                                     }
                                 }
 
                                 return '<p><a href='.url('products/'.$model->id.'/edit').
-                                " class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit'
+                                " class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit'
                                  style='color:white;'> </i></a>&nbsp;$url</p>";
                             })
                              ->filterColumn('name', function ($query, $keyword) {
@@ -214,9 +214,9 @@ class ProductController extends BaseProductController
                 'dependencies' => 'required',
             ],
             [
-                'version.required' => __('validation.product_validate.version_required'),
-                'filename.required' => __('validation.product_validate.filename_required'),
-                'dependencies.required' => __('validation.product_validate.dependencies_required'),
+                'version.required' => trans('validation.product_validate.version_required'),
+                'filename.required' => trans('validation.product_validate.filename_required'),
+                'dependencies.required' => trans('validation.product_validate.dependencies_required'),
 
             ]
         );
@@ -243,7 +243,7 @@ class ProductController extends BaseProductController
                 $updateClassObj = new \App\Http\Controllers\AutoUpdate\AutoUpdateController();
                 $addProductToAutoUpdate = $updateClassObj->addNewVersion($product_id->id, $request->input('version'), $request->input('filename'), '1');
             }
-            $response = ['success' => 'true', 'message' => __('message.product_uploaded_successfully')];
+            $response = ['success' => 'true', 'message' => trans('message.product_uploaded_successfully')];
 
             return $response;
         } catch (\Exception $e) {
@@ -316,9 +316,9 @@ class ProductController extends BaseProductController
             'show_agent' => 'required',
             // 'version' => 'required',
         ], [
-            'product_sku.unique' => __('validation.product_sku_unique'),
-            'name.unique' => __('validation.product_name_unique'),
-            'show_agent.required' => __('validation.product_show_agent_required'),
+            'product_sku.unique' => trans('validation.product_sku_unique'),
+            'name.unique' => trans('validation.product_name_unique'),
+            'show_agent.required' => trans('validation.product_show_agent_required'),
         ]);
 
         if ($v->fails()) {
@@ -450,16 +450,16 @@ class ProductController extends BaseProductController
             'group' => 'required',
         ],
             [
-                'name.required' => __('validation.product_controller.name_required'),
-                'name.unique' => __('validation.product_controller.name_unique'),
-                'type.required' => __('validation.product_controller.type_required'),
-                'description.required' => __('validation.product_controller.description_required'),
-                'product_description.required' => __('validation.product_controller.product_description_required'),
-                'image.mimes' => __('validation.product_controller.image_mimes'),
-                'image.max' => __('validation.product_controller.image_max'),
-                'product_sku.required' => __('validation.product_controller.product_sku_required'),
-                'group.required' => __('validation.product_controller.group_required'),
-                'show_agent.required' => __('validation.product_controller.show_agent_required'),
+                'name.required' => trans('validation.product_controller.name_required'),
+                'name.unique' => trans('validation.product_controller.name_unique'),
+                'type.required' => trans('validation.product_controller.type_required'),
+                'description.required' => trans('validation.product_controller.description_required'),
+                'product_description.required' => trans('validation.product_controller.product_description_required'),
+                'image.mimes' => trans('validation.product_controller.image_mimes'),
+                'image.max' => trans('validation.product_controller.image_max'),
+                'product_sku.required' => trans('validation.product_controller.product_sku_required'),
+                'group.required' => trans('validation.product_controller.group_required'),
+                'show_agent.required' => trans('validation.product_controller.show_agent_required'),
             ]);
 
         if ($v->fails()) {
@@ -554,7 +554,7 @@ class ProductController extends BaseProductController
                     <b>"./* @scrutinizer ignore-type */\trans('message.alert').'!</b> '.
                     /* @scrutinizer ignore-type */\trans('message.failed').',
                     <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
-                        '.__('message.not-found').'
+                        '.trans('message.not-found').'
                 </div>';
         }
     }
@@ -571,7 +571,7 @@ class ProductController extends BaseProductController
             $ids = $request->input('select');
             $storagePath = Setting::find(1)->value('file_storage');
             if (empty($ids)) {
-                return successResponse(__('message.select-a-row'));
+                return successResponse(trans('message.select-a-row'));
             }
 
             foreach ($ids as $key => $id) {
@@ -585,9 +585,9 @@ class ProductController extends BaseProductController
                 }
             }
 
-            return successResponse(__('message.deleted-successfully'));
+            return successResponse(trans('message.deleted-successfully'));
         } catch (\Exception $e) {
-            return errorResponse(__('message.errors_occurs_delete_product').$e->getMessage());
+            return errorResponse(trans('message.errors_occurs_delete_product').$e->getMessage());
         }
     }
 

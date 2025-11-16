@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.edit_tax') }}
+    {{ trans('message.edit_tax') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.edit_tax_class') }}</h1>
+        <h1>{{ trans('message.edit_tax_class') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('tax')}}"><i class="fa fa-dashboard"></i> {{ __('message.tax') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_tax') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('tax')}}"><i class="fa fa-dashboard"></i> {{ trans('message.tax') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_tax') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -49,7 +49,7 @@
                         {{ html()->label(trans('message.tax-type'), 'tax_class')->class('required') }}
                          <select name="tax_classes_id" id="editTax" class="form-control {{$errors->has('tax_classes_id') ? ' is-invalid' : ''}}">
                       <option value="{{$txClass->name}}">{{$taxClassName}}</option>
-                      <option value="Others">{{ __('message.others') }}</option>
+                      <option value="Others">{{ trans('message.others') }}</option>
                       <option value="Intra State GST">Intra State GST (Same Indian State)</option>
                       <option value="Inter State GST">Inter State GST (Other Indian State)</option>
                       <option value="Union Territory GST">Union Territory GST (Indian Union Territory)</option>
@@ -86,13 +86,13 @@
                   
                         <!-- name -->
                         {{ html()->label(trans('message.country'), 'country') }}
-                        {{ html()->select('country', ['' =>  __('message.all_countries')] + $countries)
+                        {{ html()->select('country', ['' =>  trans('message.all_countries')] + $countries)
                             ->class('form-control country') }}
                     </div>
 
                     <div class="col-md-4 form-group changegststate">
                         {{ html()->label(trans('message.state'), 'state') }}
-                        {{ html()->select('state', ['' =>  __('message.all_states')] + $states)
+                        {{ html()->select('state', ['' =>  trans('message.all_states')] + $states)
                             ->class('form-control'. ($errors->has('state') ? ' is-invalid' : ''))
                             ->id('state-list') }}
                     </div>
@@ -108,7 +108,7 @@
 
 
                 </div>
-                <button type="submit" id="submit" class="btn btn-primary pull-right" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                <button type="submit" id="submit" class="btn btn-primary pull-right" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ trans('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
             </div>
@@ -127,7 +127,7 @@
                     
                     <thead><tr>
                             <th>Id</th>
-                            <th>{{ __('message.state') }}</th>
+                            <th>{{ trans('message.state') }}</th>
                             <th>CGST</th>
                             <th>SGST</th>
                             <th>IGST</th>
@@ -152,7 +152,7 @@
               "url":  '{!! route('get-taxtable') !!}',
                  error: function(xhr) {
                  if(xhr.status == 401) {
-                  alert('{{ __('message.session_expired') }}')
+                  alert('{{ trans('message.session_expired') }}')
                   window.location.href = '/login';
                  }
               }
@@ -160,24 +160,24 @@
               },
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
-                "sSearch"    : "{{ __('message.search') }}: ",
-                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                "sSearch"    : "{{ trans('message.search') }}: ",
+                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                search:         "{{ __('message.datatable_search') }} ",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                search:         "{{ trans('message.datatable_search') }} ",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
 
 

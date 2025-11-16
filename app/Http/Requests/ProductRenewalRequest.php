@@ -32,8 +32,8 @@ class ProductRenewalRequest extends FormRequest
     public function messages()
     {
         return [
-            'domain.required' => __('validation.product_renewal.domain.required'),
-            'domain.no_http' => __('validation.product_renewal.domain.no_http'),
+            'domain.required' => trans('validation.product_renewal.domain.required'),
+            'domain.no_http' => trans('validation.product_renewal.domain.no_http'),
         ];
     }
 }

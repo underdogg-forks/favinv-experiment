@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.contact-options') }}
+    {{ trans('message.contact-options') }}
 @stop
 @section('content-header')
     <div class="col-sm-6 md-6">
-        <h1>{{ __('message.contact_options') }}</h1>
+        <h1>{{ trans('message.contact_options') }}</h1>
     </div>
     <div class="col-sm-6 md-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.contact_options') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.contact_options') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -28,26 +28,26 @@
         <div class="card-body">
                 <!-- Email & Mobile Toggles on the Same Row -->
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">{{ __('message.enable_verification') }}</label>
+                    <label class="col-sm-4 col-form-label">{{ trans('message.enable_verification') }}</label>
                     <div class="col-sm-4 d-flex align-items-center">
                         <div class="custom-control custom-switch mr-3">
                             {!! html()->checkbox('email_enabled')->checked($emailStatus)->value(1)->id('email_enabled')->class('custom-control-input') !!}
-                            <label class="custom-control-label" for="email_enabled">{{ __('message.email') }}</label>
+                            <label class="custom-control-label" for="email_enabled">{{ trans('message.email') }}</label>
                         </div>
                     </div>
                     <div class="col-sm-4 d-flex align-items-center">
                         <div class="custom-control custom-switch">
                             {!! html()->checkbox('mobile_enabled')->checked($mobileStatus)->value(1)->id('mobile_enabled')->class('custom-control-input') !!}
-                            <label class="custom-control-label" for="mobile_enabled">{{ __('message.mobile') }}</label>
+                            <label class="custom-control-label" for="mobile_enabled">{{ trans('message.mobile') }}</label>
                         </div>
                     </div>
                 </div>
 
                 <!-- Preference Dropdown (Initially Visible or Hidden) -->
                 <div class="form-group row" id="preference_group">
-                    <label for="preferred_verification" class="col-sm-4 col-form-label">{{ __('message.preferred_verification') }}</label>
+                    <label for="preferred_verification" class="col-sm-4 col-form-label">{{ trans('message.preferred_verification') }}</label>
                     <div class="col-sm-8">
-                        {!! html()->select('preferred_verification')->options(['' => __('message.select'),'email' => __('message.email_first'),'mobile' => __('message.mobile_first'),])->class('form-control')->id('preferred_verification')->value($preferred_verification) !!}
+                        {!! html()->select('preferred_verification')->options(['' => trans('message.select'),'email' => trans('message.email_first'),'mobile' => trans('message.mobile_first'),])->class('form-control')->id('preferred_verification')->value($preferred_verification) !!}
                     </div>
                 </div>
             </div>

@@ -3,22 +3,22 @@
         <div class="modal-content">
             <div class="modal-header">
                  <h4 class="modal-title">{{trans('message.edit-comment')}}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button>
                
             </div>
             {!! html()->form('patch')->id('comment-edit-form')->open() !!}
             <div class="modal-body">
                 
                 <div class= "form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                    {!! html()->label(__('message.comment'), 'name')->class('required') !!}
+                    {!! html()->label(trans('message.comment'), 'name')->class('required') !!}
                      <textarea name="description" id="desc" class="form-control" rows="6" cols="50" ></textarea>
                      <input type="hidden" id="user-id" name="user_id" > 
                     <input type="hidden" name="updated_by_user_id" id="admin-id" > 
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                 <button type="button" id="close" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i>{{ __('message.close') }}</button>
-                <button type="submit" class="btn btn-primary " id="edit_submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fas fa-refresh">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                 <button type="button" id="close" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i>{{ trans('message.close') }}</button>
+                <button type="submit" class="btn btn-primary " id="edit_submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fas fa-refresh">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
             </div>
             {!! html()->form()->close() !!}
         </div>

@@ -10,7 +10,7 @@
                     @if (count($errors) > 0)
 
                         <div class="alert alert-danger alert-dismissable">
-                            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}
+                            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -30,7 +30,7 @@
                     <!-- Tax Type -->
                     {!! html()->label(trans('message.tax-type'))->for('name')->class('required') !!}
                     <select name="name" id="gst" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
-                        <option value="Others">{{ __('message.others') }}</option>
+                        <option value="Others">{{ trans('message.others') }}</option>
                         <option value="Intra State GST">Intra State GST (Same Indian State)</option>
                         <option value="Inter State GST">Inter State GST (Other Indian State)</option>
                         <option value="Union Territory GST">Union Territory GST (Indian Union Territory)</option>
@@ -74,7 +74,7 @@
                     <!-- Country -->
                     {{ html()->label(trans('message.country'))->for('countryvisible') }}
                     <br>
-                    {{ html()->select('country', ['' =>  __('message.all_countries')] + $countries)
+                    {{ html()->select('country', ['' =>  trans('message.all_countries')] + $countries)
                         ->class('form-control select2' . ($errors->has('country') ? ' is-invalid' : ''))
                         ->style('width:460px')
                         ->id('countryvisible')
@@ -89,7 +89,7 @@
                 <div class="form-group showwhengst {{ $errors->has('state') ? 'has-error' : '' }}" style="display:block">
                     <!-- State -->
                     {{ html()->label(trans('message.state'))->for('state') }}
-                    {{ html()->select('state', ['' => __('message.all_states')])
+                    {{ html()->select('state', ['' => trans('message.all_states')])
                         ->class('form-control' . ($errors->has('state') ? ' is-invalid' : ''))
                         ->id('statess') }}
                     @error('state')
@@ -109,10 +109,10 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal" id="closeTax">
-                        <i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}
+                        <i class="fa fa-times"></i>&nbsp;{{ trans('message.close') }}
                     </button>
                     <button type="submit" id="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i>&nbsp;{{ __('message.save') }}
+                        <i class="fas fa-save"></i>&nbsp;{{ trans('message.save') }}
                     </button>
                 </div>
 
@@ -198,12 +198,12 @@ $("#closeTax").click(function() {
             var tax_name = $('#taxname').val();
             if (tax_name.length == ''){
                    $('#namecheck').show();
-                   $('#namecheck').html('{{ __('message.field_required') }}');
+                   $('#namecheck').html('{{ trans('message.field_required') }}');
                    $('#namecheck').focus();
                    $('#taxname').css("border-color","red");
                    $('#namecheck').css({"color":"red","margin-top":"5px"});
                 $('#ratecheck').show();
-                $('#ratecheck').html('{{ __('message.field_required') }}');
+                $('#ratecheck').html('{{ trans('message.field_required') }}');
                 $('#ratecheck').focus();
                 $('#rate').css("border-color","red");
                 $('#ratecheck').css({"color":"red","margin-top":"5px"});

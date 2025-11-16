@@ -173,7 +173,7 @@ class BlockFailedVerifications
     {
         // Get appropriate error message based on type
         $messageKey = $this->getErrorMessageKey($type);
-        $errorMessage = __($messageKey, ['time' => $waitTime]);
+        $errorMessage = trans($messageKey, ['time' => $waitTime]);
 
         if ($request->expectsJson()) {
             return errorResponse($errorMessage, 429);

@@ -1,16 +1,16 @@
 @extends('log-viewer::_template.master')
 @section('title')
-    {{ __('message.logs_viewer') }}
+    {{ trans('message.logs_viewer') }}
 @stop
 @section('content-header')
 <h1>
- <h1 class="page-header">{{ __('message.Log') }} [{{ $log->date }}]</h1>
+ <h1 class="page-header">{{ trans('message.Log') }} [{{ $log->date }}]</h1>
 </h1>
 <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li><a href="{{url('settings')}}">{{ __('message.settings') }}</a></li>
-        <li><a href="{{url('log-viewer')}}">{{ __('message.dashboard') }}</a></li>
-        <li class="active">{{ __('message.view_logs') }}</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li><a href="{{url('settings')}}">{{ trans('message.settings') }}</a></li>
+        <li><a href="{{url('log-viewer')}}">{{ trans('message.dashboard') }}</a></li>
+        <li class="active">{{ trans('message.view_logs') }}</li>
       </ol>
       @stop
 @section('content')
@@ -25,14 +25,14 @@
             {{-- Log Details --}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    {{ __('message.log_info') }} :
+                    {{ trans('message.log_info') }} :
 
                     <div class="group-btns pull-right">
                         <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success">
-                            <i class="fa fa-download"></i> {{ __('message.caps_download') }}
+                            <i class="fa fa-download"></i> {{ trans('message.caps_download') }}
                         </a>
                         <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
-                            <i class="fa fa-trash-o"></i> {{ __('message.caps_delete') }}
+                            <i class="fa fa-trash-o"></i> {{ trans('message.caps_delete') }}
                         </a>
                     </div>
                 </div>
@@ -40,25 +40,25 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr>
-                                <td>{{ __('message.file_path') }}</td>
+                                <td>{{ trans('message.file_path') }}</td>
                                 <td colspan="5">{{ $log->getPath() }}</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ __('message.log_entries') }} </td>
+                                <td>{{ trans('message.log_entries') }} </td>
                                 <td>
                                     <span class="label label-primary">{{ $entries->total() }}</span>
                                 </td>
-                                <td>{{ __('message.size') }}</td>
+                                <td>{{ trans('message.size') }}</td>
                                 <td>
                                     <span class="label label-primary">{{ $log->size() }}</span>
                                 </td>
-                                <td>{{ __('message.created_at') }} :</td>
+                                <td>{{ trans('message.created_at') }} :</td>
                                 <td>
                                     <span class="label label-primary">{{ $log->createdAt() }}</span>
                                 </td>
-                                <td>{{ __('message.updated_at') }} :</td>
+                                <td>{{ trans('message.updated_at') }} :</td>
                                 <td>
                                     <span class="label label-primary">{{ $log->updatedAt() }}</span>
                                 </td>
@@ -71,7 +71,7 @@
                     <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
                         <div class=form-group">
                             <div class="input-group">
-                                <input id="query" name="query" class="form-control"  value="{!! request('query') !!}" placeholder="{{ __('message.typing_something_to_search') }}">
+                                <input id="query" name="query" class="form-control"  value="{!! request('query') !!}" placeholder="{{ trans('message.typing_something_to_search') }}">
                                 <span class="input-group-btn">
                                     @if (request()->has('query'))
                                         <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
@@ -91,7 +91,7 @@
                         {!! $entries->appends(compact('query'))->render() !!}
 
                         <span class="label label-info pull-right">
-                            {{ __('message.page') }} {!! $entries->currentPage() !!} {{ __('message.boot_of') }} {!! $entries->lastPage() !!}
+                            {{ trans('message.page') }} {!! $entries->currentPage() !!} {{ trans('message.boot_of') }} {!! $entries->lastPage() !!}
                         </span>
                     </div>
                 @endif
@@ -100,11 +100,11 @@
                     <table id="entries" class="table table-condensed">
                         <thead>
                             <tr>
-                                <th>{{ __('message.caps_env') }}</th>
-                                <th style="width: 120px;">{{ __('message.level') }}</th>
-                                <th style="width: 65px;">{{ __('message.time') }}</th>
-                                <th>{{ __('message.header') }}</th>
-                                <th class="text-right">{{ __('message.actions') }}</th>
+                                <th>{{ trans('message.caps_env') }}</th>
+                                <th style="width: 120px;">{{ trans('message.level') }}</th>
+                                <th style="width: 65px;">{{ trans('message.time') }}</th>
+                                <th>{{ trans('message.header') }}</th>
+                                <th class="text-right">{{ trans('message.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -129,7 +129,7 @@
                                     <td class="text-right">
                                         @if ($entry->hasStack())
                                             <a class="btn btn-xs btn-default" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
-                                                <i class="fa fa-toggle-on"></i> {{ __('message.stack') }}
+                                                <i class="fa fa-toggle-on"></i> {{ trans('message.stack') }}
                                             </a>
                                         @endif
                                     </td>
@@ -159,7 +159,7 @@
                         {!! $entries->appends(compact('query'))->render() !!}
 
                         <span class="label label-info pull-right">
-                            {{ __('message.page') }} {!! $entries->currentPage() !!} {{ __('message.boot_of') }} {!! $entries->lastPage() !!}
+                            {{ trans('message.page') }} {!! $entries->currentPage() !!} {{ trans('message.boot_of') }} {!! $entries->lastPage() !!}
                         </span>
                     </div>
                 @endif
@@ -183,14 +183,14 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title">{{ __('message.caps_delete_log_file') }}</h4>
+                        <h4 class="modal-title">{{ trans('message.caps_delete_log_file') }}</h4>
                     </div>
                     <div class="modal-body">
-                        <p>{{ __('message.are_you_want') }} <span class="label label-danger">{{ __('message.caps_delete') }}</span> {{ __('message.this_log_file') }} <span class="label label-primary">{{ $log->date }}</span> ?</p>
+                        <p>{{ trans('message.are_you_want') }} <span class="label label-danger">{{ trans('message.caps_delete') }}</span> {{ trans('message.this_log_file') }} <span class="label label-primary">{{ $log->date }}</span> ?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ __('message.cancel') }}</button>
-                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="{{ __('message.loading') }}&hellip;">{{ __('message.caps_delete_file') }}</button>
+                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ trans('message.cancel') }}</button>
+                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="{{ trans('message.loading') }}&hellip;">{{ trans('message.caps_delete_file') }}</button>
                     </div>
                 </div>
             </form>
@@ -221,11 +221,11 @@
                             location.replace("{{ route('log-viewer::logs.list') }}");
                         }
                         else {
-                            alert('{{ __('message.opps_coffee') }}')
+                            alert('{{ trans('message.opps_coffee') }}')
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
-                        alert('{{ __('message.ajax_error_console') }}');
+                        alert('{{ trans('message.ajax_error_console') }}');
                         console.error(errorThrown);
                         submitBtn.button('reset');
                     }

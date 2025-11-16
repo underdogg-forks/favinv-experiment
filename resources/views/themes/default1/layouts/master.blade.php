@@ -200,25 +200,25 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-users"></i>
-                    {{ __('message.users') }}
+                    {{ trans('message.users') }}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('clients')}}" class="sidebar-nav nav-link" id="all_user">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{ __('message.all-users') }}</span>
+                            <span>{{ trans('message.all-users') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('clients/create')}}" class="sidebar-nav nav-link" id="add_user">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{ __('message.add-new') }}</span>
+                            <span>{{ trans('message.add-new') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-nav nav-item">
                         <a href="{{url('deleted-users')}}" class="sidebar-nav nav-link" id="soft_delete_user">
                             <i class="sidebar-nav nav-icon far fa-circle"></i>
-                            <span>{{ __('message.suspended_users') }}</span>
+                            <span>{{ trans('message.suspended_users') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -228,7 +228,7 @@
             <li class="sidebar-nav nav-dropdown">
                 <a href="#" class="sidebar-nav nav-dropdown-toggle">
                     <i class="sidebar-nav nav-icon fas fa-chart-pie"></i>
-                    {{ __('message.orders') }}
+                    {{ trans('message.orders') }}
                 </a>
                 <ul class="sidebar-nav nav-dropdown-items">
                     <li class="sidebar-nav nav-item">
@@ -347,7 +347,7 @@
             
             <ul class="navbar-nav d-md-down-none">
                 <li class="navbar-nav-item px-3">
-                    <a href="{{url('client-dashboard')}}" class="navbar-nav-link">{{ __('message.go_to_client') }}</a>
+                    <a href="{{url('client-dashboard')}}" class="navbar-nav-link">{{ trans('message.go_to_client') }}</a>
                 </li>
             </ul>
             
@@ -392,11 +392,11 @@
                             <strong>{{ucfirst(Auth::user()->first_name)}} {{ucfirst(Auth::user()->last_name)}}</strong>
                         </div>
                         <a class="dropdown-item" href="{{url('/clients/'.Auth::user()->id)}}">
-                            <i class="c-icon fas fa-user"></i> {{ __('message.profile') }}
+                            <i class="c-icon fas fa-user"></i> {{ trans('message.profile') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('logout') }}" 
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="c-icon fas fa-lock"></i> {{ __('message.logout') }}
+                            <i class="c-icon fas fa-lock"></i> {{ trans('message.logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

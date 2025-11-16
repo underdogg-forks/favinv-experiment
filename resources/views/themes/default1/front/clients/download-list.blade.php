@@ -1,6 +1,6 @@
 <!-- Button to trigger modal -->
 <a onclick="getTable({{$productid}}, {{$clientid}}, {{$invoiceid}})" class="btn btn-light-scale-2 btn-sm text-dark" data-toggle="modal" data-target="#list">
-    <i class='fa fa-download' data-toggle="tooltip" title="{{ __('message.click_to_download') }}"></i>&nbsp;
+    <i class='fa fa-download' data-toggle="tooltip" title="{{ trans('message.click_to_download') }}"></i>&nbsp;
 </a>
 
 <style>
@@ -38,8 +38,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:75% !important;">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{ __('message.product_version')}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('message.close') }}">
+                <h5 class="modal-title">{{ trans('message.product_version')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ trans('message.close') }}">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <?php
@@ -57,10 +57,10 @@
                     <table id="version-table" class="table display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th>{{ __('message.version')}}</th>
-                            <th>{{ __('message.title')}}</th>
-                            <th>{{ __('message.description')}}</th>
-                            <th>{{ __('message.file')}}</th>
+                            <th>{{ trans('message.version')}}</th>
+                            <th>{{ trans('message.title')}}</th>
+                            <th>{{ trans('message.description')}}</th>
+                            <th>{{ trans('message.file')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -115,19 +115,19 @@
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
             },
 
             columnDefs: [

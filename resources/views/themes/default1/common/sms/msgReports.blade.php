@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 
 @section('title')
-   {{ __('message.msg_reports') }}
+   {{ trans('message.msg_reports') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.msg_reports') }}</h1>
+        <h1>{{ trans('message.msg_reports') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.msg_reports') }}</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('settings') }}">{{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.msg_reports') }}</li>
         </ol>
     </div>
 @stop
@@ -23,7 +23,7 @@
             <!-- Search -->
             <div class="card card-secondary card-outline {{ request()->all() ? '' : 'collapsed-card' }}">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('message.advance_search') }}</h3>
+                    <h3 class="card-title">{{ trans('message.advance_search') }}</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" id="tip-search" title="Expand">
                             <i id="search-icon" class="fas {{ request()->all() ? 'fa-minus' : 'fa-plus' }}"></i>
@@ -35,25 +35,25 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-3 form-group">
-                                <label for="request_id">{{ __('message.request_id') }}</label>
+                                <label for="request_id">{{ trans('message.request_id') }}</label>
                                 <input type="text" name="request_id" class="form-control" value="{{ old('request_id', request('request_id')) }}">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="full_name">{{ __('message.full_name') }}</label>
+                                <label for="full_name">{{ trans('message.full_name') }}</label>
                                 <input type="text" name="full_name" class="form-control" value="{{ old('full_name', request('full_name')) }}">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="email">{{ __('message.email') }}</label>
+                                <label for="email">{{ trans('message.email') }}</label>
                                 <input type="email" name="email" class="form-control" value="{{ old('email', request('email')) }}">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="mobile_number">{{ __('message.mobile_number') }}</label>
+                                <label for="mobile_number">{{ trans('message.mobile_number') }}</label>
                                 <input type="tel" name="mobile_number" id="mobilenum" class="form-control" value="{{ old('mobile_number', request('mobile_number')) }}">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="status">{{ __('message.status') }}</label>
+                                <label for="status">{{ trans('message.status') }}</label>
                                 <select name="status" class="form-control">
-                                    <option value="">{{ __('message.select_status') }}</option>
+                                    <option value="">{{ trans('message.select_status') }}</option>
                                     @foreach($status->unique('status_label') as $value)
                                         <option value="{{ $value->status_label }}"
                                                 {{ request('status') === (string) $value->status_label ? 'selected' : '' }}>
@@ -63,11 +63,11 @@
                                 </select>
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="failure_reason">{{ __('message.failure_reason') }}</label>
+                                <label for="failure_reason">{{ trans('message.failure_reason') }}</label>
                                 <input type="text" name="failure_reason" class="form-control" value="{{ old('failure_reason', request('failure_reason')) }}">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label for="date_from">{{ __('message.date_from') }}</label>
+                                <label for="date_from">{{ trans('message.date_from') }}</label>
                                 <div class="input-group date" id="date_from_picker" data-target-input="nearest">
                                     <input type="text" name="date_from" class="form-control datetimepicker-input" data-target="#date_from_picker" autocomplete="off" value="{{ old('date_from', request('date_from')) }}" />
                                     <div class="input-group-append" data-target="#date_from_picker" data-toggle="datetimepicker">
@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="col-md-3 form-group">
-                                <label for="date_to">{{ __('message.date_to') }}</label>
+                                <label for="date_to">{{ trans('message.date_to') }}</label>
                                 <div class="input-group date" id="date_to_picker" data-target-input="nearest">
                                     <input type="text" name="date_to" class="form-control datetimepicker-input" data-target="#date_to_picker" autocomplete="off" value="{{ old('date_to', request('date_to')) }}" />
                                     <div class="input-group-append" data-target="#date_to_picker" data-toggle="datetimepicker">
@@ -87,8 +87,8 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i> {{ __('message.search') }}</button>
-                        <a href="{{ url()->current() }}" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> {{ __('message.reset') }}</a>
+                        <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i> {{ trans('message.search') }}</button>
+                        <a href="{{ url()->current() }}" class="btn btn-secondary"><i class="fas fa-sync-alt"></i> {{ trans('message.reset') }}</a>
                     </form>
                 </div>
             </div>
@@ -101,14 +101,14 @@
             <table id="msg-report-table" class="table display dt-responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>{{ __('message.request_id') }}</th>
-                    <th>{{ __('message.user') }}</th>
-                    <th>{{ __('message.email') }}</th>
-                    <th>{{ __('message.mobile_number') }}</th>
-                    <th>{{ __('message.status') }}</th>
-                    <th>{{ __('message.failure_reason') }}</th>
-                    <th>{{ __('message.date') }}</th>
-                    <th>{{ __('message.created_at') }}</th>
+                    <th>{{ trans('message.request_id') }}</th>
+                    <th>{{ trans('message.user') }}</th>
+                    <th>{{ trans('message.email') }}</th>
+                    <th>{{ trans('message.mobile_number') }}</th>
+                    <th>{{ trans('message.status') }}</th>
+                    <th>{{ trans('message.failure_reason') }}</th>
+                    <th>{{ trans('message.date') }}</th>
+                    <th>{{ trans('message.created_at') }}</th>
                 </tr>
                 </thead>
             </table>
@@ -142,20 +142,20 @@
                     }
                 },
                 language: {
-                    search: "<span style='margin-right: 10px;'>{{ __('message.table_search') }}</span>",
-                    processing: '<div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading_records') }}</div></div>',
+                    search: "<span style='margin-right: 10px;'>{{ trans('message.table_search') }}</span>",
+                    processing: '<div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading_records') }}</div></div>',
                     paginate: {
-                        first:      "{{ __('message.paginate_first') }}",
-                        last:       "{{ __('message.paginate_last') }}",
-                        next:       "{{ __('message.paginate_next') }}",
-                        previous:   "{{ __('message.paginate_previous') }}"
+                        first:      "{{ trans('message.paginate_first') }}",
+                        last:       "{{ trans('message.paginate_last') }}",
+                        next:       "{{ trans('message.paginate_next') }}",
+                        previous:   "{{ trans('message.paginate_previous') }}"
                     },
-                    emptyTable:     "{{ __('message.empty_table') }}",
-                    info:           "{{ __('message.datatable_info') }}",
-                    zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                    infoEmpty:      "{{ __('message.info_empty') }}",
-                    infoFiltered:   "{{ __('message.info_filtered') }}",
-                    lengthMenu:     "{{ __('message.length_menu') }}",
+                    emptyTable:     "{{ trans('message.empty_table') }}",
+                    info:           "{{ trans('message.datatable_info') }}",
+                    zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                    infoEmpty:      "{{ trans('message.info_empty') }}",
+                    infoFiltered:   "{{ trans('message.info_filtered') }}",
+                    lengthMenu:     "{{ trans('message.length_menu') }}",
                 },
                 columnDefs: [{
                     targets: 'no-sort',
@@ -251,7 +251,7 @@
             });
 
             $('.dataTables_filter').append(`
-     <button id="refresh-table-btn" class="btn btn-link p-2" data-toggle="tooltip" title="{{ __('message.refresh_table') }}" style="text-decoration: none;">
+     <button id="refresh-table-btn" class="btn btn-link p-2" data-toggle="tooltip" title="{{ trans('message.refresh_table') }}" style="text-decoration: none;">
          <i class="fas fa-sync-alt text-secondary" id="refresh-icon" style="font-size: 1.2rem; transition: transform 0.5s ease;"></i>
      </button>
  `);

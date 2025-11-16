@@ -85,11 +85,11 @@ class ResetPasswordController extends Controller
             'password' => ['required', 'confirmed', new StrongPassword()],
             'reset' => [new Honeypot()],
         ], [
-            'token.required' => __('validation.token_validation.token_required'),
-            'email.required' => __('validation.custom_email.required'),
-            'email.email' => __('validation.custom_email.email'),
-            'password.required' => __('validation.token_validation.password_required'),
-            'password.confirmed' => __('validation.token_validation.password_confirmed'),
+            'token.required' => trans('validation.token_validation.token_required'),
+            'email.required' => trans('validation.custom_email.required'),
+            'email.email' => trans('validation.custom_email.email'),
+            'password.required' => trans('validation.token_validation.password_required'),
+            'password.confirmed' => trans('validation.token_validation.password_confirmed'),
         ]);
 
         try {
@@ -100,12 +100,12 @@ class ResetPasswordController extends Controller
             $passwordToken = \App\Model\User\Password::where('email', $email)->first();
 
             if (! $passwordToken || $passwordToken->token !== $token) {
-                return errorResponse(__('message.cannot_reset_password_invalid'));
+                return errorResponse(trans('message.cannot_reset_password_invalid'));
             }
 
             $user = \App\User::where('email', $email)->first();
             if (! $user) {
-                return errorResponse(__('message.user_cannot_identifer'));
+                return errorResponse(trans('message.user_cannot_identifer'));
             }
 
             // Begin atomic transaction
@@ -122,9 +122,9 @@ class ResetPasswordController extends Controller
                 \DB::table('password_resets')->where('email', $user->email)->delete();
             });
 
-            \Session::flash('success', __('message.password_changed_successfully'));
+            \Session::flash('success', trans('message.password_changed_successfully'));
 
-            return successResponse(__('message.password_changed_successfully'), ['redirect' => url('login')]);
+            return successResponse(trans('message.password_changed_successfully'), ['redirect' => url('login')]);
         } catch (\Exception $ex) {
             return errorResponse($ex->getMessage());
         }

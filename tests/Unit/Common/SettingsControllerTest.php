@@ -150,7 +150,7 @@ class SettingsControllerTest extends DBTestCase
         $response->assertStatus(200)
             ->assertJson([
                 'success' => true,
-                'message' => __('message.contact_setting_update'),
+                'message' => trans('message.contact_setting_update'),
             ]);
 
         $this->assertDatabaseHas('status_settings', [

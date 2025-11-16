@@ -17,8 +17,8 @@ class ValidateSecretRequest extends Request
     public function messages()
     {
         return[
-            'totp.required' => __('validation.validate_secret.totp.required'),
-            'totp.digits' => __('validation.validate_secret.totp.digits'),
+            'totp.required' => trans('validation.validate_secret.totp.required'),
+            'totp.digits' => trans('validation.validate_secret.totp.digits'),
         ];
     }
 }

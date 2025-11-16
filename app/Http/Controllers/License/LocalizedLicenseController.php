@@ -149,14 +149,14 @@ class LocalizedLicenseController extends Controller
             $encrypt->generateKeys($orderNo);
             Order::where('number', $orderNo)->update(['license_mode' => 'File']);
 
-            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success', trans('Private and Public Keys generated for this order number: '.$orderNo));
+            return response()->json(['success' => trans('message.status_change_successfully')]); //return redirect()->back()->with('success', trans('Private and Public Keys generated for this order number: '.$orderNo));
         } else {
             Order::where('number', $orderNo)->update(['license_mode' => 'Database']);
             Storage::disk('public')->delete('publicKey-'.$orderNo.'.txt');
             Storage::disk('public')->delete('privateKey-'.$orderNo.'.txt');
             Storage::disk('public')->delete('faveo-license-{'.$orderNo.'}.txt');
 
-            return response()->json(['success' => __('message.status_change_successfully')]); //return redirect()->back()->with('success',trans('Reverted back to database license mode' .$orderNo));
+            return response()->json(['success' => trans('message.status_change_successfully')]); //return redirect()->back()->with('success',trans('Reverted back to database license mode' .$orderNo));
         }
     }
 

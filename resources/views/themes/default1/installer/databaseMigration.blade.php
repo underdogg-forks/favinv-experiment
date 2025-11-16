@@ -507,7 +507,7 @@
             @endif
             <button class="btn btn-primary" id="previous" onclick="window.location.href='{{ URL::route('db-setup') }}'">
                 <i class="fas {{ in_array(app()->getLocale(), ['ar', 'he']) ? 'fa-arrow-left' : 'fa-arrow-right' }} previous"></i>&nbsp;
-                &nbsp; {{ __('installer_messages.previous')}}</a>
+                &nbsp; {{ trans('installer_messages.previous')}}</a>
             </button>
 
                 <button class="btn btn-primary float-right" onclick="proceed('start')" id="continue" disabled>

@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 
 @section('title')
-    {{ __('message.language') }}
+    {{ trans('message.language') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.language') }}</h1>
+        <h1>{{ trans('message.language') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.language') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.language') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -128,17 +128,17 @@ input:checked + .slider:before {
                         <div id="Localized-license-table_processing" class="dataTables_processing" style="display: none;">
                             <div class="overlay">
                                 <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                                <div class="text-bold pt-2">{{ __('message.loading') }}</div>
+                                <div class="text-bold pt-2">{{ trans('message.loading') }}</div>
                             </div>
                         </div>
                         <table id="language-table" class="table display dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="language-app-table_info">
                             <thead>
                                 <tr>
-                                    <th>{{ __('message.language') }}</th>
-                                    <th>{{ __('message.native_name') }}</th>
-                                    <th>{{ __('message.iso_code') }}</th>
-                                    <th>{{ __('message.system_default') }}</th>
-                                    <th>{{ __('message.action') }} &nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ __('message.langugae_toggle') }}" data-original-title=""></i></th>
+                                    <th>{{ trans('message.language') }}</th>
+                                    <th>{{ trans('message.native_name') }}</th>
+                                    <th>{{ trans('message.iso_code') }}</th>
+                                    <th>{{ trans('message.system_default') }}</th>
+                                    <th>{{ trans('message.action') }} &nbsp;<i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{ trans('message.langugae_toggle') }}" data-original-title=""></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -183,9 +183,9 @@ input:checked + .slider:before {
                                     <td>{{ $language->locale ?? '' }}</td>
                                     <td>
                                         @if($defaultLang === $language->locale)
-                                            <div class="btn btn-default language-btn text-success">{{ __('message.yes') }}</div>
+                                            <div class="btn btn-default language-btn text-success">{{ trans('message.yes') }}</div>
                                         @else
-                                            <div class="btn btn-default language-btn text-danger">{{ __('message.no') }}</div>
+                                            <div class="btn btn-default language-btn text-danger">{{ trans('message.no') }}</div>
                                         @endif
                                     </td>
                                     <td>
@@ -219,22 +219,22 @@ input:checked + .slider:before {
     $(document).ready(function() {
 
         $('#language-table').DataTable({
-            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "{{ __('message.paginate_all') }}"]],
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "{{ trans('message.paginate_all') }}"]],
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
             },
             drawCallback: function(settings) {
                 // Reinitialize tooltips on each draw

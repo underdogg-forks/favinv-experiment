@@ -37,16 +37,16 @@ class TaxRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => __('validation.tax_form.name.required'),
-            'rate.required' => __('validation.tax_form.rate.required'),
-            'rate.numeric' => __('validation.tax_form.rate.numeric'),
-            'level.required' => __('validation.tax_form.level.required'),
-            'level.integer' => __('validation.tax_form.level.integer'),
-            'country.required' => __('validation.tax_form.country.required'),
-            'state.required' => __('validation.tax_form.state.required'),
+            'name.required' => trans('validation.tax_form.name.required'),
+            'rate.required' => trans('validation.tax_form.rate.required'),
+            'rate.numeric' => trans('validation.tax_form.rate.numeric'),
+            'level.required' => trans('validation.tax_form.level.required'),
+            'level.integer' => trans('validation.tax_form.level.integer'),
+            'country.required' => trans('validation.tax_form.country.required'),
+            'state.required' => trans('validation.tax_form.state.required'),
             // Optional if you enable exists validation
-            // 'country.exists' => __('validation.tax_form.country.exists'),
-            // 'state.exists' => __('validation.tax_form.state.exists'),
+            // 'country.exists' => trans('validation.tax_form.country.exists'),
+            // 'state.exists' => trans('validation.tax_form.state.exists'),
         ];
     }
 }

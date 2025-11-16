@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
- {{ __('message.activity_log') }}
+ {{ trans('message.activity_log') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.activity_logs') }}</h1>
+        <h1>{{ trans('message.activity_logs') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.activity_log') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.activity_log') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -25,7 +25,7 @@
 
                    <div class="card-tools">
 
-            <button type="button" class="btn btn-tool" id="tip-search" title="{{ __('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
+            <button type="button" class="btn btn-tool" id="tip-search" title="{{ trans('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
                             </button>
             
         </div>
@@ -40,7 +40,7 @@
            
             <div class="col-md-6 col-sm-6 col-lg-3 form-group">
                 <!-- first name -->
-                {!! html()->label( __('message.view_logs_from'))->for('from') !!}
+                {!! html()->label( trans('message.view_logs_from'))->for('from') !!}
                 <div class="input-group date" id="log_from" data-target-input="nearest">
                     <input type="text" name="from" value="{{$from}}" id="from" class="form-control datetimepicker-input" autocomplete="off"  data-target="#log_from"/>
 
@@ -53,7 +53,7 @@
             </div>
             <div class="col-md-6 col-sm-6 col-lg-3 form-group">
                 <!-- first name -->
-                {!! html()->label( __('message.view_logs_till'))->for('till') !!}
+                {!! html()->label( trans('message.view_logs_till'))->for('till') !!}
 
                 <div class="input-group date" id="log_till" data-target-input="nearest">
                     <input type="text" name="till" value="{{$till}}" id="till" class="form-control datetimepicker-input" autocomplete="off"  data-target="#log_till"/>
@@ -70,10 +70,10 @@
 
 
                 <div class="col-md-12">
-                    <!-- {!! html()->submit( __('message.search'))->class('btn btn-primary') !!} -->
-                      <button name="Search" type="submit"  class="btn btn-secondary" data-loading-text="<i class='fa fa-search fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-search">&nbsp;</i>{!!trans('message.apply')!!}</button>
-                    <!-- {!! html()->submit( __('message.reset'))->class('btn btn-danger')->id('reset') !!} -->
-                     <button name="Reset" type="submit" id="reset" class="btn btn-secondary" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ __('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.reset')!!}</button>
+                    <!-- {!! html()->submit( trans('message.search'))->class('btn btn-primary') !!} -->
+                      <button name="Search" type="submit"  class="btn btn-secondary" data-loading-text="<i class='fa fa-search fa-spin fa-1x fa-fw'>&nbsp;</i> {{ trans('message.updating') }}"><i class="fa fa-search">&nbsp;</i>{!!trans('message.apply')!!}</button>
+                    <!-- {!! html()->submit( trans('message.reset'))->class('btn btn-danger')->id('reset') !!} -->
+                     <button name="Reset" type="submit" id="reset" class="btn btn-secondary" data-loading-text="<i class='fa fa-refresh fa-spin fa-1x fa-fw'>&nbsp;</i> {{ trans('message.updating') }}"><i class="fa fa-sync-alt">&nbsp;</i>{!!trans('message.reset')!!}</button>
 
 
                 </div>
@@ -108,16 +108,16 @@
           <div class="col-md-12">
             <table id="activity-table" class="table display" cellspacing="0"  styleClass="borderless">
                     <thead><tr>
-                            <th>{{ __('message.module') }}</th>
-                            <th>{{ __('message.description_event') }}</th>
-                             <th>{{ __('message.name_page') }}</th>
-                              <th>{{ __('message.role') }}</th>
+                            <th>{{ trans('message.module') }}</th>
+                            <th>{{ trans('message.description_event') }}</th>
+                             <th>{{ trans('message.name_page') }}</th>
+                              <th>{{ trans('message.role') }}</th>
                             <!-- <th>Subject id</th> -->
                             <!-- <th>Subject type</th> -->
 
-                            <th>{{ __('message.previous') }}</th>
-                            <th>{{ __('message.updated') }}</th>
-                            <th>{{ __('message.date') }}</th>
+                            <th>{{ trans('message.previous') }}</th>
+                            <th>{{ trans('message.updated') }}</th>
+                            <th>{{ trans('message.date') }}</th>
                     </tr></thead>
 
                    </table>
@@ -170,23 +170,23 @@
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
                 "sSearch"    : "Search: ",
-                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading_records') }}</div></div>'
+                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading_records') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
             },
             columnDefs: [
                 { 

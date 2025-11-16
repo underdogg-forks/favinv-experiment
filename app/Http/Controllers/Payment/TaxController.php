@@ -119,7 +119,7 @@ class TaxController extends Controller
 
                             ->addColumn('action', function ($model) {
                                 return '<a href='.url('tax/'.$model->id.'/edit').
-                                " class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit' 
+                                " class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit' 
                                 style='color:white;'> </i></a>";
                             })
                             ->filterColumn('tax_classes_id', function ($query, $keyword) {
@@ -222,8 +222,8 @@ class TaxController extends Controller
                 'rate' => 'required|numeric',
             ],
                 [
-                    'rate.required' => __('validation.rate.required'),
-                    'rate.numeric' => __('validation.rate.numeric'),
+                    'rate.required' => trans('validation.rate.required'),
+                    'rate.numeric' => trans('validation.rate.numeric'),
                 ]);
         }
         try {
@@ -332,12 +332,12 @@ class TaxController extends Controller
             $id = $stateid;
             $states = \App\Model\Common\State::where('country_code_char2', $id)
             ->orderBy('state_subdivision_name', 'asc')->get();
-            echo '<option value="">'.__('message.choose').'</option>';
+            echo '<option value="">'.trans('message.choose').'</option>';
             foreach ($states as $state) {
                 echo '<option value='.$state->state_subdivision_code.'>'.$state->state_subdivision_name.'</option>';
             }
         } catch (\Exception $ex) {
-            echo "<option value=''>".__('message.problem_while_loading').'</option>';
+            echo "<option value=''>".trans('message.problem_while_loading').'</option>';
 
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -347,7 +347,7 @@ class TaxController extends Controller
     {
         $this->tax_option->find(1)->fill($request->input())->save();
 
-        return redirect()->back()->with('success', __('message.tax_settings_saved_successfully'));
+        return redirect()->back()->with('success', trans('message.tax_settings_saved_successfully'));
     }
 
     /**
@@ -367,8 +367,8 @@ class TaxController extends Controller
                 'rate' => 'required|numeric',
             ],
                 [
-                    'rate.required' => __('validation.rate.required'),
-                    'rate.numeric' => __('validation.rate.numeric'),
+                    'rate.required' => trans('validation.rate.required'),
+                    'rate.numeric' => trans('validation.rate.numeric'),
                 ]);
         }
 

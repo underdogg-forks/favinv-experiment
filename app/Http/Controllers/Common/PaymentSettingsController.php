@@ -35,12 +35,12 @@ class PaymentSettingsController extends Controller
                             if (array_has($model, 'path')) {
                                 if ($model['status'] == 0) {
                                     $activate = '<form method="post" action='.url('plugin/status/'.$model['name']).'>'.'<input type="hidden" name="_token" value='.\Session::token().'>'.'
-                                    <button type="submit" class="btn btn-secondary btn-sm btn-xs" '.tooltip(__('message.activate')).'<i class="fa fa-tasks" style="color:white;"></i></button></form>';
+                                    <button type="submit" class="btn btn-secondary btn-sm btn-xs" '.tooltip(trans('message.activate')).'<i class="fa fa-tasks" style="color:white;"></i></button></form>';
                                     $settings = ' ';
                                 } else {
-                                    $settings = '<a href='.url($model['settings']).' class="btn btn-secondary btn-sm btn-xs" '.tooltip(__('message.settings')).'<i class="nav-icon fa fa-fw fa-cogs" style="color:white;"></i></a>';
+                                    $settings = '<a href='.url($model['settings']).' class="btn btn-secondary btn-sm btn-xs" '.tooltip(trans('message.settings')).'<i class="nav-icon fa fa-fw fa-cogs" style="color:white;"></i></a>';
                                     $activate = '<form method="post" action='.url('plugin/status/'.$model['name']).'>'.'<input type="hidden" name="_token" value='.\Session::token().'>'.'
-                                    <button type="submit" class="btn btn-secondary btn-sm btn-xs" '.tooltip(__('message.deactivate')).'<i class="fa fa-tasks" style="color:white;"></i></button></form>';
+                                    <button type="submit" class="btn btn-secondary btn-sm btn-xs" '.tooltip(trans('message.deactivate')).'<i class="fa fa-tasks" style="color:white;"></i></button></form>';
                                 }
 
                                 $delete = '<a href=  id=delete'.$model['name'].' class="btn btn-secondary btn-sm" data-toggle=modal data-target=#del'.$model['name']."><span style='color:white'><i class='fa fa-trash' style='color:white;'></i></span></a>"
@@ -171,7 +171,7 @@ class PaymentSettingsController extends Controller
             file_put_contents($app, implode("\n", $lines));
             $plugs->create(['name' => $slug, 'path' => $slug, 'status' => 1]);
 
-            return redirect()->back()->with('success', __('message.status_changed'));
+            return redirect()->back()->with('success', trans('message.status_changed'));
         }
         $status = $plug->status;
 
@@ -199,7 +199,7 @@ class PaymentSettingsController extends Controller
 
         $plug->save();
 
-        return redirect()->back()->with('success', __('message.status_changed'));
+        return redirect()->back()->with('success', trans('message.status_changed'));
     }
 
     public function postPlugins(Request $request)
@@ -246,7 +246,7 @@ class PaymentSettingsController extends Controller
                     file_put_contents($app, implode("\n", $lines));
                     $plug->create(['name' => $filename, 'path' => $filename, 'status' => 1]);
 
-                    return redirect()->back()->with('success', __('message.installed_successfully'));
+                    return redirect()->back()->with('success', trans('message.installed_successfully'));
                 } else {
                     /*
                      * delete if the plugin hasn't config.php and ServiceProvider.php
@@ -261,7 +261,7 @@ class PaymentSettingsController extends Controller
                  */
                 $this->deleteDirectory($file);
 
-                return redirect()->back()->with('fails', __('message.file_missing', ['file' => $file]));
+                return redirect()->back()->with('fails', trans('message.file_missing', ['file' => $file]));
             }
         } else {
             /*
@@ -269,7 +269,7 @@ class PaymentSettingsController extends Controller
              */
             $this->deleteDirectory($file);
 
-            return redirect()->back()->with('fails', '<b>'.__('message.plugin_file_path_not_exist').'</b> '.$file);
+            return redirect()->back()->with('fails', '<b>'.trans('message.plugin_file_path_not_exist').'</b> '.$file);
         }
     }
 
@@ -332,7 +332,7 @@ class PaymentSettingsController extends Controller
             $plugin->delete();
         }
 
-        return redirect()->back()->with('success', __('message.deleted-successfully'));
+        return redirect()->back()->with('success', trans('message.deleted-successfully'));
     }
 
     public function updatePaymentStatus(Request $request)

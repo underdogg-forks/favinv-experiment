@@ -60,13 +60,13 @@ class ClientController extends AdvanceSearchController
             'reg_till' => 'nullable|after:reg_from',
         ],
             [
-                'reg_till.after' => __('validation.reg_till_after'),
+                'reg_till.after' => trans('validation.reg_till_after'),
             ]);
         if ($validator->fails()) {
             $request->reg_from = '';
             $request->reg_till = '';
 
-            return redirect('clients')->with('fails', __('message.registered_till_date'));
+            return redirect('clients')->with('fails', trans('message.registered_till_date'));
         }
 
         $users = User::select('id', 'first_name', 'last_name', 'email', 'position')
@@ -111,12 +111,12 @@ class ClientController extends AdvanceSearchController
                             $isSalesManager = User::where('manager', $model->id)->get();
                             if (count($isSalesManager)) {
                                 return "<input type='checkbox' disabled> &nbsp;
-                        <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188);' ".'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.__('message.existing_sales_manager_deleting').'">
+                        <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188);' ".'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.trans('message.existing_sales_manager_deleting').'">
                         </label>'.'</i>';
                             } elseif (count($isAccountManager)) {
                                 // dd("<input type='checkbox' ".tooltip('dsf')."'disabled'");
                                 return "<input type='checkbox' disabled> &nbsp;
-                        <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188);' ".'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.__('message.existing_account_manager_deleting').'">
+                        <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188);' ".'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="'.trans('message.existing_account_manager_deleting').'">
                         </label>'.'</i>';
                             } else {
                                 return "<input type='checkbox' class='user_checkbox' value=".$model->id.' name=select[] id=check>';
@@ -145,10 +145,10 @@ class ClientController extends AdvanceSearchController
                         })
                         ->addColumn('action', function ($model) {
                             return '<a href='.htmlspecialchars(url('clients/'.$model->id.'/edit'))
-                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."
+                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."
                             <i class='fa fa-edit' style='color:white;'> </i></a>"
                                     .'  <a href='.htmlspecialchars(url('clients/'.$model->id))
-                                    ." class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.view'))."
+                                    ." class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.view'))."
                                     <i class='fa fa-eye' style='color:white;'> </i></a>";
                         })
 
@@ -297,7 +297,7 @@ class ClientController extends AdvanceSearchController
             return redirect()->back()->with('success', \trans('message.saved-successfully'));
         } catch (\Swift_TransportException $e) {
             return redirect()->back()->with('warning',
-                __('message.user_created_but_email_problem').$e->getMessage());
+                trans('message.user_created_but_email_problem').$e->getMessage());
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }
@@ -461,12 +461,12 @@ class ClientController extends AdvanceSearchController
                     $isAccountManager = User::where('account_manager', $id)->get();
                     $isSalesManager = User::where('manager', $id)->get();
                     if (count($isSalesManager) > 0) {
-                        throw new \Exception(__('message.admin_delete_restricted', [
+                        throw new \Exception(trans('message.admin_delete_restricted', [
                             'name' => $user->first_name.' '.$user->last_name,
                         ]));
                     }
                     if (count($isAccountManager) > 0) {
-                        throw new \Exception(__('message.cannot_delete_admin', [
+                        throw new \Exception(trans('message.cannot_delete_admin', [
                             'name' => $user->first_name.' '.$user->last_name,
                         ]));
                     }
@@ -601,12 +601,12 @@ class ClientController extends AdvanceSearchController
                 app('queue')->setDefaultDriver($driver->short_name);
                 ReportExport::dispatch('users', $selectedColumns, $searchParams, $email)->onQueue('reports');
 
-                return response()->json(['message' => __('message.system_generating_report')], 200);
+                return response()->json(['message' => trans('message.system_generating_report')], 200);
             } else {
-                return response()->json(['message' => __('message.cannot_sync_queue_driver')], 400);
+                return response()->json(['message' => trans('message.cannot_sync_queue_driver')], 400);
             }
         } catch (\Exception $e) {
-            \Log::error(__('message.export_failed').$e->getMessage());
+            \Log::error(trans('message.export_failed').$e->getMessage());
 
             return response()->json(['message' => $e->getMessage()], 500);
         }
@@ -682,7 +682,7 @@ class ClientController extends AdvanceSearchController
             }
         }
 
-        return response()->json(['message' => __('message.columns_saved_successfully.')]);
+        return response()->json(['message' => trans('message.columns_saved_successfully.')]);
     }
 
     public function getColumns(Request $request)

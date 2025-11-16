@@ -345,6 +345,6 @@ class BaseSettingsController extends PaymentSettingsController
             'v3captcha_secretCheck' => $captcha_secretCheck,
         ]);
 
-        return ['message' => 'success', 'update' => __('message.recaptcha_settings_updated')];
+        return ['message' => 'success', 'update' => trans('message.recaptcha_settings_updated')];
     }
 }

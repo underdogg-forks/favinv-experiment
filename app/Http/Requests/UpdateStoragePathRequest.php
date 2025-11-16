@@ -22,10 +22,10 @@ class UpdateStoragePathRequest extends FormRequest
     public function messages()
     {
         return [
-            'disk.required' => __('validation.storage_path.disk.required'),
-            'disk.string' => __('validation.storage_path.disk.string'),
-            'path.string' => __('validation.storage_path.path.string'),
-            'path.nullable' => __('validation.storage_path.path.nullable'),
+            'disk.required' => trans('validation.storage_path.disk.required'),
+            'disk.string' => trans('validation.storage_path.disk.string'),
+            'path.string' => trans('validation.storage_path.path.string'),
+            'path.nullable' => trans('validation.storage_path.path.nullable'),
         ];
     }
 }

@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.create_invoice') }}
+    {{ trans('message.create_invoice') }}
 @stop
 @section('content-header')
     <div class="col-sm-6 md-6">
-        <h1>{{ __('message.generate_an_invoice') }}</h1>
+        <h1>{{ trans('message.generate_an_invoice') }}</h1>
     </div>
     <div class="col-sm-6 md-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('clients')}}"> {{ __('message.all-users') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('invoices')}}">{{ __('message.view_invoices') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.generate_invoice') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('clients')}}"> {{ trans('message.all-users') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('invoices')}}">{{ trans('message.view_invoices') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.generate_invoice') }}</li>
         </ol>
     </div><!-- /.col -->
 
@@ -87,7 +87,7 @@
                 <div class="col-md-4 lg-4 form-group">
                     {!! html()->label(trans('message.product'))->for('product')->class('required') !!}
                      <select name="product" value= "Choose" id="product" class="form-control {{$errors->has('product') ? ' is-invalid' : ''}}">
-                             <option value="">{{ __('message.choose') }}</option>
+                             <option value="">{{ trans('message.choose') }}</option>
                            @foreach($products as $key=>$product)
                               <option value={{$key}}>{{$product}}</option>
                           @endforeach
@@ -113,7 +113,7 @@
                     @enderror
                 </div>
                 <div class="col-md-4 form-group">
-                    {!! html()->label(__('message.coupon-code'))->for('code') !!}
+                    {!! html()->label(trans('message.coupon-code'))->for('code') !!}
                     {!! html()->text('code')->class('form-control'. ($errors->has('code') ? ' is-invalid' : '')) !!}
                     <span class="error-message" id="code-msg"></span>
                 </div>
@@ -364,8 +364,8 @@
             url: "{{url('get-subscription')}}" + '/' + val,
             success: function (data) {
                 if(data[0] == 'Product cannot be added to cart. No plan exists.') {
-                       var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ __('message.whoops') }}! </strong>{{ __('message.something_wrong') }}<ul>';
-                    html += '<li> {!! json_encode(__('message.add_plan_product')) !!} </li>';
+                       var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ trans('message.whoops') }}! </strong>{{ trans('message.something_wrong') }}<ul>';
+                    html += '<li> {!! json_encode(trans('message.add_plan_product')) !!} </li>';
                     html += '</ul></div>';
                  $('#error').show();
                     setTimeout(function(){
@@ -453,7 +453,7 @@
             }
         }
         data = data + '&plan=' + plan + '&subscription=' + subscription+'&description='+description;
-        $("#generate").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+        $("#generate").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
 
         $.ajax({
             type: "POST",
@@ -461,13 +461,13 @@
             data: data,
             success: function (data) {
 
-                $("#generate").html("<i class='fas fa-sync-alt'>&nbsp;&nbsp;</i>{{ __('message.generate') }}");
+                $("#generate").html("<i class='fas fa-sync-alt'>&nbsp;&nbsp;</i>{{ trans('message.generate') }}");
                 // $('#formoid')[0].reset();             
                 if(data.success == true) {
                     $('#fails').hide();
                         $('#error').hide();
                         $('#successs').show();
-                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ __('message.success') }}! </strong>'+data.message.success+'!</div>';
+                    var result =  '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong><i class="fa fa-check"></i>{{ trans('message.success') }}! </strong>'+data.message.success+'!</div>';
                     $('#successs').html(result);
                     setTimeout(function(){
                         $("#successs").slideUp(1000);
@@ -482,12 +482,12 @@
                 $('#datepicker').val('');
                 $('#datepicker').val(dateFormat);
 
-                $("#generate").html("<i class='fas fa-sync-alt'>&nbsp;&nbsp;</i>{{ __('message.generate') }}");
+                $("#generate").html("<i class='fas fa-sync-alt'>&nbsp;&nbsp;</i>{{ trans('message.generate') }}");
                 if(response.responseJSON.success == false) {
-                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ __('message.whoops') }}! </strong>{{ __('message.something_wrong') }}<ul>';
+                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ trans('message.whoops') }}! </strong>{{ trans('message.something_wrong') }}<ul>';
                     html += '<li>' + response.responseJSON.message[0] + '</li>'
                 } else {
-                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ __('message.whoops') }}! </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                    var html = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ trans('message.whoops') }}! </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                 for (var key in response.responseJSON.errors)
                 {
                     html += '<li>' + response.responseJSON.errors[key][0] + '</li>'
@@ -520,7 +520,7 @@
     })
 
         $('#users').select2({
-        placeholder: "{{ __('message.search') }}",
+        placeholder: "{{ trans('message.search') }}",
         minimumInputLength: 1,
         maximumSelectionLength: 1,
         ajax: {

@@ -1,18 +1,18 @@
 @extends('themes.default1.layouts.master')
 
 @section('title')
-    {{ __('message.social_logins') }}
+    {{ trans('message.social_logins') }}
 @stop
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.social_logins') }}</h1>
+        <h1>{{ trans('message.social_logins') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.social_logins') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.social_logins') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -59,15 +59,15 @@
                         <div id="Localized-license-table_processing" class="dataTables_processing" style="display: none;">
                             <div class="overlay">
                                 <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-                                <div class="text-bold pt-2">{{ __('message.loading') }}</div>
+                                <div class="text-bold pt-2">{{ trans('message.loading') }}</div>
                             </div>
                         </div>
                         <table id="social-table" class="table display dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="third-party-app-table_info">
                             <thead>
                                 <tr>
-                                    <th>{{ __('message.provider') }}</th>
-                                    <th>{{ __('message.status') }}</th>
-                                    <th>{{ __('message.action') }}</th>
+                                    <th>{{ trans('message.provider') }}</th>
+                                    <th>{{ trans('message.status') }}</th>
+                                    <th>{{ trans('message.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,9 +76,9 @@
                                     <td>{{$item->type}}</td>
                                     <td>
                                         @if($item->status == 1)
-                                            <span class="badge bg-success text-white p-2">{{ __('message.active') }}</span>
+                                            <span class="badge bg-success text-white p-2">{{ trans('message.active') }}</span>
                                         @else
-                                            <span class="badge bg-danger text-white p-2">{{ __('message.deactive') }}</span>
+                                            <span class="badge bg-danger text-white p-2">{{ trans('message.deactive') }}</span>
                                     @endif
                                     <td>
                                         <a href="edit/SocialLogins/{{$item->id}}" class="btn btn-secondary a-btn-slide-text">
@@ -107,18 +107,18 @@
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                search:         "{{ __('message.datatable_search') }} ",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                search:         "{{ trans('message.datatable_search') }} ",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
             },
         });
     });

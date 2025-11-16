@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
- {{ __('message.edit_product_uploads') }}
+ {{ trans('message.edit_product_uploads') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.edit_product_upload') }}</h1>
+        <h1>{{ trans('message.edit_product_upload') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('products')}}"><i class="fa fa-dashboard"></i> {{ __('message.all_products') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_product_upload') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('products')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all_products') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_product_upload') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -19,7 +19,7 @@
     <div class="card-header">
 
         {!! html()->modelForm($model,'PATCH', url('upload/' . $model->id))->open() !!}
-        <h4>{{ __('message.edit_product') }}</h4>
+        <h4>{{ trans('message.edit_product') }}</h4>
 
     </div>
 
@@ -58,7 +58,7 @@
 
                     <div class="col-md-12 form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                         <i class="fa fa-info-circle" style="cursor: help; font-size: small; color: rgb(60, 141, 188);">
-                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.enter_json_format') }}"></label>
+                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.enter_json_format') }}"></label>
                         </i>
                         {!! html()->label(trans('message.dependencies'))->class('required')->for('dependencies') !!}
                         {!! html()->textarea('dependencies')->class('form-control')->rows(5) !!}
@@ -67,25 +67,25 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('is_private') ? 'has-error' : '' }}">
                         <i class="fa fa-info-circle" style="cursor: help; font-size: small; color: rgb(60, 141, 188);">
-                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.release_private') }}"></label>
+                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.release_private') }}"></label>
                         </i>
-                        {!! html()->label( __('message.private_release'))->for('is_private') !!}
+                        {!! html()->label( trans('message.private_release'))->for('is_private') !!}
                         {!! html()->checkbox('is_private', null ,1) !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('release_type') ? 'has-error' : '' }}">
                         <i class="fa fa-info-circle" style="cursor: help; font-size: small; color: rgb(60, 141, 188);">
-                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.pre_release_private') }}"></label>
+                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.pre_release_private') }}"></label>
                         </i>
-                        {!! html()->label( __('message.releases'))->for('release_type') !!}
+                        {!! html()->label( trans('message.releases'))->for('release_type') !!}
                         {!! html()->select('release_type', ['official' => 'Official', 'pre_release' => 'Pre Release', 'beta' => 'Beta'], $model->release_type) !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('is_restricted') ? 'has-error' : '' }}">
                         <i class="fa fa-info-circle" style="cursor: help; font-size: small; color: rgb(60, 141, 188);">
-                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.update_restricted') }}"></label>
+                            <label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.update_restricted') }}"></label>
                         </i>
-                        {!! html()->label( __('message.restrict_update'))->for('is_restricted') !!}
+                        {!! html()->label( trans('message.restrict_update'))->for('is_restricted') !!}
                         {!! html()->checkbox('is_restricted', null ,1) !!}
                     </div>
                 </div>

@@ -35,13 +35,13 @@ class AddonRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => __('validation.subscription_form.name.required'),
-            'subscription.required' => __('validation.subscription_form.subscription.required'),
-            'regular_price.required' => __('validation.subscription_form.regular_price.required'),
-            'regular_price.numeric' => __('validation.subscription_form.regular_price.numeric'),
-            'selling_price.required' => __('validation.subscription_form.selling_price.required'),
-            'selling_price.numeric' => __('validation.subscription_form.selling_price.numeric'),
-            'products.required' => __('validation.subscription_form.products.required'),
+            'name.required' => trans('validation.subscription_form.name.required'),
+            'subscription.required' => trans('validation.subscription_form.subscription.required'),
+            'regular_price.required' => trans('validation.subscription_form.regular_price.required'),
+            'regular_price.numeric' => trans('validation.subscription_form.regular_price.numeric'),
+            'selling_price.required' => trans('validation.subscription_form.selling_price.required'),
+            'selling_price.numeric' => trans('validation.subscription_form.selling_price.numeric'),
+            'products.required' => trans('validation.subscription_form.products.required'),
         ];
     }
 }

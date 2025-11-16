@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                   <h4 class="modal-title">{{trans('message.add_new_comment')}}</h4>
-                <button type="button" class="close" data-dismiss="modal" id="crossclose" aria-label="{{ __('message.close') }}"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" id="crossclose" aria-label="{{ trans('message.close') }}"><span aria-hidden="true">&times;</span></button>
               
             </div>
             {!! html()->form('POST', url('comment'))->open() !!}
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                 <button type="button" id="commentclose" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i>{{ __('message.close') }}</button>
+                 <button type="button" id="commentclose" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i>{{ trans('message.close') }}</button>
                 <button type="submit" class="btn btn-primary btn-sm" id="create_submit"><i class="fas fa-save">&nbsp;</i>{!!trans('message.save')!!}</button>
             </div>
             {!! html()->form()->close() !!}

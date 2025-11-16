@@ -9,21 +9,21 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <strong>{{ __('message.error') }}</strong> {{ $message }}
+                    <strong>{{ trans('message.error') }}</strong> {{ $message }}
                 </div>
             @endif
             {!! Session::forget('error') !!}
             @if($message = session('success'))
                 <div class="alert alert-info alert-dismissible fade in" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}">
                         <span aria-hidden="true">×</span>
                     </button>
-                    <strong>{{ __('message.success') }}!</strong> {{ $message }}
+                    <strong>{{ trans('message.success') }}!</strong> {{ $message }}
                 </div>
             @endif
             {!! Session::forget('success') !!}
             <div class="panel panel-default">
-                <div class="panel-heading">{{ __('message.pay_razorpay') }}</div>
+                <div class="panel-heading">{{ trans('message.pay_razorpay') }}</div>
 
                 <div class="panel-body text-center">
                     <form action="{!!route('payment')!!}" method="POST" >

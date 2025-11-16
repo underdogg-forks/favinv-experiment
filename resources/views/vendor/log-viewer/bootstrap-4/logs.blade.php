@@ -1,17 +1,17 @@
 @extends('log-viewer::_template.master')
 @section('title')
-    {{ __('message.logs_viewer') }}
+    {{ trans('message.logs_viewer') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.logs_viewer') }}</h1>
+        <h1>{{ trans('message.logs_viewer') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('log-viewer')}}"><i class="fa fa-dashboard"></i> {{ __('message.Log_viewer') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.logs') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('log-viewer')}}"><i class="fa fa-dashboard"></i> {{ trans('message.Log_viewer') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.logs') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -23,7 +23,7 @@
 
 <div class="card card-primary card-outline">
     <div class="card-body">
-    <h4 class="card-header">{{ __('message.logs') }}</h4>
+    <h4 class="card-header">{{ trans('message.logs') }}</h4>
 
     {!! $rows->render() !!}
 
@@ -42,7 +42,7 @@
                         @endif
                     </th>
                     @endforeach
-                    <th class="text-right">{{ __('message.actions') }}</th>
+                    <th class="text-right">{{ trans('message.actions') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -97,17 +97,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('message.confirm_delete') }}</h4>
+                <h4 class="modal-title">{{ trans('message.confirm_delete') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>{{ __('message.delete_log_file') }}</p>
+                <p>{{ trans('message.delete_log_file') }}</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ __('message.cancel') }}</button>
-                <button id="confirmDelete" class="btn btn-sm btn-danger">{{ __('message.delete') }}</button>
+                <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">{{ trans('message.cancel') }}</button>
+                <button id="confirmDelete" class="btn btn-sm btn-danger">{{ trans('message.delete') }}</button>
             </div>
         </div>
     </div>
@@ -138,14 +138,14 @@
                     date: logDate 
                 },
                 success: function(data) {
-                    $('#success-message').text('{{ __('message.log_file_deleted_successfully') }}').show();
+                    $('#success-message').text('{{ trans('message.log_file_deleted_successfully') }}').show();
                     $('#delete-log-modal').modal('hide');
                     setTimeout(function() {
                         location.reload();
                     }, 3000);
                 },
                 error: function(xhr, textStatus, errorThrown) {
-                    $('#fail-message').text('{{ __('message.something_wrong') }}').show();
+                    $('#fail-message').text('{{ trans('message.something_wrong') }}').show();
                     $('#delete-log-modal').modal('hide');
                     setTimeout(function() {
                         location.reload();

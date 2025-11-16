@@ -149,8 +149,8 @@ class CloudExtraActivities extends Controller
                 'newDomain' => 'required',
             ],
                 [
-                    'currentDomain.required' => __('validation.current_domain_required'),
-                    'newDomain.required' => __('validation.new_domain_required'),
+                    'currentDomain.required' => trans('validation.current_domain_required'),
+                    'newDomain.required' => trans('validation.new_domain_required'),
                 ]);
             $orderId = $request->input('order_id');
             $order = Order::where('id', $orderId)->first();
@@ -947,7 +947,7 @@ class CloudExtraActivities extends Controller
                 \DB::table('users')->where('id', \Auth::user()->id)->update(['billing_pay_balance' => 0]);
         }
 
-        return response()->json(['message' => __('message.developer_why_checking')]);
+        return response()->json(['message' => trans('message.developer_why_checking')]);
     }
 
     /**
@@ -1289,7 +1289,7 @@ class CloudExtraActivities extends Controller
             ->addColumn('action', function ($model) {
                 return "<p><button data-toggle='modal'
                 data-id='".$model->id."' data-name='' onclick=\"popProduct('".$model->id."')\" id='delpop".$model->id."'
-                class='btn btn-sm btn-dark btn-xs delTenant' ".tooltip(__('message.delete'))."<i class='fa fa-trash'
+                class='btn btn-sm btn-dark btn-xs delTenant' ".tooltip(trans('message.delete'))."<i class='fa fa-trash'
                 style='color:white;'> </i></button>&nbsp;</p>";
             })
 

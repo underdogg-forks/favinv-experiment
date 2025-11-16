@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.email') }}
+    {{ trans('message.email') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.configure_mail') }}</h1>
+        <h1>{{ trans('message.configure_mail') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.email') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.email') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -27,12 +27,12 @@
 
                       <tr>
                         <div class="form-group {{ $errors->has('driver') ? 'has-error' : '' }}">
-                            <td><b>{!! html()->label(__('message.driver'))->class('required')->for('driver') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.driver'))->class('required')->for('driver') !!}</b></td>
                             <td>
 
 
 
-                                {!! html()->select('driver', ['' => __('message.choose'),'smtp' => 'SMTP','mail' => 'Php mail','mailgun' => 'Mailgun','mandrill' => 'Mandrill','ses' => 'SES','sparkpost' => 'Sparkpost'], $set->driver)->class('form-control'. ($errors->has('driver') ? ' is-invalid' : ''))->id('driver') !!}
+                                {!! html()->select('driver', ['' => trans('message.choose'),'smtp' => 'SMTP','mail' => 'Php mail','mailgun' => 'Mailgun','mandrill' => 'Mandrill','ses' => 'SES','sparkpost' => 'Sparkpost'], $set->driver)->class('form-control'. ($errors->has('driver') ? ' is-invalid' : ''))->id('driver') !!}
                                 <i> {{trans('message.select-email-driver')}}</i>
                             @error('driver')
                             <span class="error-message"> {{$message}}</span>
@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <div class="form-group showWhenSmtpSelected">
-                            <td><b>{!! html()->label(__('message.port'))->class('required')->for('port') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.port'))->class('required')->for('port') !!}</b></td>
                             <td>
 
 
@@ -60,7 +60,7 @@
                     </tr>
                     <tr>
                         <div class="form-group showWhenSmtpSelected">
-                            <td><b>{!! html()->label(__('message.host'))->class('required')->for('host') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.host'))->class('required')->for('host') !!}</b></td>
                             <td>
 
 
@@ -77,11 +77,11 @@
                     </tr>
                     <tr>
                         <div class="form-group showWhenSmtpSelected" >
-                            <td><b>{!! html()->label(__('message.encryption'))->class('required')->for('encryption') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.encryption'))->class('required')->for('encryption') !!}</b></td>
                             <td>
 
 
-                                {!! html()->select('encryption', ['' => __('message.choose'),'ssl' => 'SSL','tls' => 'TLS','starttls' => 'STARTTLS'], $set->encryption)->class('form-control'. ($errors->has('encryption') ? ' is-invalid' : ''))->id('encryption') !!}
+                                {!! html()->select('encryption', ['' => trans('message.choose'),'ssl' => 'SSL','tls' => 'TLS','starttls' => 'STARTTLS'], $set->encryption)->class('form-control'. ($errors->has('encryption') ? ' is-invalid' : ''))->id('encryption') !!}
                                 <i> {{trans('message.select-email-encryption-method')}}</i>
                             @error('encryption')
                             <span class="error-message"> {{$message}}</span>
@@ -96,7 +96,7 @@
 
                       <tr>
                           <div class="form-group secret" >
-                          <td><b>{!! html()->label( __('message.secret'))->class('required')->for('secret') !!}</b></td>
+                          <td><b>{!! html()->label( trans('message.secret'))->class('required')->for('secret') !!}</b></td>
                           <td>
                               {!! html()->text('secret', $set->secret)->class('form-control'. ($errors->has('secret') ? ' is-invalid' : ''))->id('secret') !!}
                               @error('secret')
@@ -110,7 +110,7 @@
 
                     <tr>
                         <div class="form-group showWhenMailGunSelected">
-                            <td><b>{!! html()->label( __('message.domain2'))->class('required')->for('domain') !!}</b></td>
+                            <td><b>{!! html()->label( trans('message.domain2'))->class('required')->for('domain') !!}</b></td>
                         <td>
                             {!! html()->text('domain', $set->domain)->class('form-control'. ($errors->has('domain') ? ' is-invalid' : ''))->id('domain') !!}
                             @error('domain')
@@ -126,7 +126,7 @@
 
                       <tr>
                         <div class="form-group showWhenSesSelected">
-                            <td><b>{!! html()->label( __('message.api_key'))->class('required')->for('api_key') !!}</b></td>
+                            <td><b>{!! html()->label( trans('message.api_key'))->class('required')->for('api_key') !!}</b></td>
                         <td>
                             {!! html()->text('key', $set->key)->class('form-control'. ($errors->has('key') ? ' is-invalid' : ''))->id('api_key') !!}
                             @error('key')
@@ -140,7 +140,7 @@
 
                       <tr>
                         <div class="form-group showWhenSesSelected">
-                            <td><b>{!! html()->label( __('message.region'))->class('required')->for('region') !!}</b></td>
+                            <td><b>{!! html()->label( trans('message.region'))->class('required')->for('region') !!}</b></td>
                         <td>
                             {!! html()->text('region', $set->region)->class('form-control'. ($errors->has('region') ? ' is-invalid' : ''))->id('region') !!}
                             @error('region')
@@ -159,7 +159,7 @@
 
                     <tr>
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                            <td><b>{!! html()->label(__('message.email'))->class('required')->for('email') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.email'))->class('required')->for('email') !!}</b></td>
                             <td>
 
 
@@ -176,7 +176,7 @@
 
                       <tr>
                         <div class="form-group {{ $errors->has('from_name') ? 'has-error' : '' }}">
-                            <td><b>{!! html()->label(__('message.from_name'))->class('required')->for('from_name') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.from_name'))->class('required')->for('from_name') !!}</b></td>
                             <td>
 
 
@@ -192,7 +192,7 @@
 
                     <tr>
                         <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }} showWhenSmtpSelected">
-                            <td><b>{!! html()->label(__('message.password'))->class('required')->for('password') !!}</b></td>
+                            <td><b>{!! html()->label(trans('message.password'))->class('required')->for('password') !!}</b></td>
                             <td>
 
 
@@ -216,7 +216,7 @@
 
         $(document).ready(function() {
             function emailOperation(){
-                $("#emailSetting").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ __('message.please_wait') }}");
+                $("#emailSetting").html("<i class='fas fa-circle-notch fa-spin'></i>  {{ trans('message.please_wait') }}");
                 $("#emailSetting").attr('disabled', true);
                 $.ajax({
                     url: '{{url("settings/email")}}',
@@ -236,10 +236,10 @@
                     },
                     success: function (response) {
                         $("#emailSetting").attr('disabled', false);
-                        $("#emailSetting").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save')}}");
+                        $("#emailSetting").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save')}}");
                         const result = `<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong><i class="fa fa-check"></i> {{ __('message.success')  }}! </strong> ${response.message}.
+                    <strong><i class="fa fa-check"></i> {{ trans('message.success')  }}! </strong> ${response.message}.
                 </div>`;
                         $('#alertMessage').html(result).show();
                         setTimeout(function () {
@@ -248,10 +248,10 @@
                     },
                     error: function (response) {
                         $("#emailSetting").attr('disabled', false);
-                        $("#emailSetting").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+                        $("#emailSetting").html("<i class='fa fa-save'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
                         let html = `<div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong>{{ __('message.whoops')}} </strong>{{ __('message.something_wrong') }}<br><br><ul>`;
+                    <strong>{{ trans('message.whoops')}} </strong>{{ trans('message.something_wrong') }}<br><br><ul>`;
                         if (response.status === 422) {
                             $.each(response.responseJSON.errors, function (key, errors) {
                                 html += `<li>${errors[0]}</li>`;

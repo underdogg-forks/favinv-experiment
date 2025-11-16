@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
- {{ __('message.orders') }}
+ {{ trans('message.orders') }}
 @stop
 @section('page-header')
 <br>
-{{ __('message.cart') }}
+{{ trans('message.cart') }}
 @stop
 @section('nav-orders')
 active
 @stop
 @section('page-heading')
-    {{ __('message.my_orders')}}
+    {{ trans('message.my_orders')}}
 @stop
 @section('breadcrumb')
     <style>
@@ -20,11 +20,11 @@ active
         }
     </style>
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.my_orders')}}</li>
+     <li class="active text-dark">{{ trans('message.my_orders')}}</li>
 @stop 
 
 @section('content')
@@ -55,12 +55,12 @@ active
                                     <div class="table-responsive">
                                     <table id="order-table" class="table table-striped table-bordered mw-auto">
                                                  <thead><tr>
-                                                <th>{{ __('message.product_name')}}</th>
-                                                <th>{{ __('message.purchase_date')}}</th>
-                                                <th>{{ __('message.order_no')}}</th>
-                                                <th>{{ __('message.agents')}}</th>
-                                                <th>{{ __('message.expiry_date')}}</th>
-                                                <th>{{ __('message.action')}}</th>
+                                                <th>{{ trans('message.product_name')}}</th>
+                                                <th>{{ trans('message.purchase_date')}}</th>
+                                                <th>{{ trans('message.order_no')}}</th>
+                                                <th>{{ trans('message.agents')}}</th>
+                                                <th>{{ trans('message.expiry_date')}}</th>
+                                                <th>{{ trans('message.action')}}</th>
                                             </tr></thead>
                                             </table>
                                             </div>
@@ -97,7 +97,7 @@ active
             "url": '{!! route('get-my-orders', "updated_ends_at=$request->updated_ends_at") !!}',
                error: function(xhr) {
                if(xhr.status == 401) {
-                   alert(@json(__('message.session_expired')));
+                   alert(@json(trans('message.session_expired')));
                 window.location.href = '/login';
                }
             }
@@ -110,19 +110,19 @@ active
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
             },
            
         

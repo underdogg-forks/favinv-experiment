@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.dashboard') }}
+    {{ trans('message.dashboard') }}
 @endsection
 @section('content')
 @section('content-header')
     <div class="col-sm-6">
-        <h1 class="m-0 text-dark">{{ __('message.dashboard') }}</h1>
+        <h1 class="m-0 text-dark">{{ trans('message.dashboard') }}</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.dashboard') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}">{{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.dashboard') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -26,14 +26,14 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-info">
             <div class="card-body pb-0">
-              <h4>{{ __('message.total_sales') }}</h4>
+              <h4>{{ trans('message.total_sales') }}</h4>
               @if(($allowedCurrencies2) != null)
               <span>{{$allowedCurrencies2}}: &nbsp;  {{currencyFormat($totalSalesCurrency2,$code=$allowedCurrencies2)}}</span><br/>
               @endif
                <span>{{$allowedCurrencies1}}: &nbsp;  {{currencyFormat($totalSalesCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
 
-              <a href="{{url('invoices?status=success')}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="{{url('invoices?status=success')}}" class="card-footer text-center py-2">{{ trans('message.more_info') }} <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -41,7 +41,7 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-success">
             <div class="card-body pb-0">
-              <h4>{{ __('message.yearly_sales') }}</h4>
+              <h4>{{ trans('message.yearly_sales') }}</h4>
                 <?php
               $startingDateOfYear = (date('Y-01-01'));
               
@@ -51,7 +51,7 @@
               @endif
                <span>{{$allowedCurrencies1}}:&nbsp; {{currencyFormat($yearlySalesCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
-             <a href="{{url('invoices?status=success&from='.$startingDateOfYear)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+             <a href="{{url('invoices?status=success&from='.$startingDateOfYear)}}" class="card-footer text-center py-2">{{ trans('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
         <!-- ./col -->
@@ -59,7 +59,7 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-warning">
             <div class="card-body pb-0">
-              <h4>{{ __('message.monthly_sales') }}</h4>
+              <h4>{{ trans('message.monthly_sales') }}</h4>
                <?php
               $startMonthDate = date('Y-m-01');
               $endMonthDate = date('Y-m-t');
@@ -70,7 +70,7 @@
               <span>{{$allowedCurrencies1}}:&nbsp; {{currencyFormat($monthlySalesCurrency1,$code=$allowedCurrencies1)}}</span>
              
             </div>
-            <a href="{{url('invoices?status=success&from='.$startMonthDate. '&till='.$endMonthDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('invoices?status=success&from='.$startMonthDate. '&till='.$endMonthDate)}}" class="card-footer text-center py-2">{{ trans('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
 
@@ -78,13 +78,13 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-danger">
             <div class="card-body pb-0">
-              <h4>{{ __('message.pending_payments') }}</h4>
+              <h4>{{ trans('message.pending_payments') }}</h4>
               @if(($allowedCurrencies2) != null)
               <span>{{$allowedCurrencies2}}: &nbsp;  {{currencyFormat($pendingPaymentCurrency2,$code=$allowedCurrencies2)}}</span><br/>
               @endif
                <span>{{$allowedCurrencies1}}: &nbsp; {{currencyFormat($pendingPaymentCurrency1,$code=$allowedCurrencies1)}} </span>
             </div>
-             <a href="{{url('invoices?status=pending')}}" class="card-footer text-center py-2">{{ __('message.more_info') }}
+             <a href="{{url('invoices?status=pending')}}" class="card-footer text-center py-2">{{ trans('message.more_info') }}
               <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
@@ -96,11 +96,11 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-warning">
             <div class="card-body pb-0">
-              <h4>{{ __('message.products_installed_rate') }}&nbsp;{{number_format($getLast30DaysInstallation['rate'], 2, '.', '')}}%</h4>
-              <span>{{ __('message.total_subscription') }} &nbsp;  {{$getLast30DaysInstallation['total_subscription']}}</span></br>
-              <span>{{ __('message.not_installed') }} &nbsp;  {{$getLast30DaysInstallation['inactive_subscription']}}</span>
+              <h4>{{ trans('message.products_installed_rate') }}&nbsp;{{number_format($getLast30DaysInstallation['rate'], 2, '.', '')}}%</h4>
+              <span>{{ trans('message.total_subscription') }} &nbsp;  {{$getLast30DaysInstallation['total_subscription']}}</span></br>
+              <span>{{ trans('message.not_installed') }} &nbsp;  {{$getLast30DaysInstallation['inactive_subscription']}}</span>
             </div>
-               <a href="{{url('orders?ins_not_ins=not_installed&sub_from='.$startDate.'&sub_till='.$endDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+               <a href="{{url('orders?ins_not_ins=not_installed&sub_from='.$startDate.'&sub_till='.$endDate)}}" class="card-footer text-center py-2">{{ trans('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
         @php
@@ -112,11 +112,11 @@
           <!-- CoreUI widget card -->
           <div class="card text-white bg-info">
             <div class="card-body pb-0">
-              <h4>{{ __('message.paid_orders_rate') }}&nbsp;{{number_format($conversionRate['rate'], 2, '.', '')}}%</h4>
-              <span>{{ __('message.total_orders_rate') }} &nbsp;  {{$conversionRate['all_orders']}}</span></br>
-              <span>{{ __('message.paid_orders') }} &nbsp;  {{$conversionRate['paid_orders']}}</span>
+              <h4>{{ trans('message.paid_orders_rate') }}&nbsp;{{number_format($conversionRate['rate'], 2, '.', '')}}%</h4>
+              <span>{{ trans('message.total_orders_rate') }} &nbsp;  {{$conversionRate['all_orders']}}</span></br>
+              <span>{{ trans('message.paid_orders') }} &nbsp;  {{$conversionRate['paid_orders']}}</span>
             </div>
-              <a href="{{url('orders?p_un=unpaid&from='.$startDate.'&till='.$endDate)}}" class="card-footer text-center py-2">{{ __('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="{{url('orders?p_un=unpaid&from='.$startDate.'&till='.$endDate)}}" class="card-footer text-center py-2">{{ trans('message.more_info') }} <i class="fa fa-arrow-circle-right"></i></a>
              </div>
         </div>
 </div>
@@ -134,12 +134,12 @@
 
     {{-- Recently Registered Users --}}
     @component('mini_views.card', [
-           'title' => __('message.recently_register_users'),
+           'title' => trans('message.recently_register_users'),
            'layout' => 'custom',
            'collection'=> $users,
-           'linkLeft'=> [  __('message.view_all') => url($url)],
+           'linkLeft'=> [  trans('message.view_all') => url($url)],
 
-           'linkRight'=> [ __('message.create_new_user') => url('clients/create')]
+           'linkRight'=> [ trans('message.create_new_user') => url('clients/create')]
     ])
         <ul class="users-list clearfix">
             @foreach($users as $user)
@@ -160,9 +160,9 @@
                     @if ($displayDate < $mytime)
                         <span class="users-list-date">{{($displayDate)->format('M j')}}</span>
                     @elseif ($displayDate == $yesterday)
-                        <span class="users-list-date">{{ __('message.yesterday') }}</span>
+                        <span class="users-list-date">{{ trans('message.yesterday') }}</span>
                     @else
-                        <span class="users-list-date">{{ __('message.today') }}</span>
+                        <span class="users-list-date">{{ trans('message.today') }}</span>
                     @endif
                 </li>
             @endforeach
@@ -172,12 +172,12 @@
 
     {{-- Recent Invoices(Past 30 Days) --}}
     @component('mini_views.card', [
-           'title'=> __('message.total_sold_products'),
+           'title'=> trans('message.total_sold_products'),
            'layout' => 'table',
            'collection'=> $invoices,
-           'columns'=> [ __('message.invoice_no'), __('message.total'), __('message.user') ,__('message.date'), __('message.paid'), __('message.balance'), __('message.status')],
-           'linkLeft'=> [ __('message.view_all') => url('invoices?from='.$startDate.'&till='.$endDate)],
-           'linkRight'=> [ __('message.generate_new_invoice') => url('invoice/generate')]
+           'columns'=> [ trans('message.invoice_no'), trans('message.total'), trans('message.user') ,trans('message.date'), trans('message.paid'), trans('message.balance'), trans('message.status')],
+           'linkLeft'=> [ trans('message.view_all') => url('invoices?from='.$startDate.'&till='.$endDate)],
+           'linkRight'=> [ trans('message.generate_new_invoice') => url('invoice/generate')]
     ])
 
         @foreach($invoices as $element)
@@ -210,12 +210,12 @@
      @endphp
 
      @component('mini_views.card', [
-            'title' => __('message.paid_orders_expired'),
+            'title' => trans('message.paid_orders_expired'),
             'layout' => 'table',
             'collection'=> $expiredSubscriptions,
-            'columns'=> [ __('message.user'), __('message.order_no'), __('message.expiry'), __('message.days_passed'), __('message.product')],
-            'linkRight'=> [ __('message.place_new_order') => url('invoice/generate')],
-            'linkLeft'=> [ __('message.view_all') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate.'&renewal=expired_subscription&product_id=paid')]
+            'columns'=> [ trans('message.user'), trans('message.order_no'), trans('message.expiry'), trans('message.days_passed'), trans('message.product')],
+            'linkRight'=> [ trans('message.place_new_order') => url('invoice/generate')],
+            'linkLeft'=> [ trans('message.view_all') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate.'&renewal=expired_subscription&product_id=paid')]
      ])
 
          @foreach($expiredSubscriptions as $element)
@@ -231,12 +231,12 @@
 
      {{-- Paid Orders Expiring Soon (Next 30 Days) --}}
      @component('mini_views.card', [
-            'title' => __('message.paid_next_orders_expired'),
+            'title' => trans('message.paid_next_orders_expired'),
             'layout' => 'table',
             'collection'=> $subscriptions,
-            'columns'=> [ __('message.user'), __('message.order_no'), __('message.expiry'), __('message.days_left'), __('message.product')],
-            'linkRight'=> [ __('message.place_new_order') => url('invoice/generate')],
-            'linkLeft'=> [ __('message.view_all') => url('orders?from='.$currentDate.'&till='.$expiringSubscriptionDate.'&renewal=expiring_subscription&product_id=paid')]
+            'columns'=> [ trans('message.user'), trans('message.order_no'), trans('message.expiry'), trans('message.days_left'), trans('message.product')],
+            'linkRight'=> [ trans('message.place_new_order') => url('invoice/generate')],
+            'linkLeft'=> [ trans('message.view_all') => url('orders?from='.$currentDate.'&till='.$expiringSubscriptionDate.'&renewal=expiring_subscription&product_id=paid')]
      ])
 
          @foreach($subscriptions as $element)
@@ -263,12 +263,12 @@
      @endphp
 
      @component('mini_views.card', [
-            'title' => __('message.clients_outdated_version'),
+            'title' => trans('message.clients_outdated_version'),
             'layout' => 'table',
             'collection'=> $clientsUsingOldVersion,
-            'columns'=> [__('message.user'), __('message.version'), __('message.product'), __('message.expiry')],
-            'linkLeft'=> [ __('message.view_all') => url('orders')."?product_id=paid&version=Outdated"],
-            'linkRight'=> [ __('message.create_new_product') => url('products/create')]
+            'columns'=> [trans('message.user'), trans('message.version'), trans('message.product'), trans('message.expiry')],
+            'linkLeft'=> [ trans('message.view_all') => url('orders')."?product_id=paid&version=Outdated"],
+            'linkRight'=> [ trans('message.create_new_product') => url('products/create')]
      ])
          @foreach($clientsUsingOldVersion as $element)
              <tr>
@@ -287,12 +287,12 @@
 
      {{-- Recent Paid Orders (Last 30 Days) --}}
      @component('mini_views.card', [
-            'title' => __('message.recent_paid_orders'),
+            'title' => trans('message.recent_paid_orders'),
             'layout' => 'table',
             'collection'=> $recentOrders,
-            'columns'=> [__('message.order_no'), __('message.product'), __('message.date'), __('message.user')],
-             'linkLeft'=> [ __('message.view_all_orders') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate.'&product_id=paid')],
-            'linkRight'=> [__('message.place_new_order') => url('invoice/generate')]
+            'columns'=> [trans('message.order_no'), trans('message.product'), trans('message.date'), trans('message.user')],
+             'linkLeft'=> [ trans('message.view_all_orders') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate.'&product_id=paid')],
+            'linkRight'=> [trans('message.place_new_order') => url('invoice/generate')]
      ])
 
          @foreach($recentOrders as $element)
@@ -311,12 +311,12 @@
 
     {{-- Products Sold  (Last 30 Days) --}}
     @component('mini_views.card', [
-           'title' => __('message.product_sold'),
+           'title' => trans('message.product_sold'),
            'layout' => 'list',
            'collection'=> $productSoldInLast30Days,
-           'columns'=> [ __('message.order_no'), __('message.item'), __('message.date'), __('message.client')],
-            'linkLeft'=> [ __('message.view_all_orders') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate)],
-           'linkRight'=> [ __('message.place_new_order') => url('invoice/generate')]
+           'columns'=> [ trans('message.order_no'), trans('message.item'), trans('message.date'), trans('message.client')],
+            'linkLeft'=> [ trans('message.view_all_orders') => url('orders?from='.$expiredSubscriptionDate.'&till='.$currentDate)],
+           'linkRight'=> [ trans('message.place_new_order') => url('invoice/generate')]
     ])
 
         @foreach($productSoldInLast30Days as $element)
@@ -328,7 +328,7 @@
                     <a href="#" class="product-title">{{$element->product_name}}<strong> &nbsp; &nbsp;  <td><span class="label label-success">{{$element->order_count}}</span></td></strong>
                     </a>
                     <span class="product-description">
-                        <strong> {{ __('message.last_purchase') }} </strong>
+                        <strong> {{ trans('message.last_purchase') }} </strong>
                           {{$element->order_created_at}}
                     </span>
 
@@ -340,11 +340,11 @@
 
     {{-- Total Sold Products --}}
     @component('mini_views.card', [
-           'title'=> __('message.total_sold_products'),
+           'title'=> trans('message.total_sold_products'),
            'layout' => 'list',
            'collection'=> $allSoldProducts,
-           'linkLeft'=> [ __('message.view_sold_products') => url('products?value=totalSoldProduct')],
-           'linkRight'=> [ __('message.create_new_product') => url('products/create')]
+           'linkLeft'=> [ trans('message.view_sold_products') => url('products?value=totalSoldProduct')],
+           'linkRight'=> [ trans('message.create_new_product') => url('products/create')]
     ])
         @foreach($allSoldProducts as $element)
             <li class="item">
@@ -355,7 +355,7 @@
                     <a href="#" class="product-title">{{$element->product_name}}<strong> &nbsp; &nbsp;  <td><span class="label label-success">{{$element->order_count}}</span></td></strong>
                     </a>
                     <span class="product-description">
-                    <strong> {{ __('message.last_purchase') }} </strong>
+                    <strong> {{ trans('message.last_purchase') }} </strong>
                       {{$element->order_created_at}}
                     </span>
                 </div>

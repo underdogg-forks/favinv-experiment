@@ -1,24 +1,24 @@
 @extends('themes.default1.layouts.front.master')
 
 @section('title')
-    {{ __('message.reset_password_faveo_helpdesk') }}
+    {{ trans('message.reset_password_faveo_helpdesk') }}
 @stop
 
 @section('page-heading')
-    {{ __('message.reset_your_password') }}
+    {{ trans('message.reset_your_password') }}
 @stop
 
 @section('page-header')
-    {{ __('message.reset_password') }}
+    {{ trans('message.reset_password') }}
 @stop
 
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
     @else
-        <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
     @endif
-    <li class="active text-dark">{{ __('message.reset_password') }}</li>
+    <li class="active text-dark">{{ trans('message.reset_password') }}</li>
 @stop
 
 @section('main-class')
@@ -39,12 +39,12 @@
                 {{-- Password --}}
                 <div class="mb-3">
                     <label for="password" class="form-label fw-bold">
-                        {{ __('message.new_password') }} <span class="text-danger">*</span>
+                        {{ trans('message.new_password') }} <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         <input type="password" id="password" name="password"
                                class="form-control form-control-lg"
-                               placeholder="{{ __('message.password') }}">
+                               placeholder="{{ trans('message.password') }}">
                         <span class="input-group-text" role="button" onclick="togglePasswordVisibility(this)">
                         <i class="fa fa-eye-slash"></i>
                     </span>
@@ -52,9 +52,9 @@
                     <div id="password_error" class="invalid-feedback d-none"></div>
 
                     <small class="text-muted mt-2 d-none" id="pswd_info">
-                        <span class="fw-bold">{{ __('message.password_requirements') }}</span>
+                        <span class="fw-bold">{{ trans('message.password_requirements') }}</span>
                         <ul class="ps-3 mb-0">
-                            @foreach (__('message.password_requirements_list') as $requirement)
+                            @foreach (trans('message.password_requirements_list') as $requirement)
                                 <li id="{{ $requirement['id'] }}" class="text-danger">{{ $requirement['text'] }}</li>
                             @endforeach
                         </ul>
@@ -64,12 +64,12 @@
                 {{-- Confirm Password --}}
                 <div class="mb-3">
                     <label for="confirm_password" class="form-label fw-bold">
-                        {{ __('message.confirm_password') }} <span class="text-danger">*</span>
+                        {{ trans('message.confirm_password') }} <span class="text-danger">*</span>
                     </label>
                     <div class="input-group">
                         {!! html()->password('password_confirmation')
                             ->class('form-control form-control-lg')
-                            ->attribute('placeholder', __('message.retype_password'))
+                            ->attribute('placeholder', trans('message.retype_password'))
                             ->id('confirm_password') !!}
                         <span class="input-group-text" role="button" onclick="togglePasswordVisibility(this)">
                         <i class="fa fa-eye-slash"></i>
@@ -89,9 +89,9 @@
                 <div class="d-grid">
                     <button type="submit" class="btn btn-dark btn-modern text-uppercase fw-bold py-3"
                             id="reset-button"
-                            data-original-text="{{ __('message.reset_password') }}"
-                            data-loading-text="{{ __('message.loading') }}">
-                        {{ __('message.reset_password') }}
+                            data-original-text="{{ trans('message.reset_password') }}"
+                            data-loading-text="{{ trans('message.loading') }}">
+                        {{ trans('message.reset_password') }}
                     </button>
                 </div>
 
@@ -240,12 +240,12 @@
                  },
                  messages: {
                      password: {
-                         required: "{{ __('message.login_validation.password_required') }}",
-                         regex: "{{ __('message.strong_password') }}"
+                         required: "{{ trans('message.login_validation.password_required') }}",
+                         regex: "{{ trans('message.strong_password') }}"
                      },
                      password_confirmation: {
-                         required: "{{ __('message.login_validation.confirm_password_required') }}",
-                         equalTo: "{{ __('message.login_validation.confirm_password_equalto') }}"
+                         required: "{{ trans('message.login_validation.confirm_password_required') }}",
+                         equalTo: "{{ trans('message.login_validation.confirm_password_equalto') }}"
                      },
                  },
                  unhighlight: function(element) {

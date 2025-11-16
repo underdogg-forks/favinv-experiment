@@ -46,14 +46,14 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'conName.required' => __('validation.contact_request.conName'),
-            'email.required' => __('validation.contact_request.email'),
-            'conmessage.required' => __('validation.contact_request.conmessage'),
-            'Mobile.required' => __('validation.contact_request.Mobile'),
-            'country_code.required' => __('validation.contact_request.country_code'),
-            'demoname.required' => __('validation.contact_request.demoname'),
-            'demomessage.required' => __('validation.contact_request.demomessage'),
-            'demoemail.required' => __('validation.contact_request.demoemail'),
+            'conName.required' => trans('validation.contact_request.conName'),
+            'email.required' => trans('validation.contact_request.email'),
+            'conmessage.required' => trans('validation.contact_request.conmessage'),
+            'Mobile.required' => trans('validation.contact_request.Mobile'),
+            'country_code.required' => trans('validation.contact_request.country_code'),
+            'demoname.required' => trans('validation.contact_request.demoname'),
+            'demomessage.required' => trans('validation.contact_request.demomessage'),
+            'demoemail.required' => trans('validation.contact_request.demoemail'),
         ];
     }
 }

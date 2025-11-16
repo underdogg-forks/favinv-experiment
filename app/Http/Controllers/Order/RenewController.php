@@ -207,12 +207,12 @@ class RenewController extends BaseRenewController
         try {
             $product = $this->getProductById($productid);
             if (! $product) {
-                throw new Exception(__('message.product_removed_database'));
+                throw new Exception(trans('message.product_removed_database'));
             }
             $currency = $this->getUserCurrencyById($userid);
             $price = $product->price()->where('currency', $currency)->first();
             if (! $price) {
-                throw new Exception(__('message.price_removed_database'));
+                throw new Exception(trans('message.price_removed_database'));
             }
             $cost = $price->sales_price;
             if (! $cost) {
@@ -253,10 +253,10 @@ class RenewController extends BaseRenewController
             'code' => 'exists:promotions,code',
         ],
             [
-                'plan.required' => __('validation.plan_renewal.plan_required'),
-                'payment_method.required' => __('validation.plan_renewal.payment_method_required'),
-                'cost.required' => __('validation.plan_renewal.cost_required'),
-                'code.exists' => __('validation.plan_renewal.code_not_valid'),
+                'plan.required' => trans('validation.plan_renewal.plan_required'),
+                'payment_method.required' => trans('validation.plan_renewal.payment_method_required'),
+                'cost.required' => trans('validation.plan_renewal.cost_required'),
+                'code.exists' => trans('validation.plan_renewal.code_not_valid'),
             ]);
 
         try {
@@ -284,10 +284,10 @@ class RenewController extends BaseRenewController
             Subscription::where('order_id', $order_id)->update(['plan_id' => $planid]);
 
             if ($renew) {
-                return redirect()->back()->with('success', __('message.renewed_successfully'));
+                return redirect()->back()->with('success', trans('message.renewed_successfully'));
             }
 
-            return redirect()->back()->with('fails', __('message.cannot_process'));
+            return redirect()->back()->with('fails', trans('message.cannot_process'));
         } catch (Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }
@@ -304,7 +304,7 @@ class RenewController extends BaseRenewController
             $sub = $this->sub->find($id);
             $userid = $sub->user_id;
             if (User::onlyTrashed()->find($userid)) {//If User is soft deleted for this order
-                throw new \Exception(__('message.user_order_suspended'));
+                throw new \Exception(trans('message.user_order_suspended'));
             }
             $productid = $sub->product_id;
             $plans = $this->plan->pluck('name', 'id')->toArray();
@@ -330,8 +330,8 @@ class RenewController extends BaseRenewController
             'code' => 'exists:promotions,code',
         ],
             [
-                'plan.required' => __('validation.plan_renewal.plan_required'),
-                'code.exists' => __('validation.plan_renewal.code_not_valid'),
+                'plan.required' => trans('validation.plan_renewal.plan_required'),
+                'code.exists' => trans('validation.plan_renewal.code_not_valid'),
             ]);
 
         try {

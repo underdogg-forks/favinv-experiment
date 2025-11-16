@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.pricing_faveo_helpdesk') }}
+{{ trans('message.pricing_faveo_helpdesk') }}
 @stop
 @section('page-heading')
  {{$headline}}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.pricing') }}</li>
+     <li class="active text-dark">{{ trans('message.pricing') }}</li>
 @stop
 @section('main-class') 
 main
@@ -223,7 +223,7 @@ select {
             <div class="row mb-5">
             <div class="col text-center">
               <div class="d-flex justify-content-center align-items-center">
-                <div class="text-3 p-relative bottom-7">{{ __('message.monthly') }}</div>
+                <div class="text-3 p-relative bottom-7">{{ trans('message.monthly') }}</div>
                 <div class="px-2">
                   <label class="switch toggle_event_editing">
 
@@ -232,7 +232,7 @@ select {
                   </label>
                   
                 </div>
-                <div class="text-3 p-relative bottom-7">{{ __('message.yearly') }}</div>
+                <div class="text-3 p-relative bottom-7">{{ trans('message.yearly') }}</div>
               </div>
             </div>
           </div>

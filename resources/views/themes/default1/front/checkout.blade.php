@@ -1,12 +1,12 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.checkout') }}
+{{ trans('message.checkout') }}
 @stop
 @section('page-header')
-    {{ __('message.checkout') }}
+    {{ trans('message.checkout') }}
 @stop
 @section('page-heading')
-    {{ __('message.checkout') }}
+    {{ trans('message.checkout') }}
 @stop
 @section('breadcrumb')
  @if(Auth::check())
@@ -48,11 +48,11 @@
             padding: 17px 10px;
         }
  </style>
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
 @endif
- <li class="active text-dark">{{ __('message.checkout')}}</li>
+ <li class="active text-dark">{{ trans('message.checkout')}}</li>
 @stop
 @section('main-class') "main shop" @stop
 @section('content')
@@ -83,24 +83,24 @@ $cartSubtotalWithoutCondition = 0;
 
                                     <th class="product-name text-uppercase" width="">
 
-                                        {{ __('message.product')}}
+                                        {{ trans('message.product')}}
 
                                     </th>
 
 
                                     <th class="product-quantity text-uppercase" width="">
 
-                                        {{ __('message.quantity')}}
+                                        {{ trans('message.quantity')}}
                                     </th>
                                     
                                     <th class="product-agent text-uppercase" width="">
 
-                                        {{ __('message.agents')}}
+                                        {{ trans('message.agents')}}
                                     </th>
 
                                     <th class="product-subtotal text-uppercase " width="">
 
-                                        {{ __('message.total')}}
+                                        {{ trans('message.total')}}
                                     </th>
                                 </tr>
                                 </thead>
@@ -121,7 +121,7 @@ $cartSubtotalWithoutCondition = 0;
 
                                         <div class="product-thumbnail-wrapper" style="width: 100px;">
 
-                                            <a onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove" data-bs-toggle="tooltip" title="{{ __('message.remove_product') }}" style="top: -15px;">
+                                            <a onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove" data-bs-toggle="tooltip" title="{{ trans('message.remove_product') }}" style="top: -15px;">
 
                                                 <i class="fas fa-times"></i>
                                             </a>
@@ -161,11 +161,11 @@ $cartSubtotalWithoutCondition = 0;
                                            <?php
                                     $productId = \DB::table('products')->where('name', $item->name)->value('id');
                                     $planid = null;
-                                    if(\Session::has('priceToBePaid')){
+                                    if(session()->has('priceToBePaid')){
                                         $price=\session('priceToBePaid');
                                     }
                                     else {
-                                        if (\Session::has('toggleState') || \session('toggleState') == null) {
+                                        if (session()->has('toggleState') || \session('toggleState') == null) {
                                             $toggleState = \session('toggleState');
                                             $price = $item->price;
                                         } else {
@@ -200,7 +200,7 @@ $cartSubtotalWithoutCondition = 0;
                                     </td>
                                 </tr>
                                   @empty
-                                <p>{{ __('message.your_cart_empty')}}</p>
+                                <p>{{ trans('message.your_cart_empty')}}</p>
                                 @endforelse
                                 </tbody>
                             </table>
@@ -218,9 +218,9 @@ $cartSubtotalWithoutCondition = 0;
 
                                     <div class="d-flex align-items-center">
 
-                                        <input type="text" class="form-control h-auto line-height-1 py-3" name="coupon"  placeholder=" {{ __('message.coupon-code') }}"  style="width: 250px;">
+                                        <input type="text" class="form-control h-auto line-height-1 py-3" name="coupon"  placeholder=" {{ trans('message.coupon-code') }}"  style="width: 250px;">
 
-                                        <button type="submit" class="btn btn-light btn-modern text-color-dark bg-color-light-scale-2 text-color-hover-light bg-color-hover-dark text-uppercase text-3 font-weight-bold border-0 ws-nowrap btn-px-4 py-3 ms-2">{{ __('message.apply')}}</button>
+                                        <button type="submit" class="btn btn-light btn-modern text-color-dark bg-color-light-scale-2 text-color-hover-light bg-color-hover-dark text-uppercase text-3 font-weight-bold border-0 ws-nowrap btn-px-4 py-3 ms-2">{{ trans('message.apply')}}</button>
                                     </div>
                                     {!! html()->form()->close() !!}
                                 </div>
@@ -236,7 +236,7 @@ $cartSubtotalWithoutCondition = 0;
 
                         <div class="card-body">
 
-                            <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order')}}</h4>
+                            <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order')}}</h4>
 
                             <div class="totals-cart">
 
@@ -246,7 +246,7 @@ $cartSubtotalWithoutCondition = 0;
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold bo">{{ __('message.cart_subtotal')}}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold bo">{{ trans('message.cart_subtotal')}}</strong>
                                         </td>
                                         <td class=" align-top border-top-0 text-end">
                                             <span class="amount font-weight-medium text-color-grey">                                
@@ -258,7 +258,7 @@ $cartSubtotalWithoutCondition = 0;
 
                                      <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.discount')}}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.discount')}}</strong>
                                         </td>
                                          <td class="align-top border-top-0 text-end">
                                              <div class="d-flex align-items-center justify-content-end">
@@ -266,16 +266,16 @@ $cartSubtotalWithoutCondition = 0;
                                                  <?php
                                             if (strpos(\session('codevalue'), '%') == true) {
                                                     $discountValue = currencyFormat($discountPrice,$code = $item->attributes->currency);
-                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\session('code')) . '</strong>)';
+                                                    echo $discountValue . '(<strong title="'. trans('message.coupon-code').'">' . (\session('code')) . '</strong>)';
                                                 } else {
                                                     $discountValue = currencyFormat(\session('codevalue'),$code = $item->attributes->currency);
-                                                    echo $discountValue . '(<strong title="'. __('message.coupon-code').'">' . (\session('code')) . '</strong>)';
+                                                    echo $discountValue . '(<strong title="'. trans('message.coupon-code').'">' . (\session('code')) . '</strong>)';
                                                 }
                                             ?>
                                             </span>
                                                  <form action="{{ url('remove-coupon') }}" method="POST">
                                                 @csrf
-                                                <button type="submit" class="remove-icon" data-toggle="tooltip" title="{{ __('message.click_to_remove')}}">
+                                                <button type="submit" class="remove-icon" data-toggle="tooltip" title="{{ trans('message.click_to_remove')}}">
                                                     <i class="fas fa-times-circle"></i>
                                                 </button>
                                             </form>
@@ -356,7 +356,7 @@ $cartSubtotalWithoutCondition = 0;
                                                    @endif
 
                                                  <tr id="balance-row" class="cart-subtotal" style="color: indianred; display: none;">
-                                                    <th><strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.balance')}}</strong></th>
+                                                    <th><strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.balance')}}</strong></th>
                                                     <td class=" align-top border-top-0 text-end">
                                                     <span class="amount font-weight-medium text-color-grey">
                        
@@ -379,7 +379,7 @@ $cartSubtotalWithoutCondition = 0;
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total')}}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total')}}</strong>
                                         </td>
                                          <?php
                                             if (\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance')) {
@@ -399,13 +399,13 @@ $cartSubtotalWithoutCondition = 0;
                                         </td>
                                     </tr>
                                     {!! html()->form('POST', url('checkout-and-pay'))->id('checkoutsubmitform')->open() !!}
-                                @if(\Session::has('priceRemaining'))
+                                @if(session()->has('priceRemaining'))
                                  @if(\session('discount')>0 )
                                     <tr>
                                         <td class="border-top-0">
                                         <strong class="d-block text-color-dark line-height-0 font-weight-semibold">
                                     <input type="checkbox" id="billing-temp-balance" class="checkbox" checked disabled>
-                                            {{ __('message.total_credits_remaining')}}
+                                            {{ trans('message.total_credits_remaining')}}
                                     <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="{{trans('message.remainingAmount')}}"></i></strong></td>
 
                                      <td class=" align-top border-top-0 text-end">
@@ -454,7 +454,7 @@ $cartSubtotalWithoutCondition = 0;
 
                                                 <div class="col-sm-8">
 
-                                                    <strong class="text-color-dark text-3-5">{{ __('message.your_available_balance')}}</strong>
+                                                    <strong class="text-color-dark text-3-5">{{ trans('message.your_available_balance')}}</strong>
                                                 </div>
                                             </div>
 
@@ -465,13 +465,13 @@ $cartSubtotalWithoutCondition = 0;
                                                     <div class="form-check">
                                                          @if(\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance'))
 
-                                                        <input class="form-check-input mt-1" type="checkbox" value="" name="agree" id="billing-pay-balance" data-msg-required="{{ __('message.agree_before_submitting')}}" checked>
+                                                        <input class="form-check-input mt-1" type="checkbox" value="" name="agree" id="billing-pay-balance" data-msg-required="{{ trans('message.agree_before_submitting')}}" checked>
                                                         @else
-                                                        <input class="form-check-input mt-1" type="checkbox" value="" name="agree" id="billing-pay-balance" data-msg-required="{{ __('message.agree_before_submitting')}}">
+                                                        <input class="form-check-input mt-1" type="checkbox" value="" name="agree" id="billing-pay-balance" data-msg-required="{{ trans('message.agree_before_submitting')}}">
                                                         @endif
 
                                                         <label class="form-check-label" for="tabContent9Checkbox">
-                                                            {{ __('message.use_your_balance')}} <strong class="text-3-5">{{currencyFormat($amt_to_credit,$code = $item->attributes->currency)}}</strong>
+                                                            {{ trans('message.use_your_balance')}} <strong class="text-3-5">{{currencyFormat($amt_to_credit,$code = $item->attributes->currency)}}</strong>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -487,7 +487,7 @@ $cartSubtotalWithoutCondition = 0;
                                         
 
 
-                                            <strong class="d-block text-color-dark mb-2">{{ __('message.payment_methods')}}</strong>
+                                            <strong class="d-block text-color-dark mb-2">{{ trans('message.payment_methods')}}</strong>
 
                                             <div class="d-flex flex-column">
                                                 @foreach($gateways as $gateway)
@@ -504,7 +504,7 @@ $cartSubtotalWithoutCondition = 0;
 
                                                     <img alt="{{$gateway}}" width="111" src="{{asset('images/logo/'.$gateway.'.png')}}">
 
-                                                        <p class="text-color-dark" id="fee" style="display:none;font-family: sans-serif;">{{ __('message.extra_processing')}} <b>{{$processingFee}}%</b> {{ __('message.time_payment')}}</p>
+                                                        <p class="text-color-dark" id="fee" style="display:none;font-family: sans-serif;">{{ trans('message.extra_processing')}} <b>{{$processingFee}}%</b> {{ trans('message.time_payment')}}</p>
 
                                                        
 
@@ -518,7 +518,7 @@ $cartSubtotalWithoutCondition = 0;
                                     </tbody>
                                 </table>
                             </div>
-                            <button type="submit" id="proceed" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3">{{ __('message.proceed')}} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></button>
+                            <button type="submit" id="proceed" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3">{{ trans('message.proceed')}} <i class="fas {{ isRtlForLang() ? 'fa-arrow-left me-2' : 'fa-arrow-right ms-2' }}"></i></button>
                      
                              {!! html()->form()->close() !!}
 
@@ -543,7 +543,7 @@ $cartSubtotalWithoutCondition = 0;
 <script>
 
   $('#checkoutsubmitform').submit(function(){
-      $("#proceed").html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> {{ __('message.processing') }}");
+      $("#proceed").html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> {{ trans('message.processing') }}");
       $("#proceed").prop('disabled', true);
 
   });

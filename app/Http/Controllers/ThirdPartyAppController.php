@@ -55,7 +55,7 @@ class ThirdPartyAppController extends Controller
              })
             ->addColumn('action', function ($model) {
                 return "<p><button data-toggle='modal' 
-             data-id=".$model->id." data-appName='$model->app_name'. data-appKey='$model->app_key'. data-secret='$model->app_secret' class='btn btn-sm btn-secondary btn-xs editThirdPartyApp'".tooltip(__('message.edit'))."<i class='fa fa-edit'
+             data-id=".$model->id." data-appName='$model->app_name'. data-appKey='$model->app_key'. data-secret='$model->app_secret' class='btn btn-sm btn-secondary btn-xs editThirdPartyApp'".tooltip(trans('message.edit'))."<i class='fa fa-edit'
              style='color:white;'> </i></button>&nbsp;</p>";
             })
              ->filterColumn('app_name', function ($query, $keyword) {
@@ -104,10 +104,10 @@ class ThirdPartyAppController extends Controller
             'app_secret' => 'required',
         ],
             [
-                'app_name.required' => __('validation.thirdparty_api.app_name_required'),
-                'app_key.required' => __('validation.thirdparty_api.app_key_required'),
-                'app_key.size' => __('validation.thirdparty_api.app_key_size'),
-                'app_secret.required' => __('validation.thirdparty_api.app_secret_required'),
+                'app_name.required' => trans('validation.thirdparty_api.app_name_required'),
+                'app_key.required' => trans('validation.thirdparty_api.app_key_required'),
+                'app_key.size' => trans('validation.thirdparty_api.app_key_size'),
+                'app_secret.required' => trans('validation.thirdparty_api.app_secret_required'),
             ]);
         $this->thirdParty->fill($request->all())->save();
 
@@ -161,10 +161,10 @@ class ThirdPartyAppController extends Controller
             'app_secret' => 'required',
         ],
             [
-                'app_name.required' => __('validation.thirdparty_api.app_name_required'),
-                'app_key.required' => __('validation.thirdparty_api.app_key_required'),
-                'app_key.size' => __('validation.thirdparty_api.app_key_size'),
-                'app_secret.required' => __('validation.thirdparty_api.app_secret_required'),
+                'app_name.required' => trans('validation.thirdparty_api.app_name_required'),
+                'app_key.required' => trans('validation.thirdparty_api.app_key_required'),
+                'app_key.size' => trans('validation.thirdparty_api.app_key_size'),
+                'app_secret.required' => trans('validation.thirdparty_api.app_secret_required'),
             ]);
         $app_name = $request->input('app_name');
         $app_key = $request->input('app_key');

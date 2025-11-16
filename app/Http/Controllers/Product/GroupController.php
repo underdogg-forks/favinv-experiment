@@ -68,7 +68,7 @@ class GroupController extends Controller
 
                         ->addColumn('action', function ($model) {
                             return '<a href='.url('groups/'.$model->id.'/edit').
-                            " class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit' 
+                            " class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit' 
                             style='color:white;'> </i></a>";
                         })
                           ->filterColumn('name', function ($query, $keyword) {
@@ -106,8 +106,8 @@ class GroupController extends Controller
             'name' => 'required',
             'pricing_templates_id' => 'required',
         ], [
-            'pricing_templates_id.required' => __('message.please_select_template'),
-            'name.required' => __('validation.bundle.name.required'),
+            'pricing_templates_id.required' => trans('message.please_select_template'),
+            'name.required' => trans('validation.bundle.name.required'),
         ]);
 
         try {
@@ -184,7 +184,7 @@ class GroupController extends Controller
                 return redirect()->back()->with('success', \trans('message.updated-successfully'));
             }
 
-            return redirect()->back()->with('fails', __('message.all_products_monthly_yearly_plan'));
+            return redirect()->back()->with('fails', trans('message.all_products_monthly_yearly_plan'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

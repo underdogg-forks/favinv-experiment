@@ -38,12 +38,12 @@ class GroupRequest extends Request
     public function messages()
     {
         return [
-            'name.required' => __('validation.group.name.required'),
-            'features.*.name.required' => __('validation.group.features.name.required'),
-            'price.*.name.required_unless' => __('validation.group.price.name.required_unless'),
-            'value.*.name.required_unless' => __('validation.group.value.name.required_unless'),
-            'type.required_with' => __('validation.group.type.required_with'),
-            'title.required_with' => __('validation.group.title.required_with'),
+            'name.required' => trans('validation.group.name.required'),
+            'features.*.name.required' => trans('validation.group.features.name.required'),
+            'price.*.name.required_unless' => trans('validation.group.price.name.required_unless'),
+            'value.*.name.required_unless' => trans('validation.group.value.name.required_unless'),
+            'type.required_with' => trans('validation.group.type.required_with'),
+            'title.required_with' => trans('validation.group.title.required_with'),
         ];
     }
 }

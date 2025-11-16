@@ -1,12 +1,12 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.dashboard') }}
+    {{ trans('message.dashboard') }}
 @stop
 @section('page-header')
-    {{ __('message.dashboard') }}
+    {{ trans('message.dashboard') }}
 @stop
 @section('page-heading')
-    {{ __('message.dashboard') }}
+    {{ trans('message.dashboard') }}
 @stop
 
 @section('main-class')
@@ -49,7 +49,7 @@ $updated_ends_at = 'expired';
                                                 </div>
                                             </div>
 
-                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ __('message.pending_invoices')}}</h4>
+                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ trans('message.pending_invoices')}}</h4>
                                         </div>
                                     </div>
                                 </a>
@@ -77,7 +77,7 @@ $updated_ends_at = 'expired';
                                                 </div>
                                             </div>
 
-                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ __('message.caps_orders') }}</h4>
+                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ trans('message.caps_orders') }}</h4>
                                         </div>
                                     </div>
                                 </a>
@@ -104,7 +104,7 @@ $updated_ends_at = 'expired';
                                                 </div>
                                             </div>
 
-                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ __('message.order_renewals')}}</h4>
+                                            <h4 class="card-title mb-2 ps-2 mt-2 text-4 font-weight-bold">{{ trans('message.order_renewals')}}</h4>
                                         </div>
                                     </div>
                                 </a>

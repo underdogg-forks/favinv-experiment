@@ -520,7 +520,7 @@ class SettingsController extends BaseSettingsController
                     $todo->fav_icon = null;
                 }
                 $todo->save();
-                $response = ['type' => 'success', 'message' => __('message.logo_deleted_successfully')];
+                $response = ['type' => 'success', 'message' => trans('message.logo_deleted_successfully')];
 
                 return response()->json($response);
             }
@@ -588,7 +588,7 @@ class SettingsController extends BaseSettingsController
             $request->from = '';
             $request->till = '';
 
-            return redirect('settings/activitylog')->with('fails', __('message.start_date_before_end_date'));
+            return redirect('settings/activitylog')->with('fails', trans('message.start_date_before_end_date'));
         }
         try {
             $activity = $activities->all();
@@ -917,7 +917,7 @@ class SettingsController extends BaseSettingsController
                     if ($model->status === 'failed') {
                         $exceptionMessage = $model->exception;
 
-                        return '<a href="#" class="show-exception" data-message="'.$exceptionMessage.'">'.__('message.failed').'</a>';
+                        return '<a href="#" class="show-exception" data-message="'.$exceptionMessage.'">'.trans('message.failed').'</a>';
                     }
 
                     return ucfirst($model->status);
@@ -1058,7 +1058,7 @@ class SettingsController extends BaseSettingsController
             'verification_preference' => $data['preferred_verification'] ?? null,
         ]);
 
-        return successResponse(__('message.contact_setting_update'));
+        return successResponse(trans('message.contact_setting_update'));
     }
 
     public function emailData(Request $request)
@@ -1068,9 +1068,9 @@ class SettingsController extends BaseSettingsController
             ->first()
             ->toArray();
 
-        $label2 = html()->label(__('message.emailApikey'), 'emailApikey')->class('required')->toHtml();
+        $label2 = html()->label(trans('message.emailApikey'), 'emailApikey')->class('required')->toHtml();
         $input = html()->text('emailApikey', $apikey)->class('form-control emailapikey')->id('emailApikey')->toHtml();
-        $label1 = html()->label(__('message.emailMode'), 'emailMode')->class('required')->toHtml();
+        $label1 = html()->label(trans('message.emailMode'), 'emailMode')->class('required')->toHtml();
         $input1 = html()->text('emailMode', $mode)->class('form-control emailMode')->id('emailMode')->toHtml();
         $input3 = '<select class="form-control emailMode" id="emailMode" name="emailMode">'
             .'<option value="quick"'.($mode == 'quick' ? ' selected' : '').'>Quick</option>'
@@ -1092,7 +1092,7 @@ class SettingsController extends BaseSettingsController
         <div class="form-group">'.$label1.$input3.'</div>
          <div class="form-group" id="checkboxToRender">
          <div class="form-group">
-            <label for="allowed_statuses" class="required">'.__('message.allowed_estatus').'</label>'
+            <label for="allowed_statuses" class="required">'.trans('message.allowed_estatus').'</label>'
                     .$statusOptions.
                     '</div>
                 </div>
@@ -1112,7 +1112,7 @@ class SettingsController extends BaseSettingsController
         $statusOptions = $this->setStatus($current);
 
         $response = '<div class="form-group">
-            <label for="allowed_statuses" class="required">'.__('message.allowed_estatus').'</label>'
+            <label for="allowed_statuses" class="required">'.trans('message.allowed_estatus').'</label>'
             .$statusOptions.
             '</div>
             <span class="error invalid-feedback d-block" id="checkboxErrorMessage"></span>';
@@ -1150,11 +1150,11 @@ class SettingsController extends BaseSettingsController
             ->select('api_key', 'mode', 'api_secret')
             ->first()
             ->toArray();
-        $label2 = html()->label(__('message.mobileApikey'), 'emailApikey')->class('required')->toHtml();
+        $label2 = html()->label(trans('message.mobileApikey'), 'emailApikey')->class('required')->toHtml();
         $input = html()->text('apikey', $apikey)->class('form-control emailapikey')->id('mobileApikey')->toHtml();
-        $label1 = html()->label(__('message.mobileApisecret'), 'apisecret')->class('required')->toHtml();
+        $label1 = html()->label(trans('message.mobileApisecret'), 'apisecret')->class('required')->toHtml();
         $input1 = html()->text('apisecret', $apisecret)->class('form-control emailMode')->id('mobileApisecret')->toHtml();
-        $label3 = html()->label(__('message.mobileMode'), 'mobileMode')->class('required')->toHtml();
+        $label3 = html()->label(trans('message.mobileMode'), 'mobileMode')->class('required')->toHtml();
         $input3 = html()->text('mobileMode', $mode)->class('form-control mobileMode')->id('mobileMode')->toHtml();
         $input4 = '<select class="form-control emailMode" id="mobileMode" name="mobileMode">'
             .'<option value="basic"'.($mode == 'basic' ? ' selected' : '').'>Basic</option>'

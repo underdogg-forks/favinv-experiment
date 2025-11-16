@@ -53,7 +53,7 @@ class LoginTest extends DuskTestCase
                 ->press('#resetmail')
                 ->pause(500);
 
-            $browser->assertSee(__('message.reset_instructions', ['email' => 'testuser@gmail.com']));
+            $browser->assertSee(trans('message.reset_instructions', ['email' => 'testuser@gmail.com']));
         });
     }
 
@@ -125,7 +125,7 @@ class LoginTest extends DuskTestCase
             $browser->type('#email', $this->user->email)
                 ->press('#resetmail');
 
-            $expectedMessage = __('message.reset_instructions', ['email' => $this->user->email]);
+            $expectedMessage = trans('message.reset_instructions', ['email' => $this->user->email]);
 
             $browser->waitForText($expectedMessage, 15);
             $browser->assertSee($expectedMessage);

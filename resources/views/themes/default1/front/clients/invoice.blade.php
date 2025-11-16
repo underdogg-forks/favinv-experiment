@@ -1,21 +1,21 @@
 
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.invoice') }}
+    {{ trans('message.invoice') }}
 @stop
 @section('nav-invoice')
     active
 @stop
 @section('page-heading')
-    {{ __('message.my_invoices')}}
+    {{ trans('message.my_invoices')}}
 @stop
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.my_invoices')}}</li>
+     <li class="active text-dark">{{ trans('message.my_invoices')}}</li>
 @stop 
 <?php $check = App\User::where('id', Auth::id())->value('company');
 
@@ -64,7 +64,7 @@
             <button class="btn-credit open-createCreditDialog text-truncate"
                     style="background-color: white; border: none; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                 <i class="fas fa-credit-card me-1"></i>
-                {{ __('message.credits') }} {!! $formattedValue !!}
+                {{ trans('message.credits') }} {!! $formattedValue !!}
             </button>
         </div>
         <script>
@@ -83,14 +83,14 @@
                 <div class="modal-dialog credit-dialog">
                     <div class="modal-content credit-content">
                         <div class="modal-header credit-header">
-                            <h4 class="modal-title credit-title">{{ __('message.credit_balance')}} {!! $formattedValue !!}</h4>
+                            <h4 class="modal-title credit-title">{{ trans('message.credit_balance')}} {!! $formattedValue !!}</h4>
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body credit-body">
                             <ul class="list-group">
-                                <h6 class="modal-title">{{ __('message.credit_balance_history')}}</h6>
+                                <h6 class="modal-title">{{ trans('message.credit_balance_history')}}</h6>
                                 <br>
 
                                 @if(!$payment_activity->isEmpty())
@@ -103,7 +103,7 @@
                                         </li>
                                     @endforeach
                                 @else
-                                    <li class="list-group-item" style="text-align: center">{{ __('message.activity_recorded')}}</li>
+                                    <li class="list-group-item" style="text-align: center">{{ trans('message.activity_recorded')}}</li>
                                 @endif
                             </ul>
                         </div>
@@ -132,14 +132,14 @@
                                                 <table id="invoice-table" class="table table-striped table-bordered">
                                                 <thead>
                                                 <tr>
-                                                    <th>{{ __('message.invoice_no')}}</th>
-                                                    <th>{{ __('message.date')}}</th>
-                                                    <th>{{ __('message.order_no')}}</th>
-                                                    <th>{{ __('message.total')}}</th>
-                                                    <th>{{ __('message.paid')}}</th>
-                                                    <th>{{ __('message.balance')}}</th>
-                                                    <th>{{ __('message.status')}}</th>
-                                                    <th style="width: 122px;">{{ __('message.action')}}</th>
+                                                    <th>{{ trans('message.invoice_no')}}</th>
+                                                    <th>{{ trans('message.date')}}</th>
+                                                    <th>{{ trans('message.order_no')}}</th>
+                                                    <th>{{ trans('message.total')}}</th>
+                                                    <th>{{ trans('message.paid')}}</th>
+                                                    <th>{{ trans('message.balance')}}</th>
+                                                    <th>{{ trans('message.status')}}</th>
+                                                    <th style="width: 122px;">{{ trans('message.action')}}</th>
 
                                                 </tr> </thead>
                                             </table>
@@ -158,18 +158,18 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('message.required_details')}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ trans('message.required_details')}}</h5>
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="{{ url('store-basic-details') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="recipient-name" class="col-form-label"><b>{{ __('message.company')}}</b><span style="color: red;">*</span></label>
+                            <label for="recipient-name" class="col-form-label"><b>{{ trans('message.company')}}</b><span style="color: red;">*</span></label>
                             <input type="text" class="form-control required" id="company" name="company">
 
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="col-form-label"><b>{{ __('message.address')}}</b><span style="color: red;">*</span></label>
+                            <label for="message-text" class="col-form-label"><b>{{ trans('message.address')}}</b><span style="color: red;">*</span></label>
                             <textarea class="form-control required" id="address" name="address"></textarea>
 
 
@@ -179,7 +179,7 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="submit">
                         <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                        <span class="button-text"> <i class="fa fa-save">&nbsp;&nbsp;</i>{{ __('message.save')}}</span>
+                        <span class="button-text"> <i class="fa fa-save">&nbsp;&nbsp;</i>{{ trans('message.save')}}</span>
                     </button>
                 </div>
 
@@ -192,17 +192,17 @@
        <div class="modal-dialog">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title" id="deleteModalLabel">{{ __('message.confirm_deletion') }}</h5>
+                   <h5 class="modal-title" id="deleteModalLabel">{{ trans('message.confirm_deletion') }}</h5>
                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
                </div>
                <div class="modal-body">
-                   {{ __('message.delete_invoice') }}
+                   {{ trans('message.delete_invoice') }}
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-light" data-bs-dismiss="modal" id="cancelBtn">{{ __('message.cancel') }}</button>
-                   <button type="button" class="btn btn-primary" id="confirmDeleteBtn">{{ __('message.delete') }}</button>
+                   <button type="button" class="btn btn-light" data-bs-dismiss="modal" id="cancelBtn">{{ trans('message.cancel') }}</button>
+                   <button type="button" class="btn btn-primary" id="confirmDeleteBtn">{{ trans('message.delete') }}</button>
                </div>
            </div>
        </div>
@@ -232,9 +232,9 @@
                     success: function (response) {
                         // Display success message
                         var successMessage = '<div class="alert alert-success alert-dismissible">' +
-                            '<button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}">' +
+                            '<button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}">' +
                             '<span aria-hidden="true"></span></button>' +
-                            '<strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }} </strong>' +
+                            '<strong><i class="far fa-thumbs-up"></i> {{ trans('message.well_done') }} </strong>' +
                             response.message + '!</div>';
                         messageContainer.html(successMessage);
 
@@ -248,9 +248,9 @@
 
                         // Display error message
                         var errorMessage = '<div class="alert alert-danger alert-dismissible">' +
-                            '<button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ __('message.close') }}">' +
+                            '<button type="button" class="btn-close" data-dismiss="alert" aria-label="{{ trans('message.close') }}">' +
                             '<span aria-hidden="true"></span></button>' +
-                            '<strong>{{ __('message.oh_snap') }} </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+                            '<strong>{{ trans('message.oh_snap') }} </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
                         var errors = xhr.responseJSON.errors;
                         $.each(errors, function (key, value) {
                             errorMessage += '<li>' + value + '</li>';
@@ -287,7 +287,7 @@
                 // Check if the fields are empty
                 if (company.trim() === '' || address.trim() === '') {
                     // Display an error message or take appropriate action
-                    alert(@json(__('message.company_details_required')));
+                    alert(@json(trans('message.company_details_required')));
                 } else {
                     // If fields are not empty, proceed with the form submission
                     var btn = $(this);
@@ -331,7 +331,7 @@
 
                 error: function(xhr) {
                     if(xhr.status == 401) {
-                        alert(@json(__('message.session_expired')));
+                        alert(@json(trans('message.session_expired')));
                         window.location.href = '/login';
                     }
                 }
@@ -344,19 +344,19 @@
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
-                search:         "{{ __('message.table_search') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
+                search:         "{{ trans('message.table_search') }}",
             },
 
             columns: [

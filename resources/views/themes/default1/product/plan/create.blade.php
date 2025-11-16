@@ -3,14 +3,14 @@
     <div class="modal-content" style="width:700px;">
 
       <div class="modal-header">
-      <h4 class="modal-title">{{ __('message.create_plans') }}</h4>
+      <h4 class="modal-title">{{ trans('message.create_plans') }}</h4>
     </div>
       <div class="modal-body">
           <div id="alertMessage"></div>
         @if (count($errors) > 0)
 
                         <div class="alert alert-danger alert-dismissable">
-                            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}
+                            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -34,7 +34,7 @@
                 <div
                   class="col-md-4 form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                   <!-- name -->
-                    {!! html()->label(__('message.name'), 'name')->class('required') !!}
+                    {!! html()->label(trans('message.name'), 'name')->class('required') !!}
                     {!! html()->text('name')->class('form-control'.($errors->has('name') ? ' is-invalid' : ''))->id('planname') !!}
                     @error('name')
                     <span class="error-message"> {{$message}}</span>
@@ -46,9 +46,9 @@
                 <div
                   class="col-md-4 form-group {{ $errors->has('product') ? 'has-error' : '' }}">
                   <!-- value -->
-                    {!! html()->label(__('message.product'), 'product')->class('required') !!}
+                    {!! html()->label(trans('message.product'), 'product')->class('required') !!}
                   <select name="product" value="Choose" class="form-control {{$errors->has('product') ? ' is-invalid' : ''}}" id="planproduct" onchange="myProduct()">
-                    <option value="">{{ __('message.choose') }}</option>
+                    <option value="">{{ trans('message.choose') }}</option>
                     @foreach($products as $key=>$product)
                      @if (Request::old('product') == $key)
                      <option value={{$key}} selected>{{$product}}</option>
@@ -68,10 +68,10 @@
                 </div>
                 <div class="col-md-4 form-group plandays {{ $errors->has('days') ? 'has-error' : '' }}">
                   <!-- days -->
-                    {!! html()->label( __('message.periods'), 'days')->class('required') !!}
+                    {!! html()->label( trans('message.periods'), 'days')->class('required') !!}
                   <div class="input-group">
                     <select name="days" value="Choose" class="form-control {{$errors->has('days') ? ' is-invalid' : ''}}" id="plandays">
-                      <option value="">{{ __('message.choose') }}</option>
+                      <option value="">{{ trans('message.choose') }}</option>
                       @foreach($periods as $key=>$period)
                        @if (Request::old('days') == $key)
                      <option value={{$key}} selected>{{$period}}</option>
@@ -112,7 +112,7 @@
                       <tr>
                         <td>
                           <select name="country_id[]" class="form-control {{$errors->has('country_id[]') ? ' is-invalid' : ''}}" id="country">
-                            <option value="0">{{ __('message.default') }}</option>
+                            <option value="0">{{ trans('message.default') }}</option>
                               <div class="input-group-append">
                               </div>
                           </select>
@@ -120,7 +120,7 @@
                         <td>
                           <select name="currency[]" class="form-control {{$errors->has('currency') ? ' is-invalid' : ''}}" id="currency">
                              <option value="">
-                                 {{ __('message.choose') }}
+                                 {{ trans('message.choose') }}
                               </option>
                             @foreach ($currency as $code => $name)
                             @if (Request::old('currency') && in_array($code, Request::old('currency')))
@@ -165,8 +165,8 @@
 
                 <div class="col-md-12 form-group">
                   <!-- description -->
-                    {!! html()->label( __('message.price_description'), 'description') !!}
-                    {!! html()->text('price_description')->class('form-control'.($errors->has('price_description') ? ' is-invalid' : ''))->placeholder( __('message.enter_price_description')) !!}
+                    {!! html()->label( trans('message.price_description'), 'description') !!}
+                    {!! html()->text('price_description')->class('form-control'.($errors->has('price_description') ? ' is-invalid' : ''))->placeholder( trans('message.enter_price_description')) !!}
                   <h6 id="dayscheck"></h6>
 
                       <!-- {!! html()->select('days', ['' => 'Select', 'Periods' => $periods])->class('form-control')->id('plandays') !!} -->
@@ -174,8 +174,8 @@
 
                 <div class="col-md-6 form-group">
                   <!-- product_quantity -->
-                    {!! html()->label( __('message.product_quantity'), 'product_quantity')->class('required') !!}
-                    {!! html()->number('product_quantity')->class('form-control only-numbers'.($errors->has('product_quantity') ? ' is-invalid' : ''))->id('prodquant')->disabled()->placeholder( __('message.price_products')) !!}
+                    {!! html()->label( trans('message.product_quantity'), 'product_quantity')->class('required') !!}
+                    {!! html()->number('product_quantity')->class('form-control only-numbers'.($errors->has('product_quantity') ? ' is-invalid' : ''))->id('prodquant')->disabled()->placeholder( trans('message.price_products')) !!}
                     @error('product_quantity')
                     <span class="error-message"> {{$message}}</span>
                     @enderror
@@ -185,11 +185,11 @@
 
                 <div class="col-md-6 form-group">
                   <!-- agents -->
-                  <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188)'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ __('message.agents_selected') }}">
+                  <i class='fa fa-info-circle' style='cursor: help; font-size: small; color: rgb(60, 141, 188)'<label data-toggle="tooltip" style="font-weight:500;" data-placement="top" title="{{ trans('message.agents_selected') }}">
                         </label></i>
 
-                    {!! html()->label( __('message.agent'), 'agents')->class('required') !!}
-                    {!! html()->number('no_of_agents')->class('form-control only-numbers'.($errors->has('no_of_agents') ? ' is-invalid' : ''))->id('agentquant')->disabled()->placeholder( __('message.price_agents')) !!}
+                    {!! html()->label( trans('message.agent'), 'agents')->class('required') !!}
+                    {!! html()->number('no_of_agents')->class('form-control only-numbers'.($errors->has('no_of_agents') ? ' is-invalid' : ''))->id('agentquant')->disabled()->placeholder( trans('message.price_agents')) !!}
                     @error('no_of_agents')
                     <span class="error-message"> {{$message}}</span>
                     @enderror
@@ -203,8 +203,8 @@
 
         </div>
          <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default " data-dismiss="modal" id="close-plan"><i class="fa fa-times"></i>&nbsp;{{ __('message.close') }}</button>
-                <button type="submit" id="planButton" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;{{ __('message.save') }}</button>
+                <button type="button" class="btn btn-default " data-dismiss="modal" id="close-plan"><i class="fa fa-times"></i>&nbsp;{{ trans('message.close') }}</button>
+                <button type="submit" id="planButton" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;{{ trans('message.save') }}</button>
 
             </div>
        
@@ -327,7 +327,7 @@ $("#close-plan").click(function() {
         <tr id="row` + i + `">
           <td>
             <select name="country_id[]" class="form-control" >
-              <option value="" selected disabled>{{ __('message.choose_country') }}</option>
+              <option value="" selected disabled>{{ trans('message.choose_country') }}</option>
               @foreach ($countries as $country)
                 <option value="{{$country['country_id']}}">
                   {{ $country['country_name'] }}
@@ -339,7 +339,7 @@ $("#close-plan").click(function() {
           <td>
             <select name="currency[]" class="form-control">
             <option value="">
-                  {{ __('message.choose') }}
+                  {{ trans('message.choose') }}
                 </option>
               @foreach ($currency as $code => $name)
                 <option value="{{ $code }}">
@@ -376,7 +376,7 @@ $("#close-plan").click(function() {
       $("#period-modal-show").modal();
     })
     $('.save-periods').on('click', function () {
-      $("#submit1").html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i>{{ __('message.please_wait') }}");
+      $("#submit1").html("<i class='fa fa-circle-o-notch fa-spin fa-1x fa-fw'></i>{{ trans('message.please_wait') }}");
       $.ajax({
         type: 'POST',
         url: "{{ url('postInsertPeriod') }}",
@@ -394,15 +394,15 @@ $("#close-plan").click(function() {
           $('#new-days').val("");
           $('#select-period').val("");
           var result =
-            '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ __('message.success') }}! </strong>{{ __('message.period_added_successfully') }}</div>';
+            '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong><i class="fa fa-check"></i> {{ trans('message.success') }}! </strong>{{ trans('message.period_added_successfully') }}</div>';
           $('#error').hide();
           $('#alertMessage').show();
           $('#alertMessage').html(result + ".");
-          $("#submit1").html("<i class='fa fa-floppy-o'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+          $("#submit1").html("<i class='fa fa-floppy-o'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
         },
         error: function (error) {
           var html =
-            '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ __('message.whoops') }} </strong>{{ __('message.something_wrong') }}<br><br><ul>';
+            '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>{{ trans('message.whoops') }} </strong>{{ trans('message.something_wrong') }}<br><br><ul>';
           for (key in error.responseJSON.errors) {
             html += '<li>' + error.responseJSON.errors[key][0] + '</li>'
 
@@ -411,7 +411,7 @@ $("#close-plan").click(function() {
           $('#alertMessage').hide();
           $('#error').show();
           document.getElementById('error').innerHTML = html;
-          $("#submit1").html("<i class='fa fa-floppy-o'>&nbsp;&nbsp;</i>{{ __('message.save') }}");
+          $("#submit1").html("<i class='fa fa-floppy-o'>&nbsp;&nbsp;</i>{{ trans('message.save') }}");
         }
 
       })

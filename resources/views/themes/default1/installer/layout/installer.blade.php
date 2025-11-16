@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ __('installer_messages.title') }}</title>
+    <title>{{ trans('installer_messages.title') }}</title>
 
     <link rel="shortcut icon" href="{{ asset('images/faveo.png') }}" type="image/x-icon" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -109,19 +109,19 @@
                     <ol class="c-stepper p-3">
                         <li class="c-stepper__item active" id="server">
                             <div class="c-stepper__icon">1</div>
-                            <p class="c-stepper__title fs-6">{{__('installer_messages.server_requirements')}}</p>
+                            <p class="c-stepper__title fs-6">{{trans('installer_messages.server_requirements')}}</p>
                         </li>
                         <li class="c-stepper__item" id="database">
                             <div class="c-stepper__icon">2</div>
-                            <p class="c-stepper__title fs-6">{{__('installer_messages.database_setup')}}</p>
+                            <p class="c-stepper__title fs-6">{{trans('installer_messages.database_setup')}}</p>
                         </li>
                         <li class="c-stepper__item" id="start">
                             <div class="c-stepper__icon">3</div>
-                            <p class="c-stepper__title fs-6">{{__('installer_messages.getting_started')}}</p>
+                            <p class="c-stepper__title fs-6">{{trans('installer_messages.getting_started')}}</p>
                         </li>
                         <li class="c-stepper__item" id="final">
                             <div class="c-stepper__icon">4</div>
-                            <p class="c-stepper__title fs-6">{{__('installer_messages.final')}}</p>
+                            <p class="c-stepper__title fs-6">{{trans('installer_messages.final')}}</p>
                         </li>
                     </ol>
                 </div>

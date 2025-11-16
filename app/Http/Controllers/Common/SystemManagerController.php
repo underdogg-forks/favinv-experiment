@@ -109,7 +109,7 @@ class SystemManagerController extends Controller
             ManagerSetting::whereManagerRole('account')->update(['auto_assign' => $request->autoAssignAccount]);
             ManagerSetting::whereManagerRole('sales')->update(['auto_assign' => $request->autoAssignSales]);
 
-            return successResponse(__('message.manager_settings_updated_successfully'));
+            return successResponse(trans('message.manager_settings_updated_successfully'));
         } catch (\Exception $e) {
             return errorResponse($e->getMessage());
         }

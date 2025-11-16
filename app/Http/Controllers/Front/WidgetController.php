@@ -57,7 +57,7 @@ class WidgetController extends Controller
                         })
                         ->addColumn('action', function ($model) {
                             return '<a href='.url('widgets/'.$model->id.'/edit')."
-                             class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit'
+                             class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit'
                                  style='color:white;'> </i></a>";
                         })
                          ->filterColumn('name', function ($query, $keyword) {
@@ -110,21 +110,21 @@ class WidgetController extends Controller
             'type' => 'required|unique:widgets',
         ],
             [
-                'name.required' => __('validation.widget.name_required'),
-                'name.max' => __('validation.widget.name_max'),
-                'publish.required' => __('validation.widget.publish_required'),
-                'type.required' => __('validation.widget.type_required'),
-                'type.unique' => __('validation.widget.type_unique'),
+                'name.required' => trans('validation.widget.name_required'),
+                'name.max' => trans('validation.widget.name_max'),
+                'publish.required' => trans('validation.widget.publish_required'),
+                'type.required' => trans('validation.widget.type_required'),
+                'type.unique' => trans('validation.widget.type_unique'),
             ]);
 
         try {
             $mailchimpTextBox = Widgets::where('allow_mailchimp', 1)->count();
             $allowsocialIcon = Widgets::where('allow_social_media', 1)->count();
             if ($mailchimpTextBox && $request->allow_mailchimp == 1) {
-                throw new \Exception(__('message.mailchimp_footer_error'));
+                throw new \Exception(trans('message.mailchimp_footer_error'));
             }
             if ($allowsocialIcon && $request->allow_social_media == 1) {
-                throw new \Exception(__('message.social_icon_footer_warning'));
+                throw new \Exception(trans('message.social_icon_footer_warning'));
             }
             $this->widget->fill($request->input())->save();
 
@@ -143,21 +143,21 @@ class WidgetController extends Controller
             'type' => 'required|unique:widgets,type,'.$id,
         ],
             [
-                'name.required' => __('validation.widget.name_required'),
-                'name.max' => __('validation.widget.name_max'),
-                'publish.required' => __('validation.widget.publish_required'),
-                'type.required' => __('validation.widget.type_required'),
-                'type.unique' => __('validation.widget.type_unique'),
+                'name.required' => trans('validation.widget.name_required'),
+                'name.max' => trans('validation.widget.name_max'),
+                'publish.required' => trans('validation.widget.publish_required'),
+                'type.required' => trans('validation.widget.type_required'),
+                'type.unique' => trans('validation.widget.type_unique'),
             ]);
 
         try {
             $mailchimpTextBox = Widgets::where('allow_mailchimp', 1)->where('id', '!=', $id)->count();
             $allowsocialIcon = Widgets::where('allow_social_media', 1)->where('id', '!=', $id)->count();
             if ($mailchimpTextBox && $request->input('allow_mailchimp')) {
-                throw new \Exception(__('message.mailchimp_footer_error'));
+                throw new \Exception(trans('message.mailchimp_footer_error'));
             }
             if ($allowsocialIcon && $request->allow_social_media == 1) {
-                throw new \Exception(__('message.social_icon_footer_warning'));
+                throw new \Exception(trans('message.social_icon_footer_warning'));
             }
             $widget = $this->widget->where('id', $id)->first();
             $widget->fill($request->input());
@@ -306,7 +306,7 @@ class WidgetController extends Controller
                                                         </div>
                                                         <!-- Honeypot fields (hidden) -->
                                                         <div class="mb-3" style="display: none;">
-                                                            <label>'.__('message.contact_leave').'</label>
+                                                            <label>'.trans('message.contact_leave').'</label>
                                                             <input type="text" name="mailhoneypot_field" value="">
                                                         </div>';
             $mailchimpSection .= '
@@ -315,7 +315,7 @@ class WidgetController extends Controller
                             <div id="mailchimp_recaptcha"></div>
                         </div>
                     </div>';
-            $mailchimpSection .= '<button class="btn btn-primary mb-3" id="mailchimp-subscription" type="submit"><strong>'.__('message.caps_go').'</strong></button>
+            $mailchimpSection .= '<button class="btn btn-primary mb-3" id="mailchimp-subscription" type="submit"><strong>'.trans('message.caps_go').'</strong></button>
                                             </form>
                                           </div>';
         }

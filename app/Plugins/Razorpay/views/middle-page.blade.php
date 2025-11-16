@@ -1,20 +1,20 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.razorpay') }}
+    {{ trans('message.razorpay') }}
 @stop
 @section('page-heading')
-    {{ __('message.place_order') }}
+    {{ trans('message.place_order') }}
 @stop
 @section('page-heading')
- {{ __('message.checkout') }}
+ {{ trans('message.checkout') }}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
 @endif
- <li class="active text-dark">{{ __('message.razorpay') }}</li>
+ <li class="active text-dark">{{ trans('message.razorpay') }}</li>
 @stop
 @section('main-class') "main shop" @stop
 @section('content')
@@ -155,23 +155,23 @@ $json = json_encode($data);
 
                                         <th class="product-name text-uppercase" width="">
 
-                                            {{ __('message.product') }}
+                                            {{ trans('message.product') }}
 
                                         </th>
                                     
 
                                         <th class="product-quantity text-uppercase" width="">
 
-                                            {{ __('message.quantity') }}
+                                            {{ trans('message.quantity') }}
                                         </th>
                                          <th class="product-agent text-uppercase" width="">
 
-                                             {{ __('message.agents') }}
+                                             {{ trans('message.agents') }}
                                         </th>
 
                                         <th class="product-subtotal text-uppercase" width="">
 
-                                            {{ __('message.total') }}
+                                            {{ trans('message.total') }}
                                         </th>
                                     </tr>
                                     </thead>
@@ -189,12 +189,12 @@ $json = json_encode($data);
 
                                             <div class="product-thumbnail-wrapper">
 
-                                                <a  onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove"  data-bs-toggle="tooltip" title="{{ __('message.remove_product') }}" style="top: -15px;left: 70px;">
+                                                <a  onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove"  data-bs-toggle="tooltip" title="{{ trans('message.remove_product') }}" style="top: -15px;left: 70px;">
 
                                                     <i class="fas fa-times"></i>
                                                 </a>
 
-                                                <span class="product-thumbnail-image"  data-bs-toggle="tooltip" title="{{ __('message.faveo_enterprise_advance') }}">
+                                                <span class="product-thumbnail-image"  data-bs-toggle="tooltip" title="{{ trans('message.faveo_enterprise_advance') }}">
 
                                                         <img width="90" height="90" alt="" class="img-fluid" src="{{$item->associatedModel->image}}">
                                                     </span>
@@ -219,10 +219,10 @@ $json = json_encode($data);
 
 
                                         <td class="product-subtotal" style="font-family: Arial;">
-                                            @if(\Session::has('togglePrice') && $item->id == \Session::get('productid'))
+                                            @if(session()->has('togglePrice') && $item->id == session('productid'))
 
                                             <span class="amount text-color-dark font-weight-bold text-4">
-                                                {{currencyFormat($item->quantity * \Session::get('togglePrice'),$code = $item->attributes->currency)}}
+                                                {{currencyFormat($item->quantity * session('togglePrice'),$code = $item->attributes->currency)}}
                                             </span>
                                             @else
                                             <span class="amount text-color-dark font-weight-bold text-4">
@@ -232,7 +232,7 @@ $json = json_encode($data);
                                         </td>
                                     </tr>
                                      @empty 
-                                    <p>{{ __('message.cart_void') }}</p>
+                                    <p>{{ trans('message.cart_void') }}</p>
 
 
                                     @endforelse
@@ -248,7 +248,7 @@ $json = json_encode($data);
 
                             <div class="card-body">
 
-                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order') }}</h4>
+                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order') }}</h4>
 
                                 <table class="shop_table cart-totals mb-3">
 
@@ -256,7 +256,7 @@ $json = json_encode($data);
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.cart_subtotal') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.cart_subtotal') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">{{currencyFormat($cartSubtotalWithoutCondition,$code = $currency)}}</span>
@@ -265,15 +265,15 @@ $json = json_encode($data);
                                     @if(Session::has('code'))
                                        <tr>
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.discount') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.discount') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">
                                                 <?php
-                                                if (strpos(\Session::get('codevalue'), '%') == true) {
-                                                        $discountValue = \Session::get('codevalue');
+                                                if (strpos(session('codevalue'), '%') == true) {
+                                                        $discountValue = session('codevalue');
                                                     } else {
-                                                        $discountValue = currencyFormat(\Session::get('codevalue'),$code = $item->attributes->currency);
+                                                        $discountValue = currencyFormat(session('codevalue'),$code = $item->attributes->currency);
                                                     }
                                                 ?>
 
@@ -384,7 +384,7 @@ $json = json_encode($data);
                                         ?>
 
                                   <td class="border-top-0" style="color: indianred">
-                                                        <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.amount_pending') }}
+                                                        <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.amount_pending') }}
                                                         </strong></td>
                                    <td class="text-end align-top border-top-0">
                                                         <span class="amount font-weight-medium text-color-grey">
@@ -399,7 +399,7 @@ $json = json_encode($data);
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total') }}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total') }}</strong>
                                         </td>
 
                                         <?php
@@ -419,7 +419,7 @@ $json = json_encode($data);
                                 </table>
 
 
-                                <input type="submit" name="submit" value="{{ __('message.place_your_order_pay') }}" id="rzp-button1"  class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                <input type="submit" name="submit" value="{{ trans('message.place_your_order_pay') }}" id="rzp-button1"  class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
                             </div>
                         </div>
@@ -453,23 +453,23 @@ $json = json_encode($data);
 
                                         <th class="product-name text-uppercase heading" width="">
 
-                                            {{ __('message.product') }}
+                                            {{ trans('message.product') }}
 
                                         </th>
                               
 
                                         <th class="product-quantity text-uppercase heading" width="">
 
-                                            {{ __('message.quantity') }}
+                                            {{ trans('message.quantity') }}
                                         </th>
                                          <th class="product-agent text-uppercase heading" width="">
 
-                                            {{ __('message.agents') }}
+                                            {{ trans('message.agents') }}
                                         </th>
 
                                         <th class="product-subtotal text-uppercase heading" width="">
 
-                                            {{ __('message.total') }}
+                                            {{ trans('message.total') }}
                                         </th>
                                     </tr>
                                     </thead>
@@ -522,7 +522,7 @@ $json = json_encode($data);
                                         </td>
                                     </tr>
                                      @empty 
-                                    <p>{{ __('message.cart_void') }}</p>
+                                    <p>{{ trans('message.cart_void') }}</p>
 
 
                                     @endforelse
@@ -538,7 +538,7 @@ $json = json_encode($data);
 
                             <div class="card-body">
 
-                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order') }}</h4>
+                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order') }}</h4>
 
                                 <table class="shop_table cart-totals mb-3">
 
@@ -546,7 +546,7 @@ $json = json_encode($data);
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.cart_subtotal') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.cart_subtotal') }}</strong>
                                         </td>
                                           <?php 
                                         $subtotals = App\Model\Order\InvoiceItem::where('invoice_id',$invoice->id)->pluck('regular_price')->toArray();
@@ -564,11 +564,11 @@ $json = json_encode($data);
                                       <tr class="cart-subtotal">
 
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.discount') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.discount') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">
-                                             {{currencyFormat(\Session::get('codevalue'),$code = $currency)}}</span>
+                                             {{currencyFormat(session('codevalue'),$code = $currency)}}</span>
                                         </td>
                                     </tr>
                                     @endif
@@ -613,7 +613,7 @@ $json = json_encode($data);
 
                                         <tr class="total">
                                          <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.paid') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.paid') }}</strong>
                                         </td>
                                            <td class="border-top-0 text-end">
                                             <span class="amount font-weight-medium">
@@ -625,7 +625,7 @@ $json = json_encode($data);
 
                                     <tr class="total">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.amount_pending') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.amount_pending') }}</strong>
                                         </td>
                                             <td class="border-top-0 text-end">
                                             <span class="amount font-weight-medium">
@@ -639,7 +639,7 @@ $json = json_encode($data);
                                     @if(\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance'))
                                         <tr class="cart-subtotal" style="color: indianred">
                                              <td class="border-top-0">
-                                            <strong class="text-color-dark">{{ __('message.amount_pending') }}</strong>
+                                            <strong class="text-color-dark">{{ trans('message.amount_pending') }}</strong>
 
                                             </td>
                                               <td class="border-top-0 text-end">
@@ -671,7 +671,7 @@ $json = json_encode($data);
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total') }}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total') }}</strong>
                                         </td>
                                         <td class="text-end">
                                             <strong class="text-color-dark"><span class="amount text-color-dark text-5">{{currencyFormat($amount,$code = $currency)}}</span></strong>
@@ -680,7 +680,7 @@ $json = json_encode($data);
                                     </tbody>
                                 </table>
 
-                                 <input type="submit" name="submit" value="{{ __('message.place_your_order_pay') }}" id="rzp-button1"  class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                                 <input type="submit" name="submit" value="{{ trans('message.place_your_order_pay') }}" id="rzp-button1"  class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
                                                              </div>
                         </div>
                     </div>

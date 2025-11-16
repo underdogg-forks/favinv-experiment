@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.edit_group') }}
+    {{ trans('message.edit_group') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.edit_group') }}</h1>
+        <h1>{{ trans('message.edit_group') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('groups')}}"><i class="fa fa-dashboard"></i> {{ __('message.groups') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.edit_group') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('groups')}}"><i class="fa fa-dashboard"></i> {{ trans('message.groups') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.edit_group') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -111,7 +111,7 @@
 
                     <tr>
                           
-                        <td><b>{!! html()->label(__('message.select_design'), 'design') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.select_design'), 'design') !!}</b></td>
                         <td>
 
                            <div class="form-group">
@@ -137,7 +137,7 @@
                     </tr>
                            <tr>
 
-                        <td><b>{!! html()->label(__('message.toggle_status'), 'status') !!}</b></td>
+                        <td><b>{!! html()->label(trans('message.toggle_status'), 'status') !!}</b></td>
                         <td>
                             <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
 
@@ -159,7 +159,7 @@
                     {!! html()->closeModelForm() !!}
                 </table>
 
-                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
+                <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{!!trans('message.update')!!}</button>
 
 
             </div>
@@ -259,7 +259,7 @@ $(document).ready(function () {
         e.preventDefault();
         if (x < max_fields) { //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="row"><div class="col-md-6 form-group"><input type="text" name="features[][name]" class="form-control" /></div><a href="#" class="remove_field">{{ __('message.remove') }}</a></div>'); //add input box
+            $(wrapper).append('<div class="row"><div class="col-md-6 form-group"><input type="text" name="features[][name]" class="form-control" /></div><a href="#" class="remove_field">{{ trans('message.remove') }}</a></div>'); //add input box
         }
     });
 
@@ -281,7 +281,7 @@ $(document).ready(function () {
             e.preventDefault();
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div class="row"><div class="col-md-4 form-group"><input type="text" name="value[][name]" class="form-control"/></div><div class="col-md-4 form-group"><input type="text" name="price[][name]" class="form-control" /></div><a href="#" class="remove_field2">{{ __('message.remove') }}</a></div>'); //add input box
+                $(wrapper).append('<div class="row"><div class="col-md-4 form-group"><input type="text" name="value[][name]" class="form-control"/></div><div class="col-md-4 form-group"><input type="text" name="price[][name]" class="form-control" /></div><a href="#" class="remove_field2">{{ trans('message.remove') }}</a></div>'); //add input box
             }
         });
 

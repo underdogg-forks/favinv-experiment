@@ -54,15 +54,15 @@ trait ApiKeySettings
     public function licenseStatus(Request $request)
     {
         $statusData = collect([
-            'status' => ['key' => 'license_status',       'lang' => __('message.license_status')],
-            'mstatus' => ['key' => 'msg91_status',         'lang' => __('message.mobile_status')],
-            'mailchimpstatus' => ['key' => 'mailchimp_status',     'lang' => __('message.mailchimp_status')],
-            'gcaptchastatus' => ['key' => 'recaptcha_status', 'lang' => __('message.google_status')],
-            'termsStatus' => ['key' => 'terms',                'lang' => __('message.terms_status')],
-            'pipedrivestatus' => ['key' => 'pipedrive_status',     'lang' => __('message.pipedrive_status')],
-            'githubstatus' => ['key' => 'github_status',        'lang' => __('message.github_status')],
-            'email_validation_status' => ['key' => 'email_validation_status', 'lang' => __('message.email_validation_status')],
-            'mobile_validation_status' => ['key' => 'mobile_validation_status', 'lang' => __('message.mobile_validation_status')],
+            'status' => ['key' => 'license_status',       'lang' => trans('message.license_status')],
+            'mstatus' => ['key' => 'msg91_status',         'lang' => trans('message.mobile_status')],
+            'mailchimpstatus' => ['key' => 'mailchimp_status',     'lang' => trans('message.mailchimp_status')],
+            'gcaptchastatus' => ['key' => 'recaptcha_status', 'lang' => trans('message.google_status')],
+            'termsStatus' => ['key' => 'terms',                'lang' => trans('message.terms_status')],
+            'pipedrivestatus' => ['key' => 'pipedrive_status',     'lang' => trans('message.pipedrive_status')],
+            'githubstatus' => ['key' => 'github_status',        'lang' => trans('message.github_status')],
+            'email_validation_status' => ['key' => 'email_validation_status', 'lang' => trans('message.email_validation_status')],
+            'mobile_validation_status' => ['key' => 'mobile_validation_status', 'lang' => trans('message.mobile_validation_status')],
         ]);
 
         try {
@@ -104,7 +104,7 @@ trait ApiKeySettings
         StatusSetting::where('id', 1)->update(['update_settings' => $status]);
         ApiKey::where('id', 1)->update(['update_api_secret' => $updateApiSecret, 'update_api_url' => $updateApiUrl]);
 
-        return ['message' => 'success', 'update' => __('message.auto_update_settings_saved')];
+        return ['message' => 'success', 'update' => trans('message.auto_update_settings_saved')];
     }
 
     /*
@@ -156,7 +156,7 @@ trait ApiKeySettings
         $status = $request->input('status');
         StatusSetting::find(1)->update(['domain_check' => $status]);
 
-        return ['message' => 'success', 'update' => __('message.domain_check_status_saved')];
+        return ['message' => 'success', 'update' => trans('message.domain_check_status_saved')];
     }
 
     /*
@@ -207,14 +207,14 @@ trait ApiKeySettings
     {
         StatusSetting::first()->update(['mailchimp_product_status' => $request->input('status')]);
 
-        return ['message' => 'success', 'update' => __('message.mailchimp_products_group_status_saved')];
+        return ['message' => 'success', 'update' => trans('message.mailchimp_products_group_status_saved')];
     }
 
     public function updateMailchimpIsPaidStatus(Request $request)
     {
         StatusSetting::first()->update(['mailchimp_ispaid_status' => $request->input('status')]);
 
-        return ['message' => 'success', 'update' => __('message.mailchimp_is_paid_status_saved')];
+        return ['message' => 'success', 'update' => trans('message.mailchimp_is_paid_status_saved')];
     }
 
     public function updateMailchimpDetails(Request $request)

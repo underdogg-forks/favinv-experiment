@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.invoices') }}
+    {{ trans('message.invoices') }}
 @stop
 @section('content-header')
 <style type="text/css">
@@ -167,12 +167,12 @@
 
 </style>
     <div class="col-sm-6">
-        <h1>{{ __('message.all-invoices') }}</h1>
+        <h1>{{ trans('message.all-invoices') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.all-invoices') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.all-invoices') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -184,10 +184,10 @@
         <div class="col-12">
             <div class="card card-secondary card-outline collapsed-card">
             <div class="card-header">
-        <h3 class="card-title">{{ __('message.advance_search') }}</h3>
+        <h3 class="card-title">{{ trans('message.advance_search') }}</h3>
 
                 <div class="card-tools">
-                   <button type="button" class="btn btn-tool" id="tip-search" title="{{ __('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
+                   <button type="button" class="btn btn-tool" id="tip-search" title="{{ trans('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
                             </button>
                    
                 </div>
@@ -201,33 +201,33 @@
             
              <div class="col-md-3 form-group">
                 <!-- first name -->
-                 {!! html()->label(__('message.first_name'), 'name') !!}
+                 {!! html()->label(trans('message.first_name'), 'name') !!}
                  {!! html()->text('name', $request->name)->class('form-control')->id('name') !!}
 
              </div>
 
             <div class="col-md-3 form-group">
                 <!-- first name -->
-                {!! html()->label(__('message.invoice_no'), 'invoice_no') !!}
+                {!! html()->label(trans('message.invoice_no'), 'invoice_no') !!}
                 {!! html()->text('invoice_no', $request->invoice_no)->class('form-control')->id('invoice_no') !!}
 
             </div>
        <div class="col-md-3 form-group">
     <!-- first name -->
-           {!! html()->label(__('message.status'), 'status') !!}
+           {!! html()->label(trans('message.status'), 'status') !!}
            <select name="status" class="form-control" id="status">
-        <option value="">{{ __('message.choose') }}</option>
-        <option value="pending" @if($request->input('status') === 'pending') selected @endif>{{ __('message.unpaid') }}</option>
-        <option value="Partially paid" @if($request->input('status') === 'Partially paid') selected @endif>{{ __('message.partially_paid') }}</option>
-        <option value="success" @if($request->input('status') === 'success') selected @endif>{{ __('message.paid') }}</option>
+        <option value="">{{ trans('message.choose') }}</option>
+        <option value="pending" @if($request->input('status') === 'pending') selected @endif>{{ trans('message.unpaid') }}</option>
+        <option value="Partially paid" @if($request->input('status') === 'Partially paid') selected @endif>{{ trans('message.partially_paid') }}</option>
+        <option value="success" @if($request->input('status') === 'success') selected @endif>{{ trans('message.paid') }}</option>
     </select>
 </div>
 
 
               <div class="col-md-3 form-group">
-                  {!! html()->label(__('message.currency'), 'currency') !!}
+                  {!! html()->label(trans('message.currency'), 'currency') !!}
                   <select name="currency_id" class="form-control" id="currency">
-                <option value="">{{ __('message.choose') }}</option>
+                <option value="">{{ trans('message.choose') }}</option>
                 @foreach($currencies as $currency)
                     @if($currency === $request->input('currency_id'))
                         <option value="{{ $currency }}" selected>{{ $currency }}</option>
@@ -241,7 +241,7 @@
             
             <div class="col-md-3 form-group">
                 <!-- first name -->
-                {!! html()->label(__('message.invoice_form'), 'from') !!}
+                {!! html()->label(trans('message.invoice_form'), 'from') !!}
                 <div class="input-group date" id="invoice_from" data-target-input="nearest">
                     <input type="text" name="from" class="form-control datetimepicker-input" autocomplete="off" value="{{ $request->input('from') }}"  data-target="#invoice_from"/>
 
@@ -256,7 +256,7 @@
             </div>
             <div class="col-md-3 form-group">
                 <!-- first name -->
-                {!! html()->label(__('message.invoice_till'), 'till') !!}
+                {!! html()->label(trans('message.invoice_till'), 'till') !!}
                 <div class="input-group date" id="invoice_till" data-target-input="nearest">
                     <input type="text" name="till" class="form-control datetimepicker-input" autocomplete="off" value="{{ $request->input('till') }}"  data-target="#invoice_till"/>
 
@@ -275,7 +275,7 @@
                     <!-- {!! html()->submit('Search')->class('btn btn-primary') !!} -->
                     <button name="Search" type="submit"  class="btn btn-secondary"><i class="fa fa-search">&nbsp;</i>{!!trans('message.search')!!}</button>
                      &nbsp;&nbsp;
-                    {!! html()->submit( __('message.reset'))->class('btn btn-secondary')->id('reset') !!}
+                    {!! html()->submit( trans('message.reset'))->class('btn btn-secondary')->id('reset') !!}
                 </div>
             </div>
 
@@ -291,10 +291,10 @@
       
         <h3 class="card-title">{{ trans('message.invoices') }}</h3>
         <div class="card-tools">
-        <button type="button" id="invoice_export-report-btn" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ __('message.export') }}" style="position: absolute; top: 13px; {{ isRtlForLang() ? 'right: 95.5%;' : 'left: 95.5%;' }}">
+        <button type="button" id="invoice_export-report-btn" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ trans('message.export') }}" style="position: absolute; top: 13px; {{ isRtlForLang() ? 'right: 95.5%;' : 'left: 95.5%;' }}">
             <i class="fas fa-paper-plane"></i>
         </button>
-        <a href="{{ url('invoice/generate') }}" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ __('message.create-invoice') }}" style="position: absolute; {{ isRtlForLang() ? 'right: 97.5%;' : 'left: 97.5%;' }}">
+        <a href="{{ url('invoice/generate') }}" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ trans('message.create-invoice') }}" style="position: absolute; {{ isRtlForLang() ? 'right: 97.5%;' : 'left: 97.5%;' }}">
             <i class="fas fa-plus"></i>
         </a>
     </div>
@@ -305,54 +305,54 @@
 
            <div class="d-flex justify-content-between mt-3">
                 <button value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete">
-                        <i class="fa fa-trash"></i>&nbsp;&nbsp;{{ __('message.delmultiple') }}
+                        <i class="fa fa-trash"></i>&nbsp;&nbsp;{{ trans('message.delmultiple') }}
                     </button>
                 <form id="columnForm">
                     <div class="custom-dropdown" id="columnUpdate">
                         <button class="btn btn-default pull-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative;top: 52px;">
-                            <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ __('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
+                            <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ trans('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
                         </button>
                         <div class="dropdown-menu common-column-dropdown" aria-labelledby="dropdownMenuButton">
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="user_id" id="nameCheckbox">
-                                <label class="form-check-label" for="nameCheckbox">{{ __('message.user') }}</label>
+                                <label class="form-check-label" for="nameCheckbox">{{ trans('message.user') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="email" id="inemailCheckbox">
-                                <label class="form-check-label" for="inemailCheckbox">{{ __('message.email') }}</label>
+                                <label class="form-check-label" for="inemailCheckbox">{{ trans('message.email') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="mobile" id="inmobileCheckbox">
-                                <label class="form-check-label" for="inmobileCheckbox">{{ __('message.mobile') }}</label>
+                                <label class="form-check-label" for="inmobileCheckbox">{{ trans('message.mobile') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="country" id="incountryCheckbox">
-                                <label class="form-check-label" for="incountryCheckbox">{{ __('message.country') }}</label>
+                                <label class="form-check-label" for="incountryCheckbox">{{ trans('message.country') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="number" id="numberCheckbox">
-                                <label class="form-check-label" for="numberCheckbox">{{ __('message.invoice_no') }}</label>
+                                <label class="form-check-label" for="numberCheckbox">{{ trans('message.invoice_no') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="product" id="productCheckbox">
-                                <label class="form-check-label" for="productCheckbox">{{ __('message.product') }}</label>
+                                <label class="form-check-label" for="productCheckbox">{{ trans('message.product') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="date" id="dateCheckbox">
-                                <label class="form-check-label" for="dateCheckbox">{{ __('message.date') }}</label>
+                                <label class="form-check-label" for="dateCheckbox">{{ trans('message.date') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="grand_total" id="totalCheckbox">
-                                <label class="form-check-label" for="totalCheckbox">{{ __('message.total') }}</label>
+                                <label class="form-check-label" for="totalCheckbox">{{ trans('message.total') }}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="status" id="instatusCheckbox">
-                                <label class="form-check-label" for="instatusCheckbox">{{ __('message.status') }}</label>
+                                <label class="form-check-label" for="instatusCheckbox">{{ trans('message.status') }}</label>
                             </div>
 
                             <br>
-                            <button type="button" class="btn btn-primary btn-sm" style="left: 10px; position: relative;" id="insaveColumnsBtn">{{ __('message.apply') }}</button>
+                            <button type="button" class="btn btn-primary btn-sm" style="left: 10px; position: relative;" id="insaveColumnsBtn">{{ trans('message.apply') }}</button>
                         </div>
                     </div>
                 </form>
@@ -372,16 +372,16 @@
                     <thead>
                         <tr>
                             <th class="no-sort"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
-                            <th>{{ __('message.user') }}</th>
-                            <th>{{ __('message.email') }}</th>
-                            <th>{{ __('message.mobile') }}</th>
-                            <th>{{ __('message.country') }}</th>
-                            <th>{{ __('message.invoice_no') }}</th>
-                            <th>{{ __('message.product') }}</th>
-                            <th>{{ __('message.date') }}</th>
-                            <th>{{ __('message.total') }}</th>
-                            <th>{{ __('message.status') }}</th>
-                            <th>{{ __('message.action') }}</th>
+                            <th>{{ trans('message.user') }}</th>
+                            <th>{{ trans('message.email') }}</th>
+                            <th>{{ trans('message.mobile') }}</th>
+                            <th>{{ trans('message.country') }}</th>
+                            <th>{{ trans('message.invoice_no') }}</th>
+                            <th>{{ trans('message.product') }}</th>
+                            <th>{{ trans('message.date') }}</th>
+                            <th>{{ trans('message.total') }}</th>
+                            <th>{{ trans('message.status') }}</th>
+                            <th>{{ trans('message.action') }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -415,7 +415,7 @@
                 "url": '{!! route('get-invoices', "name=$name&invoice_no=$invoice_no&status=$status&currency_id=$currency_id&from=$from&till=$till") !!}',
                 error: function(xhr) {
                     if (xhr.status == 401) {
-                        alert('{{ __('message.session_expired') }}')
+                        alert('{{ trans('message.session_expired') }}')
                         window.location.href = '/login';
                     }
                 },
@@ -431,23 +431,23 @@
             },
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
-                "sSearch": "<span class='datatable-search-label'>{{ __('message.search') }}:</span> ",
-                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                "sSearch": "<span class='datatable-search-label'>{{ trans('message.search') }}:</span> ",
+                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.length_menu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.length_menu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
             columnDefs: [
                 {
@@ -496,7 +496,7 @@
             selectedColumns.push($(this).val());
         });
          if (selectedColumns.length === 0) {
-        alert('{{ __('message.select_one_column') }}');
+        alert('{{ trans('message.select_one_column') }}');
         return;
         }
 
@@ -588,7 +588,7 @@
                     var result = '<div class="alert alert-success">' +
                         '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                         '<span aria-hidden="true">&times;</span></button>' +
-                        '<strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }} </strong>' +
+                        '<strong><i class="far fa-thumbs-up"></i> {{ trans('message.well_done') }} </strong>' +
                         response.message + '!</div>';
                     
                     $('#export-message').html(result).removeClass('text-danger').addClass('text-success');
@@ -598,10 +598,10 @@
                 },
                 error: function(xhr, status, error) {
                     var result = '<div class="alert alert-danger">' +
-                        '<button type="button" class="close" data-dismiss="alert" aria-label="{{ __('message.close') }}">' +
+                        '<button type="button" class="close" data-dismiss="alert" aria-label="{{ trans('message.close') }}">' +
                         '<span aria-hidden="true">&times;</span></button>' +
-                        '<strong><i class="far fa-thumbs-down"></i> {{ __('message.error_oops') }} </strong>' +
-                        '{{ __('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
+                        '<strong><i class="far fa-thumbs-down"></i> {{ trans('message.error_oops') }} </strong>' +
+                        '{{ trans('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
 
                     $('#export-message').html(result).removeClass('text-success').addClass('text-danger');
                     setTimeout(function() {
@@ -644,7 +644,7 @@
                      "<p style='text-align: left; margin-left:17px'>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                      "</div>",
                  position: 'top',
-                 confirmButtonText: "{{ __('message.ok') }}",
+                 confirmButtonText: "{{ trans('message.ok') }}",
                  showCloseButton: true,
                  confirmButtonColor: "#007bff",
                  width: "600px",
@@ -662,7 +662,7 @@
                  position: "top",
                  width: "600px",
                  confirmButtonText: @json(trans('message.Delete')),
-                 cancelButtonText: "{{ __('message.cancel') }}",
+                 cancelButtonText: "{{ trans('message.cancel') }}",
                  confirmButtonColor: "#007bff",
              }).then((result) => {
                  if (result.isConfirmed) {
@@ -693,7 +693,7 @@
                                  "<p>{{trans('message.sweet_invoice')}}</p>" + "</div>" +
                                  "</div>",
                              position: 'top',
-                             confirmButtonText: "{{ __('message.ok') }}",
+                             confirmButtonText: "{{ trans('message.ok') }}",
                              showCloseButton: true,
                              confirmButtonColor: "#007bff",
                              width: "600px",

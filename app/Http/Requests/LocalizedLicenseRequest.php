@@ -31,8 +31,8 @@ class LocalizedLicenseRequest extends FormRequest
     public function messages()
     {
         return [
-            'domain.required' => __('validation.domain_form.domain.required'),
-            'domain.url' => __('validation.domain_form.domain.url'),
+            'domain.required' => trans('validation.domain_form.domain.required'),
+            'domain.url' => trans('validation.domain_form.domain.url'),
         ];
     }
 }

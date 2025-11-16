@@ -166,10 +166,10 @@ class TaxRatesAndCodeExpiryController extends BaseInvoiceController
                 }
                 $payment->delete();
             } else {
-                return redirect()->back()->with('fails', __('message.cannot_delete'));
+                return redirect()->back()->with('fails', trans('message.cannot_delete'));
             }
 
-            return redirect()->back()->with('success', __('message.payment_deleted_successfully', ['invoice_no' => $invoice_no]));
+            return redirect()->back()->with('success', trans('message.payment_deleted_successfully', ['invoice_no' => $invoice_no]));
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());
         }

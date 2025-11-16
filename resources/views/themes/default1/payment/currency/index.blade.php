@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.currency') }}
+    {{ trans('message.currency') }}
 @stop
 
 @section('content-header')
@@ -69,13 +69,13 @@ input:checked + .slider:before {
 }
 </style>
 <div class="col-sm-6">
-    <h1>{{ __('message.all_currency') }}</h1>
+    <h1>{{ trans('message.all_currency') }}</h1>
 </div>
 <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ __('message.settings') }}</a></li>
-        <li class="breadcrumb-item active">{{ __('message.currency') }}</li>
+        <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li class="breadcrumb-item"><a href="{{url('settings')}}"><i class="fa fa-dashboard"></i> {{ trans('message.settings') }}</a></li>
+        <li class="breadcrumb-item active">{{ trans('message.currency') }}</li>
     </ol>
 </div><!-- /.col -->
 @stop
@@ -103,11 +103,11 @@ input:checked + .slider:before {
 
                     <thead>
                         <tr>
-                         <th>{{ __('message.currency_name') }}</th>
-                          <th>{{ __('message.currency_code') }}</th>
-                          <th>{{ __('message.currency_symbol') }}</th>
-                          <th>{{ __('message.dashboard_currency') }}</th>
-                          <th>{{ __('message.status') }}</th>
+                         <th>{{ trans('message.currency_name') }}</th>
+                          <th>{{ trans('message.currency_code') }}</th>
+                          <th>{{ trans('message.currency_symbol') }}</th>
+                          <th>{{ trans('message.dashboard_currency') }}</th>
+                          <th>{{ trans('message.status') }}</th>
                          
                         </tr>
                     </thead>
@@ -135,7 +135,7 @@ input:checked + .slider:before {
               "url":  '{!! route('get-currency.datatable') !!}',
                  error: function(xhr) {
                  if(xhr.status == 401) {
-                  alert('{{ __('message.session_expired') }}')
+                  alert('{{ trans('message.session_expired') }}')
                   window.location.href = '/login';
                  }
               }
@@ -144,22 +144,22 @@ input:checked + .slider:before {
             "oLanguage": {
                 "sLengthMenu": "_MENU_ Records per page",
                 "sSearch"    : "Search: ",
-                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+                "sProcessing": ' <div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
             },
             language: {
                 paginate: {
-                    first:      "{{ __('message.paginate_first') }}",
-                    last:       "{{ __('message.paginate_last') }}",
-                    next:       "{{ __('message.paginate_next') }}",
-                    previous:   "{{ __('message.paginate_previous') }}"
+                    first:      "{{ trans('message.paginate_first') }}",
+                    last:       "{{ trans('message.paginate_last') }}",
+                    next:       "{{ trans('message.paginate_next') }}",
+                    previous:   "{{ trans('message.paginate_previous') }}"
                 },
-                emptyTable:     "{{ __('message.empty_table') }}",
-                info:           "{{ __('message.datatable_info') }}",
-                search:         "{{ __('message.datatable_search') }} ",
-                infoEmpty:      "{{ __('message.info_empty') }}",
-                infoFiltered:   "{{ __('message.info_filtered') }}",
-                lengthMenu:     "{{ __('message.sLengthMenu') }}",
-                loadingRecords: "{{ __('message.loading_records') }}",
+                emptyTable:     "{{ trans('message.empty_table') }}",
+                info:           "{{ trans('message.datatable_info') }}",
+                search:         "{{ trans('message.datatable_search') }} ",
+                infoEmpty:      "{{ trans('message.info_empty') }}",
+                infoFiltered:   "{{ trans('message.info_filtered') }}",
+                lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+                loadingRecords: "{{ trans('message.loading_records') }}",
             },
 
             columnDefs: [

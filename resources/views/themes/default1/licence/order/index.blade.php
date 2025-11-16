@@ -5,7 +5,7 @@
     <div class="card-header">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+            <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

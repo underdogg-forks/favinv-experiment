@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.payment') }}
+    {{ trans('message.payment') }}
 @stop
 @section('content-header')
 <h1>
-    {{ __('message.generate_payment') }}
+    {{ trans('message.generate_payment') }}
 </h1>
   <ol class="breadcrumb">
-        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-        <li><a href="{{url('clients')}}">{{ __('message.all-users') }}</a></li>
-        <li><a href="{{url('clients/'.$userid)}}">{{ __('message.view_user') }}</a></li>
-        <li class="active">{{ __('message.payment') }}</li>
+        <li><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+        <li><a href="{{url('clients')}}">{{ trans('message.all-users') }}</a></li>
+        <li><a href="{{url('clients/'.$userid)}}">{{ trans('message.view_user') }}</a></li>
+        <li class="active">{{ trans('message.payment') }}</li>
       </ol>
 @stop
 @section('content')
@@ -20,7 +20,7 @@
     <div class="card-header">
         @if (count($errors) > 0)
                 <div class="alert alert-danger">
-                    <strong>{{ __('message.whoops') }}</strong> {{ __('message.input_problem') }}<br><br>
+                    <strong>{{ trans('message.whoops') }}</strong> {{ trans('message.input_problem') }}<br><br>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -47,7 +47,7 @@
                 </div>
                 @endif
             {!! html()->form('post', url('payment/receive/' . $invoice_id))->open() !!}
-            <h4>{{trans('message.payment')}}  ({{ __('message.invoice_number') }}: {{$invoice->number}})	 <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
+            <h4>{{trans('message.payment')}}  ({{ trans('message.invoice_number') }}: {{$invoice->number}})	 <button type="submit" class="form-group btn btn-primary pull-right" id="submit"><i class="fa fa-floppy-o">&nbsp;&nbsp;</i>{!!trans('message.save')!!}</button></h4>
 
     </div>
 
@@ -71,7 +71,7 @@
                         <!-- payment method -->
                         {!! html()->label(trans('message.payment-method'), 'payment_method') !!}
                         {!! html()->select('payment_method', [
-                            '' => __('message.choose'),
+                            '' => trans('message.choose'),
                             'cash' => 'Cash',
                             'check' => 'Check',
                             'online payment' => 'Online Payment',

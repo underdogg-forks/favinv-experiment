@@ -1,16 +1,16 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.renew') }}
+    {{ trans('message.renew') }}
 @stop
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.renew_order') }}</h1>
+        <h1>{{ trans('message.renew_order') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{url('orders')}}"><i class="fa fa-dashboard"></i> {{ __('message.all-orders') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.renew_order') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{url('orders')}}"><i class="fa fa-dashboard"></i> {{ trans('message.all-orders') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.renew_order') }}</li>
         </ol>
     </div><!-- /.col -->
 @stop
@@ -35,9 +35,9 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('plan') ? 'has-error' : '' }}">
                         <!-- first name -->
-                        {!! html()->label( __('message.plans'), 'plan')->class('required') !!}
+                        {!! html()->label( trans('message.plans'), 'plan')->class('required') !!}
                           <select name="plan" id="plans" onchange="fetchPlanCost(this.value)" class="form-control" >
-                             <option value=''>{{ __('message.choose') }}</option>
+                             <option value=''>{{ trans('message.choose') }}</option>
                            @foreach($plans as $key=>$plan)
                               <option value={{$key}}>{{$plan}}</option>
                           @endforeach
@@ -51,7 +51,7 @@
 
                     <div class="col-md-4 form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
                         {!! html()->label(trans('message.payment-method'))->class('required')->for('payment_method') !!}
-                        {!! html()->select('payment_method', ['' => __('message.choose'), 'cash' => 'Cash', 'check' => 'Check', 'online payment' => 'Online Payment', 'razorpay' => 'Razorpay', 'stripe' => 'Stripe'])->class('form-control')->id('payment_method') !!}
+                        {!! html()->select('payment_method', ['' => trans('message.choose'), 'cash' => 'Cash', 'check' => 'Check', 'online payment' => 'Online Payment', 'razorpay' => 'Razorpay', 'stripe' => 'Stripe'])->class('form-control')->id('payment_method') !!}
                     </div>
 
                     <div class="col-md-4 form-group {{ $errors->has('cost') ? 'has-error' : '' }}">
@@ -63,7 +63,7 @@
                 @if(in_array($productid,cloudPopupProducts()))
                 <div class="row">
                     <div class="col-md-4 form-group">
-                        {!! html()->label( __('message.agents'))->class('col-form-label required')->for('agents') !!}
+                        {!! html()->label( trans('message.agents'))->class('col-form-label required')->for('agents') !!}
                         {!! html()->number('agents', $agents)->class('form-control')->id('agents')->placeholder('')->required() !!}
                     </div>
                 </div>
@@ -75,7 +75,7 @@
             </div>
 
         </div>
-                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ __('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{{ __('message.save') }}</button>
+                    <button type="submit" class="btn btn-primary pull-right" id="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'>&nbsp;</i> {{ trans('message.saving') }}"><i class="fa fa-save">&nbsp;&nbsp;</i>{{ trans('message.save') }}</button>
 
     </div>
 

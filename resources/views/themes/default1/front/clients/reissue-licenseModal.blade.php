@@ -2,7 +2,7 @@
 <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h4 class="modal-title" id="defaultModalLabel">{{ __('message.enter_domain_ip')}}</h4>
+			<h4 class="modal-title" id="defaultModalLabel">{{ trans('message.enter_domain_ip')}}</h4>
 			<!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
 		</div>
 		<div class="modal-body">
@@ -17,16 +17,16 @@
                   ->class('form-control domainss')
                   ->id('newDomain')
                   ->required()
-                  ->placeholder(__('message.enter_domain_name')) !!}
+                  ->placeholder(trans('message.enter_domain_name')) !!}
               <h6 id ="domaincheck"></h6>
                 </div>
           <div class="form-group">
-			<span style="color:red;">*&nbsp {{ __('message.changing_domain')}} </span>
+			<span style="color:red;">*&nbsp {{ trans('message.changing_domain')}} </span>
 		</div>  
 		</div>
 		
 		  <div class="modal-footer justify-content-between">
-                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">{{ __('message.close')}}</button>
+                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">{{ trans('message.close')}}</button>
               <button type="submit" id="licenseSave"  class="btn btn-primary" value="{{trans('message.save')}}"><i class="fas fa-save"></i></i></button>
             </div>
 	</div>
@@ -47,7 +47,7 @@ function validdomaincheck(){
               }
               else{
                  $('#domaincheck').show();
-                  $('#domaincheck').html("{{ __('message.enter_valid_domain') }}");
+                  $('#domaincheck').html("{{ trans('message.enter_valid_domain') }}");
                  $('#domaincheck').focus();
                   $('#newDomain').css("border-color","red");
                  $('#domaincheck').css({"color":"red","margin-top":"5px"});

@@ -97,7 +97,7 @@ class LoginController extends Controller
 
         // 2. Attempt to authenticate the user
         if (! Auth::attempt($credentials, $request->boolean('remember'))) {
-            return errorResponse(__('message.enter_valid_credentials'));
+            return errorResponse(trans('message.enter_valid_credentials'));
         }
 
         $user = Auth::user();
@@ -302,10 +302,10 @@ class LoginController extends Controller
                 'address' => 'required|string',
             ],
                 [
-                    'company.required' => __('validation.company_validation.company_required'),
-                    'company.string' => __('validation.company_validation.company_string'),
-                    'address.required' => __('validation.company_validation.address_required'),
-                    'address.string' => __('validation.company_validation.company_string'),
+                    'company.required' => trans('validation.company_validation.company_required'),
+                    'company.string' => trans('validation.company_validation.company_string'),
+                    'address.required' => trans('validation.company_validation.address_required'),
+                    'address.string' => trans('validation.company_validation.company_string'),
                 ]);
 
             $user = Auth::user();
@@ -315,7 +315,7 @@ class LoginController extends Controller
 
             return redirect()->back();
         } catch (\Exception $e) {
-            Session::flash('error', __('message.please_enter_details'));
+            Session::flash('error', trans('message.please_enter_details'));
         }
     }
 

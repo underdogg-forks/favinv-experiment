@@ -342,17 +342,17 @@
             // Validate fields
             let isValid = true;
             const requiredFields = {
-                firstName: '{{__('installer_messages.firstname')}}',
-                lastName: '{{__('installer_messages.lastname')}}',
-                username: '{{__('installer_messages.username')}}',
-                email: '{{__('installer_messages.email')}}',
-                password: '{{__('installer_messages.password')}}',
-                confirmPassword: '{{__('installer_messages.confirm_password')}}'
+                firstName: '{{trans('installer_messages.firstname')}}',
+                lastName: '{{trans('installer_messages.lastname')}}',
+                username: '{{trans('installer_messages.username')}}',
+                email: '{{trans('installer_messages.email')}}',
+                password: '{{trans('installer_messages.password')}}',
+                confirmPassword: '{{trans('installer_messages.confirm_password')}}'
             };
 
             Object.keys(requiredFields).forEach(field => {
                 if (!fields[field].val()) {
-                    showError(fields[field], `${requiredFields[field]} {{__('installer_messages.is_required')}}`);
+                    showError(fields[field], `${requiredFields[field]} {{trans('installer_messages.is_required')}}`);
                     isValid = false;
                 }
             });
@@ -389,7 +389,7 @@
 
                 Object.keys(redisFields).forEach(field => {
                     if (!fields[field].val()) {
-                        showError(fields[field], `${redisFields[field]} {{__('installer_messages.is_required')}}`);
+                        showError(fields[field], `${redisFields[field]} {{trans('installer_messages.is_required')}}`);
                         isValid = false;
                     }
                 });

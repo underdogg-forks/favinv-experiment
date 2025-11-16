@@ -34,12 +34,12 @@ class SystemManagerSettingsRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'existingAccManager.required_with' => __('message.existingAccManager_required'),
-            'newAccManager.required_with' => __('message.newAccManager_required'),
-            'newAccManager.different' => __('message.same_account_manager_error'),
-            'existingSaleManager.required_with' => __('message.select_system_sales_manager'),
-            'newSaleManager.required_with' => __('message.select_new_sales_manager'),
-            'newSaleManager.different' => __('message.sales_manager_must_be_different'),
+            'existingAccManager.required_with' => trans('message.existingAccManager_required'),
+            'newAccManager.required_with' => trans('message.newAccManager_required'),
+            'newAccManager.different' => trans('message.same_account_manager_error'),
+            'existingSaleManager.required_with' => trans('message.select_system_sales_manager'),
+            'newSaleManager.required_with' => trans('message.select_new_sales_manager'),
+            'newSaleManager.different' => trans('message.sales_manager_must_be_different'),
         ];
     }
 }

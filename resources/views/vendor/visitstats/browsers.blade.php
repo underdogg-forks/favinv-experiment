@@ -7,10 +7,10 @@
 
 		<table class="visitortracker-table table table-sm table-striped fs-1">
 			<thead>
-				<th>{{ __('message.browser') }}</th>
-				<th>{{ __('message.unique_visitors') }}</th>
-				<th>{{ __('message.visits') }}</th>
-				<th>{{ __('message.last_visit') }}</th>
+				<th>{{ trans('message.browser') }}</th>
+				<th>{{ trans('message.unique_visitors') }}</th>
+				<th>{{ trans('message.visits') }}</th>
+				<th>{{ trans('message.last_visit') }}</th>
 			</thead>
 
 			<tbody>
@@ -27,7 +27,7 @@
 
                                 {{ ucwords(str_replace('-', ' ', $visit->browser_family)) }}
                             @else
-                                <span>{{ __('message.unknown') }}</span>
+                                <span>{{ trans('message.unknown') }}</span>
                             @endif
 						</td>
 							

@@ -19,7 +19,7 @@
     $position = $recaptcha?->badge_position ?? 'bottomright';
     $actualSize = ($defaultMode === 'v2-invisible') ? 'invisible' : $size;
     $recaptchaLang = app()->getLocale() ?? 'en';
-    $validationErrorMessage = __('recaptcha::recaptcha.captcha_message');
+    $validationErrorMessage = trans('recaptcha::recaptcha.captcha_message');
 @endphp
 
 <script>

@@ -1,13 +1,13 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.cart') }}
+{{ trans('message.cart') }}
 @stop
 @section('page-header')
-    {{ __('message.cart') }}
+    {{ trans('message.cart') }}
 @stop
 @section('breadcrumb')
-<li><a href="{{url('home')}}">{{ __('message.home')}}</a></li>
-<li class="active">{{ __('message.cart')}}</li>
+<li><a href="{{url('home')}}">{{ trans('message.home')}}</a></li>
+<li class="active">{{ trans('message.cart')}}</li>
 @stop
 @section('main-class') "main shop" @stop
 @section('content')
@@ -26,7 +26,7 @@ if (count($attributes) > 0) {
     <div class="col-md-12">
         @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>{{ __('message.whoops')}}</strong> {{ __('message.input_problem')}}<br><br>
+            <strong>{{ trans('message.whoops')}}</strong> {{ trans('message.input_problem')}}<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -67,22 +67,22 @@ if (count($attributes) > 0) {
                                                 &nbsp;
                                             </th>
                                             <th class="product-price">
-                                                {{ __('message.product')}}
+                                                {{ trans('message.product')}}
                                             </th>
                                             <th class="product-price">
-                                                {{ __('message.tax')}}
+                                                {{ trans('message.tax')}}
                                             </th>
                                             <th class="product-price">
-                                                {{ __('message.price')}}
+                                                {{ trans('message.price')}}
                                             </th>
                                             <th class="product-quantity">
-                                                {{ __('message.quantity')}}
+                                                {{ trans('message.quantity')}}
                                             </th>
                                             <th class="product-subtotal">
-                                                {{ __('message.sub_total')}}
+                                                {{ trans('message.sub_total')}}
                                             </th>
                                             <th class="product-subtotal">
-                                                {{ __('message.total')}}
+                                                {{ trans('message.total')}}
                                             </th>
                                         </tr>
                                     </thead>
@@ -156,13 +156,13 @@ if (count($attributes) > 0) {
                 <div class="col-sm-4">
                     <div class="featured-box featured-box-primary align-left mt-sm">
                         <div class="box-content">
-                            <h4 class="heading-primary text-uppercase mb-md">{{ __('message.cart_total')}}</h4>
+                            <h4 class="heading-primary text-uppercase mb-md">{{ trans('message.cart_total')}}</h4>
                             <table class="cart-totals">
                                 <tbody>
 
                                     <tr class="total">
                                         <th>
-                                            <strong>{{ __('message.order_total')}}</strong>
+                                            <strong>{{ trans('message.order_total')}}</strong>
                                         </th>
                                         <td>
 
@@ -186,16 +186,16 @@ if (count($attributes) > 0) {
                             </div>
                         </div>
                         <div class=" col-md-6"><br><br><br><br>
-                            <a href="{{url('cart/clear')}}"><button class="btn btn-danger btn-lg">{{ __('message.clear_my_cart')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
+                            <a href="{{url('cart/clear')}}"><button class="btn btn-danger btn-lg">{{ trans('message.clear_my_cart')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
                         </div>
                         <div class="col-md-6"><br><br><br><br>
 
                             @if(count($domain)>0)
 
-                            <a href="#domain" data-toggle="modal" data-target="#domain"><button class="btn btn-primary btn-lg">{{ __('message.proceed_checkout')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
+                            <a href="#domain" data-toggle="modal" data-target="#domain"><button class="btn btn-primary btn-lg">{{ trans('message.proceed_checkout')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
 
                             @else
-                            <a href="{{url('checkout')}}"><button class="btn btn-primary btn-lg">{{ __('message.proceed_checkout')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
+                            <a href="{{url('checkout')}}"><button class="btn btn-primary btn-lg">{{ trans('message.proceed_checkout')}}<i class="fa fa-angle-right ml-xs"></i></button></a>
                             @endif
                         </div>
                     </div>
@@ -210,8 +210,8 @@ if (count($attributes) > 0) {
                     <div class="featured-box featured-box-primary align-left mt-sm">
                         <div class="box-content">
                             <div class="col-md-offset-5">
-                            <p>{{ __('message.no_item_cart')}}</p>
-                            <a href="{{url('home')}}" class="btn btn-primary">{{ __('message.continue_shopping')}}</a>
+                            <p>{{ trans('message.no_item_cart')}}</p>
+                            <a href="{{url('home')}}" class="btn btn-primary">{{ trans('message.continue_shopping')}}</a>
                             </div>
                         </div>
                     </div>

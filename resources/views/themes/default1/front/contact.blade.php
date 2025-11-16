@@ -1,20 +1,20 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-{{ __('message.contact_us') }}
+{{ trans('message.contact_us') }}
 @stop
 @section('page-header')
-{{ __('message.cart') }}
+{{ trans('message.cart') }}
 @stop
 @section('page-heading')
-    {{ __('message.contact_us') }}
+    {{ trans('message.contact_us') }}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
 @endif
- <li class="active text-dark">{{ __('message.contact_us')}}</li>
+ <li class="active text-dark">{{ trans('message.contact_us')}}</li>
 @stop
 @section('main-class') "main shop" @stop
 @section('content')   
@@ -34,7 +34,7 @@
 
                 <div class="col-lg-6">
 
-                    <p class="mb-4">{{ __('message.feel_free')}}</p>
+                    <p class="mb-4">{{ trans('message.feel_free')}}</p>
 
                      <form id="contactForm" method="post">
 
@@ -43,16 +43,16 @@
 
                             <div class="form-group col-lg-6">
 
-                                <label class="form-label mb-1 text-2">{{ __('message.contact_name')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label mb-1 text-2">{{ trans('message.contact_name')}} <span class="text-color-danger">*</span></label>
 
-                                <input type="text" value="" data-msg-required="{{ __('message.contact_error_name')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="conName" id="conName">
+                                <input type="text" value="" data-msg-required="{{ trans('message.contact_error_name')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="conName" id="conName">
                             </div>
 
                             <div class="form-group col-lg-6">
 
-                                <label class="form-label mb-1 text-2">{{ __('message.email_address')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label mb-1 text-2">{{ trans('message.email_address')}} <span class="text-color-danger">*</span></label>
 
-                                <input type="email" value="" data-msg-required="{{ __('message.error_email_address') }}" data-msg-email="{{ __('message.contact_error_email')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="email" id="email" >
+                                <input type="email" value="" data-msg-required="{{ trans('message.error_email_address') }}" data-msg-email="{{ trans('message.contact_error_email')}}" maxlength="100" class="form-control text-3 h-auto py-2" name="email" id="email" >
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@
 
                             <div class="form-group col">
 
-                                <label class="form-label mb-1 text-2">{{ __('message.mobile')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label mb-1 text-2">{{ trans('message.mobile')}} <span class="text-color-danger">*</span></label>
 
                                 {!! html()->hidden('mobile', null)->id('mobile_code_hiddenco')->name('country_code') !!}
                                 <input class="form-control input-lg" id="mobilenumcon" name="Mobile" type="tel">
@@ -75,9 +75,9 @@
 
                             <div class="form-group col">
 
-                                <label class="form-label mb-1 text-2">{{ __('message.contact_message')}} <span class="text-color-danger">*</span></label>
+                                <label class="form-label mb-1 text-2">{{ trans('message.contact_message')}} <span class="text-color-danger">*</span></label>
 
-                                <textarea maxlength="5000" data-msg-required="{{ __('message.please_enter_message')}}" rows="8" class="form-control text-3 h-auto py-2" name="conmessage" id="conmessage"></textarea>
+                                <textarea maxlength="5000" data-msg-required="{{ trans('message.please_enter_message')}}" rows="8" class="form-control text-3 h-auto py-2" name="conmessage" id="conmessage"></textarea>
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@
 
                             <div class="form-group col">
 
-                                <button type="submit" class="btn btn-dark btn-modern text-3" data-loading-text="{{ __('message.loading')}}" data-original-text="{{ __('message.contact_send_msg')}}" id="contactSubmit">{{ __('message.contact_send_msg')}}</button>
+                                <button type="submit" class="btn btn-dark btn-modern text-3" data-loading-text="{{ trans('message.loading')}}" data-original-text="{{ trans('message.contact_send_msg')}}" id="contactSubmit">{{ trans('message.contact_send_msg')}}</button>
                             </div>
                         </div>
                     </form>
@@ -105,15 +105,15 @@
 
                     <div>
 
-                        <h4 class="mt-2 mb-1"><strong>{{ __('message.our_office')}}</strong></h4>
+                        <h4 class="mt-2 mb-1"><strong>{{ trans('message.our_office')}}</strong></h4>
 
                         <ul class="list list-icons list-icons-style-2 mt-2">
 
-                            <li><i class="fas fa-map-marker-alt top-6"></i> <strong class="text-dark">{{ __('message.address')}}:</strong> {{ $address }}<br>{{ implode(', ', array_filter([$set->city, $state, $country, $set->zip])) }}</li>
+                            <li><i class="fas fa-map-marker-alt top-6"></i> <strong class="text-dark">{{ trans('message.address')}}:</strong> {{ $address }}<br>{{ implode(', ', array_filter([$set->city, $state, $country, $set->zip])) }}</li>
 
-                            <li><i class="fas fa-phone top-6"></i> <strong class="text-dark">{{ __('message.phone')}}:</strong> +</b>{{$set->phone_code}} {{$set->phone}}</li>
+                            <li><i class="fas fa-phone top-6"></i> <strong class="text-dark">{{ trans('message.phone')}}:</strong> +</b>{{$set->phone_code}} {{$set->phone}}</li>
 
-                            <li><i class="fas fa-envelope top-6"></i> <strong class="text-dark">{{ __('message.email')}}:</strong> <a href="mailto:{{$set->company_email}}">{{$set->company_email}}</a></li>
+                            <li><i class="fas fa-envelope top-6"></i> <strong class="text-dark">{{ trans('message.email')}}:</strong> <a href="mailto:{{$set->company_email}}">{{$set->company_email}}</a></li>
                         </ul>
                     </div>
 
@@ -195,12 +195,12 @@ $(document).ready(function() {
     }
     $.validator.addMethod("validPhone", function(value, element) {
         return validatePhoneNumber(element);
-    }, "{{ __('message.error_valid_number') }}");
+    }, "{{ trans('message.error_valid_number') }}");
 
     $.validator.addMethod("regex", function(value, element, regexp) {
         var re = new RegExp(regexp);
         return this.optional(element) || re.test(value);
-    }, "{{ __('message.invalid_format') }}");
+    }, "{{ trans('message.invalid_format') }}");
 
     $('#contactForm').validate({
         ignore: ":hidden:not(.g-recaptcha-response):not([name^='contact'])",
@@ -225,21 +225,21 @@ $(document).ready(function() {
         },
         messages: {
             conName: {
-                required: "{{ __('message.contact_error_name') }}"
+                required: "{{ trans('message.contact_error_name') }}"
             },
             email: {
-                required: "{{ __('message.enter_your_email') }}",
-                regex: "{{ __('message.contact_error_email') }}"
+                required: "{{ trans('message.enter_your_email') }}",
+                regex: "{{ trans('message.contact_error_email') }}"
             },
             country_code: {
-                required: "{{ __('message.enter_your_country_code') }}"
+                required: "{{ trans('message.enter_your_country_code') }}"
             },
             Mobile: {
-                required: "{{ __('message.error_mobile') }}",
-                validPhone: "{{ __('message.enter_your_mobile') }}"
+                required: "{{ trans('message.error_mobile') }}",
+                validPhone: "{{ trans('message.enter_your_mobile') }}"
             },
             conmessage: {
-                required: "{{ __('message.contact_error_message') }}"
+                required: "{{ trans('message.contact_error_message') }}"
             }
         },
         unhighlight: function (element) {

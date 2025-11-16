@@ -53,7 +53,7 @@ class HomeController extends BaseHomeController
             'title' => 'required',
         ],
             [
-                'title.required' => __('validation.extend_product.title_required'),
+                'title.required' => trans('validation.extend_product.title_required'),
             ]);
         $title = $request->input('title');
         $product = $product->where('name', $title)->first();
@@ -360,7 +360,7 @@ class HomeController extends BaseHomeController
             'title' => 'required',
         ],
             [
-                'title.required' => __('validation.extend_product.title_required'),
+                'title.required' => trans('validation.extend_product.title_required'),
             ]);
         if ($v->fails()) {
             $error = $v->errors();
@@ -450,7 +450,7 @@ class HomeController extends BaseHomeController
         $v = \Validator::make($request->all(), [
             'title' => 'required',
         ], [
-            'title.required' => __('validation.extend_product.title_required'),
+            'title.required' => trans('validation.extend_product.title_required'),
         ]);
         if ($v->fails()) {
             $error = $v->errors();

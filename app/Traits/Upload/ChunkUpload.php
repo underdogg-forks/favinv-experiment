@@ -34,7 +34,7 @@ trait ChunkUpload
                 } else {
                     unlink($filePath);
 
-                    return response()->json(__('message.file_invalid'), 500);
+                    return response()->json(trans('message.file_invalid'), 500);
                 }
 
                 // save the file and return any response you need, current example uses `move` function. If you are

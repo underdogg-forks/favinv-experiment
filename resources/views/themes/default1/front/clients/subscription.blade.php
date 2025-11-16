@@ -1,6 +1,6 @@
 @extends('themes.default1.layouts.front.myaccount_master')
 @section('title')
-{{ __('message.subscriptions') }}
+{{ trans('message.subscriptions') }}
 @stop
 @section('nav-subscriptions')
 active
@@ -8,7 +8,7 @@ active
 
 @section('content')
 
-<h2 class="mb-none"> {{ __('message.subscriptions_table')}}</h2>
+<h2 class="mb-none"> {{ trans('message.subscriptions_table')}}</h2>
 
 <div class="col-md-12 pull-center">
     {!! Datatable::table()

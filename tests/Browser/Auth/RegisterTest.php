@@ -884,7 +884,7 @@ class RegisterTest extends DuskTestCase
                 ->press('#register')
                 ->pause(3000);
 
-            $browser->assertSee(__('message.registration_complete'));
+            $browser->assertSee(trans('message.registration_complete'));
         });
     }
 }

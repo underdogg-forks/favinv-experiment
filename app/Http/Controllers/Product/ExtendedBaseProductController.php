@@ -56,7 +56,7 @@ class ExtendedBaseProductController extends Controller
         })
         ->addColumn('action', function ($model) {
             return '<p><a href='.url('edit-upload/'.$model->id).
-                                " class='btn btn-sm btn-secondary'".tooltip(__('message.edit'))."<i class='fa fa-edit'
+                                " class='btn btn-sm btn-secondary'".tooltip(trans('message.edit'))."<i class='fa fa-edit'
                                  style='color:white;'> </i></a></p>";
         })
          ->filterColumn('title', function ($query, $keyword) {
@@ -108,9 +108,9 @@ class ExtendedBaseProductController extends Controller
             'dependencies' => 'required',
         ],
             [
-                'title.required' => __('validation.extend_product.title_required'),
-                'version.required' => __('validation.extend_product.version_required'),
-                'dependencies.required' => __('validation.extend_product.dependencies_required'),
+                'title.required' => trans('validation.extend_product.title_required'),
+                'version.required' => trans('validation.extend_product.version_required'),
+                'dependencies.required' => trans('validation.extend_product.dependencies_required'),
             ]);
         try {
             $file_upload = ProductUpload::find($id);
@@ -122,7 +122,7 @@ class ExtendedBaseProductController extends Controller
                 $addProductToAutoUpdate = $updateClassObj->editVersion($request->input('version'), $productSku);
             }
 
-            return redirect()->back()->with('success', __('message.product_updated_successfully'));
+            return redirect()->back()->with('success', trans('message.product_updated_successfully'));
         } catch (\Exception $e) {
             app('log')->error($e->getMessage());
             $message = [$e->getMessage()];
@@ -168,7 +168,7 @@ class ExtendedBaseProductController extends Controller
     <div class="form-group">
         <label class="required">'./* @scrutinizer ignore-type */ \trans('message.cloud_domain').'</label>
         <div class="input-group">
-            <input type="text" name="cloud_domain" class="form-control" id="cloud_domain" placeholder="'.__('message.extended_domain').'" required >
+            <input type="text" name="cloud_domain" class="form-control" id="cloud_domain" placeholder="'.trans('message.extended_domain').'" required >
             <input type="text" class="form-control" value=".'.cloudSubDomain().'" disabled="true" style="background-color: #4081B5; color:white; border-color: #0088CC">
         </div>
             <span class="error-message" id="cloud-msg"></span>
@@ -221,7 +221,7 @@ class ExtendedBaseProductController extends Controller
                 $name = Product::where('id', $id)->value('name');
                 if (isS3Enabled()) {
                     if (! Attach::exists('products/'.explode('?', urldecode(basename($release)))[0])) {
-                        return redirect('my-orders')->with('fails', __('message.file_not_exist'));
+                        return redirect('my-orders')->with('fails', trans('message.file_not_exist'));
                     }
 
                     return downloadExternalFile($release, $name);
@@ -277,18 +277,18 @@ class ExtendedBaseProductController extends Controller
         $checkSubscription = false;
         if ($invoice) {
             if ($invoice->user_id != \Auth::user()->id) {
-                throw new \Exception(__('message.invalid_modification_data_permission'));
+                throw new \Exception(trans('message.invalid_modification_data_permission'));
             }
             $checkSubscription = $invoice->order()->first() ? $invoice->order()->first()->subscription : false;
         }
         if ($checkSubscription) {
             if (strtotime($checkSubscription->update_ends_at) > 1) {
                 if ($checkSubscription->update_ends_at < (new Carbon())->toDateTimeString()) {
-                    throw new \Exception(__('message.renew_subscription_download'));
+                    throw new \Exception(trans('message.renew_subscription_download'));
                 }
             }
         } else {
-            throw new \Exception(__('message.no_order_exists_invoice'));
+            throw new \Exception(trans('message.no_order_exists_invoice'));
         }
     }
 

@@ -32,11 +32,11 @@ class SocialLoginsController extends Controller
             'redirect_url' => 'required',
         ],
             [
-                'client_id.required_if' => __('validation.social_login.client_id_required'),
-                'client_secret.required_if' => __('validation.social_login.client_secret_required'),
-                'api_key.required_if' => __('validation.social_login.api_key_required'),
-                'api_secret.required_if' => __('validation.social_login.api_secret_required'),
-                'redirect_url.required' => __('validation.social_login.redirect_url_required'),
+                'client_id.required_if' => trans('validation.social_login.client_id_required'),
+                'client_secret.required_if' => trans('validation.social_login.client_secret_required'),
+                'api_key.required_if' => trans('validation.social_login.api_key_required'),
+                'api_secret.required_if' => trans('validation.social_login.api_secret_required'),
+                'redirect_url.required' => trans('validation.social_login.redirect_url_required'),
             ]);
 
         try {
@@ -47,9 +47,9 @@ class SocialLoginsController extends Controller
                 'status' => $request->optradio,
             ]);
 
-            Session::flash('success', __('message.social_login_settings_updated'));
+            Session::flash('success', trans('message.social_login_settings_updated'));
         } catch (\Exception $e) {
-            Session::flash('error', __('message.error_occurred_social_login'));
+            Session::flash('error', trans('message.error_occurred_social_login'));
         }
 
         return redirect()->back();

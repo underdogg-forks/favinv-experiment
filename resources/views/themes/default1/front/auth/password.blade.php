@@ -1,20 +1,20 @@
 @extends('themes.default1.layouts.front.master')
 @section('title')
-    {{ __('message.forgot_password_faveo_helpdesk') }}
+    {{ trans('message.forgot_password_faveo_helpdesk') }}
 @stop
 @section('page-heading')
-  {{ __('message.forgot-password') }}
+  {{ trans('message.forgot-password') }}
 @stop
 @section('page-header')
-    {{ __('message.forgot-password') }}
+    {{ trans('message.forgot-password') }}
 @stop
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home')}}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home')}}</a></li>
     @else
-         <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home')}}</a></li>
+         <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home')}}</a></li>
     @endif
-     <li class="active text-dark">{{ __('message.forgot_password')}}</li>
+     <li class="active text-dark">{{ trans('message.forgot_password')}}</li>
 @stop
 @section('main-class')
 main
@@ -32,7 +32,7 @@ main
                     <div class="row">
                         <div class="form-group col">
                             <label class="form-label text-color-dark text-3">
-                                {{ __('message.email_address') }}
+                                {{ trans('message.email_address') }}
                                 <span class="text-color-danger">*</span>
                             </label>
                             <input name="email" id="email" type="email" class="form-control form-control-lg text-4">
@@ -43,7 +43,7 @@ main
                     <div class="row justify-content-between">
                         <div class="form-group col-md-auto">
                             <a class="text-decoration-none text-color-primary font-weight-semibold text-2" href="{{url('login')}}">
-                                {{ __('message.know_password') }}
+                                {{ trans('message.know_password') }}
                             </a>
                         </div>
                     </div>
@@ -60,10 +60,10 @@ main
                         <div class="form-group col">
                             <button type="submit"
                                     class="btn btn-dark btn-modern w-100 text-uppercase font-weight-bold text-3 py-3"
-                                    data-loading-text="{{ __('message.sending')}}"
-                                    data-original-text="{{ __('message.send_mail')}}"
+                                    data-loading-text="{{ trans('message.sending')}}"
+                                    data-original-text="{{ trans('message.send_mail')}}"
                                     id="resetmail">
-                                {{ __('message.send_mail') }}
+                                {{ trans('message.send_mail') }}
                             </button>
                         </div>
                     </div>
@@ -147,7 +147,7 @@ main
         $.validator.addMethod("regex", function(value, element, regexp) {
             var re = new RegExp(regexp);
             return this.optional(element) || re.test(value);
-        }, "{{ __('message.invalid_format') }}");
+        }, "{{ trans('message.invalid_format') }}");
 
         $('#resetPasswordForm').validate({
             rules: {
@@ -159,9 +159,9 @@ main
             },
             messages: {
                 email: {
-                    required: "{{ __('message.error_email_address') }}",
-                    email: "{{ __('message.contact_error_email') }}",
-                    regex: "{{ __('message.contact_error_email') }}"
+                    required: "{{ trans('message.error_email_address') }}",
+                    email: "{{ trans('message.contact_error_email') }}",
+                    regex: "{{ trans('message.contact_error_email') }}"
                 }
             },
             unhighlight: function (element) {

@@ -1,17 +1,17 @@
 @extends('themes.default1.layouts.master')
 @section('title')
-    {{ __('message.users') }}
+    {{ trans('message.users') }}
 @stop
 
 
 @section('content-header')
     <div class="col-sm-6">
-        <h1>{{ __('message.all-users') }}</h1>
+        <h1>{{ trans('message.all-users') }}</h1>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ __('message.home') }}</a></li>
-            <li class="breadcrumb-item active">{{ __('message.all-users') }}</li>
+            <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fa fa-dashboard"></i> {{ trans('message.home') }}</a></li>
+            <li class="breadcrumb-item active">{{ trans('message.all-users') }}</li>
         </ol>
     </div><!-- /.col -->
     <style type="text/css">
@@ -147,10 +147,10 @@
             <!-- Default box -->
             <div class="card card-secondary card-outline collapsed-card">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __('message.advance_search') }}</h3>
+                    <h3 class="card-title">{{ trans('message.advance_search') }}</h3>
 
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool" id="tip-search" title="{{ __('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
+                        <button type="button" class="btn btn-tool" id="tip-search" title="{{ trans('message.expand') }}"> <i id="search-icon" class="fas fa-plus"></i>
                             </button>
 
                     </div>
@@ -162,7 +162,7 @@
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.company_name'), 'company') !!}
+                            {!! html()->label( trans('message.company_name'), 'company') !!}
                             {!! html()->text('company', $request->company)->class('form-control')->id('company') !!}
 
                         </div>
@@ -171,9 +171,9 @@
                         ?>
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.country'), 'country') !!}<br>
+                            {!! html()->label( trans('message.country'), 'country') !!}<br>
                             <select style="width:100%;" name="country" value= "Choose" id="country"  class="form-control select2" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false" data-size="10">
-                                <option value="" style="">{{ __('message.choose') }}</option>
+                                <option value="" style="">{{ trans('message.choose') }}</option>
                                 @foreach($countries as $key=> $country)
                                     @if($key == $request->country)
                                         <option value={{$key}} selected>{{$country}}</option>
@@ -186,7 +186,7 @@
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.industries'), 'industry') !!}<br>
+                            {!! html()->label( trans('message.industries'), 'industry') !!}<br>
 
                         <?php $old = ['agriculture_forestry'=>'Agriculture Forestry','safety_security_legal'=>'Safety Security Legal','business_information'=>'Business Information','finance_insurance'=>'Finance Insurance','gaming'=>'Gaming','real_estate_housing'=>'Real Estate Housing','health_services'=>'Health Services','education'=>'Education','food_hospitality'=>'Food Hospitality','personal_services'=>'Personal Services','transportation'=>'Transportation','construction_utilities_contracting'=>'Construction Utilities Contracting','motor_vehicle'=>'Motor Vehicle','animals_pets'=>'Animals & Pets','art_design'=>'Art & Design','auto_transport'=>'Auto & Transport','food_beverage'=>'Food & Beverage','beauty_fashion'=>'Beauty & Fashion','education_childcare'=>'Education & Childcare','environment_green_tech'=>'Environment & Green Tech','events_weddings'=>'Events & Weddings','finance_legal_consulting'=>'Finance, Legal & Consulting','government_municipal'=>'Government & Municipal','home_garden'=>'Home & Garden','internet_technology'=>'Internet & Technology','local_service_providers'=>'Local Service Providers','manufacturing_wholesale'=>'Manufacturing & Wholesale','marketing_advertising'=>'Marketing & Advertising','media_communication'=>'Media & Communication','medical_dental'=>'Medical & Dental','music_bands'=>'Music & Bands','non_profit_charity'=>'Non-Profit & Charity','real_estate'=>'Real Estate','religion'=>'Religion','retail_e-Commerce'=>'Retail & E-Commerce','sports_recreation'=>'Sports & Recreation','travel_hospitality'=>'Travel & Hospitality','other'=>'Other',];
                         $bussinesses =DB::table('bussinesses')->pluck('name','short')->toarray();
@@ -194,7 +194,7 @@
                         <!-- {!! html()->select('industry', array_merge(['Choose'], ['' => DB::table('bussinesses')->pluck('name', 'short')->toArray()], ['old' => $old]))->class('form-control')->id('industry')->attribute('data-live-search', 'true')->attribute('data-live-search-placeholder', 'Search')->attribute('data-dropup-auto', 'false')->attribute('data-size', '10') !!} -->
 
                             <select name="industry"  style="width:100%;" class="form-control select2" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false"  data-size="10" id="industry">
-                                <option value="">{{ __('message.choose') }}</option>
+                                <option value="">{{ trans('message.choose') }}</option>
                                 @foreach($bussinesses as $key=>$bussines)
                                     @if($key == $request->industry)
                                         <option value={{$key}} selected>{{$bussines}}</option>
@@ -208,23 +208,23 @@
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.role'), 'role') !!}
-                            {!! html()->select('role', ['' =>  __('message.choose')] + ['admin' => 'Admin', 'user' => 'User'], $request->role)
+                            {!! html()->label( trans('message.role'), 'role') !!}
+                            {!! html()->select('role', ['' =>  trans('message.choose')] + ['admin' => 'Admin', 'user' => 'User'], $request->role)
                                 ->class('form-control')
                                 ->id('role') !!}
                         </div>
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.position'), 'position') !!}
-                            {!! html()->select('position', ['' =>  __('message.choose')] + ['manager' => 'Sales Manager', 'account_manager' => 'Account Manager'], $request->position)
+                            {!! html()->label( trans('message.position'), 'position') !!}
+                            {!! html()->select('position', ['' =>  trans('message.choose')] + ['manager' => 'Sales Manager', 'account_manager' => 'Account Manager'], $request->position)
                                 ->class('form-control')
                                 ->id('position') !!}
                         </div>
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.registered_from'), 'reg_from') !!}
+                            {!! html()->label( trans('message.registered_from'), 'reg_from') !!}
                             <div class="input-group date" id="reservationdate_from" data-target-input="nearest">
                               <input type="text" name="reg_from" class="form-control datetimepicker-input" autocomplete="off" value="{!! $request->reg_from !!}" data-target="#reservationdate_from"/>
                               <div class="input-group-append" data-target="#reservationdate_from" data-toggle="datetimepicker">
@@ -237,7 +237,7 @@
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.registered_till'), 'from') !!}
+                            {!! html()->label( trans('message.registered_till'), 'from') !!}
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
                                 <input type="text" name="reg_till" class="form-control datetimepicker-input" autocomplete="off" value="{!! $request->reg_till !!}" data-target="#reservationdate"/>
 
@@ -252,9 +252,9 @@
 
                         <div class="col-md-3 form-group">
                             <!-- first name -->
-                            {!! html()->label( __('message.users_account_manager'), 'from') !!}
+                            {!! html()->label( trans('message.users_account_manager'), 'from') !!}
                             <select name="actmanager"  class="form-control selectpicker" data-live-search="true" data-live-search-placeholder="Search" data-dropup-auto="false"  data-size="10" id="actmanager" >
-                                <option value="">{{ __('message.choose') }}</option>
+                                <option value="">{{ trans('message.choose') }}</option>
                                 @foreach($accountManagers as $key => $manager)
                                     @if($key == $request->actmanager)
                                         <option value="{{ $key }}" selected>{{ $manager }}</option>
@@ -268,9 +268,9 @@
                         <div class="col-md-3 form-group">
                             <!-- first name -->
 
-                            {!! html()->label( __('message.user_for_sales_manager'), 'from') !!}
+                            {!! html()->label( trans('message.user_for_sales_manager'), 'from') !!}
                             <select name="salesmanager"  class="form-control selectpicker" data-live-search="true",data-live-search-placeholder="Search" data-dropup-auto="false"  data-size="10" id="salesmanager" >
-                                <option value="">{{ __('message.choose') }}</option>
+                                <option value="">{{ trans('message.choose') }}</option>
                                 @foreach($salesManager as $key=>$sales)
                                     @if($key == $request->salesmanager)
                                         <option value={{$key}} selected>{{$sales}}</option>
@@ -283,24 +283,24 @@
 
                         <div class="col-md-3 form-group">
                             <!-- Mobile Status -->
-                            {!! html()->label( __('message.mobile_status_client'), 'mobile_verified') !!}
-                            {!! html()->select('mobile_verified', ['' => __('message.choose')] + ['1' => 'Active', '0' => 'Inactive'], $request->mobile_verified)
+                            {!! html()->label( trans('message.mobile_status_client'), 'mobile_verified') !!}
+                            {!! html()->select('mobile_verified', ['' => trans('message.choose')] + ['1' => 'Active', '0' => 'Inactive'], $request->mobile_verified)
                                 ->class('form-control')
                                 ->id('mobile_verified') !!}
                         </div>
 
                         <div class="col-md-3 form-group">
                             <!-- Email Status -->
-                            {!! html()->label( __('message.email_status'), 'active') !!}
-                            {!! html()->select('email_verified', ['' => __('message.choose')] + ['1' => 'Active', '0' => 'Inactive'], $request->email_verified)
+                            {!! html()->label( trans('message.email_status'), 'active') !!}
+                            {!! html()->select('email_verified', ['' => trans('message.choose')] + ['1' => 'Active', '0' => 'Inactive'], $request->email_verified)
                                 ->class('form-control')
                                 ->id('active') !!}
                         </div>
 
                         <div class="col-md-3 form-group">
                             <!-- 2FA Status -->
-                            {!! html()->label( __('message.2fa_status'), 'is_2fa_enabled') !!}
-                            {!! html()->select('is_2fa_enabled', ['' => __('message.choose')] + ['1' => 'Enabled', '0' => 'Disabled'], $request->is_2fa_enabled)
+                            {!! html()->label( trans('message.2fa_status'), 'is_2fa_enabled') !!}
+                            {!! html()->select('is_2fa_enabled', ['' => trans('message.choose')] + ['1' => 'Enabled', '0' => 'Disabled'], $request->is_2fa_enabled)
                                 ->class('form-control')
                                 ->id('is_2fa_enabled') !!}
                         </div>
@@ -309,7 +309,7 @@
                     <button name="Search" type="submit" id="search"  class="btn btn-secondary"><i class="fa fa-search"></i>&nbsp;{!!trans('message.search')!!}</button>
                     &nbsp;
                     <!-- <a href="{!! url('clients') !!}" id="reset" class="btn btn-secondary"><i class="fas fa-sync-alt"></i>&nbsp;{!!trans('Reset')!!}</a> -->
-                    {!! html()->submit( __('message.reset'))
+                    {!! html()->submit( trans('message.reset'))
     ->class('btn btn-secondary')
     ->id('reset') !!}
 
@@ -321,13 +321,13 @@
 
 <div class="card card-secondary card-outline">
     <div class="card-header">
-        <h3 class="card-title">{{ __('message.users') }}</h3>
+        <h3 class="card-title">{{ trans('message.users') }}</h3>
         <div class="card-tools">
             
-        <button type="button" id="export-report-btn" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ __('message.export') }}" style="position: absolute; top: 13px; {{ isRtlForLang() ? 'right: 95.5%;' : 'left: 95.5%;' }}">
+        <button type="button" id="export-report-btn" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ trans('message.export') }}" style="position: absolute; top: 13px; {{ isRtlForLang() ? 'right: 95.5%;' : 'left: 95.5%;' }}">
             <i class="fas fa-paper-plane"></i>
         </button>
-            <a href="{{url('clients/create')}}" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ __('message.create_new_user') }}" style="position: absolute; {{ isRtlForLang() ? 'right: 97.5%;' : 'left: 97.5%;' }}">
+            <a href="{{url('clients/create')}}" class="btn btn-sm pull-right" data-toggle="tooltip" title="{{ trans('message.create_new_user') }}" style="position: absolute; {{ isRtlForLang() ? 'right: 97.5%;' : 'left: 97.5%;' }}">
                 <span class="fas fa-plus"></span>
             </a>
         </div>
@@ -337,41 +337,41 @@
     <div class="card-body table-responsive">
         <div class="d-flex justify-content-between mb-3">
             <button value="" class="btn btn-secondary btn-sm btn-alldell" id="bulk_delete">
-                <i class="fa fa-trash"></i>&nbsp;&nbsp;{{ __('message.suspend_selected_users') }}
+                <i class="fa fa-trash"></i>&nbsp;&nbsp;{{ trans('message.suspend_selected_users') }}
             </button>
             
             <form id="columnForm">
                 <div class="custom-dropdown" id="columnUpdate">
                     <button class="btn btn-default pull-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative;top: 52px;">
-                        <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ __('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
+                        <span class="fa fa-columns"></span>&nbsp;&nbsp;{{ trans('message.selected_columns') }}&nbsp;&nbsp;<span class="fas fa-caret-down"></span>
                     </button>
                     <div class="dropdown-menu user-column-dropdown" aria-labelledby="dropdownMenuButton">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="name" id="nameCheckbox">
-                            <label class="form-check-label" for="nameCheckbox">{{ __('message.name_page') }}</label>
+                            <label class="form-check-label" for="nameCheckbox">{{ trans('message.name_page') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="email" id="emailCheckbox">
-                            <label class="form-check-label" for="emailCheckbox">{{ __('message.email') }}</label>
+                            <label class="form-check-label" for="emailCheckbox">{{ trans('message.email') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="mobile" id="mobileCheckbox">
-                            <label class="form-check-label" for="mobileCheckbox">{{ __('message.mobile') }}</label>
+                            <label class="form-check-label" for="mobileCheckbox">{{ trans('message.mobile') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="country" id="countryCheckbox">
-                            <label class="form-check-label" for="countryCheckbox">{{ __('message.country') }}</label>
+                            <label class="form-check-label" for="countryCheckbox">{{ trans('message.country') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="created_at" id="RegisteredCheckbox">
-                            <label class="form-check-label" for="RegisteredCheckbox">{{ __('message.registered_on') }}</label>
+                            <label class="form-check-label" for="RegisteredCheckbox">{{ trans('message.registered_on') }}</label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="active" id="statusCheckbox">
-                            <label class="form-check-label" for="statusCheckbox">{{ __('message.status') }}</label>
+                            <label class="form-check-label" for="statusCheckbox">{{ trans('message.status') }}</label>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary btn-sm" style="left: 10px; position: relative;" id="saveColumnsBtn">{{ __('message.apply') }}</button>
+                        <button type="button" class="btn btn-primary btn-sm" style="left: 10px; position: relative;" id="saveColumnsBtn">{{ trans('message.apply') }}</button>
                     </div>
                 </div>
             </form>
@@ -386,13 +386,13 @@
             <thead>
                 <tr>
                     <th class="no-sort"><input type="checkbox" name="select_all" onchange="checking(this)"></th>
-                    <th>{{ __('message.name_page') }}</th>
-                    <th>{{ __('message.email') }}</th>
-                    <th>{{ __('message.mobile') }}</th>
-                    <th>{{ __('message.country') }}</th>
-                    <th>{{ __('message.registered_on') }}</th>
-                    <th>{{ __('message.status') }}</th>
-                    <th>{{ __('message.action') }}</th>
+                    <th>{{ trans('message.name_page') }}</th>
+                    <th>{{ trans('message.email') }}</th>
+                    <th>{{ trans('message.mobile') }}</th>
+                    <th>{{ trans('message.country') }}</th>
+                    <th>{{ trans('message.registered_on') }}</th>
+                    <th>{{ trans('message.status') }}</th>
+                    <th>{{ trans('message.action') }}</th>
                 </tr>
             </thead>
           
@@ -421,7 +421,7 @@ $(document).ready(function() {
             "url": '{!! route('get-clients', "company=$request->company&country=$request->country&industry=$request->industry&role=$request->role&position=$request->position&reg_from=$request->reg_from&reg_till=$request->reg_till&actmanager=$request->actmanager&salesmanager=$request->salesmanager&email_verified=$request->email_verified&mobile_verified=$request->mobile_verified&is_2fa_enabled=$request->is_2fa_enabled") !!}',
             error: function(xhr) {
                 if (xhr.status == 401) {
-                    alert('{{ __('message.session_expired') }}');
+                    alert('{{ trans('message.session_expired') }}');
                     window.location.href = '/login';
                 }
             },
@@ -437,23 +437,23 @@ $(document).ready(function() {
         },
         "oLanguage": {
             "sLengthMenu": "_MENU_ Records per page",
-            "sSearch": "<span class='datatable-search-label'>{{ __('message.search') }}:</span> ",
-            "sProcessing": ' <div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin" style=" margin-top: -25px;"></i><div class="text-bold pt-2">{{ __('message.loading') }}</div></div>'
+            "sSearch": "<span class='datatable-search-label'>{{ trans('message.search') }}:</span> ",
+            "sProcessing": ' <div class="overlay dataTables_processing"><i class="fas fa-3x fa-sync-alt fa-spin" style=" margin-top: -25px;"></i><div class="text-bold pt-2">{{ trans('message.loading') }}</div></div>'
         },
         language: {
             paginate: {
-                first:      "{{ __('message.paginate_first') }}",
-                last:       "{{ __('message.paginate_last') }}",
-                next:       "{{ __('message.paginate_next') }}",
-                previous:   "{{ __('message.paginate_previous') }}"
+                first:      "{{ trans('message.paginate_first') }}",
+                last:       "{{ trans('message.paginate_last') }}",
+                next:       "{{ trans('message.paginate_next') }}",
+                previous:   "{{ trans('message.paginate_previous') }}"
             },
-            emptyTable:     "{{ __('message.empty_table') }}",
-            info:           "{{ __('message.datatable_info') }}",
-            zeroRecords:    "{{ __('message.no_matching_records_found') }} ",
-            infoEmpty:      "{{ __('message.info_empty') }}",
-            infoFiltered:   "{{ __('message.info_filtered') }}",
-            lengthMenu:     "{{ __('message.sLengthMenu') }}",
-            loadingRecords: "{{ __('message.loading_records') }}",
+            emptyTable:     "{{ trans('message.empty_table') }}",
+            info:           "{{ trans('message.datatable_info') }}",
+            zeroRecords:    "{{ trans('message.no_matching_records_found') }} ",
+            infoEmpty:      "{{ trans('message.info_empty') }}",
+            infoFiltered:   "{{ trans('message.info_filtered') }}",
+            lengthMenu:     "{{ trans('message.sLengthMenu') }}",
+            loadingRecords: "{{ trans('message.loading_records') }}",
         },
 
         columnDefs: [
@@ -503,7 +503,7 @@ $(document).ready(function() {
             selectedColumns.push($(this).val());
         });
          if (selectedColumns.length === 0) {
-        alert('{{ __('message.select_checkbox') }}');
+        alert('{{ trans('message.select_checkbox') }}');
         return;
         }
 
@@ -595,7 +595,7 @@ $(document).ready(function() {
                 var result = '<div class="alert alert-success">' +
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                     '<span aria-hidden="true">&times;</span></button>' +
-                    '<strong><i class="far fa-thumbs-up"></i> {{ __('message.well_done') }} </strong>' +
+                    '<strong><i class="far fa-thumbs-up"></i> {{ trans('message.well_done') }} </strong>' +
                     response.message + '!</div>';
                 
                 $('#export-message').html(result).removeClass('text-danger').addClass('text-success');
@@ -607,8 +607,8 @@ $(document).ready(function() {
                 var result = '<div class="alert alert-danger">' +
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
                     '<span aria-hidden="true">&times;</span></button>' +
-                    '<strong><i class="far fa-thumbs-down"></i> {{ __('message.error_oops') }} </strong>' +
-                    '{{ __('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
+                    '<strong><i class="far fa-thumbs-down"></i> {{ trans('message.error_oops') }} </strong>' +
+                    '{{ trans('message.export_failed') }}: ' + xhr.responseJSON.message + '</div>';
 
                 $('#export-message').html(result).removeClass('text-success').addClass('text-danger');
                 setTimeout(function() {
@@ -657,7 +657,7 @@ $(document).ready(function() {
                   "<p >{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                   "</div>",
               position: 'top',
-              confirmButtonText: "{{ __('message.ok') }}",
+              confirmButtonText: "{{ trans('message.ok') }}",
               showCloseButton: true,
               confirmButtonColor: "#007bff",
               width: "600px",
@@ -671,7 +671,7 @@ $(document).ready(function() {
                   "<p >{{trans('message.user_sweet_suspend')}}</p>" + "</div>" +
                   "</div>",
               showCancelButton: true,
-              cancelButtonText: "{{ __('message.cancel') }}",
+              cancelButtonText: "{{ trans('message.cancel') }}",
               showCloseButton: true,
               position: "top",
               width: "600px",
@@ -688,7 +688,7 @@ $(document).ready(function() {
                           method: "delete",
                           data: $('#check:checked').serialize(),
                           beforeSend: function () {
-                              '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ __('message.loading')  }}</div></div>'
+                              '<div class="overlay"><i class="fas fa-3x fa-sync-alt fa-spin"></i><div class="text-bold pt-2">{{ trans('message.loading')  }}</div></div>'
                           },
                           success: function (data) {
                               $('#gif').html('');
@@ -707,7 +707,7 @@ $(document).ready(function() {
                               "<p >{{trans('message.sweet_checkbox')}}</p>" + "</div>" +
                               "</div>",
                           position: 'top',
-                          confirmButtonText: "{{ __('message.ok') }}",
+                          confirmButtonText: "{{ trans('message.ok') }}",
                           showCloseButton: true,
                           confirmButtonColor: "#007bff",
                           width: "600px",

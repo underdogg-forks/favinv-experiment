@@ -69,7 +69,7 @@ class PageController extends Controller
 
                         ->addColumn('action', function ($model) {
                             return '<a href='.url('pages/'.$model->id.'/edit')
-                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(__('message.edit'))."<i class='fa fa-edit'
+                            ." class='btn btn-sm btn-secondary btn-xs'".tooltip(trans('message.edit'))."<i class='fa fa-edit'
                                  style='color:white;'> </i></a>";
                         })
                           ->filterColumn('name', function ($query, $keyword) {
@@ -613,13 +613,13 @@ class PageController extends Controller
         if ($product->add_to_contact != 1) {
             if (in_array($product->id, cloudPopupProducts())) {
                 return '<button class="btn '.$orderButton.' btn-modern buttonsale" data-toggle="modal" data-target="#tenancy" data-mydata="'.$product->id.'">
-                                <span style="white-space: nowrap;">'.__('message.order_now').'</span>
+                                <span style="white-space: nowrap;">'.trans('message.order_now').'</span>
                             </button>';
             } else {
                 return '<input type="submit" value="Order Now" class="btn '.$orderButton.' btn-modern buttonsale"></form>';
             }
         } else {
-            return '<a class="btn '.$orderButton.' btn-modern sales buttonsale" href="https://www.faveohelpdesk.com/contact-us/">'.__('message.contact_sales').'</a>';
+            return '<a class="btn '.$orderButton.' btn-modern sales buttonsale" href="https://www.faveohelpdesk.com/contact-us/">'.trans('message.contact_sales').'</a>';
         }
     }
 
@@ -921,7 +921,7 @@ class PageController extends Controller
                 $mail->SendEmail($set->email, $set->company_email, $template->data, $template->name, $replace, $type);
             }
 
-            return response()->json(['message' => __('message.message_sent_successfully_400')], 200);
+            return response()->json(['message' => trans('message.message_sent_successfully_400')], 200);
         } catch (\Exception $ex) {
             return response()->json(['error' => $ex->getMessage()], 500);
         }
@@ -1023,7 +1023,7 @@ class PageController extends Controller
                 $mail->SendEmail($set->email, $set->company_email, $template->data, $templatename, $replace, $type);
             }
 
-            return successResponse(__('message.message_sent_successfully_400'));
+            return successResponse(trans('message.message_sent_successfully_400'));
         } catch (\Exception $ex) {
             return errorResponse($ex->getMessage());
         }
@@ -1052,7 +1052,7 @@ class PageController extends Controller
         $existingData = DemoPage::first();
         $existingData ? $existingData->update($data) : DemoPage::create($data);
 
-        $message = $existingData ? __('message.data_updated_successfully') : __('message.data_created_successfully');
+        $message = $existingData ? trans('message.data_updated_successfully') : trans('message.data_created_successfully');
 
         return redirect()->back()->with('success', $message);
     }

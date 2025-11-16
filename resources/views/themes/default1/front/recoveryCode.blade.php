@@ -1,24 +1,24 @@
 @extends('themes.default1.layouts.front.master')
 
 @section('title')
-    {{ __('message.two_factory_recovery') }}
+    {{ trans('message.two_factory_recovery') }}
 @stop
 
 @section('page-heading')
-    {{ __('message.two_factory_recovery') }}
+    {{ trans('message.two_factory_recovery') }}
 @stop
 
 @section('page-header')
-    {{ __('message.forgot-password') }}
+    {{ trans('message.forgot-password') }}
 @stop
 
 @section('breadcrumb')
     @if(Auth::check())
-        <li><a class="text-primary" href="{{ url('my-invoices') }}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{ url('my-invoices') }}">{{ trans('message.home') }}</a></li>
     @else
-        <li><a class="text-primary" href="{{ url('login') }}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{ url('login') }}">{{ trans('message.home') }}</a></li>
     @endif
-    <li class="active text-dark">{{ __('message.two_factory_recovery') }}</li>
+    <li class="active text-dark">{{ trans('message.two_factory_recovery') }}</li>
 @stop
 
 @section('main-class')
@@ -37,15 +37,15 @@
                 {{-- Recovery Code Input --}}
                 <div class="mb-4">
                     <label for="rec_code" class="form-label text-color-dark fw-bold text-3">
-                        {{ __('message.enter_recovery_code') }} <span class="text-danger">*</span>
+                        {{ trans('message.enter_recovery_code') }} <span class="text-danger">*</span>
                     </label>
                     <input type="text" name="rec_code" id="rec_code" value=""
                            class="form-control form-control-lg text-4"
-                           placeholder="{{ __('message.enter_code') }}">
+                           placeholder="{{ trans('message.enter_code') }}">
                     <div id="codecheck" class="form-text text-danger"></div>
                 </div>
 
-                <p class="text-muted mb-4">{{ __('message.recovery_code_used') }}</p>
+                <p class="text-muted mb-4">{{ trans('message.recovery_code_used') }}</p>
 
                 {{-- Recaptcha --}}
                 <div class="mb-4" id="2fa_recovery_recaptcha"></div>
@@ -54,7 +54,7 @@
 
                 {{-- Link back to authenticator code --}}
                 <div class="mb-4">
-                    <a href="{{ url('verify-2fa') }}">{{ __('message.login_authenticator_passcode') }}</a>
+                    <a href="{{ url('verify-2fa') }}">{{ trans('message.login_authenticator_passcode') }}</a>
                 </div>
 
                 {{-- Submit Button --}}
@@ -62,8 +62,8 @@
                     <button type="submit"
                             id="recovery-submit-button"
                             class="btn btn-dark btn-lg fw-bold text-uppercase text-3 py-3"
-                            data-loading-text="{{ __('message.loading') }}">
-                        {{ __('message.verify') }}
+                            data-loading-text="{{ trans('message.loading') }}">
+                        {{ trans('message.verify') }}
                     </button>
                 </div>
 
@@ -146,7 +146,7 @@
                     rec_code: { required: true },
                 },
                 messages: {
-                    rec_code: { required: "{{ __('message.please_enter_recovery_code') }}" },
+                    rec_code: { required: "{{ trans('message.please_enter_recovery_code') }}" },
                 },
                 unhighlight: function (element) { $(element).removeClass("is-valid"); },
                 errorPlacement: function (error, element) { placeErrorMessage(error, element); },

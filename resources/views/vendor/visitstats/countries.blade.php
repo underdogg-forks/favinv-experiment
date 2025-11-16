@@ -7,10 +7,10 @@
 
 		<table class="visitortracker-table table table-sm table-striped fs-1">
 			<thead>
-				<th>{{ __('message.country') }}</th>
-				<th>{{ __('message.unique_visitors') }}</th>
-				<th>{{ __('message.visits') }}</th>
-				<th>{{ __('message.last_visit') }}</th>
+				<th>{{ trans('message.country') }}</th>
+				<th>{{ trans('message.unique_visitors') }}</th>
+				<th>{{ trans('message.visits') }}</th>
+				<th>{{ trans('message.last_visit') }}</th>
 			</thead>
 
 			<tbody>
@@ -26,16 +26,16 @@
 								@else
 									<img class="visitortracker-icon"
 										src="{{ asset('/vendor/visitortracker/icons/flags/unknown.png') }}"
-										title="{{ __('message.unknown') }}">
+										title="{{ trans('message.unknown') }}">
 								@endif
 
 								{{ $visit->country }}
 							@else
 								<img class="visitortracker-icon"
 									src="{{ asset('/vendor/visitortracker/icons/flags/unknown.png') }}"
-									title="{{ __('message.unknown') }}">
+									title="{{ trans('message.unknown') }}">
 
-								{{ __('message.unknown') }}
+								{{ trans('message.unknown') }}
 							@endif
 						</td>
 							

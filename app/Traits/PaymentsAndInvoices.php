@@ -170,7 +170,7 @@ trait PaymentsAndInvoices
                 intval($totalPayment)
             );
 
-            return redirect()->back()->with('success', __('message.payment_accepted_succcessfully'));
+            return redirect()->back()->with('success', trans('message.payment_accepted_succcessfully'));
         } catch (\Exception $ex) {
             return redirect()->back()->with('fails', $ex->getMessage());
         }

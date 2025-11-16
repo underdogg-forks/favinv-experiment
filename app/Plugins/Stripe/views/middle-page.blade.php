@@ -3,16 +3,16 @@
     {{$gateway}}
 @stop
 @section('page-heading')
-    {{ __('message.place_order') }}
+    {{ trans('message.place_order') }}
 @stop
 @section('page-heading')
- {{ __('message.checkout') }}
+ {{ trans('message.checkout') }}
 @stop
 @section('breadcrumb')
 @if(Auth::check())
-        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ __('message.home') }}</a></li>
+        <li><a class="text-primary" href="{{url('my-invoices')}}">{{ trans('message.home') }}</a></li>
 @else
-     <li><a class="text-primary" href="{{url('login')}}">{{ __('message.home') }}</a></li>
+     <li><a class="text-primary" href="{{url('login')}}">{{ trans('message.home') }}</a></li>
 @endif
  <li class="active text-dark">{{$gateway}}</li>
 @stop
@@ -142,23 +142,23 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                         <th class="product-name text-uppercase heading" width="">
 
-                                            {{ __('message.product') }}
+                                            {{ trans('message.product') }}
 
                                         </th>
                                      
 
                                         <th class="product-quantity text-uppercase heading" width="">
 
-                                            {{ __('message.quantity') }}
+                                            {{ trans('message.quantity') }}
                                         </th>
                                          <th class="product-agent text-uppercase heading" width="">
 
-                                            {{ __('message.agents') }}
+                                            {{ trans('message.agents') }}
                                         </th>
 
                                         <th class="product-subtotal text-uppercase heading">
 
-                                            {{ __('message.total') }}
+                                            {{ trans('message.total') }}
                                         </th>
                                     </tr>
                                     </thead>
@@ -176,7 +176,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                             <div class="product-thumbnail-wrapper">
 
-                                                <a  onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove"  data-bs-toggle="tooltip" title="{{ __('message.remove_product') }}" style="top: -15px;right: 15px;">
+                                                <a  onclick="removeItem('{{$item->id}}');" class="product-thumbnail-remove"  data-bs-toggle="tooltip" title="{{ trans('message.remove_product') }}" style="top: -15px;right: 15px;">
 
                                                     <i class="fas fa-times"></i>
                                                 </a>
@@ -205,10 +205,10 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
 
                                         <td class="product-subtotal">
-                                            @if(\Session::has('togglePrice') && $item->id == \Session::get('productid'))
+                                            @if(session()->has('togglePrice') && $item->id == session('productid'))
 
                                             <span class="amount text-color-dark font-weight-bold text-4" style="font-family: Arial;">
-                                                {{currencyFormat($item->quantity * \Session::get('togglePrice'),$code = $item->attributes->currency)}}
+                                                {{currencyFormat($item->quantity * session('togglePrice'),$code = $item->attributes->currency)}}
                                             </span>
                                             @else
                                             <span class="amount text-color-dark font-weight-bold text-4" style="font-family: Arial;">
@@ -218,7 +218,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                         </td>
                                     </tr>
                                      @empty 
-                                    <p>{{ __('message.cart_void') }}</p>
+                                    <p>{{ trans('message.cart_void') }}</p>
 
 
                                     @endforelse
@@ -234,7 +234,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                             <div class="card-body">
 
-                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order') }}</h4>
+                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order') }}</h4>
 
                                 <table class="shop_table cart-totals mb-3">
 
@@ -242,7 +242,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.cart_subtotal') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.cart_subtotal') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">{{currencyFormat($cartSubtotalWithoutCondition,$code = $currency)}}</span>
@@ -251,15 +251,15 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     @if(Session::has('code'))
                                        <tr>
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.discount') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.discount') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">
                                                 <?php
-                                                if (strpos(\Session::get('codevalue'), '%') == true) {
-                                                        $discountValue = \Session::get('codevalue');
+                                                if (strpos(session('codevalue'), '%') == true) {
+                                                        $discountValue = session('codevalue');
                                                     } else {
-                                                        $discountValue = currencyFormat(\Session::get('codevalue'),$code = $item->attributes->currency);
+                                                        $discountValue = currencyFormat(session('codevalue'),$code = $item->attributes->currency);
                                                     }
                                                 ?>
 
@@ -380,7 +380,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                         ?>
 
                                   <td class="border-top-0" style="color: indianred">
-                                                        <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.amount_pending') }}
+                                                        <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.amount_pending') }}
                                                         </strong></td>
                                    <td class="text-end align-top border-top-0">
                                                         <span class="amount font-weight-medium text-color-grey">
@@ -395,7 +395,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total') }}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total') }}</strong>
                                         </td>
 
                                         <?php
@@ -414,7 +414,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     </tbody>
                                 </table>
 
-                              <input type="submit" name="submit" value="{{ __('message.place_your_order_pay') }}" id="{{ strtolower($gateway) === 'stripe' ? 'stripe-button1' : 'rzp-button1' }}" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                              <input type="submit" name="submit" value="{{ trans('message.place_your_order_pay') }}" id="{{ strtolower($gateway) === 'stripe' ? 'stripe-button1' : 'rzp-button1' }}" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
 
                             </div>
@@ -449,23 +449,23 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                         <th class="product-name text-uppercase heading" width="">
 
-                                            {{ __('message.product') }}
+                                            {{ trans('message.product') }}
 
                                         </th>
                                      
 
                                         <th class="product-quantity text-uppercase heading" width="">
 
-                                            {{ __('message.quantity') }}
+                                            {{ trans('message.quantity') }}
                                         </th>
                                          <th class="product-agent text-uppercase heading" width="">
 
-                                            {{ __('message.agents') }}
+                                            {{ trans('message.agents') }}
                                         </th>
 
                                         <th class="product-subtotal text-uppercase heading" width="">
 
-                                            {{ __('message.total') }}
+                                            {{ trans('message.total') }}
                                         </th>
                                     </tr>
                                     </thead>
@@ -518,7 +518,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                         </td>
                                     </tr>
                                      @empty 
-                                    <p>{{ __('message.cart_void') }}</p>
+                                    <p>{{ trans('message.cart_void') }}</p>
 
 
                                     @endforelse
@@ -534,7 +534,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                             <div class="card-body">
 
-                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ __('message.your_order') }}</h4>
+                                <h4 class="font-weight-bold text-uppercase text-4 mb-3">{{ trans('message.your_order') }}</h4>
 
                                 <table class="shop_table cart-totals mb-3">
 
@@ -542,7 +542,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                     <tr class="border-top">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.cart_subtotal') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.cart_subtotal') }}</strong>
                                         </td>
                                           <?php 
                                         $subtotals = App\Model\Order\InvoiceItem::where('invoice_id',$invoice->id)->pluck('regular_price')->toArray();
@@ -560,11 +560,11 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                       <tr class="cart-subtotal">
 
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.discount') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.discount') }}</strong>
                                         </td>
                                         <td class="text-end align-top border-top-0">
                                             <span class="amount font-weight-medium text-color-grey">
-                                             {{currencyFormat(\Session::get('codevalue'),$code = $currency)}}</span>
+                                             {{currencyFormat(session('codevalue'),$code = $currency)}}</span>
                                         </td>
                                     </tr>
                                     @endif
@@ -610,7 +610,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                         <tr class="total">
                                          <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.amount_received') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.amount_received') }}</strong>
                                         </td>
                                            <td class="border-top-0 text-end">
                                             <span class="amount font-weight-medium">
@@ -622,7 +622,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
 
                                     <tr class="total">
                                         <td class="border-top-0">
-                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ __('message.balance') }}</strong>
+                                            <strong class="d-block text-color-dark line-height-1 font-weight-semibold">{{ trans('message.balance') }}</strong>
                                         </td>
                                             <td class="border-top-0 text-end">
                                             <span class="amount font-weight-medium">
@@ -636,7 +636,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     @if(\App\User::where('id',\Auth::user()->id)->value('billing_pay_balance'))
                                         <tr class="cart-subtotal" style="color: indianred">
                                              <td class="border-top-0">
-                                            <strong class="text-color-dark">{{ __('message.amount_pending') }}</strong>
+                                            <strong class="text-color-dark">{{ trans('message.amount_pending') }}</strong>
 
                                             </td>
                                               <td class="border-top-0 text-end">
@@ -674,7 +674,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     <tr class="total">
 
                                         <td>
-                                            <strong class="text-color-dark text-3-5">{{ __('message.total') }}</strong>
+                                            <strong class="text-color-dark text-3-5">{{ trans('message.total') }}</strong>
                                         </td>
                                         <td class="text-end">
                                             <strong class="text-color-dark"><span class="amount text-color-dark text-5">{{currencyFormat($amount,$code = $currency)}}</span></strong>
@@ -682,7 +682,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                                     </tr>
                                     </tbody>
                                 </table>
-                              <input type="submit" name="submit" value="{{ __('message.place_your_order_pay') }}" id="{{ strtolower($gateway) === 'stripe' ? 'stripe-button1' : 'rzp-button1' }}" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ __('message.loading') }}">
+                              <input type="submit" name="submit" value="{{ trans('message.place_your_order_pay') }}" id="{{ strtolower($gateway) === 'stripe' ? 'stripe-button1' : 'rzp-button1' }}" class="btn btn-dark btn-modern w-100 text-uppercase text-3 py-3" data-loading-text="{{ trans('message.loading') }}">
 
                             </div>
                         </div>
@@ -699,7 +699,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
         <div class="modal-content" style="padding: 16px;">
              <div class="modal-header">
             <button style="position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-radius: 50%; background-color: black;" type="button" class="close custom-close" aria-hidden="true">&times;</button>
-                <h4 style="white-space: nowrap;" class="modal-title" id="defaultModalLabel">{{ __('message.enter_card_details') }}</h4>
+                <h4 style="white-space: nowrap;" class="modal-title" id="defaultModalLabel">{{ trans('message.enter_card_details') }}</h4>
 
          <div class="horizontal-images">
         <img class="img-responsive" src="https://static.vecteezy.com/system/resources/previews/020/975/567/non_2x/visa-logo-visa-icon-transparent-free-png.png">
@@ -716,7 +716,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                 <form id="payment-form" class="mx-auto" style="max-width: 500px;">
                     <!-- Card Number Field (with built-in Stripe icon) -->
                     <div class="mb-3">
-                        <label for="card-number" class="form-label">{{ __('message.card_number') }}</label>
+                        <label for="card-number" class="form-label">{{ trans('message.card_number') }}</label>
                         <div id="card-number" class="StripeElement"></div>
                         <div id="card-number-errors" class="text-danger mt-1" role="alert"></div>
                     </div>
@@ -725,14 +725,14 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                     <div class="row mb-3">
                         <!-- Expiry Date Field -->
                         <div class="col-md-6 mb-3">
-                            <label for="card-expiry" class="form-label">{{ __('message.expiry_date') }}</label>
+                            <label for="card-expiry" class="form-label">{{ trans('message.expiry_date') }}</label>
                             <div id="card-expiry" class="StripeElement"></div>
                             <div id="card-expiry-errors" class="text-danger mt-1" role="alert"></div>
                         </div>
 
                         <!-- CVC Field -->
                         <div class="col-md-6 mb-3">
-                            <label for="card-cvc" class="form-label">{{ __('message.card_cvc') }}</label>
+                            <label for="card-cvc" class="form-label">{{ trans('message.card_cvc') }}</label>
                             <div id="card-cvc" class="StripeElement"></div>
                             <div id="card-cvc-errors" class="text-danger mt-1" role="alert"></div>
                         </div>
@@ -742,7 +742,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                     <div class="d-grid mb-4">
                         <div class="btn btn-lg btn-outline-dark disabled" style="pointer-events: none;">
                             <div class="d-flex justify-content-between w-100">
-                                <span>{{ __('message.total') }}</span>
+                                <span>{{ trans('message.total') }}</span>
                                 <span id="order-total">{{ currencyFormat($amount, $code=$currency) }}</span>
                             </div>
                         </div>
@@ -750,7 +750,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
                     <div class="form-group row">
                         <div class="col-md-12">
                             <button type="submit" id="pay_now" class="btn btn-primary btn-block">
-                                {{ __('message.caps_pay_now') }}
+                                {{ trans('message.caps_pay_now') }}
                             </button>
                         </div>
                     </div>
@@ -882,7 +882,7 @@ $feeAmount = intval(ceil($displayProcessingFee*$processingFee));
         if(token) {
             var $payButton = $("#pay_now");
             $payButton.prop("disabled", true);
-            $payButton.html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> " + @json(__('message.processing')));
+            $payButton.html("<i class='fa fa-circle-o-notch fa-spin fa-1x'></i> " + @json(trans('message.processing')));
             document.getElementById('stripe-token').value = token.id;
             document.getElementById('token-form').submit();
         }

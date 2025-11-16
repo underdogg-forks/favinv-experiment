@@ -78,7 +78,7 @@ class ProfileController extends Controller
 
                 return redirect()->back()->with('success1', \trans('message.updated-successfully'));
             } else {
-                return redirect()->back()->with('fails1', __('message.incorrect_old_password'));
+                return redirect()->back()->with('fails1', trans('message.incorrect_old_password'));
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('fails', $e->getMessage());

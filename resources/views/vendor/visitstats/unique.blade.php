@@ -8,8 +8,8 @@
 		<table class="visitortracker-table table table-sm table-striped fs-1">
 			<thead>
 				<th>IP</th>
-				<th>{{ __('message.visits') }}</th>
-				<th>{{ __('message.last_visit') }}</th>
+				<th>{{ trans('message.visits') }}</th>
+				<th>{{ trans('message.last_visit') }}</th>
 			</thead>
 
 			<tbody>

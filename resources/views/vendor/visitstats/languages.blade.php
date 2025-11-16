@@ -7,10 +7,10 @@
 
 		<table class="visitortracker-table table table-sm table-striped fs-1">
 			<thead>
-				<th>{{ __('message.language') }}</th>
-				<th>{{ __('message.unique_visitors') }}</th>
-				<th>{{ __('message.visits') }}</th>
-				<th>{{ __('message.last_visit') }}</th>
+				<th>{{ trans('message.language') }}</th>
+				<th>{{ trans('message.unique_visitors') }}</th>
+				<th>{{ trans('message.visits') }}</th>
+				<th>{{ trans('message.last_visit') }}</th>
 			</thead>
 
 			<tbody>
@@ -20,7 +20,7 @@
 							@if ($visit->browser_language_family)
                                 {{ strtoupper($visit->browser_language_family) }}
                             @else
-                                <span>{{ __('message.unknown') }}</span>
+                                <span>{{ trans('message.unknown') }}</span>
                             @endif
 						</td>
 							
